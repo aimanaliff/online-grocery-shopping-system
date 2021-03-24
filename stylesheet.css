@@ -1,0 +1,12 @@
+body {
+  background-color: #c6fcb6;
+  color: #221811;
+  font-family: Verdana, Arial, sans-serif;
+  background-image: url(background.gif);
+}
+
+header {
+  background-color: #8cd292;
+  height: 150px;
+  background-repeat: no-repeat;
+}
