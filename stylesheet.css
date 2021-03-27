@@ -7,27 +7,17 @@ nav {
 }
 
 body {
-  background-color: #c6fcb6;
+  background-color: #eb4c4c;
   color: #221811;
   font-family: Verdana, Arial, sans-serif;
 }
 
 header {
-  background-color: #8cd292;
+  background-color: #752121;
   height: 150px;
   background-image: url(logo-placeholder.jpg);
   background-size: 200px 200px;
   background-repeat: no-repeat;
-}
-
-#wrapper {
-  background-color: #fef6c2;
-  width: 80%;
-  margin-right: auto;
-  margin-left: auto;
-  min-width: 900px;
-  max-width: 1280px;
-  box-shadow: 3px 3px 3px #666666;
 }
 
 nav {
@@ -52,4 +42,19 @@ h1 {
   padding-top: 45px;
   padding-left: 220px;
   font-size: 3em;
+}
+
+img {
+  float: right;
+}
+
+main {
+  padding: 0 0 2em 0;
+  margin-left: 200px;
+  margin-right: 200px;
+}
+
+.column {
+  float: right;
+  width: 200px;
 }
