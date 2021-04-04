@@ -2,6 +2,7 @@ body {
   background-color: #f2f2f2;
 }
 
+<<<<<<< HEAD
 .index-highlight {
   padding: 15px;
   height: 150px;
@@ -11,6 +12,10 @@ body {
 nav-item:hover {
   background: #ffc000;
   height: 100%;
+=======
+.active, nav-item:hover {
+  background: #FFC000;
+>>>>>>> 0b4255ca28e5f06f9b9ef2980ab09825fd2ba8a5
 }
 
 h1,
@@ -19,11 +24,36 @@ h3,
 h4,
 h5 {
   font-family: "Noto Sans", sans-serif;
+  font-weight: bold;
 }
 
+<<<<<<< HEAD
 .sshighlight {
   width: 15rem;
   border-radius: 20px;
   margin: 10px;
   height: 22rem;
 }
+=======
+.sshighlight { 
+  border-radius: 20px; 
+  margin: 10px;
+}
+.card > img {
+  height: 200px;
+  width: 200px;
+  display: inline-block;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 15px;
+}
+
+input[type="search"]::placeholder {
+  text-align: right;
+}
+
+.btn {
+  border-radius: 25px;
+}
+>>>>>>> 0b4255ca28e5f06f9b9ef2980ab09825fd2ba8a5
