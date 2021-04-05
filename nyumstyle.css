@@ -31,4 +31,5 @@ input[type="search"]::placeholder {
 
 .btn {
   border-radius: 25px;
+  font-weight: bold;
 }
