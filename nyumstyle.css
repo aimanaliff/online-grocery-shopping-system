@@ -15,6 +15,12 @@ nav-item:hover {
 
 .active,
 nav-item1:hover {
+    background: #ffffff;
+    height: 100%;
+}
+
+.active1,
+nav-item1:hover {
     background: #ffc000;
     height: 100%;
 }
