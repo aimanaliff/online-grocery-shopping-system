@@ -14,22 +14,20 @@
 </head>
 
 <body>
-  <header class="py-2" style="background-color: #92D050;">
+  <header class="py-3" style="background-color: #92D050;">
     <div class="container d-grid gap-3 align-items-center" style="grid-template-columns: 1fr 5fr;">
       <a href="index.html" class="navbar-brand">
         <img src="img/nyumnyumlogo.png" alt="logo" width="150" class="mx-2">
       </a>
       <div class="d-flex align-items-center">
-        <form class="w-100 me-3">
-          <input type="search" class="form-control" style="border-radius: 20px;" placeholder="Search"
-            spellcheck="false" data-ms-editor="true">
-        </form>
-        <button class="btn btn-success" style="border-radius: 30px;" type="submit"><svg
-            xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-search"
-            viewBox="0 0 15 15">
-            <path
-              d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
-          </svg></button>
+        <div class="input-group">
+          <input type="search" class="form-control" placeholder="Search" aria-label="search"
+              aria-describedby="button-addon2" style="border-radius: 20px 0 0 20px;">
+          <button class="btn btn-success" type="button" id="button-addon2"
+              style="border-radius: 0 20px 20px 0;"><span class="material-icons pt-1">
+                  search
+              </span></button>
+      </div>
 
         <ul class="navbar-nav ms-3 mb-2 mb-md-0 d-flex flex-row">
           <li class="nav-item mx-1">
@@ -52,31 +50,29 @@
     </div>
   </header>
 
-  <nav class="navbar sticky-top navbar-expand-sm d-none d-sm-block shadow py-2 justify-content-center"
-    style="background-color: #FD6C5D;">
-    <div class="container">
-      <ul class="navbar-nav mb-2 mb-md-0 w-100 justify-content-between" style="font-weight: bold;">
-        <li class="nav-item dropdown active">
-          <a class="nav-link dropdown-toggle text-reset text-decoration-none" href="#" id="navbarDropdown" role="button"
-            data-bs-toggle="dropdown" aria-expanded="false">
-            Browse Category
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Fresh Fruits</a></li>
-            <li><a class="dropdown-item" href="#">Fresh Meat</a></li>
-            <li><a class="dropdown-item" href="#">Fresh Vegetables</a></li>
-            <li><a class="dropdown-item" href="#">Seafood</a></li>
-            <li><a class="dropdown-item" href="#">Dairy & Cheese</a></li>
-          </ul>
-        </li>
-        <li class="nav-item"><a href="#" class="nav-link text-dark">Food Essentials</a></li>
-        <li class="nav-item"><a href="#" class="nav-link text-dark">Chilled & Frozen</a></li>
-        <li class="nav-item"><a href="#" class="nav-link text-dark">Beverages</a></li>
-        <li class="nav-item"><a href="#" class="nav-link text-dark">Cookies & Snacks</a></li>
-        <li class="nav-item"><a href="#" class="nav-link text-dark">Bakery</a></li>
-      </ul>
+  <nav class="container-fluid shadow sticky-top" style="background-color: #FD6C5D;">
+    <div class="container d-flex flex-column flex-md-row justify-content-around py-lg-2 fw-bold">
+        <div class="dropdown">
+            <button class="btn btn-warning dropdown-toggle d-none d-lg-inline-block fw-bold " type="button"
+                id="categoryMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                Browse Category
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="categoryMenuButton">
+                <li><a class="dropdown-item" href="#">Fresh Fruits</a></li>
+                <li><a class="dropdown-item" href="#">Fresh Meat</a></li>
+                <li><a class="dropdown-item" href="#">Fresh Vegetables</a></li>
+                <li><a class="dropdown-item" href="#">Seafood</a></li>
+                <li><a class="dropdown-item" href="#">Dairy & Cheese</a></li>
+            </ul>
+        </div>
+        <a href="products.html" class="py-2 d-none d-lg-inline-block text-dark text-decoration-none">Food
+            Essentials</a>
+        <a href="#" class="py-2 d-none d-lg-inline-block text-dark text-decoration-none">Chilled & Frozen</a>
+        <a href="#" class="py-2 d-none d-lg-inline-block text-dark text-decoration-none">Beverages</a>
+        <a href="#" class="py-2 d-none d-lg-inline-block text-dark text-decoration-none">Cookies & Snacks</a>
+        <a href="#" class="py-2 d-none d-lg-inline-block text-dark text-decoration-none">Bakery</a>
     </div>
-  </nav>
+</nav>
 
   <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-indicators">
@@ -153,9 +149,9 @@
     </div>
   </div>
 
-  <div class="container">
+  <div class="container pb-3">
     <h2 class="fw-bold pt-3">SHOCKING SALE</h2>
-    <div class="row pb-3">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-3">
       <div class="col">
         <div class="card sshighlight">
           <img src="img/kiwi.jpg" class="card-img-top" alt="..." />
