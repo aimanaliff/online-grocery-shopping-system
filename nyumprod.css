@@ -1,0 +1,14 @@
+body {
+  background-color: #f2f2f2;
+}
+
+.sshighlight {
+  border-radius: 20px;
+}
+
+.card a > img {
+  height: 200px;
+  width: 200px;
+  display: block;
+  margin: auto;
+}
