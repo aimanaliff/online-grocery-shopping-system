@@ -13,6 +13,26 @@ nav-item:hover {
   height: 100%;
 }
 
+.active,
+nav-item1:hover {
+  background: #ffffff;
+  height: 100%;
+}
+
+.active1,
+nav-item1:hover {
+  background: #ffc000;
+  height: 100%;
+}
+
+.next > li > a:hover {
+  background: #ffc000;
+}
+
+.ty > li > a:hover {
+  background: #649135;
+}
+
 h1,
 h2,
 h3,
@@ -36,4 +56,64 @@ h5 {
 .btn {
   border-radius: 25px;
   font-weight: bold;
+}
+
+.social-login {
+  text-align: center;
+}
+
+.social_log {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+}
+
+.fa {
+  padding: 20px;
+  font-size: 20px;
+  width: 50px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 10px;
+}
+
+.fa-facebook {
+  background: #3b5998;
+  color: white;
+}
+
+.fa-google {
+  background: #dd4b39;
+  color: white;
+}
+
+.tab .nav-item1 {
+  width: 50%;
+  border-radius: 0;
+  margin-bottom: 2rem;
+  text-align: center;
+  font-weight: 600;
+}
+
+.tab a {
+  list-style: none;
+}
+
+.tab {
+  border-bottom: none;
+}
+
+.tab-content .btn-block {
+  width: 100%;
+}
+
+.signin_link {
+  text-align: center;
+  color: #8c8c8c;
+  margin-top: 0.5rem;
+}
+
+.signin_dialog .modal-header img {
+  margin-left: auto;
+  margin-right: auto;
 }

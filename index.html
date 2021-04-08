@@ -2,15 +2,15 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NyumNyum Grocer Store</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-  <link href='https://fonts.googleapis.com/css?family=Noto+Sans' rel='stylesheet'>
-  <link rel="stylesheet" href="nyumstyle.css">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NyumNyum Grocer Store</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <link href='https://fonts.googleapis.com/css?family=Noto+Sans' rel='stylesheet'>
+    <link rel="stylesheet" href="nyumstyle.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -28,6 +28,7 @@
                   search
               </span></button>
       </div>
+
 
         <ul class="navbar-nav ms-3 mb-2 mb-md-0 d-flex flex-row">
           <li class="nav-item mx-1">
@@ -50,29 +51,109 @@
     </div>
   </header>
 
-  <nav class="container-fluid shadow sticky-top" style="background-color: #FD6C5D;">
-    <div class="container d-flex flex-column flex-md-row justify-content-around py-lg-2 fw-bold">
-        <div class="dropdown">
-            <button class="btn btn-warning dropdown-toggle d-none d-lg-inline-block fw-bold " type="button"
-                id="categoryMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                Browse Category
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="categoryMenuButton">
-                <li><a class="dropdown-item" href="#">Fresh Fruits</a></li>
-                <li><a class="dropdown-item" href="#">Fresh Meat</a></li>
-                <li><a class="dropdown-item" href="#">Fresh Vegetables</a></li>
-                <li><a class="dropdown-item" href="#">Seafood</a></li>
-                <li><a class="dropdown-item" href="#">Dairy & Cheese</a></li>
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog signin_dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <img src="img/nyumnyumlogo.png" alt="">
+                    </div>
+                    <div class="modal-body signin_modal">
+                        <ul class="nav nav-tabs tab" id="myTab" role="tablist">
+                            <li class="nav-item1">
+                                <a class="nav-link " id="home-tab" data-bs-toggle="tab" data-bs-target="#signin" href="#signin" type="button" role="tab" aria-controls="home" aria-selected="true">Sign In</a>
+                            </li>
+                            <li class="nav-item1" role="presentation">
+                                <a class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#signup" href="#signup" type="button" role="tab" aria-controls="profile" aria-selected="false">Sign Up</a>
+                            </li>
+
+                        </ul>
+
+                        <div class="social-login">
+                            <ul class="social_log">
+                                <li>
+                                    <a href="https://www.facebook.com/" class="fa fa-facebook"></a>
+                                    <a href="https://www.facebook.com/" class="fa fa-google"></a>
+                                </li>
+
+                            </ul>
+
+                        </div>
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade show active" id="signin" role="tabpanel" aria-labelledby="home-tab">
+                                <form>
+
+                                    <div class="mb-3">
+                                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email">
+                                    </div>
+                                    <div class="mb-3">
+                                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                                    </div>
+                                    <button type="submit" class="btn btn-primary btn-block">Login</button>
+                                </form>
+                                <p class="forgot_link">
+                                    <a href="#">Forgot your password ?</a>
+                                </p>
+                                <p class="signin_link">Don't have an Account ?
+                                    <a id="profile-tab" data-bs-toggle="tab" data-bs-target="#signup" href="#signup" type="button" role="tab" aria-controls="profile" aria-selected="false">Sign Up</a>
+                                </p>
+
+
+                            </div>
+                            <div class="tab-pane fade" id="signup" role="tabpanel" aria-labelledby="profile-tab">
+                                <form>
+                                    <div class="mb-3">
+                                        <input type="text" class="form-control" id="exampleInputText1" aria-describedby="textHelp" placeholder="Username">
+                                    </div>
+                                    <div class="mb-3">
+                                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email">
+                                    </div>
+                                    <div class="mb-3">
+                                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                                    </div>
+                                    <button type="submit" class="btn btn-primary btn-block">Create An Account</button>
+                                </form>
+                                <p class="signin_link">Already have an Account ?
+                                    <a id="home-tab" data-bs-toggle="tab" data-bs-target="#signin" href="#signin" type="button" role="tab" aria-controls="home" aria-selected="true">Sign In</a>
+                                </p>
+
+                            </div>
+                            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="navbar sticky-top navbar-expand-sm d-none d-sm-block shadow py-2 justify-content-center" style="background-color: #FD6C5D;">
+        <div class="container">
+            <ul class="navbar-nav mb-2 mb-md-0 w-100 justify-content-between next" style="font-weight: bold;">
+                <li class="nav-item dropdown active1">
+                    <a class="nav-link dropdown-toggle text-reset text-decoration-none" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Browse Category
+          </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#">Fresh Fruits</a></li>
+                        <li><a class="dropdown-item" href="#">Fresh Meat</a></li>
+                        <li><a class="dropdown-item" href="#">Fresh Vegetables</a></li>
+                        <li><a class="dropdown-item" href="#">Seafood</a></li>
+                        <li><a class="dropdown-item" href="#">Dairy & Cheese</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a href="#" class="nav-link text-dark">Food Essentials</a></li>
+                <li class="nav-item"><a href="#" class="nav-link text-dark">Chilled & Frozen</a></li>
+                <li class="nav-item"><a href="#" class="nav-link text-dark">Beverages</a></li>
+                <li class="nav-item"><a href="#" class="nav-link text-dark">Cookies & Snacks</a></li>
+                <li class="nav-item"><a href="#" class="nav-link text-dark">Bakery</a></li>
             </ul>
         </div>
-        <a href="products.html" class="py-2 d-none d-lg-inline-block text-dark text-decoration-none">Food
-            Essentials</a>
-        <a href="#" class="py-2 d-none d-lg-inline-block text-dark text-decoration-none">Chilled & Frozen</a>
-        <a href="#" class="py-2 d-none d-lg-inline-block text-dark text-decoration-none">Beverages</a>
-        <a href="#" class="py-2 d-none d-lg-inline-block text-dark text-decoration-none">Cookies & Snacks</a>
-        <a href="#" class="py-2 d-none d-lg-inline-block text-dark text-decoration-none">Bakery</a>
-    </div>
-</nav>
+    </nav>
+
 
   <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-indicators">
@@ -103,107 +184,107 @@
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Previous</span>
     </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Next</span>
     </button>
-  </div>
+    </div>
 
 
-  <div class="container-fluid">
-    <div class="text-center">
-      <div class="row">
-        <div class="col-md" style="background-color: #FFC000; padding: 1rem;">
-          <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-tags-fill"
-            viewBox="0 0 16 16" style="margin: 20px;">
+    <div class="container-fluid">
+        <div class="text-center">
+            <div class="row">
+                <div class="col-md" style="background-color: #FFC000; padding: 1rem;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-tags-fill" viewBox="0 0 16 16" style="margin: 20px;">
             <path
               d="M2 2a1 1 0 0 1 1-1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 2 6.586V2zm3.5 4a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z" />
             <path
               d="M1.293 7.793A1 1 0 0 1 1 7.086V2a1 1 0 0 0-1 1v4.586a1 1 0 0 0 .293.707l7 7a1 1 0 0 0 1.414 0l.043-.043-7.457-7.457z" />
           </svg>
-          <h1>BIG SALE!</h1>
-          <h5>Get up to 25% off</h5>
-          <a href="#" class="text-reset text-decoration-none">View details here >></a>
-        </div>
-        <div class="col-md" style="background-color: #ED7D31; padding: 1rem;">
-          <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-truck"
-            viewBox="0 0 16 16" style="margin: 20px;">
+                    <h1>BIG SALE!</h1>
+                    <h5>Get up to 25% off</h5>
+                    <a href="#" class="text-reset text-decoration-none">View details here >></a>
+                </div>
+                <div class="col-md" style="background-color: #ED7D31; padding: 1rem;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-truck" viewBox="0 0 16 16" style="margin: 20px;">
             <path
               d="M0 3.5A1.5 1.5 0 0 1 1.5 2h9A1.5 1.5 0 0 1 12 3.5V5h1.02a1.5 1.5 0 0 1 1.17.563l1.481 1.85a1.5 1.5 0 0 1 .329.938V10.5a1.5 1.5 0 0 1-1.5 1.5H14a2 2 0 1 1-4 0H5a2 2 0 1 1-3.998-.085A1.5 1.5 0 0 1 0 10.5v-7zm1.294 7.456A1.999 1.999 0 0 1 4.732 11h5.536a2.01 2.01 0 0 1 .732-.732V3.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5v7a.5.5 0 0 0 .294.456zM12 10a2 2 0 0 1 1.732 1h.768a.5.5 0 0 0 .5-.5V8.35a.5.5 0 0 0-.11-.312l-1.48-1.85A.5.5 0 0 0 13.02 6H12v4zm-9 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm9 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z" />
           </svg>
-          <h1>FREE SHIPPING </h1>
-          <h5>On orders over RM150.00</h5>
-          <a href="#" class="text-reset text-decoration-none">View details here >></a>
-        </div>
-        <div class="col-md" style="background-color: #70AD47; padding: 1rem;">
-          <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor"
-            class="bi bi-credit-card-fill" viewBox="0 0 16 16" style="margin: 20px;">
+                    <h1>FREE SHIPPING </h1>
+                    <h5>On orders over RM150.00</h5>
+                    <a href="#" class="text-reset text-decoration-none">View details here >></a>
+                </div>
+                <div class="col-md" style="background-color: #70AD47; padding: 1rem;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-credit-card-fill" viewBox="0 0 16 16" style="margin: 20px;">
             <path
               d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v1H0V4zm0 3v5a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7H0zm3 2h1a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-1a1 1 0 0 1 1-1z" />
           </svg>
-          <h1>10% OFF</h1>
-          <h5>When you use credit card</h5>
-          <a href="#" class="text-reset text-decoration-none">View details here >></a>
+                    <h1>10% OFF</h1>
+                    <h5>When you use credit card</h5>
+                    <a href="#" class="text-reset text-decoration-none">View details here >></a>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 
-  <div class="container pb-3">
-    <h2 class="fw-bold pt-3">SHOCKING SALE</h2>
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-3">
-      <div class="col">
-        <div class="card sshighlight">
-          <img src="img/kiwi.jpg" class="card-img-top" alt="..." />
-          <div class="card-body">
-            <h5 class="card-title">New Zealand Kiwi</h5>
-            <p class="card-text">
-              RM215/100g
-            </p>
-            <div class="d-flex justify-content-center">
-              <a href="#" class="btn btn-warning">Add to List</a>
+    <div class="container">
+        <h2 class="fw-bold pt-3">SHOCKING SALE</h2>
+        <div class="row pb-3">
+            <div class="col">
+                <div class="card sshighlight">
+                    <img src="img/kiwi.jpg" class="card-img-top" alt="..." />
+                    <div class="card-body">
+                        <h5 class="card-title">New Zealand Kiwi</h5>
+                        <p class="card-text">
+                            RM215/100g
+                        </p>
+                        <div class="d-flex justify-content-center">
+                            <a href="#" class="btn btn-warning">Add to List</a>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card sshighlight">
-          <img src="img/broccoli.jpg" class="card-img-top" alt="..." />
-          <div class="card-body">
-            <h5 class="card-title">Broke Your Lee's</h5>
-            <p class="card-text">
-              RM2/pcs
-            </p>
-            <div class="d-flex justify-content-center">
-              <a href="#" class="btn btn-warning">Add to List</a>
+            <div class="col">
+                <div class="card sshighlight">
+                    <img src="img/broccoli.jpg" class="card-img-top" alt="..." />
+                    <div class="card-body">
+                        <h5 class="card-title">Broke Your Lee's</h5>
+                        <p class="card-text">
+                            RM2/pcs
+                        </p>
+                        <div class="d-flex justify-content-center">
+                            <a href="#" class="btn btn-warning">Add to List</a>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card sshighlight">
-          <img src="img/tomato.jpg" class="card-img-top" alt="..." />
-          <div class="card-body">
-            <h5 class="card-title">Tokma Toes</h5>
-            <p class="card-text">
-              RM20/pcs
-            </p>
-            <div class="d-flex justify-content-center">
-              <a href="#" class="btn btn-warning">Add to List</a>
+            <div class="col">
+                <div class="card sshighlight">
+                    <img src="img/tomato.jpg" class="card-img-top" alt="..." />
+                    <div class="card-body">
+                        <h5 class="card-title">Tokma Toes</h5>
+                        <p class="card-text">
+                            RM20/pcs
+                        </p>
+                        <div class="d-flex justify-content-center">
+                            <a href="#" class="btn btn-warning">Add to List</a>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card sshighlight">
-          <img src="img/pineapple.jpg" class="card-img-top" alt="..." />
-          <div class="card-body">
-            <h5 class="card-title">Spongebob Haus</h5>
-            <p class="card-text">
-              RM17/pcs
-            </p>
-            <div class="d-flex justify-content-center">
-              <a href="#" class="btn btn-warning">Add to List</a>
+            <div class="col">
+                <div class="card sshighlight">
+                    <img src="img/pineapple.jpg" class="card-img-top" alt="..." />
+                    <div class="card-body">
+                        <h5 class="card-title">Spongebob Haus</h5>
+                        <p class="card-text">
+                            RM17/pcs
+                        </p>
+                        <div class="d-flex justify-content-center">
+                            <a href="#" class="btn btn-warning">Add to List</a>
+                        </div>
+                    </div>
+                </div>
             </div>
           </div>
         </div>
@@ -219,17 +300,14 @@
             <div class="d-flex justify-content-center">
               <a href="#" class="btn btn-warning">Add to List</a>
             </div>
-          </div>
         </div>
-      </div>
     </div>
-  </div>
 
   <footer class="footer  mt-auto py-3" style="background-color: #006600; color: whitesmoke;">
     <div class="container-fluid container-lg">
       <div class="row">
         <div class="col-5">
-          <h3>NyumNyum Grocer Store</h4>
+          <h3>NyumNyum Grocer Store</h3>
         </div>
         <div class="col-md">
           <h5>About</h5>
@@ -248,16 +326,15 @@
           <a href="#" class="text-reset text-decoration-none footer-link">Terms of Policies</a><br>
           <br>
         </div>
-        </section>
         <hr>
         <div class="container-fluid text-center font-italic" style="color: grey;">
           <p> Copyright &copy; NyumNyum Yummy Menjilat Jari </p>
         </div>
+      </div>
+    </div>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
-    crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
 </body>
 
 </html>
