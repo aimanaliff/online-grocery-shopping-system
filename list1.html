@@ -10,6 +10,8 @@
     <link href='https://fonts.googleapis.com/css?family=Noto+Sans' rel='stylesheet'>
     <link rel="stylesheet" href="nyumstyle.css">
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
   <body>
     
@@ -20,61 +22,139 @@
             <img src="img/nyumnyumlogo.png" alt="logo" width="150" class="mx-2">
           </a>
           <div class="d-flex align-items-center">
-            <form class="w-100 me-3">
-              <input type="search" class="form-control" style="border-radius: 20px;" placeholder="Search..."
-                spellcheck="false" data-ms-editor="true">
-            </form>
-            <button class="btn btn-success" style="border-radius: 30px;" type="submit"><svg
-                xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-search"
-                viewBox="0 0 15 15">
-                <path
-                  d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
-              </svg></button>
+            <div class="input-group">
+              <input type="search" class="form-control" placeholder="Search" aria-label="search"
+                  aria-describedby="button-addon2" style="border-radius: 20px 0 0 20px;">
+              <button class="btn btn-success" type="button" id="button-addon2"
+                  style="border-radius: 0 20px 20px 0;"><span class="material-icons pt-1">
+                      search
+                  </span></button>
+          </div>
+    
     
             <ul class="navbar-nav ms-3 mb-2 mb-md-0 d-flex flex-row">
               <li class="nav-item mx-1">
-                <a href="user.html" class="nav-link text-dark"><svg xmlns="http://www.w3.org/2000/svg" width="30"
-                    height="30" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
-                    <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
-                  </svg></a>
+                <a href="user.html" class="nav-link text-dark"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+                  <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                </svg></a>
               </li>
               <li class="nav-item mx-1">
-                <a href="#" class="nav-link text-dark"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
-                    fill="currentColor" class="bi bi-bag-fill" viewBox="0 0 16 16">
-                    <path
-                      d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5z" />
-                  </svg></a>
+                <a href="list1.html" class="nav-link text-dark"><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+                </svg></a>
+              </li>
+              <li class="nav-item mx-1">
+                <a href="cart.html" class="nav-link text-dark"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-basket2-fill" viewBox="0 0 16 16">
+                  <path d="M5.929 1.757a.5.5 0 1 0-.858-.514L2.217 6H.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h.623l1.844 6.456A.75.75 0 0 0 3.69 15h8.622a.75.75 0 0 0 .722-.544L14.877 8h.623a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1.717L10.93 1.243a.5.5 0 1 0-.858.514L12.617 6H3.383L5.93 1.757zM4 10a1 1 0 0 1 2 0v2a1 1 0 1 1-2 0v-2zm3 0a1 1 0 0 1 2 0v2a1 1 0 1 1-2 0v-2zm4-1a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0v-2a1 1 0 0 1 1-1z"/>
+                </svg></a>
               </li>
             </ul>
           </div>
         </div>
       </header>
     
-      <nav class="navbar sticky-top navbar-expand-sm d-none d-sm-block shadow py-2 justify-content-center"
-        style="background-color: #FD6C5D;">
-        <div class="container">
-          <ul class="navbar-nav mb-2 mb-md-0 w-100 justify-content-between" style="font-weight: bold;">
-            <li class="nav-item dropdown active">
-              <a class="nav-link dropdown-toggle text-reset text-decoration-none" href="#" id="navbarDropdown" role="button"
-                data-bs-toggle="dropdown" aria-expanded="false">
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog signin_dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <img src="img/nyumnyumlogo.png" alt="">
+                        </div>
+                        <div class="modal-body signin_modal">
+                            <ul class="nav nav-tabs tab" id="myTab" role="tablist">
+                                <li class="nav-item1">
+                                    <a class="nav-link " id="home-tab" data-bs-toggle="tab" data-bs-target="#signin" href="#signin" type="button" role="tab" aria-controls="home" aria-selected="true">Sign In</a>
+                                </li>
+                                <li class="nav-item1" role="presentation">
+                                    <a class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#signup" href="#signup" type="button" role="tab" aria-controls="profile" aria-selected="false">Sign Up</a>
+                                </li>
+    
+                            </ul>
+    
+                            <div class="social-login">
+                                <ul class="social_log">
+                                    <li>
+                                        <a href="https://www.facebook.com/" class="fa fa-facebook"></a>
+                                        <a href="https://www.facebook.com/" class="fa fa-google"></a>
+                                    </li>
+    
+                                </ul>
+    
+                            </div>
+                            <div class="tab-content" id="myTabContent">
+                                <div class="tab-pane fade show active" id="signin" role="tabpanel" aria-labelledby="home-tab">
+                                    <form>
+    
+                                        <div class="mb-3">
+                                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email">
+                                        </div>
+                                        <div class="mb-3">
+                                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                                        </div>
+                                        <button type="submit" class="btn btn-primary btn-block">Login</button>
+                                    </form>
+                                    <p class="forgot_link">
+                                        <a href="#">Forgot your password ?</a>
+                                    </p>
+                                    <p class="signin_link">Don't have an Account ?
+                                        <a id="profile-tab" data-bs-toggle="tab" data-bs-target="#signup" href="#signup" type="button" role="tab" aria-controls="profile" aria-selected="false">Sign Up</a>
+                                    </p>
+    
+    
+                                </div>
+                                <div class="tab-pane fade" id="signup" role="tabpanel" aria-labelledby="profile-tab">
+                                    <form>
+                                        <div class="mb-3">
+                                            <input type="text" class="form-control" id="exampleInputText1" aria-describedby="textHelp" placeholder="Username">
+                                        </div>
+                                        <div class="mb-3">
+                                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email">
+                                        </div>
+                                        <div class="mb-3">
+                                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                                        </div>
+                                        <button type="submit" class="btn btn-primary btn-block">Create An Account</button>
+                                    </form>
+                                    <p class="signin_link">Already have an Account ?
+                                        <a id="home-tab" data-bs-toggle="tab" data-bs-target="#signin" href="#signin" type="button" role="tab" aria-controls="home" aria-selected="true">Sign In</a>
+                                    </p>
+    
+                                </div>
+                                <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+    
+        <nav class="navbar sticky-top navbar-expand-sm d-none d-sm-block shadow py-2 justify-content-center" style="background-color: #FD6C5D;">
+            <div class="container">
+                <ul class="navbar-nav mb-2 mb-md-0 w-100 justify-content-between next" style="font-weight: bold;">
+                    <li class="nav-item dropdown active1">
+                        <a class="nav-link dropdown-toggle text-reset text-decoration-none" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Browse Category
               </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#">Fresh Fruits</a></li>
-                <li><a class="dropdown-item" href="#">Fresh Meat</a></li>
-                <li><a class="dropdown-item" href="#">Fresh Vegetables</a></li>
-                <li><a class="dropdown-item" href="#">Seafood</a></li>
-                <li><a class="dropdown-item" href="#">Dairy & Cheese</a></li>
-              </ul>
-            </li>
-            <li class="nav-item"><a href="#" class="nav-link text-dark">Food Essentials</a></li>
-            <li class="nav-item"><a href="#" class="nav-link text-dark">Chilled & Frozen</a></li>
-            <li class="nav-item"><a href="#" class="nav-link text-dark">Beverages</a></li>
-            <li class="nav-item"><a href="#" class="nav-link text-dark">Cookies & Snacks</a></li>
-            <li class="nav-item"><a href="#" class="nav-link text-dark">Bakery</a></li>
-          </ul>
-        </div>
-      </nav>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Fresh Fruits</a></li>
+                            <li><a class="dropdown-item" href="#">Fresh Meat</a></li>
+                            <li><a class="dropdown-item" href="#">Fresh Vegetables</a></li>
+                            <li><a class="dropdown-item" href="#">Seafood</a></li>
+                            <li><a class="dropdown-item" href="#">Dairy & Cheese</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a href="products.html" class="nav-link text-dark">Food Essentials</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link text-dark">Chilled & Frozen</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link text-dark">Beverages</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link text-dark">Cookies & Snacks</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link text-dark">Bakery</a></li>
+                </ul>
+            </div>
+        </nav>
 
   <div style="max-width: 1300px; margin: 0 auto; padding: 10px; background-color: white;">
     <div class="container">
