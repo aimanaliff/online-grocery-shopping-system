@@ -1,36 +1,36 @@
 body {
-    background-color: #f2f2f2;
+  background-color: #f2f2f2;
 }
 
 .index-highlight {
-    padding: 15px;
-    height: 150px;
+  padding: 15px;
+  height: 150px;
 }
 
 .active,
 nav-item:hover {
-    background: #ffc000;
-    height: 100%;
+  background: #ffc000;
+  height: 100%;
 }
 
 .active,
 nav-item1:hover {
-    background: #ffffff;
-    height: 100%;
+  background: #ffffff;
+  height: 100%;
 }
 
 .active1,
 nav-item1:hover {
-    background: #ffc000;
-    height: 100%;
+  background: #ffc000;
+  height: 100%;
 }
 
-.next>li>a:hover {
-    background: #ffc000;
+.next > li > a:hover {
+  background: #ffc000;
 }
 
-.ty>li>a:hover {
-    background: #649135;
+.ty > li > a:hover {
+  background: #649135;
 }
 
 h1,
@@ -38,92 +38,90 @@ h2,
 h3,
 h4,
 h5 {
-    font-family: "Noto Sans", sans-serif;
-    font-weight: bold;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: bold;
 }
 
 .sshighlight {
-    border-radius: 20px;
-    margin: 10px;
+  border-radius: 20px;
+  margin: 10px;
 }
 
-.card>img {
-    height: 200px;
-    width: 200px;
-    display: inline-block;
-    justify-content: center;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 15px;
+.card > img {
+  height: 200px;
+  width: 200px;
+  display: inline-block;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 15px;
 }
 
 input[type="search"]::placeholder {
-    text-align: right;
+  text-align: right;
 }
 
 .btn {
-    border-radius: 25px;
-    font-weight: bold;
+  border-radius: 25px;
+  font-weight: bold;
 }
 
 .social-login {
-    text-align: center;
+  text-align: center;
 }
 
 .social_log {
-    list-style: none;
-    display: flex;
-    justify-content: center;
+  list-style: none;
+  display: flex;
+  justify-content: center;
 }
 
-.social_log li {}
-
 .fa {
-    padding: 20px;
-    font-size: 20px;
-    width: 50px;
-    text-align: center;
-    text-decoration: none;
-    margin: 5px 10px;
+  padding: 20px;
+  font-size: 20px;
+  width: 50px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 10px;
 }
 
 .fa-facebook {
-    background: #3B5998;
-    color: white;
+  background: #3b5998;
+  color: white;
 }
 
 .fa-google {
-    background: #dd4b39;
-    color: white;
+  background: #dd4b39;
+  color: white;
 }
 
 .tab .nav-item1 {
-    width: 50%;
-    border-radius: 0;
-    margin-bottom: 2rem;
-    text-align: center;
-    font-weight: 600;
+  width: 50%;
+  border-radius: 0;
+  margin-bottom: 2rem;
+  text-align: center;
+  font-weight: 600;
 }
 
 .tab a {
-    list-style: none;
+  list-style: none;
 }
 
 .tab {
-    border-bottom: none;
+  border-bottom: none;
 }
 
 .tab-content .btn-block {
-    width: 100%;
+  width: 100%;
 }
 
 .signin_link {
-    text-align: center;
-    color: #8c8c8c;
-    margin-top: 0.5rem;
+  text-align: center;
+  color: #8c8c8c;
+  margin-top: 0.5rem;
 }
 
 .signin_dialog .modal-header img {
-    margin-left: auto;
-    margin-right: auto;
+  margin-left: auto;
+  margin-right: auto;
 }
