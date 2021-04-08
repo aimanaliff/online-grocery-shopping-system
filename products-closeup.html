@@ -14,68 +14,143 @@
 <body style="background-color: #f2f2f2;">
     <header class="py-3" style="background-color: #92D050;">
         <div class="container d-grid gap-3 align-items-center" style="grid-template-columns: 1fr 5fr;">
-            <a href="index.html" class="navbar-brand">
-                <img src="./img/nyumnyumlogo.png" alt="logo" width="150" class="mx-2">
-            </a>
-            <div class="d-flex align-items-center">
-                <div class="input-group">
-                    <input type="search" class="form-control" placeholder="Search" aria-label="search"
-                        aria-describedby="button-addon2" style="border-radius: 20px 0 0 20px;">
-                    <button class="btn btn-success" type="button" id="button-addon2"
-                        style="border-radius: 0 20px 20px 0;"><span class="material-icons pt-1">
-                            search
-                        </span></button>
+          <a href="index.html" class="navbar-brand">
+            <img src="img/nyumnyumlogo.png" alt="logo" width="150" class="mx-2">
+          </a>
+          <div class="d-flex align-items-center">
+            <div class="input-group">
+              <input type="search" class="form-control" placeholder="Search" aria-label="search"
+                  aria-describedby="button-addon2" style="border-radius: 20px 0 0 20px;">
+              <button class="btn btn-success" type="button" id="button-addon2"
+                  style="border-radius: 0 20px 20px 0;"><span class="material-icons pt-1">
+                      search
+                  </span></button>
+          </div>
+    
+    
+            <ul class="navbar-nav ms-3 mb-2 mb-md-0 d-flex flex-row">
+              <li class="nav-item mx-1">
+                <a href="user.html" class="nav-link text-dark"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+                  <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                </svg></a>
+              </li>
+              <li class="nav-item mx-1">
+                <a href="list.html" class="nav-link text-dark"><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+                  <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+                </svg></a>
+              </li>
+              <li class="nav-item mx-1">
+                <a href="cart.html" class="nav-link text-dark"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-basket2-fill" viewBox="0 0 16 16">
+                  <path d="M5.929 1.757a.5.5 0 1 0-.858-.514L2.217 6H.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h.623l1.844 6.456A.75.75 0 0 0 3.69 15h8.622a.75.75 0 0 0 .722-.544L14.877 8h.623a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1.717L10.93 1.243a.5.5 0 1 0-.858.514L12.617 6H3.383L5.93 1.757zM4 10a1 1 0 0 1 2 0v2a1 1 0 1 1-2 0v-2zm3 0a1 1 0 0 1 2 0v2a1 1 0 1 1-2 0v-2zm4-1a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0v-2a1 1 0 0 1 1-1z"/>
+                </svg></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </header>
+    
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog signin_dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <img src="img/nyumnyumlogo.png" alt="">
+                        </div>
+                        <div class="modal-body signin_modal">
+                            <ul class="nav nav-tabs tab" id="myTab" role="tablist">
+                                <li class="nav-item1">
+                                    <a class="nav-link " id="home-tab" data-bs-toggle="tab" data-bs-target="#signin" href="#signin" type="button" role="tab" aria-controls="home" aria-selected="true">Sign In</a>
+                                </li>
+                                <li class="nav-item1" role="presentation">
+                                    <a class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#signup" href="#signup" type="button" role="tab" aria-controls="profile" aria-selected="false">Sign Up</a>
+                                </li>
+    
+                            </ul>
+    
+                            <div class="social-login">
+                                <ul class="social_log">
+                                    <li>
+                                        <a href="https://www.facebook.com/" class="fa fa-facebook"></a>
+                                        <a href="https://www.facebook.com/" class="fa fa-google"></a>
+                                    </li>
+    
+                                </ul>
+    
+                            </div>
+                            <div class="tab-content" id="myTabContent">
+                                <div class="tab-pane fade show active" id="signin" role="tabpanel" aria-labelledby="home-tab">
+                                    <form>
+    
+                                        <div class="mb-3">
+                                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email">
+                                        </div>
+                                        <div class="mb-3">
+                                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                                        </div>
+                                        <button type="submit" class="btn btn-primary btn-block">Login</button>
+                                    </form>
+                                    <p class="forgot_link">
+                                        <a href="#">Forgot your password ?</a>
+                                    </p>
+                                    <p class="signin_link">Don't have an Account ?
+                                        <a id="profile-tab" data-bs-toggle="tab" data-bs-target="#signup" href="#signup" type="button" role="tab" aria-controls="profile" aria-selected="false">Sign Up</a>
+                                    </p>
+    
+    
+                                </div>
+                                <div class="tab-pane fade" id="signup" role="tabpanel" aria-labelledby="profile-tab">
+                                    <form>
+                                        <div class="mb-3">
+                                            <input type="text" class="form-control" id="exampleInputText1" aria-describedby="textHelp" placeholder="Username">
+                                        </div>
+                                        <div class="mb-3">
+                                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email">
+                                        </div>
+                                        <div class="mb-3">
+                                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                                        </div>
+                                        <button type="submit" class="btn btn-primary btn-block">Create An Account</button>
+                                    </form>
+                                    <p class="signin_link">Already have an Account ?
+                                        <a id="home-tab" data-bs-toggle="tab" data-bs-target="#signin" href="#signin" type="button" role="tab" aria-controls="home" aria-selected="true">Sign In</a>
+                                    </p>
+    
+                                </div>
+                                <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
                 </div>
-
-                <ul class="navbar-nav ms-3 mb-2 mb-md-0 d-flex flex-row gap-2">
-                    <li class="nav-item mx-1">
-                        <a href="user.html" class="nav-link text-dark"><svg xmlns="http://www.w3.org/2000/svg" width="25"
-                            height="25" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
-                            <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
-                          </svg></a>
-                      </li>
-                      <li class="nav-item mx-1">
-                        <a href="list.html" class="nav-link text-dark"><svg xmlns="http://www.w3.org/2000/svg" width="23"
-                            height="23" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
-                            <path
-                              d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
-                          </svg></a>
-                      </li>
-                      <li class="nav-item mx-1">
-                        <a href="cart.html" class="nav-link text-dark"><svg xmlns="http://www.w3.org/2000/svg" width="25"
-                            height="25" fill="currentColor" class="bi bi-basket2-fill" viewBox="0 0 16 16">
-                            <path
-                              d="M5.929 1.757a.5.5 0 1 0-.858-.514L2.217 6H.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h.623l1.844 6.456A.75.75 0 0 0 3.69 15h8.622a.75.75 0 0 0 .722-.544L14.877 8h.623a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1.717L10.93 1.243a.5.5 0 1 0-.858.514L12.617 6H3.383L5.93 1.757zM4 10a1 1 0 0 1 2 0v2a1 1 0 1 1-2 0v-2zm3 0a1 1 0 0 1 2 0v2a1 1 0 1 1-2 0v-2zm4-1a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0v-2a1 1 0 0 1 1-1z" />
-                          </svg></a>
-                      </li>
+            </div>
+        </header>
+    
+        <nav class="navbar sticky-top navbar-expand-sm d-none d-sm-block shadow py-2 justify-content-center" style="background-color: #FD6C5D;">
+            <div class="container">
+                <ul class="navbar-nav mb-2 mb-md-0 w-100 justify-content-between next" style="font-weight: bold;">
+                    <li class="nav-item dropdown active1">
+                        <a class="nav-link dropdown-toggle text-reset text-decoration-none" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Browse Category
+              </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Fresh Fruits</a></li>
+                            <li><a class="dropdown-item" href="#">Fresh Meat</a></li>
+                            <li><a class="dropdown-item" href="#">Fresh Vegetables</a></li>
+                            <li><a class="dropdown-item" href="#">Seafood</a></li>
+                            <li><a class="dropdown-item" href="#">Dairy & Cheese</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a href="products.html" class="nav-link text-dark">Food Essentials</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link text-dark">Chilled & Frozen</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link text-dark">Beverages</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link text-dark">Cookies & Snacks</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link text-dark">Bakery</a></li>
                 </ul>
             </div>
-        </div>
-    </header>
-
-    <nav class="container-fluid shadow sticky-top" style="background-color: #FD6C5D;">
-        <div class="container d-flex flex-column flex-md-row justify-content-around py-lg-2 fw-bold">
-            <div class="dropdown">
-                <button class="btn btn-warning dropdown-toggle d-none d-lg-inline-block fw-bold " type="button"
-                    id="categoryMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                    Browse Category
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="categoryMenuButton">
-                    <li><a class="dropdown-item" href="#">Fresh Fruits</a></li>
-                    <li><a class="dropdown-item" href="#">Fresh Meat</a></li>
-                    <li><a class="dropdown-item" href="#">Fresh Vegetables</a></li>
-                    <li><a class="dropdown-item" href="#">Seafood</a></li>
-                    <li><a class="dropdown-item" href="#">Dairy & Cheese</a></li>
-                </ul>
-            </div>
-            <a href="products.html" class="py-2 d-none d-lg-inline-block text-dark text-decoration-none">Food
-                Essentials</a>
-            <a href="#" class="py-2 d-none d-lg-inline-block text-dark text-decoration-none">Chilled & Frozen</a>
-            <a href="#" class="py-2 d-none d-lg-inline-block text-dark text-decoration-none">Beverages</a>
-            <a href="#" class="py-2 d-none d-lg-inline-block text-dark text-decoration-none">Cookies & Snacks</a>
-            <a href="#" class="py-2 d-none d-lg-inline-block text-dark text-decoration-none">Bakery</a>
-        </div>
-    </nav>
+        </nav>
 
     <div class="container pt-5">
         <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
@@ -107,7 +182,7 @@
                                         <div class="d-flex flex-column">
                                             <div class="d-flex flex-row align-items-center gap-5 pb-3">
                                                 <label for="price" class="fs-5 pb-3">Price:</label>
-                                                <p class="fs-3">RM0.00</p>
+                                                <p class="fs-3">RM9999.99</p>
                                             </div>
                                             <div class="d-flex flex-row align-items-center gap-3 pb-3">
                                                 <label for="quantity" class="fs-5">Quantity:</label>
