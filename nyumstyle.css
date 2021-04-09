@@ -1,3 +1,5 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap'); */
+
 body {
   background-color: #f2f2f2;
 }
@@ -44,21 +46,13 @@ h5 {
 
 .sshighlight {
   border-radius: 20px;
-  margin: 10px;
 }
 
 .card > img {
   height: 200px;
   width: 200px;
-  display: inline-block;
-  justify-content: center;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 15px;
-}
-
-input[type="search"]::placeholder {
-  text-align: right;
+  display: block;
+  margin: auto;
 }
 
 .btn {

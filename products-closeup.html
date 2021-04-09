@@ -5,27 +5,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NyumNyum Grocer Store</title>
+    <title>NyumNyum Grocery Store | Product Closeup</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-    <link href='https://fonts.googleapis.com/css?family=Noto+Sans' rel='stylesheet'>
-    <link rel="stylesheet" href="nyumstyle.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
-    <style>
-        a {
-            color: #198754;
-            text-decoration: None;
-        }
-
-        a:hover {
-            color: #6c757d;
-            text-decoration: none;
-        }
-    </style>
 </head>
 
-<body>
+<body style="background-color: #f2f2f2;">
     <header class="py-3" style="background-color: #92D050;">
         <div class="container d-grid gap-3 align-items-center" style="grid-template-columns: 1fr 5fr;">
           <a href="index.html" class="navbar-brand">
@@ -49,15 +35,14 @@
                 </svg></a>
               </li>
               <li class="nav-item mx-1">
-                <a href="list1.html" class="nav-link text-dark"><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+                <a href="list.html" class="nav-link text-dark"><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
                   <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
                 </svg></a>
               </li>
               <li class="nav-item mx-1">
-                <a href="cart.html" class="nav-link text-dark"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-basket2" viewBox="0 0 16 16">
-                    <path d="M4 10a1 1 0 0 1 2 0v2a1 1 0 0 1-2 0v-2zm3 0a1 1 0 0 1 2 0v2a1 1 0 0 1-2 0v-2zm3 0a1 1 0 1 1 2 0v2a1 1 0 0 1-2 0v-2z"/>
-                    <path d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15.5a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-.623l-1.844 6.456a.75.75 0 0 1-.722.544H3.69a.75.75 0 0 1-.722-.544L1.123 8H.5a.5.5 0 0 1-.5-.5v-1A.5.5 0 0 1 .5 6h1.717L5.07 1.243a.5.5 0 0 1 .686-.172zM2.163 8l1.714 6h8.246l1.714-6H2.163z"/>
-                  </svg></a>
+                <a href="cart.html" class="nav-link text-dark"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-basket2-fill" viewBox="0 0 16 16">
+                  <path d="M5.929 1.757a.5.5 0 1 0-.858-.514L2.217 6H.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h.623l1.844 6.456A.75.75 0 0 0 3.69 15h8.622a.75.75 0 0 0 .722-.544L14.877 8h.623a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1.717L10.93 1.243a.5.5 0 1 0-.858.514L12.617 6H3.383L5.93 1.757zM4 10a1 1 0 0 1 2 0v2a1 1 0 1 1-2 0v-2zm3 0a1 1 0 0 1 2 0v2a1 1 0 1 1-2 0v-2zm4-1a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0v-2a1 1 0 0 1 1-1z"/>
+                </svg></a>
               </li>
             </ul>
           </div>
@@ -166,130 +151,139 @@
                 </ul>
             </div>
         </nav>
-    <main>
-        <div class="container">
-            <div class="row my-4">
-                <div class="col-sm-12 col-lg-8 rounded-3 bg-white mx-1 my-1">
-                    <div class="row">
-                        <h3 style="text-align: center; background-color: #ffc000;" class="py-3 rounded-3">Cart</h3>
-                    </div>
-                    <div class="row py-5 align-items-center">
-                        <div class="col-sm-12 col-xl-1 align-self-center py-2">
-                            <a href="#">Remove</a>
-                        </div>
-                        <div class="col-2">
-                            <img src="img/banana.jpg" class="img-thumbnail" alt="">
-                        </div>
-                        <div class="col align-self-center">
-                            <div>
-                                <h4>Banana</h4>
-                                <p class="text-danger fw-bold">RM 0.50</p>
-                            </div>
-                        </div>
-                        <div class="col-2">
-                            <input type="number" class="form-control" id="inputQuantity">
-                        </div>
-                        <div class="col-2 align-self-center">
-                            <div>
-                                <h6 class="text-center">Total</h6>
-                                <p class="text-center text-danger fw-bold">RM 0.50</p>
-                            </div>
-                        </div>
-                        <div class="col-1 align-self-center">
-                            <input type="checkbox" name="" id="">
+
+    <div class="container pt-5">
+        <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+            <ol class="breadcrumb fw-bold">
+                <li class="breadcrumb-item"><a href="index.html" class="text-dark text-decoration-none">Home</a></li>
+                <li class="breadcrumb-item"><a href="products.html" class="text-dark text-decoration-none">Category</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">Product</li>
+            </ol>
+        </nav>
+    </div>
+
+    <main class="container pb-5">
+        <div class="card">
+            <div class="card-body m-3">
+                <div class="row row-cols-1 row-cols-lg-2 g-4 pb-4">
+                    <div class="col">
+                        <div class="card shadow-sm p-5">
+                            <img src="./img/banana.jpg" alt="pise">
                         </div>
                     </div>
-                    <hr>
-                    <div class="row py-5 align-items-center">
-                        <div class="col-sm-12 col-xl-1 align-self-center py-2">
-                            <a href="#">Remove</a>
-                        </div>
-                        <div class="col-2">
-                            <img src="img/banana.jpg" class="img-thumbnail" alt="">
-                        </div>
-                        <div class="col align-self-center">
-                            <div>
-                                <h4>Banana</h4>
-                                <p class="text-danger fw-bold">RM 0.50</p>
+                    <div class="col">
+                        <div class="row">
+                            <div class="col">
+                                <div class="card shadow-sm p-2 mb-4">
+                                    <div class="card-body">
+                                        <h1 class="card-title">Pise Gomo</h1>
+                                        <hr>
+                                        <div class="d-flex flex-column">
+                                            <div class="d-flex flex-row align-items-center gap-5 pb-3">
+                                                <label for="price" class="fs-5 pb-3">Price:</label>
+                                                <p class="fs-3">RM9999.99</p>
+                                            </div>
+                                            <div class="d-flex flex-row align-items-center gap-3 pb-3">
+                                                <label for="quantity" class="fs-5">Quantity:</label>
+                                                <div class="dropdown">
+                                                    <select class="form-select" aria-label="Default select example">
+                                                        <option selected value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>
+                                                        <option value="5">5</option>
+                                                        <option value="6">6</option>
+                                                        <option value="7">7</option>
+                                                        <option value="8">8</option>
+                                                        <option value="9">9</option>
+                                                        <option value="10+">10+</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="d-flex flex-row gap-3">
+                                                <a href="#" class="btn btn-success rounded-pill">Add to List</a>
+                                                <a href="#" class="btn btn-warning rounded-pill">Add to Cart</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card shadow-sm p-2">
+                                    <div class="card-body">
+                                        <h1 class="card-title pb-3">Description</h1>
+                                        <p class="fs-5">Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                                            Corrupti aut adipisci
+                                            magni ad,
+                                            nesciunt deleniti maxime voluptatibus inventore debitis vel tenetur
+                                            explicabo aspernatur,
+                                            voluptas unde sunt consectetur cumque pariatur totam?</p>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-2">
-                            <input type="number" class="form-control" id="inputQuantity">
-                        </div>
-                        <div class="col-2 align-self-center">
-                            <div>
-                                <h6 class="text-center">Total</h6>
-                                <p class="text-center text-danger fw-bold">RM 0.50</p>
-                            </div>
-                        </div>
-                        <div class="col-1 align-self-center">
-                            <input type="checkbox" name="" id="">
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="row py-5 align-items-center">
-                        <div class="col-sm-12 col-xl-1 align-self-center py-2">
-                            <a href="#">Remove</a>
-                        </div>
-                        <div class="col-2">
-                            <img src="img/banana.jpg" class="img-thumbnail" alt="">
-                        </div>
-                        <div class="col align-self-center">
-                            <div>
-                                <h4>Banana</h4>
-                                <p class="text-danger fw-bold">RM 0.50</p>
-                            </div>
-                        </div>
-                        <div class="col-2">
-                            <input type="number" class="form-control" id="inputQuantity">
-                        </div>
-                        <div class="col-2 align-self-center">
-                            <div>
-                                <h6 class="text-center">Total</h6>
-                                <p class="text-center text-danger fw-bold">RM 0.50</p>
-                            </div>
-                        </div>
-                        <div class="col-1 align-self-center">
-                            <input type="checkbox" name="" id="">
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-12 col-lg-auto rounded-3 mx-1 my-1" style="background-color: #FD6C5D;">
-                    <p>Not Done Yet</p>
+
+
+
+                <div class="card shadow-sm p-2">
+                    <div class="card-body">
+                        <div class="d-flex flex-row">
+                            <h1 class="card-title pb-3 me-auto">Payment & Security</h1>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                                class="bi bi-lock-fill mt-3" viewBox="0 0 16 16">
+                                <path
+                                    d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z" />
+                            </svg>
+                        </div>
+
+                        <p class="fs-5">Your payment information is processed securely. We do not store credit card
+                            details nor have
+                            access to your credit card information.</p>
+                    </div>
                 </div>
+
             </div>
         </div>
     </main>
-    <footer class="footer  mt-auto py-3" style="background-color: #006600; color: whitesmoke;">
-        <div class="container-fluid container-lg">
+
+    <footer class="footer container-fluid mt-auto pt-3" style="background-color: #006600; color: whitesmoke;">
+        <div class="container">
             <div class="row">
-                <div class="col-5">
-                    <h3>NyumNyum Grocer Store</h3>
+                <div class="col-12 col-md">
+                    <h3>NyumNyum Grocery Store</h4>
                 </div>
-                <div class="col-md">
+                <div class="col-6 col-md">
                     <h5>About</h5>
-                    <a href="#" class="text-reset text-decoration-none footer-link">Services</a><br>
-                    <a href="#" class="text-reset text-decoration-none">Portfolio</a><br>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-reset text-decoration-none footer-link">Services</a></li>
+                        <li><a href="#" class="text-reset text-decoration-none">Portfolio</a></li>
+                    </ul>
                 </div>
-                <div class="col-md">
+                <div class="col-6 col-md">
                     <h5>Company</h5>
-                    <a href="#" class="text-reset text-decoration-none footer-link">Career with Us</a><br>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-reset text-decoration-none footer-link">Career with Us</a></li>
+                    </ul>
                 </div>
-                <div class="col-md">
+                <div class="col-6 col-md">
                     <h5>Policies</h5>
-                    <a href="#" class="text-reset text-decoration-none footer-link">Refund Policy</a><br>
-                    <a href="#" class="text-reset text-decoration-none footer-link">Privacy Policy</a><br>
-                    <a href="#" class="text-reset text-decoration-none footer-link">Shipping Policy</a><br>
-                    <a href="#" class="text-reset text-decoration-none footer-link">Terms of Policies</a><br>
-                    <br>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-reset text-decoration-none footer-link">Refund Policy</a></li>
+                        <li><a href="#" class="text-reset text-decoration-none footer-link">Privacy Policy</a></li>
+                        <li><a href="#" class="text-reset text-decoration-none footer-link">Shipping Policy</a></li>
+                        <li><a href="#" class="text-reset text-decoration-none footer-link">Terms of Policies</a></li>
+                    </ul>
                 </div>
                 <hr>
-                <div class="container-fluid text-center font-italic" style="color: grey;">
-                    <p> Copyright &copy; NyumNyum Yummy Menjilat Jari </p>
+                <div class="container text-center font-italic">
+                    <p>&copy; 2021 NyumNyum Yummy Menjilat Jari</p>
                 </div>
             </div>
-        </div>
     </footer>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
         crossorigin="anonymous"></script>
