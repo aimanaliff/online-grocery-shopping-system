@@ -1,0 +1,24 @@
+body {
+  background-color: #f2f2f2;
+}
+
+.sshighlight {
+  border-radius: 20px;
+}
+
+.card a > img {
+  height: 85%;
+  width: 85%;
+  display: block;
+  margin: auto;
+}
+
+.nav-item:hover {
+  background: #ffc000;
+  height: 100%;
+  transition: background-color 0.3s;
+}
+
+#navbarDropdown {
+  background: #ffc000;
+}
