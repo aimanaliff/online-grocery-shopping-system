@@ -10,8 +10,7 @@
     <link href='https://fonts.googleapis.com/css?family=Noto+Sans' rel='stylesheet'>
     <link rel="stylesheet" href="nyumstyle.css">
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/ffaa4d4a42.js" crossorigin="anonymous"></script>
   </head>
   <body>
     
@@ -39,8 +38,8 @@
                 </svg></a>
               </li>
               <li class="nav-item mx-1">
-                <a href="list1.html" class="nav-link text-dark"><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
-                  <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+                <a href="list.html" class="nav-link text-dark"><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+                  <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
                 </svg></a>
               </li>
               <li class="nav-item mx-1">
@@ -156,171 +155,161 @@
             </div>
         </nav>
 
-  <div style="max-width: 1300px; margin: 0 auto; padding: 10px; background-color: white;">
-    <div class="container">
-      <div class="row mt-3">
-        <div class="col-md-auto mx-auto">
-            <nav> 
-              <a style="padding-right: 10px;" href="list3.html">
-                <svg xmlns="http://www.w3.org/2000/svg" margin="5px" width="30" height="30" fill="currentColor" class="bi bi-arrow-left-circle-fill" viewBox="0 0 16 16">
-                  <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
-                </svg>
+        <div class="altbody">
+          <ul class="mt-2">
+            <li>
+              <a href="#">
+                <div class="icon">
+                  <i class="fas fa-angle-double-left"></i>
+                </div>
               </a>
-              List 1
-              <a style="padding-left: 10px;" href="list2.html">
-                <svg xmlns="http://www.w3.org/2000/svg" margin="5px" width="30" height="30" fill="currentColor" class="bi bi-arrow-right-circle-fill" viewBox="0 0 16 16">
-                  <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
-                </svg>
-              </a>   
-            </nav>
+            </li>
+            <li>
+              <div class="name" style="font-family: Tahoma, Geneva, Verdana, sans-serif; font-style:initial;">LIST 1</div>
+            </li>
+            <li>
+              <a href="#">
+                <div class="icon">
+                  <i class="fas fa-angle-double-right"></i>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+  <div style="max-width: 1300px; margin: 0 auto; padding: 10px; background-color: white;">
+    <div class="container mt-2 mb-2">
+      <div class="row">
+        <div class="col-2">
+          <div>
+            <input type="text" placeholder="Enter your list name" style="text-align: center;">
+          </div>
         </div>
       </div>
-    </div>
-        <div class="header">
-            <h3>List 1</h3>
+        <div class="row py-xxl-5 py-sm-4 align-items-center mt-2">
+          <div class="col-sm-auto align-self-center py-2 mx-sm-auto">
+            <button type="button" class="btn btn-outline-dark btn-sm">
+              <span class="button_text">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                  <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                  <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                </svg>
+              </span>
+            </button>
         </div>
-        <div class="content">
-          <table class="table-responsive">
-            <table class="table content caption-top">
-                <caption>List of items</caption>
-                <thead class="table-light">
-                  <tr id="tableheader">
-                    <th scope="col">Items</th>
-                    <th scope="col">Item Description</th>
-                    <th scope="col">Volume</th>
-                    <th scope="col">Sub-total</th>
-                    <th scope="col">CheckBox</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>
-                        <div class="remove mt-3">
-                          <h3 id="Itemname">Apple</h3><img id="image"src="imgfood/fruits/apple.jpg">
-                          <button type="button" class="btn">
-                            <span class="button_text">
-                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-                                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
-                                <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
-                              </svg>
-                            </span>
-                          </button>
-                        </div>
-                    </td>
-                    <td>
-                        <ul class="list-group list-group-flush">
-                        <li class="list-group-item">An item</li>
-                        <li class="list-group-item">A second item</li>
-                        <li class="list-group-item">A third item</li>
-                        <li class="list-group-item">A fourth item</li>
-                        <li class="list-group-item">And a fifth one</li>
-                      </ul>
-                  </td>
-                  <td>
-                    <div class="input-group mb-3">
-                      <!--<div class="center">-->
-                            <input class="center-block" type="text" id="pin" name="pin" size="10">
-                      <!--<button class="btn btn-outline-secondary" type="button" id="button-addon1">+</button>
-                      <input width="200" type="text" class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
-                      <button class="btn btn-outline-secondary" type="button" id="button-addon1">-</button>-->
-                      <!--</div>-->
-                    </div>
-                  </td>
-                  <td id="subtotal">5.90</td>
-                  <td id="checkbox">
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-                      <label class="form-check-label" for="flexCheckChecked">
-                      </label>
-                    </div>
-                  </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="remove mt-3">
-                        <h3 id="Itemname">Banana</h3><img id="image"src="imgfood/fruits/banana.jpg">
-                        <button type="button" class="btn">
-                          <span class="button_text">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-                              <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
-                              <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
-                            </svg>
-                          </span>
-                        </button>
-                      </div>
-                    <td>
-                      <ul class="list-group list-group-flush">
-                      <li class="list-group-item">An item</li>
-                      <li class="list-group-item">A second item</li>
-                      <li class="list-group-item">A third item</li>
-                      <li class="list-group-item">A fourth item</li>
-                      <li class="list-group-item">And a fifth one</li>
-                    </ul>
-                </td>
-                <td>
-                  <div class="input-group mb-3">
-                    <!--<div class="center">-->
-                          <input class="center-block" type="text" id="pin" name="pin" size="10">
-                    <!--<button class="btn btn-outline-secondary" type="button" id="button-addon1">+</button>
-                    <input width="200" type="text" class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
-                    <button class="btn btn-outline-secondary" type="button" id="button-addon1">-</button>-->
-                    <!--</div>-->
-                  </div>
-                </td>
-                <td id="subtotal">6.50</td>
-                <td id="checkbox">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-                    <label class="form-check-label" for="flexCheckChecked">
-                    </label>
-                  </div>
-                </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="remove mt-3">
-                        <h3 id="Itemname">Watermelon</h3><img id="image"src="imgfood/fruits/watermelon.jpg">
-                        <button type="button" class="btn">
-                          <span class="button_text">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-                              <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
-                              <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
-                            </svg>
-                          </span>
-                        </button>
-                      </div>
-                    <td>
-                      <ul class="list-group list-group-flush">
-                      <li class="list-group-item">An item</li>
-                      <li class="list-group-item">A second item</li>
-                      <li class="list-group-item">A third item</li>
-                      <li class="list-group-item">A fourth item</li>
-                      <li class="list-group-item">And a fifth one</li>
-                    </ul>
-                </td>
-                    <td>
-                      <div class="input-group mb-3">
-                        <!--<div class="center">-->
-                              <input class="center-block" type="text" id="pin" name="pin" size="10">
-                        <!--<button class="btn btn-outline-secondary" type="button" id="button-addon1">+</button>
-                        <input width="200" type="text" class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
-                        <button class="btn btn-outline-secondary" type="button" id="button-addon1">-</button>-->
-                        <!--</div>-->
-                      </div>
-                    </td>
-                    <td id="subtotal">10.30</td>
-                    <td id="checkbox">
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-                        <label class="form-check-label" for="flexCheckChecked">
-                        </label>
-                      </div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </table>
+          <div class="col-2">
+            <h3 style="text-align: center; font: Arial;">SPINACH</h3><img id="image"src="imgfood/vegetables/spinach.jpeg" style="display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 150px;
+            height: 150px;">
+          </div>
+          <div class="col-2" style="font-family: Arial, Helvetica, sans-serif;">
+            <p>Item description</p>
+            <p>Item description</p>
+            <p>Item description</p>
+            <p>Item description</p>
+          </div>
+          <div class="col-2 center-block">
+            <input type="number" class="form-control" id="inputQuantity">
+          </div>
+          <div class="col-2">
+            <h4 style="text-align: center;">RM 10.00</h4>
+          </div>
+          <div class="col-2">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+              <label class="form-check-label" for="flexCheckChecked"></label>
+            </div>
+          </div>
+          <div class="col-sm-auto align-self-center mx-sm-auto">
+            <button type="button" class="btn btn-outline-primary btn-sm">Add to Cart</button>
+          </div>
         </div>
+        <hr>
+        <div class="row py-xxl-5 py-sm-4 align-items-center mt-2">
+          <div class="col-sm-auto align-self-center py-2 mx-sm-auto">
+            <button type="button" class="btn btn-outline-dark btn-sm">
+              <span class="button_text">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                  <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                  <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                </svg>
+              </span>
+            </button>
+        </div>
+          <div class="col-2">
+            <h3 style="text-align: center; font: Arial;">SPINACH</h3><img id="image"src="imgfood/vegetables/spinach.jpeg" style="display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 150px;
+            height: 150px;">
+          </div>
+          <div class="col-2" style="font-family: Arial, Helvetica, sans-serif;">
+            <p>Item description</p>
+            <p>Item description</p>
+            <p>Item description</p>
+            <p>Item description</p>
+          </div>
+          <div class="col-2 center-block">
+            <input type="number" class="form-control" id="inputQuantity">
+          </div>
+          <div class="col-2">
+            <h4 style="text-align: center;">RM 10.00</h4>
+          </div>
+          <div class="col-2">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+              <label class="form-check-label" for="flexCheckChecked"></label>
+            </div>
+          </div>
+          <div class="col-sm-auto align-self-center mx-sm-auto">
+            <button type="button" class="btn btn-outline-primary btn-sm">Add to Cart</button>
+          </div>
+        </div>
+        <hr>
+        <div class="row py-xxl-5 py-sm-4 align-items-center mt-2">
+          <div class="col-sm-auto align-self-center py-2 mx-sm-auto">
+            <button type="button" class="btn btn-outline-dark btn-sm">
+              <span class="button_text">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                  <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                  <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                </svg>
+              </span>
+            </button>
+        </div>
+          <div class="col-2">
+            <h3 style="text-align: center; font: Arial;">SPINACH</h3><img id="image"src="imgfood/vegetables/spinach.jpeg" style="display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 150px;
+            height: 150px;">
+          </div>
+          <div class="col-2" style="font-family: Arial, Helvetica, sans-serif;">
+            <p>Item description</p>
+            <p>Item description</p>
+            <p>Item description</p>
+            <p>Item description</p>
+          </div>
+          <div class="col-2 center-block">
+            <input type="number" class="form-control" id="inputQuantity">
+          </div>
+          <div class="col-2">
+            <h4 style="text-align: center;">RM 10.00</h4>
+          </div>
+          <div class="col-2">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+              <label class="form-check-label" for="flexCheckChecked"></label>
+            </div>
+          </div>
+          <div class="col-sm-auto align-self-center mx-sm-auto">
+            <button type="button" class="btn btn-outline-primary btn-sm">Add to Cart</button>
+          </div>
+        </div>
+        <hr>
+      </div>
     </div>
 
 

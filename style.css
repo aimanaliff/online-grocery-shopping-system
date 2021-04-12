@@ -20,56 +20,34 @@
     transform: translate(-50%, -50%);
   }*/
 
-td {
-    height: 50px;
-    vertical-align: middle;
+.altbody {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background: #e91e63;
 }
 
-table {
-    width: 100%;
+ul {
+    position: absolute;
+    left: 43%;
+    margin: 0;
+    padding: 20px 0;
+    display: flex;
+    border-radius: 10px;
+    /*box-shadow: 0 10px 30px rgba(0, 0, 0, .3);*/
 }
 
-#subtotal {
+ul li {
+    list-style-type: none;
     text-align: center;
-}
-
-#checkbox {
-    top: 50%;
-    padding-left: 100px;
-}
-
-#tableheader {
-    text-align: center;
-}
-
-#Itemname {
-    text-align: center;
-}
-
-#image {
     display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 200px;
-    height: 200px;
+    /*border-right: 1px solid rgba(0, 0, 0, 0.2);*/
 }
 
-.center-block {
+ul li a {
+    text-decoration: none;
+    padding: 0 50px;
     display: block;
-    margin-right: auto;
-    margin-left: auto;
-    text-align: center;
-  }
-
-/*.table tbody tr td {
-    width: 10px;
-    text-align: center;
-}*/
-
-.btn.remove {
-    vertical-align: middle;
 }
-
-
 
 
