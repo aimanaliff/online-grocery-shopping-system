@@ -16,12 +16,23 @@
 
 <body>
     <header class="py-3" style="background-color: #92D050;">
-        <div class="container d-grid gap-3 align-items-center" style="grid-template-columns: 1fr 5fr;">
-            <a href="index.html" class="navbar-brand">
-                <img src="img/nyumnyumlogo.png" alt="logo" width="150" class="mx-2">
-            </a>
-            <div class="d-flex align-items-center">
-                <div class="input-group">
+        <div class="container gap-3">
+            <div class="d-flex align-items-center flex-wrap flex-sm-nowrap justify-content-between">
+                <button class="btn btn-warning d-sm-none order-1" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#categoriesToggle" aria-controls="categoriesToggle" aria-expanded="true"
+                    aria-label="Toggle navigation">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor"
+                        class="bi bi-list" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                            d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
+                    </svg>
+                </button>
+
+                <a href="index.html" class="navbar-brand order-2">
+                    <img src="img/nyumnyumlogo.png" alt="logo" width="150" class="mx-2">
+                </a>
+
+                <div class="input-group order-4 order-sm-3">
                     <input type="search" class="form-control" placeholder="Search" aria-label="search"
                         aria-describedby="button-addon2" style="border-radius: 20px 0 0 20px;">
                     <button class="btn btn-success" type="button" id="button-addon2"
@@ -31,12 +42,12 @@
                 </div>
 
 
-                <ul class="navbar-nav ms-3 mb-2 mb-md-0 d-flex flex-row">
+                <ul class="navbar-nav order-3 order-sm-4 ms-3 mb-2 mb-md-0 d-flex flex-row">
                     <li class="nav-item mx-1">
                         <a href="user.html" class="nav-link text-dark"><svg xmlns="http://www.w3.org/2000/svg"
-                                width="25" height="25" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
-                                <path
-                                    d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z" />
+                                width="25" height="25" fill="currentColor" class="bi bi-person-fill"
+                                viewBox="0 0 16 16">
+                                <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
                             </svg></a>
                     </li>
                     <li class="nav-item mx-1">
