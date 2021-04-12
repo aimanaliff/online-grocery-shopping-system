@@ -1,4 +1,5 @@
-/* @import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap'); */
+/* index style start */
+/* test */
 
 body {
   background-color: #f2f2f2;
@@ -48,7 +49,7 @@ h5 {
   border-radius: 20px;
 }
 
-.card > img {
+#cardIndex .card > img {
   height: 200px;
   width: 200px;
   display: block;
@@ -119,3 +120,128 @@ h5 {
   margin-left: auto;
   margin-right: auto;
 }
+
+/* index style finish */
+
+/* product style */
+
+/* .sshighlight { sbb dh ada kat atas , so aq xguna yg ni.
+    border-radius: 20px;
+} */
+
+.card a > img {
+  height: 85%;
+  width: 85%;
+  display: block;
+  margin: auto;
+}
+
+/* product style finish */
+
+/* whistlist style */
+
+#button-addon1 {
+  background-color: DodgerBlue;
+  /* Blue background */
+  border: none;
+  /* Remove borders */
+  color: white;
+  /* White text */
+  padding: 12px 16px;
+  /* Some padding 12 16 */
+  font-size: 16px;
+  /* Set a font size 16 */
+  cursor: pointer;
+  /* Mouse pointer on hover */
+}
+
+#button-addon1:hover {
+  background-color: RoyalBlue;
+}
+
+/*.center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}*/
+
+td {
+  height: 50px;
+  vertical-align: middle;
+}
+
+table {
+  width: 100%;
+}
+
+#subtotal {
+  text-align: center;
+}
+
+#checkbox {
+  top: 50%;
+  padding-left: 100px;
+}
+
+#tableheader {
+  text-align: center;
+}
+
+#Itemname {
+  text-align: center;
+}
+
+#image {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 200px;
+  height: 200px;
+}
+
+.center-block {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+}
+
+/*.table tbody tr td {
+  width: 10px;
+  text-align: center;
+}*/
+
+.btn.remove {
+  vertical-align: middle;
+}
+
+/* whistlist style finish */
+
+/* cart style */
+
+.block {
+  display: block;
+  width: 100%;
+  border: none;
+  background-color: #ffc000;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.block:hover {
+  display: block;
+  width: 100%;
+  border: none;
+  background-color: white;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+}
+
+/* cart style finish */
