@@ -198,6 +198,14 @@
     </div>
 
     <main class="container pb-5">
+        <button type="button" class="btn rounded-circle" id="scrollUp" onclick="goUp()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="46" fill="currentColor"
+                class="bi bi-caret-up-fill" viewBox="0 0 16 16">
+                <path
+                    d="m7.247 4.86-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z" />
+            </svg>
+        </button>
+
         <div class="card">
             <div class="card-body m-3">
                 <div class="row row-cols-1 row-cols-lg-2 g-4 pb-4">
@@ -216,7 +224,7 @@
                                         <div class="d-flex flex-column">
                                             <div class="d-flex flex-row align-items-center gap-5 pb-3">
                                                 <label for="price" class="fs-5 pb-3">Price:</label>
-                                                <p class="fs-3">RM9999.99</p>
+                                                <p class="fs-3">RM 9999.99</p>
                                             </div>
                                             <div class="d-flex flex-row align-items-center gap-3 pb-3">
                                                 <label for="quantity" class="fs-5">Quantity:</label>
@@ -321,6 +329,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
         crossorigin="anonymous"></script>
+    <script src="nyumscript.js"></script>
 </body>
 
 </html>

@@ -1,0 +1,21 @@
+// product script start
+
+let scrollUpBtn = document.getElementById('scrollUp')
+
+window.onscroll = function () { revealButton() };
+
+function revealButton() {
+    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+        scrollUpBtn.style.opacity = "1";
+        scrollUpBtn.style.transition = "opacity 0.2s";
+    } else {
+        scrollUpBtn.style.opacity = "0";
+    }
+}
+
+function goUp() {
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+}
+
+// product script end
