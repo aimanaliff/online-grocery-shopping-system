@@ -146,14 +146,14 @@ h5 {
   position: fixed;
   bottom: 20px;
   right: 30px;
-  background-color: salmon;
+  background-color: orange;
   z-index: 99;
   border: none;
   cursor: pointer;
 }
 
 #scrollUp:hover {
-  background-color: orange;
+  background-color: yellowgreen;
   color: white;
 }
 
