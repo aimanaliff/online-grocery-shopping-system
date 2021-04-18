@@ -2,7 +2,7 @@
 
 let scrollUpBtn = document.getElementById('scrollUp')
 
-window.onscroll = function () { revealButton() };
+window.onscroll = function() { revealButton() };
 
 function revealButton() {
     if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
@@ -16,6 +16,18 @@ function revealButton() {
 function goUp() {
     document.body.scrollTop = 0; // For Safari
     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+}
+
+//Shocking Sale Countdown
+
+function handleTickInit(tick) {
+
+    //var nextYear = (new Date()).getFullYear() + 1;
+
+    Tick.count.down('2021-05-13').onupdate = function(value) {
+        tick.value = value;
+    };
+
 }
 
 // main script end
