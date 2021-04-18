@@ -1,40 +1,41 @@
 /* index style start */
 
+
 /* test */
 
 body {
-  background-color: #f2f2f2;
+    background-color: #f2f2f2;
 }
 
 .index-highlight {
-  padding: 15px;
-  height: 150px;
+    padding: 15px;
+    height: 150px;
 }
 
 .active,
 nav-item:hover {
-  background: #ffc000;
-  height: 100%;
+    background: #ffc000;
+    height: 100%;
 }
 
 .active,
 nav-item1:hover {
-  background: #ffffff;
-  height: 100%;
+    background: #ffffff;
+    height: 100%;
 }
 
 .active1,
 nav-item1:hover {
-  background: #ffc000;
-  height: 100%;
+    background: #ffc000;
+    height: 100%;
 }
 
-.next > li > a:hover {
-  background: #ffc000;
+.next>li>a:hover {
+    background: #ffc000;
 }
 
-.ty > li > a:hover {
-  background: #649135;
+.ty>li>a:hover {
+    background: #649135;
 }
 
 h1,
@@ -42,143 +43,163 @@ h2,
 h3,
 h4,
 h5 {
-  font-family: "Noto Sans", sans-serif;
-  font-weight: bold;
+    font-family: "Noto Sans", sans-serif;
+    font-weight: bold;
 }
 
 .sshighlight {
-  border-radius: 20px;
+    border-radius: 20px;
 }
 
-#cardIndex .card > img {
-  height: 200px;
-  width: 200px;
-  display: block;
-  margin: auto;
+#cardIndex .card>img {
+    height: 200px;
+    width: 200px;
+    display: block;
+    margin: auto;
 }
 
 .btn {
-  border-radius: 25px;
-  font-weight: bold;
+    border-radius: 25px;
+    font-weight: bold;
 }
 
 .social-login {
-  text-align: center;
+    text-align: center;
 }
 
 .social_log {
-  list-style: none;
-  display: flex;
-  justify-content: center;
+    list-style: none;
+    display: flex;
+    justify-content: center;
 }
 
 .fa {
-  padding: 20px;
-  font-size: 20px;
-  width: 50px;
-  text-align: center;
-  text-decoration: none;
-  margin: 5px 10px;
+    padding: 20px;
+    margin: 20px;
+    width: 50px;
+    text-align: center;
+    text-decoration: none;
 }
 
 .fa-facebook {
-  background: #3b5998;
-  color: white;
+    background: #3b5998;
+    color: white;
 }
 
 .fa-google {
-  background: #dd4b39;
-  color: white;
+    background: #dd4b39;
+    color: white;
 }
 
+.fa-google:hover {
+    color: white;
+}
+
+.fa-facebook:hover {
+    color: white;
+}
+
+
+/* .circle-icon {
+    padding: 30px;
+    border-radius: 50%;
+} */
+
 .tab .nav-item1 {
-  width: 50%;
-  border-radius: 0;
-  margin-bottom: 2rem;
-  text-align: center;
-  font-weight: 600;
+    width: 50%;
+    border-radius: 0;
+    margin-bottom: 2rem;
+    text-align: center;
+    font-weight: 600;
 }
 
 .tab .nav-item1:hover {
-  background-color: #ffc000;
+    background-color: #ffc000;
 }
 
 .tab a {
-  list-style: none;
+    list-style: none;
 }
 
 .tab {
-  border-bottom: none;
+    border-bottom: none;
 }
 
 .tab-content .btn-block {
-  width: 100%;
+    width: 100%;
 }
 
-.signin_link {
-  text-align: center;
-  color: #8c8c8c;
-  margin-top: 0.5rem;
-}
+
+/* .signin_link {
+    text-align: center;
+    color: #8c8c8c;
+    margin-top: 0.5rem;
+} */
 
 .signin_dialog .modal-header img {
-  margin-left: auto;
-  margin-right: auto;
+    margin-left: auto;
+    margin-right: auto;
 }
+
 
 /* index style finish */
 
+
 /* product style */
+
 
 /* .sshighlight { sbb dh ada kat atas , so aq xguna yg ni.
     border-radius: 20px;
 } */
 
-.card a > img {
-  height: 85%;
-  width: 85%;
-  display: block;
-  margin: auto;
+.card a>img {
+    height: 85%;
+    width: 85%;
+    display: block;
+    margin: auto;
 }
 
 #scrollUp {
-  opacity: 0;
-  position: fixed;
-  bottom: 20px;
-  right: 30px;
-  background-color: orange;
-  z-index: 99;
-  border: none;
-  cursor: pointer;
+    opacity: 0;
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+    background-color: orange;
+    z-index: 99;
+    border: none;
+    cursor: pointer;
 }
 
 #scrollUp:hover {
-  background-color: yellowgreen;
-  color: white;
+    background-color: yellowgreen;
+    color: white;
 }
 
+
 /* product style finish */
+
 
 /* whistlist style */
 
 #button-addon1 {
-  background-color: DodgerBlue;
-  /* Blue background */
-  border: none;
-  /* Remove borders */
-  color: white;
-  /* White text */
-  padding: 12px 16px;
-  /* Some padding 12 16 */
-  font-size: 16px;
-  /* Set a font size 16 */
-  cursor: pointer;
-  /* Mouse pointer on hover */
+    background-color: DodgerBlue;
+    /* Blue background */
+    border: none;
+    /* Remove borders */
+    color: white;
+    /* White text */
+    padding: 12px 16px;
+    /* Some padding 12 16 */
+    font-size: 16px;
+    /* Set a font size 16 */
+    cursor: pointer;
+    /* Mouse pointer on hover */
 }
 
 #button-addon1:hover {
-  background-color: RoyalBlue;
+    background-color: RoyalBlue;
 }
+
 
 /*.center {
   margin: 0;
@@ -190,45 +211,46 @@ h5 {
 }*/
 
 td {
-  height: 50px;
-  vertical-align: middle;
+    height: 50px;
+    vertical-align: middle;
 }
 
 table {
-  width: 100%;
+    width: 100%;
 }
 
 #subtotal {
-  text-align: center;
+    text-align: center;
 }
 
 #checkbox {
-  top: 50%;
-  padding-left: 100px;
+    top: 50%;
+    padding-left: 100px;
 }
 
 #tableheader {
-  text-align: center;
+    text-align: center;
 }
 
 #Itemname {
-  text-align: center;
+    text-align: center;
 }
 
 #image {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 200px;
-  height: 200px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 200px;
+    height: 200px;
 }
 
 .center-block {
-  display: block;
-  margin-right: auto;
-  margin-left: auto;
-  text-align: center;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
 }
+
 
 /*.table tbody tr td {
   width: 10px;
@@ -236,48 +258,54 @@ table {
 }*/
 
 .btn.remove {
-  vertical-align: middle;
+    vertical-align: middle;
 }
 
+
 /* whistlist style finish */
+
 
 /* cart style */
 
 .block {
-  display: block;
-  width: 100%;
-  border: none;
-  background-color: #ffc000;
-  padding: 14px 28px;
-  font-size: 16px;
-  cursor: pointer;
-  text-align: center;
+    display: block;
+    width: 100%;
+    border: none;
+    background-color: #ffc000;
+    padding: 14px 28px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
 }
 
 .block:hover {
-  display: block;
-  width: 100%;
-  border: none;
-  background-color: white;
-  padding: 14px 28px;
-  font-size: 16px;
-  cursor: pointer;
-  text-align: center;
+    display: block;
+    width: 100%;
+    border: none;
+    background-color: white;
+    padding: 14px 28px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
 }
 
 .sticky-topList {
-  position: -webkit-sticky;
-  position: sticky;
-  top: 10%;
-  z-index: 1020;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 10%;
+    z-index: 1020;
 }
 
 .hrList {
-  margin: 0.1rem 0;
-  color: inherit;
-  background-color: currentColor;
-  border: 0;
-  opacity: 0.25;
+    margin: 0.1rem 0;
+    color: inherit;
+    background-color: currentColor;
+    border: 0;
+    opacity: 0.25;
 }
+
+
+/* cart style finish */
+
 
 /* cart style finish */
