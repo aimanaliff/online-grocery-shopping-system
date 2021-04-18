@@ -18,16 +18,4 @@ function goUp() {
     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 }
 
-//Shocking Sale Countdown
-
-function handleTickInit(tick) {
-
-    //var nextYear = (new Date()).getFullYear() + 1;
-    
-    Tick.count.down('2021-05-13').onupdate = function(value) {
-        tick.value = value;
-    };
-
-}
-
 // main script end
