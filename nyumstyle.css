@@ -169,21 +169,17 @@ h5 {
 
 /* whistlist style */
 
-.modal-content {
-  width: 500px;
-  height: 300px;
-  background-color: white;
-  border-radius: 4px;
-  text-align: center;
-  padding: 20px;
-}
-
 .modal-body input {
   width: 50%; 
   display: block;
   margin: 15px auto;
 }
 
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 /* whistlist style finish */
 
