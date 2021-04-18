@@ -19,287 +19,442 @@
 
   <body>
     <header class="py-3" style="background-color: #92D050;">
-      <div class="container d-grid gap-3 align-items-center" style="grid-template-columns: 1fr 5fr;">
-        <a href="/index.html" class="navbar-brand">
-          <img src="/img/nyumnyumlogo.png" alt="logo" width="150" class="mx-2">
-        </a>
-        <div class="d-flex align-items-center">
-          <div class="input-group">
-            <input type="search" class="form-control" placeholder="Search" aria-label="search"
-              aria-describedby="button-addon2" style="border-radius: 20px 0 0 20px;">
-            <button class="btn btn-success" type="button" id="button-addon2" style="border-radius: 0 20px 20px 0;"><span
-                class="material-icons pt-1">
-                search
-              </span></button>
-          </div>
+      <div class="container gap-3">
+          <div class="d-flex align-items-center flex-wrap flex-sm-nowrap justify-content-between">
+              <button class="btn btn-warning d-sm-none order-1" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#categoriesToggle" aria-controls="categoriesToggle" aria-expanded="true"
+                  aria-label="Toggle navigation">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor"
+                      class="bi bi-list" viewBox="0 0 16 16">
+                      <path fill-rule="evenodd"
+                          d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
+                  </svg>
+              </button>
 
+              <a href="/index.html" class="navbar-brand order-2">
+                  <img src="/img/nyumnyumlogo.png" alt="logo" width="150" class="mx-2">
+              </a>
 
-          <ul class="navbar-nav ms-3 mb-2 mb-md-0 d-flex flex-row">
-            <li class="nav-item mx-1">
-              <a href="user.html" class="nav-link text-dark"><svg xmlns="http://www.w3.org/2000/svg" width="25"
-                  height="25" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
-                  <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
-                </svg></a>
-            </li>
-            <li class="nav-item mx-1">
-              <a href="list1.html" class="nav-link text-dark"><svg xmlns="http://www.w3.org/2000/svg" width="23"
-                  height="23" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
-                  <path fill-rule="evenodd"
-                    d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" />
-                </svg></a>
-            </li>
-            <li class="nav-item mx-1">
-              <a href="cart.html" class="nav-link text-dark"><svg xmlns="http://www.w3.org/2000/svg" width="25"
-                  height="25" fill="currentColor" class="bi bi-basket2-fill" viewBox="0 0 16 16">
-                  <path
-                    d="M5.929 1.757a.5.5 0 1 0-.858-.514L2.217 6H.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h.623l1.844 6.456A.75.75 0 0 0 3.69 15h8.622a.75.75 0 0 0 .722-.544L14.877 8h.623a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1.717L10.93 1.243a.5.5 0 1 0-.858.514L12.617 6H3.383L5.93 1.757zM4 10a1 1 0 0 1 2 0v2a1 1 0 1 1-2 0v-2zm3 0a1 1 0 0 1 2 0v2a1 1 0 1 1-2 0v-2zm4-1a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0v-2a1 1 0 0 1 1-1z" />
-                </svg></a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </header>
+              <div class="input-group order-4 order-sm-3">
+                  <input type="search" class="form-control" placeholder="Search" aria-label="search"
+                      aria-describedby="button-addon2" style="border-radius: 20px 0 0 20px;">
+                  <button class="btn btn-success" type="button" id="button-addon2"
+                      style="border-radius: 0 20px 20px 0;"><span class="material-icons pt-1">
+                          search
+                      </span></button>
+              </div>
 
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog signin_dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <img src="/img/nyumnyumlogo.png" alt="">
-          </div>
-          <div class="modal-body signin_modal">
-            <ul class="nav nav-tabs tab" id="myTab" role="tablist">
-              <li class="nav-item1">
-                <a class="nav-link " id="home-tab" data-bs-toggle="tab" data-bs-target="#signin" href="#signin"
-                  type="button" role="tab" aria-controls="home" aria-selected="true">Sign In</a>
-              </li>
-              <li class="nav-item1" role="presentation">
-                <a class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#signup" href="#signup"
-                  type="button" role="tab" aria-controls="profile" aria-selected="false">Sign Up</a>
-              </li>
-            </ul>
-
-            <div class="social-login">
-              <ul class="social_log">
-                <li>
-                  <a href="https://www.facebook.com/" class="fa fa-facebook"></a>
-                  <a href="https://www.facebook.com/" class="fa fa-google"></a>
-                </li>
-
+              <ul class="navbar-nav order-3 order-sm-4 ms-3 mb-2 mb-md-0 d-flex flex-row">
+                  <li class="nav-item mx-1">
+                      <a href="/src/user.html" class="nav-link text-dark"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+                        <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+                      </svg></a>
+                  </li>
+                  <li class="nav-item mx-1">
+                      <a href="/src/list1.html" class="nav-link text-dark"><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+                      </svg></a>
+                  </li>
+                  <li class="nav-item mx-1">
+                      <a href="/src/cart.html" class="nav-link text-dark"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-basket2" viewBox="0 0 16 16">
+                        <path d="M4 10a1 1 0 0 1 2 0v2a1 1 0 0 1-2 0v-2zm3 0a1 1 0 0 1 2 0v2a1 1 0 0 1-2 0v-2zm3 0a1 1 0 1 1 2 0v2a1 1 0 0 1-2 0v-2z"/>
+                        <path d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15.5a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-.623l-1.844 6.456a.75.75 0 0 1-.722.544H3.69a.75.75 0 0 1-.722-.544L1.123 8H.5a.5.5 0 0 1-.5-.5v-1A.5.5 0 0 1 .5 6h1.717L5.07 1.243a.5.5 0 0 1 .686-.172zM2.163 8l1.714 6h8.246l1.714-6H2.163z"/>
+                      </svg></a>
+                  </li>
               </ul>
-
-            </div>
-            <div class="tab-content" id="myTabContent">
-              <div class="tab-pane fade show active" id="signin" role="tabpanel" aria-labelledby="home-tab">
-                <form>
-
-                  <div class="mb-3">
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                      placeholder="Email">
-                  </div>
-                  <div class="mb-3">
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                  </div>
-                  <button type="submit" class="btn btn-primary btn-block">Login</button>
-                </form>
-                <p class="forgot_link">
-                  <a href="#">Forgot your password ?</a>
-                </p>
-                <p class="signin_link">Don't have an Account ?
-                  <a id="profile-tab" data-bs-toggle="tab" data-bs-target="#signup" href="#signup" type="button"
-                    role="tab" aria-controls="profile" aria-selected="false">Sign Up</a>
-                </p>
-
-
-              </div>
-              <div class="tab-pane fade" id="signup" role="tabpanel" aria-labelledby="profile-tab">
-                <form>
-                  <div class="mb-3">
-                    <input type="text" class="form-control" id="exampleInputText1" aria-describedby="textHelp"
-                      placeholder="Username">
-                  </div>
-                  <div class="mb-3">
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                      placeholder="Email">
-                  </div>
-                  <div class="mb-3">
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                  </div>
-                  <button type="submit" class="btn btn-primary btn-block">Create An Account</button>
-                </form>
-                <p class="signin_link">Already have an Account ?
-                  <a id="home-tab" data-bs-toggle="tab" data-bs-target="#signin" href="#signin" type="button" role="tab"
-                    aria-controls="home" aria-selected="true">Sign In</a>
-                </p>
-
-              </div>
-              <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-
-              </div>
-            </div>
           </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          </div>
-        </div>
       </div>
-    </div>
-    </header>
+  </header>
 
-    <nav class="navbar sticky-top navbar-expand-sm d-none d-sm-block shadow py-2 justify-content-center"
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog signin_dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <img src="/img/nyumnyumlogo.png" alt="">
+              </div>
+              <div class="modal-body signin_modal">
+                  <ul class="nav nav-tabs tab" id="myTab" role="tablist">
+                      <li class="nav-item1">
+                          <a class="nav-link " id="home-tab" data-bs-toggle="tab" data-bs-target="#signin"
+                              href="#signin" type="button" role="tab" aria-controls="home" aria-selected="true">Sign
+                              In</a>
+                      </li>
+                      <li class="nav-item1" role="presentation">
+                          <a class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#signup"
+                              href="#signup" type="button" role="tab" aria-controls="profile"
+                              aria-selected="false">Sign Up</a>
+                      </li>
+
+                  </ul>
+
+                  <div class="social-login">
+                      <ul class="social_log">
+                          <li>
+                              <a href="https://www.facebook.com/" class="fa fa-facebook"></a>
+                              <a href="https://www.facebook.com/" class="fa fa-google"></a>
+                          </li>
+
+                      </ul>
+
+                  </div>
+                  <div class="tab-content" id="myTabContent">
+                      <div class="tab-pane fade show active" id="signin" role="tabpanel" aria-labelledby="home-tab">
+                          <form>
+
+                              <div class="mb-3">
+                                  <input type="email" class="form-control" id="exampleInputEmail1"
+                                      aria-describedby="emailHelp" placeholder="Email">
+                              </div>
+                              <div class="mb-3">
+                                  <input type="password" class="form-control" id="exampleInputPassword1"
+                                      placeholder="Password">
+                              </div>
+                              <button type="submit" class="btn btn-primary btn-block">Login</button>
+                          </form>
+                          <p class="forgot_link">
+                              <a href="#">Forgot your password ?</a>
+                          </p>
+                          <p class="signin_link">Don't have an Account ?
+                              <a id="profile-tab" data-bs-toggle="tab" data-bs-target="#signup" href="#signup"
+                                  type="button" role="tab" aria-controls="profile" aria-selected="false">Sign Up</a>
+                          </p>
+
+
+                      </div>
+                      <div class="tab-pane fade" id="signup" role="tabpanel" aria-labelledby="profile-tab">
+                          <form>
+                              <div class="mb-3">
+                                  <input type="text" class="form-control" id="exampleInputText1"
+                                      aria-describedby="textHelp" placeholder="Username">
+                              </div>
+                              <div class="mb-3">
+                                  <input type="email" class="form-control" id="exampleInputEmail1"
+                                      aria-describedby="emailHelp" placeholder="Email">
+                              </div>
+                              <div class="mb-3">
+                                  <input type="password" class="form-control" id="exampleInputPassword1"
+                                      placeholder="Password">
+                              </div>
+                              <button type="submit" class="btn btn-primary btn-block">Create An Account</button>
+                          </form>
+                          <p class="signin_link">Already have an Account ?
+                              <a id="home-tab" data-bs-toggle="tab" data-bs-target="#signin" href="#signin"
+                                  type="button" role="tab" aria-controls="home" aria-selected="true">Sign In</a>
+                          </p>
+
+                      </div>
+                      <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+
+                      </div>
+                  </div>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <nav class="navbar sticky-top navbar-expand-sm shadow py-2 justify-content-center"
       style="background-color: #FD6C5D;">
-      <div class="container">
-        <ul class="navbar-nav mb-2 mb-md-0 w-100 justify-content-between next" style="font-weight: bold;">
-          <li class="nav-item dropdown active1">
-            <a class="nav-link dropdown-toggle text-reset text-decoration-none" href="#" id="navbarDropdown"
-              role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Browse Category
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="#">Fresh Fruits</a></li>
-              <li><a class="dropdown-item" href="#">Fresh Meat</a></li>
-              <li><a class="dropdown-item" href="#">Fresh Vegetables</a></li>
-              <li><a class="dropdown-item" href="#">Seafood</a></li>
-              <li><a class="dropdown-item" href="#">Dairy & Cheese</a></li>
-            </ul>
-          </li>
-          <li class="nav-item"><a href="products.html" class="nav-link text-dark">Food Essentials</a></li>
-          <li class="nav-item"><a href="#" class="nav-link text-dark">Chilled & Frozen</a></li>
-          <li class="nav-item"><a href="#" class="nav-link text-dark">Beverages</a></li>
-          <li class="nav-item"><a href="#" class="nav-link text-dark">Cookies & Snacks</a></li>
-          <li class="nav-item"><a href="#" class="nav-link text-dark">Bakery</a></li>
-        </ul>
+      <div class="collapse navbar-collapse" id="categoriesToggle">
+          <div class="container">
+              <ul class="navbar-nav mb-2 mb-md-0 w-100 justify-content-between next" style="font-weight: bold;">
+                  <li class="nav-item dropdown active1">
+                      <a class="nav-link dropdown-toggle text-reset text-decoration-none" href="#" id="navbarDropdown"
+                          role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Browse Category
+                      </a>
+                      <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                          <li><a class="dropdown-item" href="#">Fresh Fruits</a></li>
+                          <li><a class="dropdown-item" href="#">Fresh Meat</a></li>
+                          <li><a class="dropdown-item" href="#">Fresh Vegetables</a></li>
+                          <li><a class="dropdown-item" href="#">Seafood</a></li>
+                          <li><a class="dropdown-item" href="#">Dairy & Cheese</a></li>
+                      </ul>
+                  </li>
+                  <li class="nav-item"><a href="/src/products.html" class="nav-link text-dark">Food Essentials</a></li>
+                  <li class="nav-item"><a href="#" class="nav-link text-dark">Chilled & Frozen</a></li>
+                  <li class="nav-item"><a href="#" class="nav-link text-dark">Beverages</a></li>
+                  <li class="nav-item"><a href="#" class="nav-link text-dark">Cookies & Snacks</a></li>
+                  <li class="nav-item"><a href="#" class="nav-link text-dark">Bakery</a></li>
+              </ul>
+          </div>
       </div>
-    </nav>
+  </nav>
 
     <div style="max-width: 1300px; margin: 0 auto; padding: 10px; background-color: white;">
       <div class="container">
-        <div class="row" style="background-color:  #FFC0CB;">
-          <p>
-            <h3 style="text-align: center;" class="py-3 rounded-3">Wishlist</h3>
-          </p>
-        </div>
-        <div class="row justify-content-start mt-3">
-          <div class="col-4">
-            <input type="text" placeholder="Enter your name list">
-          </div>
-        </div>
-        <div class="row py-xxl-5 py-sm-4 align-items-center">
-          <div class="col-sm-auto align-self-center py-2 mx-sm-auto">
-              <button type="button" class="btn btn-outline-danger btn-sm">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-                  <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
-                  <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
-                </svg>
+        <div class="row">
+            <button id="buttonmodal" type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="width: 10%; justify-content: center; 
+            text-align: center;">
+                Create List
               </button>
-          </div>
-          <div class="col-2"> 
-              <h4 style="text-align: center;">Banana</h4>
-              <img src="/imgfood/fruits/banana.jpg" class="img-thumbnail" alt="">
-          </div>
-          <div class="col align-self-center mt-5">
-              <div>
-                  <p class="fw-normal">Item description</p>
-                  <p class="fw-normal">Item description</p>
-                  <p class="fw-normal">Item description</p>
-                  <p class="fw-normal">Item description</p>
-                  <p class="fw-normal">Item description</p>
+              
+              <!-- Modal -->
+              <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="staticBackdropLabel">List Name</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <input type="text" placeholder="Add a name">
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-primary">Save</button>
+                    </div>
+                  </div>
+                </div>
               </div>
-          </div>
-          <div class="col-2">
-              <input type="number" class="form-control" id="inputQuantity">
-          </div>
-          <div class="col-2 align-self-center">
-              <div>
-                  <h6 class="text-center">Sub Total</h6>
-                  <p class="text-center text-success fw-bold">RM 0.50</p>
+            </div>
+        <div class="row align-items-center mt-3">
+          <div class="col align-self-center">
+            <p>
+                <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                  List 1
+                </a>
+            </p>
+
+            <div class="collapse" id="collapseExample">
+                <div class="card card-body">
+                    <div class="row py-xxl-5 py-sm-4 align-items-center">
+                        <div class="col-sm-auto align-self-center py-2 mx-sm-auto">
+                            <button type="button" class="btn btn-outline-danger btn-sm">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                                <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                              </svg>
+                            </button>
+                        </div>
+                        <div class="col-2"> 
+                            <h4 style="text-align: center;">Banana</h4>
+                            <img src="/imgfood/fruits/banana.jpg" class="img-thumbnail" alt="">
+                        </div>
+                        <div class="col align-self-center mt-5">
+                            <div>
+                                <p class="fw-normal">Item description</p>
+                                <p class="fw-normal">Item description</p>
+                                <p class="fw-normal">Item description</p>
+                                <p class="fw-normal">Item description</p>
+                                <p class="fw-normal">Item description</p>
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <input type="number" class="form-control" id="inputQuantity">
+                        </div>
+                        <div class="col-2 align-self-center">
+                            <div>
+                                <h6 class="text-center">Sub Total</h6>
+                                <p class="text-center text-success fw-bold">RM 0.50</p>
+                            </div>
+                        </div>
+                        <div class="col-1 align-self-center">
+                            <input type="checkbox" name="" id="" class="">
+                        </div>
+                        <div class="col-2">
+                          <button type="button" class="btn btn-outline-dark">Add to cart</button>
+                        </div>
+                    </div>
+                </div>
               </div>
-          </div>
-          <div class="col-1 align-self-center">
-              <input type="checkbox" name="" id="" class="">
-          </div>
-          <div class="col-2">
-            <button type="button" class="btn btn-outline-dark">Add to cart</button>
+              <div class="collapse" id="collapseExample">
+                <div class="card card-body">
+                    <div class="row py-xxl-5 py-sm-4 align-items-center">
+                        <div class="col-sm-auto align-self-center py-2 mx-sm-auto">
+                            <button type="button" class="btn btn-outline-danger btn-sm">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                                <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                              </svg>
+                            </button>
+                        </div>
+                        <div class="col-2"> 
+                            <h4 style="text-align: center;">Apple</h4>
+                            <img src="/imgfood/fruits/apple.jpg" class="img-thumbnail" alt="">
+                        </div>
+                        <div class="col align-self-center mt-5">
+                            <div>
+                                <p class="fw-normal">Item description</p>
+                                <p class="fw-normal">Item description</p>
+                                <p class="fw-normal">Item description</p>
+                                <p class="fw-normal">Item description</p>
+                                <p class="fw-normal">Item description</p>
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <input type="number" class="form-control" id="inputQuantity">
+                        </div>
+                        <div class="col-2 align-self-center">
+                            <div>
+                                <h6 class="text-center">Sub Total</h6>
+                                <p class="text-center text-success fw-bold">RM 0.50</p>
+                            </div>
+                        </div>
+                        <div class="col-1 align-self-center">
+                            <input type="checkbox" name="" id="" class="">
+                        </div>
+                        <div class="col-2">
+                          <button type="button" class="btn btn-outline-dark">Add to cart</button>
+                        </div>
+                    </div>
+                </div>
+              </div>
+
           </div>
       </div>
       <hr>
-      <div class="row py-xxl-5 py-sm-4 align-items-center">
-        <div class="col-sm-auto align-self-center py-2 mx-sm-auto">
-            <button type="button" class="btn btn-outline-danger btn-sm">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
-                <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
-              </svg>
-            </button>
-        </div>
-        <div class="col-2"> 
-            <h4 style="text-align: center;">Banana</h4>
-            <img src="/imgfood/fruits/banana.jpg" class="img-thumbnail" alt="">
-        </div>
-        <div class="col align-self-center mt-5">
-            <div>
-                <p class="fw-normal">Item description</p>
-                <p class="fw-normal">Item description</p>
-                <p class="fw-normal">Item description</p>
-                <p class="fw-normal">Item description</p>
-                <p class="fw-normal">Item description</p>
+      <div class="row align-items-center mt-3">
+        <div class="col align-self-center">
+          <p>
+              <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false" aria-controls="collapseExample2">
+                List 2
+              </a>
+          </p>
+
+          <div class="collapse" id="collapseExample2">
+              <div class="card card-body">
+                  <div class="row py-xxl-5 py-sm-4 align-items-center">
+                      <div class="col-sm-auto align-self-center py-2 mx-sm-auto">
+                          <button type="button" class="btn btn-outline-danger btn-sm">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                              <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                              <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                            </svg>
+                          </button>
+                      </div>
+                      <div class="col-2"> 
+                          <h4 style="text-align: center;">KitKat</h4>
+                          <img src="/imgfood/chocolate/kitkat.jpeg" class="img-thumbnail" alt="">
+                      </div>
+                      <div class="col align-self-center mt-5">
+                          <div>
+                              <p class="fw-normal">Item description</p>
+                              <p class="fw-normal">Item description</p>
+                              <p class="fw-normal">Item description</p>
+                              <p class="fw-normal">Item description</p>
+                              <p class="fw-normal">Item description</p>
+                          </div>
+                      </div>
+                      <div class="col-2">
+                          <input type="number" class="form-control" id="inputQuantity">
+                      </div>
+                      <div class="col-2 align-self-center">
+                          <div>
+                              <h6 class="text-center">Sub Total</h6>
+                              <p class="text-center text-success fw-bold">RM 1.50</p>
+                          </div>
+                      </div>
+                      <div class="col-1 align-self-center">
+                          <input type="checkbox" name="" id="" class="">
+                      </div>
+                      <div class="col-2">
+                        <button type="button" class="btn btn-outline-dark">Add to cart</button>
+                      </div>
+                  </div>
+              </div>
             </div>
-        </div>
-        <div class="col-2">
-            <input type="number" class="form-control" id="inputQuantity">
-        </div>
-        <div class="col-2 align-self-center">
-            <div>
-                <h6 class="text-center">Sub Total</h6>
-                <p class="text-center text-success fw-bold">RM 0.50</p>
-            </div>
-        </div>
-        <div class="col-1 align-self-center">
-            <input type="checkbox" name="" id="" class="">
-        </div>
-        <div class="col-2">
-          <button type="button" class="btn btn-outline-dark">Add to cart</button>
+            <div class="collapse" id="collapseExample2">
+                <div class="card card-body">
+                    <div class="row py-xxl-5 py-sm-4 align-items-center">
+                        <div class="col-sm-auto align-self-center py-2 mx-sm-auto">
+                            <button type="button" class="btn btn-outline-danger btn-sm">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                                <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                              </svg>
+                            </button>
+                        </div>
+                        <div class="col-2"> 
+                            <h4 style="text-align: center;">Daim</h4>
+                            <img src="/imgfood/chocolate/daim.jpeg" class="img-thumbnail" alt="">
+                        </div>
+                        <div class="col align-self-center mt-5">
+                            <div>
+                                <p class="fw-normal">Item description</p>
+                                <p class="fw-normal">Item description</p>
+                                <p class="fw-normal">Item description</p>
+                                <p class="fw-normal">Item description</p>
+                                <p class="fw-normal">Item description</p>
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <input type="number" class="form-control" id="inputQuantity">
+                        </div>
+                        <div class="col-2 align-self-center">
+                            <div>
+                                <h6 class="text-center">Sub Total</h6>
+                                <p class="text-center text-success fw-bold">RM 10.00</p>
+                            </div>
+                        </div>
+                        <div class="col-1 align-self-center">
+                            <input type="checkbox" name="" id="" class="">
+                        </div>
+                        <div class="col-2">
+                          <button type="button" class="btn btn-outline-dark">Add to cart</button>
+                        </div>
+                    </div>
+                </div>
+              </div>
+
         </div>
     </div>
     <hr>
-    <div class="row py-xxl-5 py-sm-4 align-items-center">
-      <div class="col-sm-auto align-self-center py-2 mx-sm-auto">
-          <button type="button" class="btn btn-outline-danger btn-sm">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-              <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
-              <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
-            </svg>
-          </button>
-      </div>
-      <div class="col-2"> 
-          <h4 style="text-align: center;">Banana</h4>
-          <img src="/imgfood/fruits/banana.jpg" class="img-thumbnail" alt="">
-      </div>
-      <div class="col align-self-center mt-5">
-          <div>
-              <p class="fw-normal">Item description</p>
-              <p class="fw-normal">Item description</p>
-              <p class="fw-normal">Item description</p>
-              <p class="fw-normal">Item description</p>
-              <p class="fw-normal">Item description</p>
-          </div>
-      </div>
-      <div class="col-2">
-          <input type="number" class="form-control" id="inputQuantity">
-      </div>
-      <div class="col-2 align-self-center">
-          <div>
-              <h6 class="text-center">Sub Total</h6>
-              <p class="text-center text-success fw-bold">RM 0.50</p>
-          </div>
-      </div>
-      <div class="col-1 align-self-center">
-          <input type="checkbox" name="" id="" class="">
-      </div>
-      <div class="col-2">
-        <button type="button" class="btn btn-outline-dark">Add to cart</button>
-      </div>
-  </div>
-  <hr>
+    <div class="row align-items-center mt-3">
+        <div class="col align-self-center">
+          <p>
+              <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample3" role="button" aria-expanded="false" aria-controls="collapseExample3">
+                List 3
+              </a>
+          </p>
+
+          <div class="collapse" id="collapseExample3">
+              <div class="card card-body">
+                  <div class="row py-xxl-5 py-sm-4 align-items-center">
+                      <div class="col-sm-auto align-self-center py-2 mx-sm-auto">
+                          <button type="button" class="btn btn-outline-danger btn-sm">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                              <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                              <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                            </svg>
+                          </button>
+                      </div>
+                      <div class="col-2"> 
+                          <h4 style="text-align: center;">Broccoli</h4>
+                          <img src="/imgfood/vegetables/BROCCOLI.jpg" class="img-thumbnail" alt="">
+                      </div>
+                      <div class="col align-self-center mt-5">
+                          <div>
+                              <p class="fw-normal">Item description</p>
+                              <p class="fw-normal">Item description</p>
+                              <p class="fw-normal">Item description</p>
+                              <p class="fw-normal">Item description</p>
+                              <p class="fw-normal">Item description</p>
+                          </div>
+                      </div>
+                      <div class="col-2">
+                          <input type="number" class="form-control" id="inputQuantity">
+                      </div>
+                      <div class="col-2 align-self-center">
+                          <div>
+                              <h6 class="text-center">Sub Total</h6>
+                              <p class="text-center text-success fw-bold">RM 0.50</p>
+                          </div>
+                      </div>
+                      <div class="col-1 align-self-center">
+                          <input type="checkbox" name="" id="" class="">
+                      </div>
+                      <div class="col-2">
+                        <button type="button" class="btn btn-outline-dark">Add to cart</button>
+                      </div>
+                  </div>
+              </div>
+            </div>
+        </div>
+    </div>
+    <hr>
       </div>
     </div>
 
