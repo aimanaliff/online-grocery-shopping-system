@@ -18,6 +18,11 @@ function goUp() {
     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 }
 
+function burgerAnimate() {
+    let burger = document.querySelector('.hamburger');
+    burger.classList.toggle('is-active')
+}
+
 //Shocking Sale Countdown
 
 function handleTickInit(tick) {
