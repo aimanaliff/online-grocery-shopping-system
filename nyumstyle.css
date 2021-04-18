@@ -6,15 +6,9 @@ body {
   background-color: #f2f2f2;
 }
 
-.index-highlight {
-  padding: 15px;
-  height: 150px;
-}
-
 .active,
 nav-item:hover {
   background: #ffc000;
-  height: 100%;
 }
 
 .active,
@@ -50,7 +44,7 @@ h5 {
   border-radius: 20px;
 }
 
-#cardIndex .card > img {
+.cardIndex .card > img {
   height: 200px;
   width: 200px;
   display: block;
@@ -126,6 +120,20 @@ h5 {
   margin-right: auto;
 }
 
+.tick {
+    font-size:1.2rem;
+    font-family: "Noto Sans", sans-serif;
+}
+
+.tick-label {
+    font-size:0.4em;
+    text-align:center;
+}
+
+.tick-group {
+    margin:0.25em;
+    text-align:center;
+}
 /* index style finish */
 
 /* product style */
@@ -161,82 +169,16 @@ h5 {
 
 /* whistlist style */
 
-#button-addon1 {
-  background-color: DodgerBlue;
-  /* Blue background */
-  border: none;
-  /* Remove borders */
-  color: white;
-  /* White text */
-  padding: 12px 16px;
-  /* Some padding 12 16 */
-  font-size: 16px;
-  /* Set a font size 16 */
-  cursor: pointer;
-  /* Mouse pointer on hover */
-}
-
-#button-addon1:hover {
-  background-color: RoyalBlue;
-}
-
-/*.center {
-  margin: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-}*/
-
-td {
-  height: 50px;
-  vertical-align: middle;
-}
-
-table {
-  width: 100%;
-}
-
-#subtotal {
-  text-align: center;
-}
-
-#checkbox {
-  top: 50%;
-  padding-left: 100px;
-}
-
-#tableheader {
-  text-align: center;
-}
-
-#Itemname {
-  text-align: center;
-}
-
-#image {
+.modal-body input {
+  width: 50%; 
   display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 200px;
-  height: 200px;
+  margin: 15px auto;
 }
 
-.center-block {
-  display: block;
-  margin-right: auto;
-  margin-left: auto;
-  text-align: center;
-}
-
-/*.table tbody tr td {
-  width: 10px;
-  text-align: center;
-}*/
-
-.btn.remove {
-  vertical-align: middle;
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* whistlist style finish */
