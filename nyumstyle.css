@@ -181,6 +181,10 @@ h5 {
   align-items: center;
 }
 
+.item1 {
+  display: inline-flex;
+}
+
 /* whistlist style finish */
 
 /* cart style */
