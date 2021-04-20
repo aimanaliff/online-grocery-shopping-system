@@ -71,11 +71,11 @@
                 <div class="modal-body signin_modal">
                     <ul class="nav nav-tabs tab" id="myTab" role="tablist">
                         <li class="nav-item1">
-                            <a class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#signin" href="#signin" type="button" role="tab" aria-controls="home" aria-selected="true">Sign
+                            <a class="nav-link active" style="color: black;" id="home-tab" data-bs-toggle="tab" data-bs-target="#signin" href="#signin" type="button" role="tab" aria-controls="home" aria-selected="true">Sign
                                 In</a>
                         </li>
                         <li class="nav-item1" role="presentation">
-                            <a class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#signup" href="#signup" type="button" role="tab" aria-controls="profile" aria-selected="false">Sign Up</a>
+                            <a class="nav-link" style="color: black;" id="profile-tab" data-bs-toggle="tab" data-bs-target="#signup" href="#signup" type="button" role="tab" aria-controls="profile" aria-selected="false">Sign Up</a>
                         </li>
 
                     </ul>
@@ -95,7 +95,7 @@
                             <form>
 
                                 <div class="mb-3">
-                                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email">
+                                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Username/Email">
                                 </div>
                                 <div class="mb-3">
                                     <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
@@ -103,7 +103,7 @@
                                 <button type="submit" class="btn btn-primary btn-block">Login</button>
                             </form>
                             <p class="forgot_link">
-                                <a href="#">Forgot your password ?</a>
+                                <a class="text-decoration-none" style="color: black;" href="#">Forgot your password ?</a>
                             </p>
                             <!-- <p class="signin_link">Don't have an Account ?
                                 <a id="profile-tab" data-bs-toggle="tab" data-bs-target="#signup" href="#signup" type="button" role="tab" aria-controls="profile" aria-selected="false">Sign Up</a>
@@ -122,6 +122,10 @@
                                 <div class="mb-3">
                                     <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
                                 </div>
+                                <div class="mb-3">
+                                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Re-Enter Password">
+                                </div>
+
                                 <button type="submit" class="btn btn-primary btn-block">Create An Account</button>
                             </form>
                             <!-- <p class="signin_link">Already have an Account ?
@@ -584,6 +588,13 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
     <script src="nyumscript.js"></script>
     <script src="https://unpkg.com/@pqina/flip/dist/flip.min.js"></script>
+    <script>
+        var myModal = new bootstrap.Modal(document.getElementById('exampleModal'), {
+            keyboard: false
+        })
+        var modalToggle = document.getElementById('exampleModal') // relatedTarget
+        myModal.show(modalToggle)
+    </script>
 </body>
 
 </html>

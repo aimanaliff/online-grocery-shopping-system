@@ -92,17 +92,22 @@ h5 {
     margin-bottom: 2rem;
     text-align: center;
     font-weight: 600;
+    color: black;
 }
 
 .tab .nav-item1:hover {
-    background-color: #ffc000;
+    background: #ffc000;
 }
 
 .tab a {
-    list-style: none;
+    list-style-type: none;
 }
 
-.tab {
+.forgot_link a {
+    list-style-type: none;
+}
+
+.nav-tabs {
     border-bottom: none;
 }
 
@@ -112,7 +117,6 @@ h5 {
 
 .signin_link {
     text-align: center;
-    color: #8c8c8c;
     margin-top: 0.5rem;
 }
 
