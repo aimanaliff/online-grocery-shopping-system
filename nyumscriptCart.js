@@ -30,9 +30,3 @@ for (let index = 0; index < removeButton.length; index++) {
 
 }
 
-function updateCartTotal() {
-    var row = document.getElementsByClassName("row py-xxl-3 py-sm-4 align-items-center");
-    // var priceCol = row.getElementsByClassName("col align-self-center");
-    // var price = priceCol.getElementsByClassName("text-success fw-bold");
-    console.log(row);
-}
