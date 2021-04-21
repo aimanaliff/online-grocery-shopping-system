@@ -25,7 +25,7 @@ for (let index = 0; index < removeButton.length; index++) {
     button.addEventListener("click", function(event){
         var buttonClicked = event.target;
         buttonClicked.parentElement.parentElement.remove();
-        updateCartTotal();
+        cartTotalCal();
     });
 
 }
