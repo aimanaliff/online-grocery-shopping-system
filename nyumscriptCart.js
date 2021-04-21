@@ -25,14 +25,8 @@ for (let index = 0; index < removeButton.length; index++) {
     button.addEventListener("click", function(event){
         var buttonClicked = event.target;
         buttonClicked.parentElement.parentElement.remove();
-        updateCartTotal();
+        cartTotalCal();
     });
 
 }
 
-function updateCartTotal() {
-    var row = document.getElementsByClassName("row py-xxl-3 py-sm-4 align-items-center");
-    // var priceCol = row.getElementsByClassName("col align-self-center");
-    // var price = priceCol.getElementsByClassName("text-success fw-bold");
-    console.log(row);
-}
