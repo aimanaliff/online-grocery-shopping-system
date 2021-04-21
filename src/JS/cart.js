@@ -1,5 +1,6 @@
 var removeButton = document.querySelectorAll("#removeItemInCart");
 var itemLine = document.querySelectorAll("#itemHr");
+var itemBox = document.querySelectorAll("#checkItem");
 cartTotalCal();
 
 function cartTotalCal() {
@@ -11,10 +12,17 @@ function cartTotalCal() {
     for (let index = 0; index < price.length; index++) {
         console.log(price[index].innerText);
     }
+    for (let index = 0; index < itemBox.length; index++) {
+        if (itemBox[index].checked == false){
+            console.log(itemBox[index].checked);
+        };
+    }
     var total = 0.0;
     for (let index = 0; index < quantity.length; index++) {
-        total += quantity[index].value*parseFloat(price[index].innerText.replace("RM ",""));
-        console.log(total)
+        if (itemBox[index].checked == true){
+            total += quantity[index].value*parseFloat(price[index].innerText.replace("RM ",""));
+            console.log(total) 
+        };
     }
     document.getElementById("cartTotal").innerHTML = "RM "+total;
 
@@ -27,6 +35,5 @@ for (let index = 0; index < removeButton.length; index++) {
         buttonClicked.parentElement.parentElement.remove();
         cartTotalCal();
     });
-
 }
 
