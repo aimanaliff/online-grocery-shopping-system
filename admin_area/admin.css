@@ -139,6 +139,17 @@
      background: #f5f5f5;
      cursor: pointer;
  }
+ /* .form-check {
+     margin-left: 35px;
+ } */
+ 
+ th {
+     text-align: center;
+ }
+ 
+ td {
+     text-align: center;
+ }
  
  label {
      margin: 10px 0px 10px;
