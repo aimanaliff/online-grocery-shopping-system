@@ -143,6 +143,15 @@
      margin-left: 35px;
  } */
  
+ .btn-primary,
+ .btn-primary:visited {
+     background-color: #e04d12 !important;
+ }
+ 
+ .btn-primary:hover {
+     background-color: #ffc000 !important;
+ }
+ 
  th {
      text-align: center;
  }

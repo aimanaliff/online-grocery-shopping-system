@@ -45,12 +45,12 @@
                 </div>
 
                 <ul class="list-unstyled components">
-                    <li class="active">
+                    <li>
                         <a href="admin.html" class="text">
                             <i class="fas fa-cart-plus"></i>&nbsp&nbspInsert Product</a>
                     </li>
 
-                    <li>
+                    <li class="active">
                         <a href="edit.html">
                             <i class="fas fa-edit"></i>&nbsp&nbspEdit</a>
                     </li>
@@ -84,10 +84,22 @@
                     </div>
                 </nav>
 
+
+
                 <div class="container">
-                    <div class="table-responsive">
+                    <div class="mb-4">
+                        <select class="form-select" style="border-radius: 5px 5px 5px 5px;">
+                            <option selected>Select a Category</option>
+                            <option value="1">Food Essentials</option>
+                            <option value="2">Chilled & Frozen</option>
+                            <option value="3">Beverages</option>
+                            <option value="4">Cookies & Snacks</option>
+                            <option value="5">Bakery</option>
+                        </select>
+                    </div>
+                    <div class="table-responsive mb-4 ">
                         <table class="table table-striped table-hover table-bordered ">
-                            <thead>
+                            <thead class="table-dark">
                                 <tr class="">
                                     <th>Product Name</th>
                                     <th>Product Price</th>
@@ -114,9 +126,9 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <button type="button " class="btn btn-outline-danger " data-bs-toggle="modal " data-bs-target="#staticBackdrop ">
-                                        Edit
-                                      </button>
+                                        <button type="button" class="btn btn-outline-danger " data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                            Edit
+                                          </button>
                                     </td>
                                 </tr>
                                 <tr class="table ">
@@ -131,9 +143,9 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <button type="button " class="btn btn-outline-danger " data-bs-toggle="modal " data-bs-target="#staticBackdrop ">
-                                        Edit
-                                      </button>
+                                        <button type="button" class="btn btn-outline-danger " data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                            Edit
+                                          </button>
                                     </td>
                                 </tr>
                                 <tr class="table ">
@@ -148,7 +160,7 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <button type="button " class="btn btn-outline-danger " data-bs-toggle="modal " data-bs-target="#staticBackdrop ">
+                                        <button type="button" class="btn btn-outline-danger " data-bs-toggle="modal" data-bs-target="#exampleModal">
                                         Edit
                                       </button>
                                     </td>
@@ -156,6 +168,27 @@
 
                             </tbody>
                         </table>
+                    </div>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <button class="btn btn-primary me-md-2" type="button">Delete</button>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+
+                            </div>
+                            <div class="modal-body">
+                                ...
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -165,17 +198,10 @@
         </div>
 
         <!-- jQuery CDN - Slim version (=without AJAX) -->
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js " integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo " crossorigin="anonymous "></script>
-        <!-- Popper.JS -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js " integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ " crossorigin="anonymous "></script>
-        <!-- Bootstrap JS -->
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js " integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm " crossorigin="anonymous "></script>
-        <script src="js/tinymce/tinymce.min.js "></script>
-        <script>
-            tinymce.init({
-                selector: 'textarea'
-            });
-        </script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+
+
+
         <script type="text/javascript ">
             $(document).ready(function() {
                 $('#sidebarCollapse').on('click', function() {
