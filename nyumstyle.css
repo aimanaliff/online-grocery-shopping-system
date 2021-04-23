@@ -180,12 +180,6 @@ h5 {
 
 /* whistlist style */
 
-.modal-body input {
-    width: 50%;
-    display: block;
-    margin: 15px auto;
-}
-
 .center {
     display: flex;
     justify-content: center;
