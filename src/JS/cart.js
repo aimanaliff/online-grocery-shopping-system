@@ -24,7 +24,7 @@ function cartTotalCal() {
             console.log(total) 
         };
     }
-    document.getElementById("cartTotal").innerHTML = "RM "+total;
+    document.getElementById("cartTotal").innerHTML = "RM " + total.toFixed(2);
 
 }
 
