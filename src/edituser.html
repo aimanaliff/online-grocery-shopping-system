@@ -198,21 +198,19 @@
     </nav>
 
     <main>
-        <div class="container-lg py-3 rounded" style="background-color:white;">
+        <div class="container-lg py-3" style="background-color:white;">
             <div class="row">
-                <div class="col col-sm-3 py-5">
+                <div class="col col-sm-3 p-5">
                     <div class="d-flex justify-content-center">
                         <img class="rounded-circle" src="/img/dpalep.jpeg" width="180" height="200">
                     </div>
-                    <div class="d-inline-flex p-2">
-                        <form action="php/upload.php" method="POST" enctype="multipart/form-data">
-                            <div class="row">
-                                <input class="col-md-auto offset-md-1 mx-2 my-2" type="file" name="file">
-                                <div class="px-2 col-md-auto offset-md-1 mx-2 my-2">
-                                    <button class="btn btn-primary" type="submit" name="submit">Upload Image</button>
-                                </div>
+                    <form action="php/upload.php" method="POST" enctype="multipart/form-data">
+                        <div class="row">
+                            <input class="col-md-auto m-3" type="file" name="file">
+                            <div class="d-flex justify-content-center">
+                                <button class="btn btn-primary" type="submit" name="submit">Upload Image</button>
                             </div>
-                    </div>
+                        </div>
                 </div>
                 <div class="col-lg-9 py-2">
                     <div class="col-lg-9 py-2">
@@ -221,11 +219,11 @@
                         <hr>
                         <div class="row g-3 py-2">
                             <div class="col-md-3">
-                                <label for="labelName" class="col-form-label"><strong>Name</strong></label>
+                                <label for="inputName" class="col-sm-2 col-form-label"><strong>Name</strong></label>
                             </div>
                             <div class="col-md-3 offset-md-2">
                                 <form action="" type="text" method="POST">
-                                    <input type="text" name="name" id="name">
+                                    <input type="text" name="phone" id="phone">
                                 </form>
                             </div>
                         </div>
