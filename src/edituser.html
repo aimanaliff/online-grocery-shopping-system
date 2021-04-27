@@ -204,10 +204,14 @@
                     <div class="d-flex justify-content-center">
                         <img class="rounded-circle" src="/img/dpalep.jpeg" width="180" height="200">
                     </div>
-                    <div class="d-flex justify-content-center">
+                    <div class="d-inline-flex p-2">
                         <form action="php/upload.php" method="POST" enctype="multipart/form-data">
-                            <input type="file" name="file">
-                            <button type="submit" name="submit">Upload Image</button>
+                            <div class="row">
+                                <input class="col-md-auto offset-md-1 mx-2 my-2" type="file" name="file">
+                                <div class="px-2 col-md-auto offset-md-1 mx-2 my-2">
+                                    <button class="btn btn-primary" type="submit" name="submit">Upload Image</button>
+                                </div>
+                            </div>
                     </div>
                 </div>
                 <div class="col-lg-9 py-2">
@@ -227,7 +231,7 @@
                         </div>
                         <div class="row g-3 py-2">
                             <div class="col-md-3">
-                                <label for="labelUsername" class="col-form-label"><strong>Usr</strong></label>
+                                <label for="labelUsername" class="col-form-label"><strong>Username</strong></label>
                             </div>
                             <div class="col-md-3 offset-md-2">
                                 <label for="username" class="col-form-label">johndoe</label>
@@ -246,7 +250,9 @@
                                 <label for="labelPhone" class="col-form-label"><strong>Phone Number</strong></label>
                             </div>
                             <div class="col-md-3 offset-md-2">
-                                <label for="phone" class="col-form-label">555 5555 555</label>
+                                <form action="" type="text" method="POST">
+                                    <input type="text" name="phone" id="phone">
+                                </form>
                             </div>
                         </div>
                         <div class="row g-3 py-2">
@@ -289,7 +295,9 @@
                                 <label for="labelAddress" class="col-form-label"><strong>Street</strong></label>
                             </div>
                             <div class="col-md-3 offset-md-2">
-                                <label for="address" class="col-form-label">420 Jalan Panjang</label>
+                                <form action="" type="text" method="POST">
+                                    <input type="text" name="street" id="street">
+                                </form>
                             </div>
                         </div>
                         <div class="row g-3 py-2">
@@ -297,7 +305,9 @@
                                 <label for="labelCity" class="col-form-label"><strong>City</strong></label>
                             </div>
                             <div class="col-md-3 offset-md-2">
-                                <label for="city" class="col-form-label">Petaling Jaya</label>
+                                <form action="" type="text" method="POST">
+                                    <input type="text" name="city" id="city">
+                                </form>
                             </div>
                         </div>
                         <div class="row g-3 py-2">
@@ -305,7 +315,9 @@
                                 <label for="labelCity" class="col-form-label"><strong>State</strong></label>
                             </div>
                             <div class="col-md-3 offset-md-2">
-                                <label for="city" class="col-form-label">Selangor</label>
+                                <form action="" type="text" method="POST">
+                                    <input type="text" name="state" id="state">
+                                </form>
                             </div>
                         </div>
                         <div class="row g-3 py-2">
@@ -313,8 +325,16 @@
                                 <label for="labelZipcode" class="col-form-label"><strong>Zipcode</strong></label>
                             </div>
                             <div class="col-md-3 offset-md-2">
-                                <label for="zipcode" class="col-form-label">10101</label>
+                                <form action="" type="text" method="POST">
+                                    <input type="text" name="zipcode" id="zipcode">
+                                </form>
                             </div>
+                        </div>
+                        <div class="row py-2">
+                            <form action="" type="submit">
+                                <input class="btn btn-primary" type="submit" name="save" id="save" value="Save">
+                                <a href="user.html" class="btn btn-primary">My Profile</a>
+                            </form>
                         </div>
                     </div>
                 </div>
