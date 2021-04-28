@@ -18,7 +18,7 @@
 
   <body>
     <header class="py-3" style="background-color: #92D050;">
-      <div class="container gap-3">
+      <div class="container-xl gap-3">
           <div class="d-flex align-items-center flex-wrap flex-sm-nowrap justify-content-between">
               <button class="btn btn-warning d-sm-none order-1" type="button" data-bs-toggle="collapse"
                   data-bs-target="#categoriesToggle" aria-controls="categoriesToggle" aria-expanded="true"
@@ -157,7 +157,7 @@
   <nav class="navbar sticky-top navbar-expand-sm shadow py-2 justify-content-center"
       style="background-color: #FD6C5D;">
       <div class="collapse navbar-collapse" id="categoriesToggle">
-          <div class="container">
+          <div class="container-xl">
               <ul class="navbar-nav mb-2 mb-md-0 w-100 justify-content-between next" style="font-weight: bold;">
                   <li class="nav-item dropdown active1">
                       <a class="nav-link dropdown-toggle text-reset text-decoration-none" href="#" id="navbarDropdown"
@@ -182,16 +182,16 @@
       </div>
   </nav>  
 
-    <div class="container mt-4 mb-4" style="background-color: white;">
+    <div class="container-xl mt-4 mb-4" style="background-color: white;">
 
       <div class="row mb-5" style="background-color: #e48342;">
         <h3 style="text-align: center;" class="py-3 rounded-3">Wishlist</h3>
       </div>
 
             <div class="row mb-3">
-              <div class="col-2">
+              <div class="col-1">
 
-                <div class="edit" style="margin-left:65%; margin-top: 7px;">
+                <div class="edit d-flex justify-content-center" style="margin-top: 7px;">
                   <button type="button" class="btn btn-outline-primary buttonsquare" id="buttonmodal" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="border-radius: 25px;">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
                       <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
@@ -201,17 +201,17 @@
                 </div>
 
               </div>
-              <div class="col-8">
+              <div class="col">
                 <div class="accordion-item">
                   <h2 class="accordion-header" id="flush-headingTwo">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                      Chocolates
+                      Chocolates <span class="badge bg-secondary mx-2">2</span>
                     </button>
                   </h2>
                   <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
                     <div class="accordion-body">
                       <div class="row py-xxl-5 py-sm-4 align-items-center">
-                        <div class="col-sm-auto align-self-center py-2 mx-sm-auto">
+                        <div class="col-1 align-self-center py-2 mx-sm-auto">
                             <button type="button" class="btn btn-outline-danger btn-sm">
                               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
                                 <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
@@ -223,10 +223,8 @@
                             <h4 style="text-align: center;">KitKat</h4>
                             <img src="/imgfood/chocolate/kitkat.jpeg" class="img-thumbnail" alt="">
                         </div>
-                        <div class="col align-self-center mt-5">
+                        <div class="col-2 align-self-center mt-5">
                             <div>
-                                <p class="fw-normal">Item description</p>
-                                <p class="fw-normal">Item description</p>
                                 <p class="fw-normal">Item description</p>
                                 <p class="fw-normal">Item description</p>
                                 <p class="fw-normal">Item description</p>
@@ -249,7 +247,7 @@
                         </div>
                     </div>
                     <div class="row py-xxl-5 py-sm-4 align-items-center">
-                      <div class="col-sm-auto align-self-center py-2 mx-sm-auto">
+                      <div class="col-1 align-self-center py-2 mx-sm-auto">
                           <button type="button" class="btn btn-outline-danger btn-sm">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
                               <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
@@ -261,10 +259,8 @@
                           <h4 style="text-align: center;">Kinder Bueono</h4>
                           <img src="/imgfood/chocolate/kinderbueono.jpeg" class="img-thumbnail" alt="">
                       </div>
-                      <div class="col align-self-center mt-5">
+                      <div class="col-2 align-self-center mt-5">
                           <div>
-                              <p class="fw-normal">Item description</p>
-                              <p class="fw-normal">Item description</p>
                               <p class="fw-normal">Item description</p>
                               <p class="fw-normal">Item description</p>
                               <p class="fw-normal">Item description</p>
@@ -291,9 +287,9 @@
                 </div>
               </div>
 
-              <div class="col-2">
-                <div class="edit" style="margin-left: 20%; margin-top: 7px;">
-                  <button type="button" class="btn btn-outline-danger buttonsquare" style="border-radius: 25px;">
+              <div class="col-1">
+                <div class="edit d-flex justify-content-center" style="margin-top: 7px;">
+                  <button type="button" class="btn btn-outline-danger buttonsquare" style="border-radius: 25px;" id="removeitemforwishlist">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
                       <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
                       <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
@@ -307,9 +303,9 @@
             <hr>
 
             <div class="row mb-3">
-              <div class="col-2">
+              <div class="col-1">
 
-                <div class="edit" style="margin-left: 65%; margin-top: 7px;">
+                <div class="edit d-flex justify-content-center" style="margin-top: 7px;">
                   <button type="button" class="btn btn-outline-primary buttonsquare" id="buttonmodal" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="border-radius: 25px;">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
                       <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
@@ -319,17 +315,17 @@
                 </div>
 
               </div>
-              <div class="col-8">
+              <div class="col">
                 <div class="accordion-item">
                   <h2 class="accordion-header" id="flush-headingTwo">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                      Chocolates
+                      Fruits <span class="badge bg-secondary mx-2">2</span>
                     </button>
                   </h2>
                   <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
                     <div class="accordion-body">
                       <div class="row py-xxl-5 py-sm-4 align-items-center">
-                        <div class="col-sm-auto align-self-center py-2 mx-sm-auto">
+                        <div class="col-1 align-self-center py-2 mx-sm-auto">
                             <button type="button" class="btn btn-outline-danger btn-sm">
                               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
                                 <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
@@ -338,13 +334,11 @@
                             </button>
                         </div>
                         <div class="col-2"> 
-                            <h4 style="text-align: center;">KitKat</h4>
-                            <img src="/imgfood/chocolate/kitkat.jpeg" class="img-thumbnail" alt="">
+                            <h4 style="text-align: center;">Banana</h4>
+                            <img src="/imgfood/fruits/banana.jpg" class="img-thumbnail" alt="">
                         </div>
-                        <div class="col align-self-center mt-5">
+                        <div class="col-2 align-self-center mt-5">
                             <div>
-                                <p class="fw-normal">Item description</p>
-                                <p class="fw-normal">Item description</p>
                                 <p class="fw-normal">Item description</p>
                                 <p class="fw-normal">Item description</p>
                                 <p class="fw-normal">Item description</p>
@@ -367,7 +361,7 @@
                         </div>
                     </div>
                     <div class="row py-xxl-5 py-sm-4 align-items-center">
-                      <div class="col-sm-auto align-self-center py-2 mx-sm-auto">
+                      <div class="col-1 align-self-center py-2 mx-sm-auto">
                           <button type="button" class="btn btn-outline-danger btn-sm">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
                               <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
@@ -376,13 +370,11 @@
                           </button>
                       </div>
                       <div class="col-2"> 
-                          <h4 style="text-align: center;">Kinder Bueono</h4>
-                          <img src="/imgfood/chocolate/kinderbueono.jpeg" class="img-thumbnail" alt="">
+                          <h4 style="text-align: center;">Orange</h4>
+                          <img src="/imgfood/fruits/orange.jpg" class="img-thumbnail" alt="">
                       </div>
-                      <div class="col align-self-center mt-5">
+                      <div class="col-2 align-self-center mt-5">
                           <div>
-                              <p class="fw-normal">Item description</p>
-                              <p class="fw-normal">Item description</p>
                               <p class="fw-normal">Item description</p>
                               <p class="fw-normal">Item description</p>
                               <p class="fw-normal">Item description</p>
@@ -409,9 +401,9 @@
                 </div>
               </div>
 
-              <div class="col-2">
-                <div class="edit" style="margin-left: 20%; margin-top: 7px;">
-                  <button type="button" class="btn btn-outline-danger buttonsquare" style="border-radius: 25px;">
+              <div class="col-1">
+                <div class="edit d-flex justify-content-center" style="margin-top: 7px;">
+                  <button type="button" class="btn btn-outline-danger buttonsquare" style="border-radius: 25px;" id="removeitemforwishlist">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
                       <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
                       <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
@@ -425,9 +417,9 @@
             <hr>
 
             <div class="row mb-3">
-              <div class="col-2">
+              <div class="col-1">
 
-                <div class="edit" style="margin-left: 65%; margin-top: 7px;">
+                <div class="edit d-flex justify-content-center" style="margin-top: 7px;">
                   <button type="button" class="btn btn-outline-primary buttonsquare" id="buttonmodal" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="border-radius: 25px;">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
                       <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
@@ -437,17 +429,17 @@
                 </div>
 
               </div>
-              <div class="col-8">
+              <div class="col">
                 <div class="accordion-item">
                   <h2 class="accordion-header" id="flush-headingTwo">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseTwo">
-                      Chocolates
+                      Vegetables <span class="badge bg-secondary mx-2">2</span>
                     </button>
                   </h2>
                   <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
                     <div class="accordion-body">
                       <div class="row py-xxl-5 py-sm-4 align-items-center">
-                        <div class="col-sm-auto align-self-center py-2 mx-sm-auto">
+                        <div class="col-1 align-self-center py-2 mx-sm-auto">
                             <button type="button" class="btn btn-outline-danger btn-sm">
                               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
                                 <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
@@ -456,10 +448,10 @@
                             </button>
                         </div>
                         <div class="col-2"> 
-                            <h4 style="text-align: center;">KitKat</h4>
-                            <img src="/imgfood/chocolate/kitkat.jpeg" class="img-thumbnail" alt="">
+                            <h4 style="text-align: center;">Broccoli</h4>
+                            <img src="/imgfood/vegetables/BROCCOLI.jpg" class="img-thumbnail" alt="">
                         </div>
-                        <div class="col align-self-center mt-5">
+                        <div class="col-2 align-self-center mt-5">
                             <div>
                                 <p class="fw-normal">Item description</p>
                                 <p class="fw-normal">Item description</p>
@@ -485,7 +477,7 @@
                         </div>
                     </div>
                     <div class="row py-xxl-5 py-sm-4 align-items-center">
-                      <div class="col-sm-auto align-self-center py-2 mx-sm-auto">
+                      <div class="col-1 align-self-center py-2 mx-sm-auto">
                           <button type="button" class="btn btn-outline-danger btn-sm">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
                               <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
@@ -494,10 +486,10 @@
                           </button>
                       </div>
                       <div class="col-2"> 
-                          <h4 style="text-align: center;">Kinder Bueono</h4>
-                          <img src="/imgfood/chocolate/kinderbueono.jpeg" class="img-thumbnail" alt="">
+                          <h4 style="text-align: center;">Garlic</h4>
+                          <img src="/imgfood/vegetables/garlic.jpeg" class="img-thumbnail" alt="">
                       </div>
-                      <div class="col align-self-center mt-5">
+                      <div class="col-2 align-self-center mt-5">
                           <div>
                               <p class="fw-normal">Item description</p>
                               <p class="fw-normal">Item description</p>
@@ -527,9 +519,9 @@
                 </div>
               </div>
 
-              <div class="col-2">
-                <div class="edit" style="margin-left: 20%; margin-top: 7px;">
-                  <button type="button" class="btn btn-outline-danger buttonsquare" style="border-radius: 25px;">
+              <div class="col-1">
+                <div class="edit d-flex justify-content-center" style="margin-top: 7px;">
+                  <button type="button" class="btn btn-outline-danger buttonsquare" style="border-radius: 25px;" id="removeitemforwishlist">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
                       <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
                       <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
@@ -610,6 +602,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
       crossorigin="anonymous"></script>
+      <script src="/src/JS/list.js"></script>
 
     <!-- Option 2: Separate Popper and Bootstrap JS -->
     <!--
