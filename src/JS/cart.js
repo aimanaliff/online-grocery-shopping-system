@@ -1,11 +1,10 @@
 var removeButton = document.querySelectorAll("#removeItemInCart");
-var itemLine = document.querySelectorAll("#itemHr");
-var quantity = document.querySelectorAll("#inputQuantity");
 cartTotalCal();
 
 function cartTotalCal() {
     var price = document.querySelectorAll("#singlePrice");
     var itemBox = document.querySelectorAll("#checkItem");
+    var quantity = document.querySelectorAll("#inputQuantity");
     for (let index = 0; index < quantity.length; index++) {
         console.log(quantity[index].value);
     }
