@@ -1,6 +1,5 @@
 var removeButton = document.querySelectorAll("#removeItemInCart");
 var itemLine = document.querySelectorAll("#itemHr");
-
 var quantity = document.querySelectorAll("#inputQuantity");
 cartTotalCal();
 
