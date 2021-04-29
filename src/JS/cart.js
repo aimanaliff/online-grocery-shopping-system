@@ -1,11 +1,10 @@
 var removeButton = document.querySelectorAll("#removeItemInCart");
-var itemLine = document.querySelectorAll("#itemHr");
-var itemBox = document.querySelectorAll("#checkItem");
-var quantity = document.querySelectorAll("#inputQuantity");
 cartTotalCal();
 
 function cartTotalCal() {
     var price = document.querySelectorAll("#singlePrice");
+    var itemBox = document.querySelectorAll("#checkItem");
+    var quantity = document.querySelectorAll("#inputQuantity");
     for (let index = 0; index < quantity.length; index++) {
         console.log(quantity[index].value);
     }
@@ -18,7 +17,7 @@ function cartTotalCal() {
         };
     }
     var total = 0.0;
-    for (let index = 0; index < quantity.length; index++) {
+    for (let index = 0; index < itemBox.length; index++) {
         if (itemBox[index].checked == true){
             total += quantity[index].value*parseFloat(price[index].innerText.replace("RM ",""));
             console.log(total) 
