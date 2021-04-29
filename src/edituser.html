@@ -232,13 +232,16 @@
                         </div>
                         <div class="row py-2">
                             <form>
-                                <input class="btn btn-primary" type="submit" name="save" id="save" value="Save"
-                                    style="margin: 10px;">
-                                <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal"
-                                    data-bs-target="#modalDelete" style="margin: 10px;">
-                                    Delete Account
-                                </button>
-
+                                <div class="col-6 mt-2">
+                                    <input class="blockbtn btn btn-primary" type="submit" name="save" id="save"
+                                        value="Save" style="margin: 10px;">
+                                </div>
+                                <div class="col-6 mt-2">
+                                    <button type="button" class="blockbtn btn btn-outline-danger" data-bs-toggle="modal"
+                                        data-bs-target="#modalDelete" style="margin: 10px;">
+                                        Delete Account
+                                    </button>
+                                </div>
                                 <div class="modal fade" id="modalDelete" data-bs-backdrop="static"
                                     data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalDeleteLabel"
                                     aria-hidden="true">
