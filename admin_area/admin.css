@@ -4,14 +4,6 @@
      background: #fafafa;
  }
  
- p {
-     font-family: 'Poppins', sans-serif;
-     font-size: 1.1em;
-     font-weight: 300;
-     line-height: 1.7em;
-     color: #999;
- }
- 
  a,
  a:hover,
  a:focus {
@@ -33,13 +25,6 @@
      box-shadow: none;
      outline: none !important;
      border: none;
- }
- 
- .line {
-     width: 100%;
-     height: 1px;
-     border-bottom: 1px dashed #ddd;
-     margin: 40px 0;
  }
  /* ---------------------------------------------------
     SIDEBAR STYLE
@@ -101,26 +86,6 @@
  
  a[data-toggle="collapse"] {
      position: relative;
- }
- 
- .dropdown-toggle::after {
-     display: block;
-     position: absolute;
-     top: 50%;
-     right: 20px;
-     transform: translateY(-50%);
- }
- 
- ul ul a {
-     font-size: 0.9em !important;
-     padding-left: 30px !important;
-     background: #6d7fcc;
- }
- 
- a.article,
- a.article:hover {
-     background: #6d7fcc !important;
-     color: #fff !important;
  }
  /* ---------------------------------------------------
     CONTENT STYLE
