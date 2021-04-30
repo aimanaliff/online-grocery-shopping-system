@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Collapsible sidebar using Bootstrap 4</title>
+    <title>Admin Dashboard</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <!-- Bootstrap CSS CDN -->
@@ -27,7 +27,6 @@
 
     <div class="wrapper">
         <!-- Sidebar Holder -->
-
         <nav id="sidebar">
             <div class="sidebar-header">
                 <img src="../img/nyumnyumlogo.png" alt="logo" width="150" class="mx-2">
@@ -67,15 +66,15 @@
             <div class="container">
                 <form method="post" enctype="multipart/form-data">
                     <div class=" mb-3">
-                        <label class="col-auto">Product Name</label>
+                        <label class="col-auto" style="font-size: 20px;"><strong>Product Name</strong> </label>
                         <input name="product_title" type="text" class="form-control" style="border-radius: 5px 5px 5px 5px;" required>
                     </div>
                     <div class="mb-3">
-                        <label class="col-auto">Product Price</label>
+                        <label class="col-auto" style="font-size: 20px;"><strong>Product Price</strong></label>
                         <input name=" product_title " type="text" class="form-control" style="border-radius: 5px 5px 5px 5px;" required>
                     </div>
                     <div class="mb-3">
-                        <label class="col-auto">Product Category</label>
+                        <label class="col-auto" style="font-size: 20px;"><strong>Product Category</strong> </label>
                         <select class="form-select" style="border-radius: 5px 5px 5px 5px;" aria-label="Default select example">
                             <option value="">Select a Category</option>
                             <option value="">Frutis</option>
@@ -86,35 +85,31 @@
                         </select>
                     </div>
                     <div class="mb-3">
-                        <label class="col-auto">Mainpage - Product Section</label>
-                        <select class="form-select" style="border-radius: 5px 5px 5px 5px;" aria-label="Default select example">
+                        <label class="col-auto" style="font-size: 20px;"><strong>Main Page - Product Section</strong> </label>
+                        <select onclick="mySaleFunction()" id="productSection" class="form-select" style="border-radius: 5px 5px 5px 5px;" aria-label="Default select example">
                             <option value="">Select a Category</option>
-                            <option onclick="mySaleFunction()" value="yes">Shocking sale</option>
+                            <option  value="yes">Shocking sale</option>
                             <option value="">New product</option>
                         </select>
                     </div>
 
-                    <div class="mb-3" id="sale">
-                        <label class="col-auto">Sale</label>
-                        <select class="form-select" style="border-radius: 5px 5px 5px 5px;" aria-label="Default select example">
-                            <option value="">Select a Category Discount</option>
-                            <option value="">No Discount</option>
-                            <option onclick="mySaleFunction()" value="yes">25%</option>
-                            <option value="">50%</option>
-                            <option value="">75%</option>
+                    <div class="mb-3" id="sale" style="display:none;">
+                        <label class="col-auto" style="font-size: 20px;"><strong>Discount Percentage (%)</strong></label>
+                        <input type="range" min="0" ax="100" value="50" class="slider" id="myRange">
+                        <p>Value: <span id="demo"></span></p>
                         </select>
                     </div>
 
                     <div class="mb-3">
-                        <label class="col-auto">Product Image</label>
+                        <label class="col-auto" style="font-size: 20px;"><strong>Product Image</strong> </label>
                         <input name="product_img1" type="file" class="form-control" style="border-radius: 5px 5px 5px 5px;">
                     </div>
                     <div class="mb-3">
-                        <label class="col-auto">Product Quantity</label>
+                        <label class="col-auto style=" font-size: 20px; "" style="font-size: 20px;"><strong>Product Quantity</strong></label>
                         <input name=" product_stock " type="text" class="form-control" style="border-radius: 5px 5px 5px 5px;" required>
                     </div>
                     <div class="mb-3">
-                        <label class="col-auto">Product Description</label>
+                        <label class="col-auto " style="font-size: 20px;"><strong>Product Description</strong></label>
                         <textarea name="product_desc" cols="19" rows="6" class="form-control" style="border-radius: 5px 5px 5px 5px;"></textarea>
                     </div>
                     <input name="submit" value="Insert Product" type="submit" class="btn btn-primary form-control" onclick="myFunction()">
@@ -147,6 +142,28 @@
     <script>
         function myFunction() {
             alert("Product has inserted sucessfully")
+        }
+    </script>
+    <script>
+        var slider = document.getElementById("myRange");
+        var output = document.getElementById("demo");
+        output.innerHTML = slider.value;
+
+        slider.oninput = function() {
+            output.innerHTML = this.value;
+        }
+    </script>
+    <script>
+        function mySaleFunction() {
+            document.getElementById('productSection').addEventListener('change', (e) => {
+                let scope = document.getElementById('sale')
+                if ("yes" == e.target.value) {
+                    scope.style.display = "block";
+                } else {
+                    scope.style.display = "none";
+                }
+
+            })
         }
     </script>
 
