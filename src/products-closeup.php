@@ -5,20 +5,27 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NyumNyum Grocery Store</title>
+    <title>NyumNyum Grocery Store | Product Closeup</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-    <link rel="stylesheet" href="/nyumstyle.css">
-    <link href="/hamburgers.css" rel="stylesheet">
-    <link rel="icon" href="/img/nyumicon.ico">
+    <link rel="stylesheet" href="../nyumstyle.css">
+    <link href="../hamburgers.css" rel="stylesheet">
 </head>
 
 <body style="background-color: #f2f2f2;">
     <header class="py-3" style="background-color: #92D050;">
         <div class="container gap-3">
             <div class="d-flex align-items-center flex-wrap flex-sm-nowrap justify-content-between">
-               
+                <!-- <button class="btn btn-warning d-sm-none order-1" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#categoriesToggle" aria-controls="categoriesToggle" aria-expanded="true"
+                    aria-label="Toggle navigation">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor"
+                        class="bi bi-list" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                            d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
+                    </svg>
+                </button> -->
                 <button class="hamburger hamburger--spring d-sm-none order-1" type="button" data-bs-toggle="collapse"
                     data-bs-target="#categoriesToggle" aria-controls="categoriesToggle" aria-expanded="true"
                     aria-label="Toggle navigation" onclick="burgerAnimate()">
@@ -27,8 +34,8 @@
                     </span>
                 </button>
 
-                <a href="/index.html" class="navbar-brand order-2">
-                    <img src="/img/nyumnyumlogo.png" alt="logo" width="150" class="mx-2">
+                <a href="../index.html" class="navbar-brand order-2">
+                    <img src="../img/nyumnyumlogo.png" alt="logo" width="150" class="mx-2">
                 </a>
 
                 <div class="input-group order-4 order-sm-3">
@@ -74,7 +81,7 @@
         <div class="modal-dialog signin_dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <img src="/img/nyumnyumlogo.png" alt="">
+                    <img src="../img/nyumnyumlogo.png" alt="">
                 </div>
                 <div class="modal-body signin_modal">
                     <ul class="nav nav-tabs tab" id="myTab" role="tablist">
@@ -165,11 +172,24 @@
         <div class="collapse navbar-collapse" id="categoriesToggle">
             <div class="container">
                 <ul class="navbar-nav mb-2 mb-md-0 w-100 justify-content-between next" style="font-weight: bold;">
-                    <li class="nav-item"><a href="products.html" class="nav-link text-dark">Fruits</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link text-dark">Vegetables</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link text-dark">Meat</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link text-dark">Snacks</a></li>
+                    <li class="nav-item dropdown active1">
+                        <a class="nav-link dropdown-toggle text-reset text-decoration-none" href="#" id="navbarDropdown"
+                            role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Browse Category
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Fresh Fruits</a></li>
+                            <li><a class="dropdown-item" href="#">Fresh Meat</a></li>
+                            <li><a class="dropdown-item" href="#">Fresh Vegetables</a></li>
+                            <li><a class="dropdown-item" href="#">Seafood</a></li>
+                            <li><a class="dropdown-item" href="#">Dairy & Cheese</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a href="products.html" class="nav-link text-dark">Food Essentials</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link text-dark">Chilled & Frozen</a></li>
                     <li class="nav-item"><a href="#" class="nav-link text-dark">Beverages</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link text-dark">Cookies & Snacks</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link text-dark">Bakery</a></li>
                 </ul>
             </div>
         </div>
@@ -200,7 +220,7 @@
                 <div class="row row-cols-1 row-cols-lg-2 g-4 pb-4">
                     <div class="col">
                         <div class="card shadow-sm p-5">
-                            <img src="/img/banana.jpg" alt="pise">
+                            <img src="../img/banana.jpg" alt="pise">
                         </div>
                     </div>
                     <div class="col">
@@ -283,40 +303,42 @@
     <footer class="footer container-fluid mt-auto pt-3" style="background-color: #006600; color: whitesmoke;">
         <div class="container">
             <div class="row">
-                <div class="col-12 col-md-6 pe-5">
-                    <h3>NyumNyum Grocery Store</h4><br>
-
-                    <h5>About Us</h5>
-                    <p><strong>Nyum Nyum Grocery Store</strong> is a new online shopping website which allows you to create your own
-                    shopping list. We are thrilled to give you the best online shopping experience!</p>
-                       
+                <div class="col-12 col-md-5">
+                    <h3>NyumNyum Grocery Store</h4>
                 </div>
                 <div class="col-6 col-md">
-                    <h5>Contact Us</h5>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone me-2" viewBox="0 0 16 16">
-                        <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/>
-                      </svg>    +60 333 555 777 <br>
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope me-2" viewBox="0 0 16 16">
-                        <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2zm13 2.383-4.758 2.855L15 11.114v-5.73zm-.034 6.878L9.271 8.82 8 9.583 6.728 8.82l-5.694 3.44A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.739zM1 11.114l4.758-2.876L1 5.383v5.73z"/>
-                      </svg>    info@nyumnyumgs.com<br>
-                      
+                    <h5>About</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-reset text-decoration-none footer-link">Services</a></li>
+                        <li><a href="#" class="text-reset text-decoration-none">Portfolio</a></li>
+                    </ul>
                 </div>
                 <div class="col-6 col-md">
-                    <h5>Address</h5>
-                    Jalan Pantai Baru,
-                    59200 Kuala Lumpur, 
-                    Wilayah Persekutuan Kuala Lumpur
+                    <h5>Company</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-reset text-decoration-none footer-link">Career with Us</a></li>
+                    </ul>
                 </div>
-                <hr style="margin-top: 20px;">
+                <div class="col-6 col-md">
+                    <h5>Policies</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-reset text-decoration-none footer-link">Refund Policy</a></li>
+                        <li><a href="#" class="text-reset text-decoration-none footer-link">Privacy Policy</a></li>
+                        <li><a href="#" class="text-reset text-decoration-none footer-link">Shipping Policy</a></li>
+                        <li><a href="#" class="text-reset text-decoration-none footer-link">Terms of Policies</a></li>
+                    </ul>
+                </div>
+                <hr>
                 <div class="container text-center font-italic text-muted">
                     <p>&copy; 2021 NyumNyum Yummy Menjilat Jari</p>
                 </div>
+            </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
         crossorigin="anonymous"></script>
-    <script src="/nyumscript.js"></script>
+    <script src="../nyumscript.js"></script>
 </body>
 
 </html>
