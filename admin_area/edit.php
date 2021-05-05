@@ -47,11 +47,16 @@
                 <ul class="list-unstyled components">
                     <li>
                         <a href="admin.html" class="text">
-                            <i class="fas fa-cart-plus"></i>&nbsp&nbspInsert Products</a>
+                            <i class="fas fa-cart-plus"></i>&nbsp&nbspInsert Product</a>
                     </li>
 
                     <li class="active">
-                        <a href="edit.html"><i class="fas fa-eye"></i>&nbsp&nbspView Products</a>
+                        <a href="edit.php">
+                            <i class="fas fa-edit"></i>&nbsp&nbspEdit</a>
+                    </li>
+
+                    <li>
+                        <a href="#"><i class="fas fa-eye"></i>&nbsp&nbspView</a>
                     </li>
                     <li>
                         <a href="#">
@@ -81,11 +86,11 @@
                     <div class="mb-4">
                         <select class="form-select" style="border-radius: 5px 5px 5px 5px;">
                             <option selected>Select a Category</option>
-                            <option value="1">Fruits</option>
-                            <option value="2">Vegetables</option>
-                            <option value="3">Meat</option>
-                            <option value="4">Snacks</option>
-                            <option value="5">Beverages</option>
+                            <option value="1">Food Essentials</option>
+                            <option value="2">Chilled & Frozen</option>
+                            <option value="3">Beverages</option>
+                            <option value="4">Cookies & Snacks</option>
+                            <option value="5">Bakery</option>
                         </select>
                     </div>
                     <div class="table-responsive mb-4 ">
@@ -229,3 +234,8 @@
     </body>
 
     </html>
+
+</html>
+</body>
+
+</html>

@@ -1,3 +1,9 @@
+<?php 
+
+include("../includes/db.php")
+
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -6,7 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Admin Dashboard</title>
+    <title>Collapsible sidebar using Bootstrap 4</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <!-- Bootstrap CSS CDN -->
@@ -27,6 +33,7 @@
 
     <div class="wrapper">
         <!-- Sidebar Holder -->
+
         <nav id="sidebar">
             <div class="sidebar-header">
                 <img src="../img/nyumnyumlogo.png" alt="logo" width="150" class="mx-2">
@@ -35,11 +42,16 @@
             <ul class="list-unstyled components">
                 <li class="active">
                     <a href="#homeSubmenu" class="text">
-                        <i class="fas fa-cart-plus"></i>&nbsp&nbspInsert Products</a>
+                        <i class="fas fa-cart-plus"></i>&nbsp&nbspInsert Product</a>
                 </li>
 
                 <li>
-                    <a href="edit.html"><i class="fas fa-eye"></i>&nbsp&nbspView Products</a>
+                    <a href="edit.php">
+                        <i class="fas fa-edit"></i>&nbsp&nbspEdit</a>
+                </li>
+
+                <li>
+                    <a href="#"><i class="fas fa-eye"></i>&nbsp&nbspView</a>
                 </li>
                 <li>
                     <a href="#">
@@ -66,58 +78,62 @@
             <div class="container">
                 <form method="post" enctype="multipart/form-data">
                     <div class=" mb-3">
-                        <label class="col-auto" style="font-size: 20px;"><strong>Product Name</strong> </label>
-                        <input name="product_title" type="text" class="form-control" style="border-radius: 5px 5px 5px 5px;" required>
+                        <label class="col-auto">Product Name</label>
+                        <input name="product_name" type="text" class="form-control" style="border-radius: 5px 5px 5px 5px;" required>
                     </div>
                     <div class="mb-3">
-                        <label class="col-auto" style="font-size: 20px;"><strong>Product Price</strong></label>
-                        <input name=" product_title " type="text" class="form-control" style="border-radius: 5px 5px 5px 5px;" required>
-                    </div>
-                    <div class="mb-3">
-                        <label class="col-auto" style="font-size: 20px;"><strong>Product Category</strong> </label>
-                        <select class="form-select" style="border-radius: 5px 5px 5px 5px;" aria-label="Default select example">
+                        <label class="col-auto">Product Category</label>
+                        <select name="product_categories" class="form-select" style="border-radius: 5px 5px 5px 5px;" aria-label="Default select example">
                             <option value="">Select a Category</option>
-                            <option value="">Frutis</option>
-                            <option value="">Vegetables</option>
-                            <option value="">Meat</option>
-                            <option value="">Snacks</option>
-                            <option value="">Beverages</option>
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label class="col-auto" style="font-size: 20px;"><strong>Main Page - Product Section</strong> </label>
-                        <select onclick="mySaleFunction()" id="productSection" class="form-select" style="border-radius: 5px 5px 5px 5px;" aria-label="Default select example">
-                            <option value="">Select a Category</option>
-                            <option  value="yes">Shocking sale</option>
-                            <option value="">New product</option>
-                        </select>
-                    </div>
+                            
+                            <?php 
 
-                    <div class="mb-3" id="sale" style="display:none;">
-                        <label class="col-auto" style="font-size: 20px;"><strong>Discount Percentage (%)</strong></label>
-                        <input type="range" min="0" ax="100" value="50" class="slider" id="myRange">
-                        <p>Value: <span id="demo"></span></p>
+                                $get_p_cat = "select * from product_categories";
+                                $run_p_cat = mysqli_query($con,$get_p_cat);
+                               
+
+                                while( $row_cat = mysqli_fetch_array($run_p_cat)){
+
+                                    $p_cat_id = $row_cat['p_cat_id'];
+                                    $p_cat_title = $row_cat['p_cat_title'];
+
+                                    echo "
+                                    
+                                    <option value='$p_cat_id'>$p_cat_title</option>
+                                    
+                                    
+                                    ";
+                                }
+                            
+                            
+                            ?>
                         </select>
                     </div>
-
                     <div class="mb-3">
-                        <label class="col-auto" style="font-size: 20px;"><strong>Product Image</strong> </label>
-                        <input name="product_img1" type="file" class="form-control" style="border-radius: 5px 5px 5px 5px;">
+                        <label class="col-auto">Product Price</label>
+                        <input name=" product_price" type="text" class="form-control" style="border-radius: 5px 5px 5px 5px;" required>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="col-auto">Product Image</label>
+                        <input name="product_img" type="file" class="form-control" style="border-radius: 5px 5px 5px 5px;">
                     </div>
                     <div class="mb-3">
-                        <label class="col-auto style=" font-size: 20px; "" style="font-size: 20px;"><strong>Product Quantity</strong></label>
-                        <input name=" product_stock " type="text" class="form-control" style="border-radius: 5px 5px 5px 5px;" required>
+                        <label class="col-auto">Product Quantity</label>
+                        <input name=" product_stock" type="text" class="form-control" style="border-radius: 5px 5px 5px 5px;" required>
                     </div>
                     <div class="mb-3">
-                        <label class="col-auto " style="font-size: 20px;"><strong>Product Description</strong></label>
+                        <label class="col-auto">Product Description</label>
                         <textarea name="product_desc" cols="19" rows="6" class="form-control" style="border-radius: 5px 5px 5px 5px;"></textarea>
                     </div>
-                    <input name="submit" value="Insert Product" type="submit" class="btn btn-primary form-control" onclick="myFunction()">
+                    <input name="submit" value="Insert Product" type="submit" class="btn btn-primary form-control">
                 </form>
             </div>
+
+
+
         </div>
     </div>
-
 
     <!-- jQuery CDN - Slim version (=without AJAX) -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js " integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo " crossorigin="anonymous "></script>
@@ -139,38 +155,47 @@
             });
         });
     </script>
-    <script>
-        function myFunction() {
-            alert("Product has inserted sucessfully")
+
+    <?php 
+    
+        if(isset($_POST['submit'])){
+            $product_name = $_POST['product_name'];
+            $product_categories = $_POST['product_categories'];
+            $product_price = $_POST['product_price'];
+            $product_desc = $_POST['product_desc'];
+            $product_stock = $_POST['product_stock'];
+
+            $product_img = $_FILES['product_img']['name'];
+
+            $temp_name1=$_FILES['product_img']['tmp_name'];
+
+            move_uploaded_file($temp_name1,"product_images/$product_img");
+
+            $insert_product = "insert into product (p_cat_id,date,product_name,product_price,product_img,product_quantity,product_desc)
+                               values ('$product_categories',NOW(),'$product_name','$product_price','$product_img','$product_stock','$product_desc')";
+
+            $run_product = mysqli_query($con,$insert_product);
+
+            if($run_product){
+                echo "<script>alert('Product has been inserted succesfully')</script>";
+                echo "<script>window.open('admin.php','_self')</script>";
+            }
+            else{
+                echo "<script>alert('Product not inserted succesfully')</script>";
+            }
+
         }
-    </script>
-    <script>
-        var slider = document.getElementById("myRange");
-        var output = document.getElementById("demo");
-        output.innerHTML = slider.value;
-
-        slider.oninput = function() {
-            output.innerHTML = this.value;
-        }
-    </script>
-    <script>
-        function mySaleFunction() {
-            document.getElementById('productSection').addEventListener('change', (e) => {
-                let scope = document.getElementById('sale')
-                if ("yes" == e.target.value) {
-                    scope.style.display = "block";
-                } else {
-                    scope.style.display = "none";
-                }
-
-            })
-        }
-    </script>
-
-
-
+    
+    
+    
+    
+    
+    
+    ?>
 
 
 </body>
+
+</html>
 
 </html>
