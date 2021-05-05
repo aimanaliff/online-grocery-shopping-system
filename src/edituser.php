@@ -133,7 +133,7 @@ include("../includes/header.php")
                                         value="Save" style="margin: 10px;">
                                 </div>
                                 <div class="col-6 mt-2">
-                                    <button type="button" class="blockbtn btn btn-outline-danger" data-bs-toggle="modal"
+                                    <button type="button" class="blockbtn1 btn btn-outline-danger" data-bs-toggle="modal"
                                         data-bs-target="#modalDelete" style="margin: 10px;">
                                         Delete Account
                                     </button>

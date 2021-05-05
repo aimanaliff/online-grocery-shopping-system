@@ -212,7 +212,7 @@ include("../includes/header.php")
     <script src="../nyumscript.js"></script>
     <?php
 
-        echo"<script src='../src/JS/cart.js?v=1'>
+        echo"<script src='../src/JS/cart.js'>
 
             </script>
         ";
