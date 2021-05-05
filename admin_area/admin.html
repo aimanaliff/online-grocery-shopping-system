@@ -1,9 +1,3 @@
-<?php 
-
-include("../includes/db.php")
-
-?>
-
 <!DOCTYPE html>
 <html>
 
@@ -46,7 +40,7 @@ include("../includes/db.php")
                 </li>
 
                 <li>
-                    <a href="edit.php">
+                    <a href="edit.html">
                         <i class="fas fa-edit"></i>&nbsp&nbspEdit</a>
                 </li>
 
@@ -79,48 +73,39 @@ include("../includes/db.php")
                 <form method="post" enctype="multipart/form-data">
                     <div class=" mb-3">
                         <label class="col-auto">Product Name</label>
-                        <input name="product_name" type="text" class="form-control" style="border-radius: 5px 5px 5px 5px;" required>
-                    </div>
-                    <div class="mb-3">
-                        <label class="col-auto">Product Category</label>
-                        <select name="product_categories" class="form-select" style="border-radius: 5px 5px 5px 5px;" aria-label="Default select example">
-                            <option value="">Select a Category</option>
-                            
-                            <?php 
-
-                                $get_p_cat = "select * from product_categories";
-                                $run_p_cat = mysqli_query($con,$get_p_cat);
-                               
-
-                                while( $row_cat = mysqli_fetch_array($run_p_cat)){
-
-                                    $p_cat_id = $row_cat['p_cat_id'];
-                                    $p_cat_title = $row_cat['p_cat_title'];
-
-                                    echo "
-                                    
-                                    <option value='$p_cat_id'>$p_cat_title</option>
-                                    
-                                    
-                                    ";
-                                }
-                            
-                            
-                            ?>
-                        </select>
+                        <input name="product_title" type="text" class="form-control" style="border-radius: 5px 5px 5px 5px;" required>
                     </div>
                     <div class="mb-3">
                         <label class="col-auto">Product Price</label>
-                        <input name=" product_price" type="text" class="form-control" style="border-radius: 5px 5px 5px 5px;" required>
+                        <input name=" product_title " type="text" class="form-control" style="border-radius: 5px 5px 5px 5px;" required>
                     </div>
-                    
+                    <div class="mb-3">
+                        <label class="col-auto">Product Category</label>
+                        <select class="form-select" style="border-radius: 5px 5px 5px 5px;" aria-label="Default select example">
+                            <option value="">Select a Category</option>
+                            <option value="">Food Essentials</option>
+                            <option value="">Chilled & Frozen</option>
+                            <option value="">Beverages</option>
+                            <option value="">Cookies & Snacks</option>
+                            <option value="">Bakery</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="col-auto">Mainpage - Product Section</label>
+                        <select class="form-select" style="border-radius: 5px 5px 5px 5px;" aria-label="Default select example">
+                            <option value="">Select a Category</option>
+                            <option value="">Shocking sale</option>
+                            <option value="">New product</option>
+                        </select>
+                    </div>
+
                     <div class="mb-3">
                         <label class="col-auto">Product Image</label>
-                        <input name="product_img" type="file" class="form-control" style="border-radius: 5px 5px 5px 5px;">
+                        <input name="product_img1" type="file" class="form-control" style="border-radius: 5px 5px 5px 5px;">
                     </div>
                     <div class="mb-3">
                         <label class="col-auto">Product Quantity</label>
-                        <input name=" product_stock" type="text" class="form-control" style="border-radius: 5px 5px 5px 5px;" required>
+                        <input name=" product_stock " type="text" class="form-control" style="border-radius: 5px 5px 5px 5px;" required>
                     </div>
                     <div class="mb-3">
                         <label class="col-auto">Product Description</label>
@@ -155,43 +140,6 @@ include("../includes/db.php")
             });
         });
     </script>
-
-    <?php 
-    
-        if(isset($_POST['submit'])){
-            $product_name = $_POST['product_name'];
-            $product_categories = $_POST['product_categories'];
-            $product_price = $_POST['product_price'];
-            $product_desc = $_POST['product_desc'];
-            $product_stock = $_POST['product_stock'];
-
-            $product_img = $_FILES['product_img']['name'];
-
-            $temp_name1=$_FILES['product_img']['tmp_name'];
-
-            move_uploaded_file($temp_name1,"product_images/$product_img");
-
-            $insert_product = "insert into product (p_cat_id,date,product_name,product_price,product_img,product_quantity,product_desc)
-                               values ('$product_categories',NOW(),'$product_name','$product_price','$product_img','$product_stock','$product_desc')";
-
-            $run_product = mysqli_query($con,$insert_product);
-
-            if($run_product){
-                echo "<script>alert('Product has been inserted succesfully')</script>";
-                echo "<script>window.open('admin.php','_self')</script>";
-            }
-            else{
-                echo "<script>alert('Product not inserted succesfully')</script>";
-            }
-
-        }
-    
-    
-    
-    
-    
-    
-    ?>
 
 
 </body>
