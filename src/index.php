@@ -98,98 +98,213 @@ include("../includes/header.php")
 
             </div>
 
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-3 pb-3">
-                <div class="col">
-                    <div class="card sshighlight">
-                        <img src="../img/kiwi.jpg" class="card-img-top" alt="..." />
-                        <div class="card-body">
-                            <div class="position-absolute top-0 end-0 pt-3">
-                                <h5><span class="badge bg-danger">25% off</span></h5>
+            <div id="carouselExampleControlsNoTouching" class="carousel slide" data-bs-touch="false" data-bs-interval="false">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="cardIndex" style="background-color: #f2f2f2;">
+                            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-3 pb-3">
+                                <div class="col">
+                                    <div class="card sshighlight">
+                                        <img src="../img/kiwi.jpg" class="card-img-top" alt="..." />
+                                        <div class="card-body">
+                                            <div class="position-absolute top-0 end-0 pt-3">
+                                                <h5><span class="badge bg-danger">25% off</span></h5>
+                                            </div>
+                                            <h5 class="card-title">New Zealand Kiwi</h5>
+                                            <p c lass="card-text">
+                                                RM215/100g
+                                            </p>
+                                            <div class="d-flex flex-sm-column justify-content-around">
+                                                <a href="#" class="btn btn-success rounded-pill mb-sm-2">Add to List</a>
+                                                <a href="#" class="btn btn-warning rounded-pill">Add to Cart</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="card sshighlight">
+                                        <img src="../img/broccoli.jpg" class="card-img-top" alt="..." />
+                                        <div class="card-body">
+                                            <div class="position-absolute top-0 end-0 pt-3">
+                                                <h5><span class="badge bg-danger">50% off</span></h5>
+                                            </div>
+                                            <h5 class="card-title">Broke Your Lee's</h5>
+                                            <p c lass="card-text">
+                                                RM2/pcs
+                                            </p>
+                                            <div class="d-flex flex-sm-column justify-content-around">
+                                                <a href="#" class="btn btn-success rounded-pill mb-sm-2">Add to List</a>
+                                                <a href="#" class="btn btn-warning rounded-pill">Add to Cart</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="card sshighlight">
+                                        <img src="../img/tomato.jpg" class="card-img-top" alt="..." />
+                                        <div class="card-body">
+                                            <div class="position-absolute top-0 end-0 pt-3">
+                                                <h5><span class="badge bg-danger">15% off</span></h5>
+                                            </div>
+                                            <h5 class="card-title">Tokma Toes</h5>
+                                            <p c lass="card-text">
+                                                RM20/pcs
+                                            </p>
+                                            <div class="d-flex flex-sm-column justify-content-around">
+                                                <a href="#" class="btn btn-success rounded-pill mb-sm-2">Add to List</a>
+                                                <a href="#" class="btn btn-warning rounded-pill">Add to Cart</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="card sshighlight">
+                                        <img src="../img/pineapple.jpg" class="card-img-top" alt="..." />
+                                        <div class="card-body">
+                                            <div class="position-absolute top-0 end-0 pt-3">
+                                                <h5><span class="badge bg-danger">50% off</span></h5>
+                                            </div>
+                                            <h5 class="card-title">Spongebob Haus</h5>
+                                            <p c lass="card-text">
+                                                RM17/pcs
+                                            </p>
+                                            <div class="d-flex flex-sm-column justify-content-around">
+                                                <a href="#" class="btn btn-success rounded-pill mb-sm-2">Add to List</a>
+                                                <a href="#" class="btn btn-warning rounded-pill">Add to Cart</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="card sshighlight">
+                                        <img src="../img/banana.jpg" class="card-img-top" alt="..." />
+                                        <div class="card-body">
+                                            <div class="position-absolute top-0 end-0 pt-3">
+                                                <h5><span class="badge bg-danger">30% off</span></h5>
+                                            </div>
+                                            <h5 class="card-title">Minion Banana</h5>
+                                            <p c lass="card-text">
+                                                RM0.50/person
+                                            </p>
+                                            <div class="d-flex flex-sm-column justify-content-around">
+                                                <a href="#" class="btn btn-success rounded-pill mb-sm-2">Add to List</a>
+                                                <a href="#" class="btn btn-warning rounded-pill">Add to Cart</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <h5 class="card-title">New Zealand Kiwi</h5>
-                            <p class="card-text">
-                                RM215/100g
-                            </p>
-                            <div class="d-flex flex-sm-column justify-content-around">
-                                <a href="#" class="btn btn-success rounded-pill mb-sm-2">Add to List</a>
-                                <a href="#" class="btn btn-warning rounded-pill">Add to Cart</a>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="cardIndex" style="background-color: #f2f2f2;">
+                            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-3 pb-3">
+                                <div class="col">
+                                    <div class="card sshighlight">
+                                        <img src="../imgfood/chocolate/daim.jpeg" class="card-img-top" alt="..." />
+                                        <div class="card-body">
+                                            <div class="position-absolute top-0 end-0 pt-3">
+                                                <h5><span class="badge bg-danger">15% off</span></h5>
+                                            </div>
+                                            <h5 class="card-title">DAIMuda</h5>
+                                            <p c lass="card-text">
+                                                RM25.50/250g
+                                            </p>
+                                            <div class="d-flex flex-sm-column justify-content-around">
+                                                <a href="#" class="btn btn-success rounded-pill mb-sm-2">Add to List</a>
+                                                <a href="#" class="btn btn-warning rounded-pill">Add to Cart</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="card sshighlight">
+                                        <img src="../imgfood/vegetables/carrot.jpg" class="card-img-top" alt="..." />
+                                        <div class="card-body">
+                                            <div class="position-absolute top-0 end-0 pt-3">
+                                                <h5><span class="badge bg-danger">10% off</span></h5>
+                                            </div>
+                                            <h5 class="card-title">Rabbit Stuffs</h5>
+                                            <p c lass="card-text">
+                                                RM2/pcs
+                                            </p>
+                                            <div class="d-flex flex-sm-column justify-content-around">
+                                                <a href="#" class="btn btn-success rounded-pill mb-sm-2">Add to List</a>
+                                                <a href="#" class="btn btn-warning rounded-pill">Add to Cart</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="card sshighlight">
+                                        <img src="../imgfood/fruits/grapes.jpg" class="card-img-top" alt="..." />
+                                        <div class="card-body">
+                                            <div class="position-absolute top-0 end-0 pt-3">
+                                                <h5><span class="badge bg-danger">15% off</span></h5>
+                                            </div>
+                                            <h5 class="card-title">Ang Ang Grr</h5>
+                                            <p c lass="card-text">
+                                                RM20/kg
+                                            </p>
+                                            <div class="d-flex flex-sm-column justify-content-around">
+                                                <a href="#" class="btn btn-success rounded-pill mb-sm-2">Add to List</a>
+                                                <a href="#" class="btn btn-warning rounded-pill">Add to Cart</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="card sshighlight">
+                                        <img src="../imgfood/chocolate/kitkat.jpeg" class="card-img-top" alt="..." />
+                                        <div class="card-body">
+                                            <div class="position-absolute top-0 end-0 pt-3">
+                                                <h5><span class="badge bg-danger">50% off</span></h5>
+                                            </div>
+                                            <h5 class="card-title">Berehat Sebentar</h5>
+                                            <p c lass="card-text">
+                                                RM5/pcs
+                                            </p>
+                                            <div class="d-flex flex-sm-column justify-content-around">
+                                                <a href="#" class="btn btn-success rounded-pill mb-sm-2">Add to List</a>
+                                                <a href="#" class="btn btn-warning rounded-pill">Add to Cart</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="card sshighlight">
+                                        <img src="../imgfood/fruits/orange.jpg" class="card-img-top" alt="..." />
+                                        <div class="card-body">
+                                            <div class="position-absolute top-0 end-0 pt-3">
+                                                <h5><span class="badge bg-danger">30% off</span></h5>
+                                            </div>
+                                            <h5 class="card-title">Range of O</h5>
+                                            <p c lass="card-text">
+                                                RM8.90/kg
+                                            </p>
+                                            <div class="d-flex flex-sm-column justify-content-around">
+                                                <a href="#" class="btn btn-success rounded-pill mb-sm-2">Add to List</a>
+                                                <a href="#" class="btn btn-warning rounded-pill">Add to Cart</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col">
-                    <div class="card sshighlight">
-                        <img src="../img/broccoli.jpg" class="card-img-top" alt="..." />
-                        <div class="card-body">
-                            <div class="position-absolute top-0 end-0 pt-3">
-                                <h5><span class="badge bg-danger">50% off</span></h5>
-                            </div>
-                            <h5 class="card-title">Broke Your Lee's</h5>
-                            <p class="card-text">
-                                RM2/pcs
-                            </p>
-                            <div class="d-flex flex-sm-column justify-content-around">
-                                <a href="#" class="btn btn-success rounded-pill mb-sm-2">Add to List</a>
-                                <a href="#" class="btn btn-warning rounded-pill">Add to Cart</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card sshighlight">
-                        <img src="../img/tomato.jpg" class="card-img-top" alt="..." />
-                        <div class="card-body">
-                            <div class="position-absolute top-0 end-0 pt-3">
-                                <h5><span class="badge bg-danger">15% off</span></h5>
-                            </div>
-                            <h5 class="card-title">Tokma Toes</h5>
-                            <p class="card-text">
-                                RM20/pcs
-                            </p>
-                            <div class="d-flex flex-sm-column justify-content-around">
-                                <a href="#" class="btn btn-success rounded-pill mb-sm-2">Add to List</a>
-                                <a href="#" class="btn btn-warning rounded-pill">Add to Cart</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card sshighlight">
-                        <img src="../img/pineapple.jpg" class="card-img-top" alt="..." />
-                        <div class="card-body">
-                            <div class="position-absolute top-0 end-0 pt-3">
-                                <h5><span class="badge bg-danger">50% off</span></h5>
-                            </div>
-                            <h5 class="card-title">Spongebob Haus</h5>
-                            <p class="card-text">
-                                RM17/pcs
-                            </p>
-                            <div class="d-flex flex-sm-column justify-content-around">
-                                <a href="#" class="btn btn-success rounded-pill mb-sm-2">Add to List</a>
-                                <a href="#" class="btn btn-warning rounded-pill">Add to Cart</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card sshighlight">
-                        <img src="../img/banana.jpg" class="card-img-top" alt="..." />
-                        <div class="card-body">
-                            <div class="position-absolute top-0 end-0 pt-3">
-                                <h5><span class="badge bg-danger">30% off</span></h5>
-                            </div>
-                            <h5 class="card-title">Minion Banana</h5>
-                            <p class="card-text">
-                                RM0.50/person
-                            </p>
-                            <div class="d-flex flex-sm-column justify-content-around">
-                                <a href="#" class="btn btn-success rounded-pill mb-sm-2">Add to List</a>
-                                <a href="#" class="btn btn-warning rounded-pill">Add to Cart</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <button class="carousel-control-prev position-absolute top-50 start-0 translate-middle" type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon btn-warning" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+     </button>
+                <button class="carousel-control-next position-absolute top-50 start-100 translate-middle" type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="next">
+      <span class="carousel-control-next-icon btn-warning " aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+     </button   >
             </div>
+    
+            </div>
+    </div>
 
         </div>
     </div>
