@@ -1,9 +1,11 @@
 <?php 
 
-include("../includes/header.php")
+include("../includes/header.php");
+
+
 
 ?>
- 
+
 
     <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
@@ -503,8 +505,25 @@ include("../includes/header.php")
         var myModal = new bootstrap.Modal(document.getElementById('exampleModal'), {
             keyboard: false
         })
-        var modalToggle = document.getElementById('exampleModal') // relatedTarget
-        myModal.show(modalToggle)
+
+        <?php 
+            if(isset($_SESSION['success'])){
+                echo "
+                
+                
+                
+                ";
+            } else {
+                echo "
+                    var modalToggle = document.getElementById('exampleModal') // relatedTarget
+                    myModal.show(modalToggle)
+                
+                ";
+            }
+        
+        
+        ?>
+        
     </script>
 </body>
 
