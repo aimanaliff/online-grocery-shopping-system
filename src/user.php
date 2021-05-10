@@ -1,7 +1,6 @@
 <?php 
 
-include("../includes/header.php")
-
+include("../includes/header.php");
 ?>
 
     <main>
@@ -14,6 +13,14 @@ include("../includes/header.php")
                     <div class="d-flex justify-content-center m-2">
                         <a href="edituser.php" style="text-decoration: none;">Edit
                             Profile</a>
+                        
+                    </div>
+                    <div class="d-flex justify-content-center">
+                    <a href="logout.php">
+                        <button   class="btn btn-outline-danger" >
+                            Logout
+                        </button>
+                    </a>
                     </div>
                 </div>
                 <div class="col-lg-9 py-2">
@@ -26,7 +33,23 @@ include("../includes/header.php")
                                 <label for="labelName" class="col-form-label"><strong>Name</strong></label>
                             </div>
                             <div class="col-md-3 offset-md-2">
-                                <label for="name" class="col-form-label">John Doe</label>
+                                
+                                <?php  if (isset($_SESSION['user'])) : ?> 
+
+                                    <?php 
+                                        
+                                        $query = "select * from user where id=".$_SESSION['user'];
+                                        $run_query = mysqli_query($db,$query);
+
+                                        $row_query = mysqli_fetch_array($run_query);
+
+                                        $username = $row_query['username'];
+                                        
+                                    ?>
+
+                                    <label for="name" class="col-form-label"><?php echo "$username";?></label>
+                                     
+                                <?php endif ?> 
                             </div>
                         </div>
                         <div class="row g-3 py-2">
@@ -34,7 +57,20 @@ include("../includes/header.php")
                                 <label for="labelName" class="col-form-label"><strong>Username</strong></label>
                             </div>
                             <div class="col-md-3 offset-md-2">
-                                <label for="username" class="col-form-label">johndoe</label>
+                            <?php  if (isset($_SESSION['user'])) : ?> 
+                                <?php 
+                                    
+                                    $query = "select * from user where id=".$_SESSION['user'];
+                                    $run_query = mysqli_query($db,$query);
+
+                                    $row_query = mysqli_fetch_array($run_query);
+
+                                    $username = $row_query['username'];
+                                    
+                                ?>
+                                <label for="name" class="col-form-label"><?php echo "$username";?></label>
+                                
+                                <?php endif ?> 
                             </div>
                         </div>
                         <div class="row g-3 py-2">
@@ -139,6 +175,8 @@ include("../includes/footer.php")
         integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
         crossorigin="anonymous"></script>
     <script src="/nyumscript.js"></script>
+    
+    
 </body>
 
 </html>

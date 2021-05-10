@@ -120,7 +120,7 @@ include("../includes/db.php")
                     </div>
                     <div class="mb-3">
                         <label class="col-auto">Product Quantity</label>
-                        <input name=" product_stock" type="text" class="form-control" style="border-radius: 5px 5px 5px 5px;" required>
+                        <input name="product_stock" type="text" class="form-control" style="border-radius: 5px 5px 5px 5px;" required>
                     </div>
                     <div class="mb-3">
                         <label class="col-auto">Product Description</label>
