@@ -52,7 +52,7 @@ include("../functions/function.php");
                 <ul class="navbar-nav order-3 order-sm-4 ms-3 mb-2 mb-md-0 d-flex flex-row">
                     <li class="nav-item mx-1">
                         <?php 
-                            
+                          
                             if(isset($_SESSION['success'])){
                                 $userid = $_SESSION['user'];
                                 $query = "select * from user where id=".$userid;

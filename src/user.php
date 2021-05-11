@@ -11,9 +11,24 @@ include("../includes/header.php");
                         <img class="rounded-circle" src="../img/dpalep.jpeg" width="180" height="200">
                     </div>
                     <div class="d-flex justify-content-center m-2">
-                        <a href="edituser.php" style="text-decoration: none;">Edit
-                            Profile</a>
-                        
+
+                    <?php 
+                        if(isset($_SESSION['success'])){
+                            $userid = $_SESSION['user'];
+                            echo "
+                                <a href='edituser.php?id=$userid' style='text-decoration: none;'>Edit
+                                    Profile</a>
+                            "
+                            ;
+                        }
+                        else{
+                            echo "
+                                <a href='edituser.php' style='text-decoration: none;'>Edit
+                                Profile</a>
+                            "
+                        ;
+                        }
+                    ?>
                     </div>
                     <div class="d-flex justify-content-center">
                     <a href="logout.php">
@@ -95,12 +110,12 @@ include("../includes/header.php");
                             </div>
                             <div class="col-md-5">
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                    <input class="form-check-input" type="radio" name="male"
                                         id="radioMale" value="option1" checked>
                                     <label class="form-check-label" for="radioMale">Male</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                    <input class="form-check-input" type="radio" name="female"
                                         id="radioFemale" value="option2">
                                     <label class="form-check-label" for="radioFemale">Female</label>
                                 </div>

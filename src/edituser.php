@@ -21,112 +21,114 @@ include("../includes/header.php")
                                 Image</button>
                         </div>
                     </div>
+                </form>
             </div>
             <div class="col-sm-9 py-2">
                 <div class="col-lg-9 py-2">
                     <h4>Edit Profile</h4>
                     <h6>Edit your profile information</h6>
                     <hr>
-                    <div class="row g-3 py-2">
-                        <div class="col-md-3">
-                            <label for="inputName" class="col-sm-2 col-form-label"><strong>Name</strong></label>
-                        </div>
-                        <div class="col-md-auto offset-md-2">
-                            <input class="form-control" type="text" aria-label="name">
-                        </div>
-                    </div>
-                    <div class="row g-3 py-2">
-                        <div class="col-md-3">
-                            <label for="labelUsername" class="col-form-label"><strong>Username</strong></label>
-                        </div>
-                        <div class="col-md-3 offset-md-2">
-                            <label for="username" class="col-form-label">johndoe</label>
-                        </div>
-                    </div>
-                    <div class="row g-3 py-2">
-                        <div class="col-md-3">
-                            <label for="labelEmail" class="col-form-label"><strong>Email</strong></label>
-                        </div>
-                        <div class="col-md-3 offset-md-2">
-                            <label for="email" class="col-form-label">johndoe123@gmail.com</label>
-                        </div>
-                    </div>
-                    <div class="row g-3 py-2">
-                        <div class="col-md-3">
-                            <label for="labelPhone" class="col-form-label"><strong>Phone Number</strong></label>
-                        </div>
-                        <div class="col-md-auto offset-md-2">
-                            <input class="form-control" type="text" aria-label="phone">
-                        </div>
-                    </div>
-                    <div class="row g-3 py-2">
-                        <div class="col-md-5">
-                            <label for="labelGender" class="col-form-label"><strong>Gender</strong></label>
-                        </div>
-                        <div class="col-md-5">
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="radioMale" value="option1">
-                                <label class="form-check-label" for="radioMale">Male</label>
+                    <form  method="post" enctype="multipart/form-data">
+                        <div class="row g-3 py-2">
+                            <div class="col-md-3">
+                                <label for="inputName" class="col-sm-2 col-form-label"><strong>Name</strong></label>
                             </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="radioFemale" value="option2">
-                                <label class="form-check-label" for="radioFemale">Female</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="radioOther" value="option3">
-                                <label class="form-check-label" for="radioOther">Other</label>
+                            <div class="col-md-auto offset-md-2">
+                                <input class="form-control" type="text" name="name" aria-label="name">
                             </div>
                         </div>
+                        <div class="row g-3 py-2">
+                            <div class="col-md-3">
+                                <label for="labelUsername" class="col-form-label"><strong>Username</strong></label>
+                            </div>
+                            <div class="col-md-3 offset-md-2">
+                                <label for="username" class="col-form-label">johndoe</label>
+                            </div>
+                        </div>
+                        <div class="row g-3 py-2">
+                            <div class="col-md-3">
+                                <label for="labelEmail" class="col-form-label"><strong>Email</strong></label>
+                            </div>
+                            <div class="col-md-3 offset-md-2">
+                                <label for="email" class="col-form-label">johndoe123@gmail.com</label>
+                            </div>
+                        </div>
+                        <div class="row g-3 py-2">
+                            <div class="col-md-3">
+                                <label for="labelPhone" class="col-form-label"><strong>Phone Number</strong></label>
+                            </div>
+                            <div class="col-md-auto offset-md-2">
+                                <input class="form-control" name="phoneNo" type="text" aria-label="phone">
+                            </div>
+                        </div>
+                        <div class="row g-3 py-2">
+                            <div class="col-md-5">
+                                <label for="labelGender" class="col-form-label"><strong>Gender</strong></label>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" name="male" type="radio"  id="radioMale" value="option1">
+                                    <label class="form-check-label" for="radioMale">Male</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="female" id="radioFemale" value="option2">
+                                    <label class="form-check-label" for="radioFemale">Female</label>
+                                </div>
+                                <!-- <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="radioOther" value="option3">
+                                    <label class="form-check-label" for="radioOther">Other</label>
+                                </div> -->
+                            </div>
+                        </div>
+                        <div class="row g-3 py-2">
+                            <div class="col-md-3">
+                                <label for="labelDOB" class="col-form-label"><strong>Date Of Birth</strong></label>
+                            </div>
+                            <div class="col-md-auto offset-md-2">
+                            <input class="form-control" name="dateOfBirth" type="text" >
+                            </div>
+                        </div>
                     </div>
-                    <div class="row g-3 py-2">
-                        <div class="col-md-3">
-                            <label for="labelDOB" class="col-form-label"><strong>Date Of Birth</strong></label>
+                    <div class="col-lg-9 py-2">
+                        <h4>Edit Address Information</h4>
+                        <h6>Edit your delivery information</h6>
+                        <hr>
+                        <div class="row g-3 py-2">
+                            <div class="col-md-3">
+                                <label for="labelAddress" class="col-form-label"><strong>Street</strong></label>
+                            </div>
+                            <div class="col-md-auto offset-md-2">
+                                <input class="form-control" name="street" type="text" aria-label="street">
+                            </div>
                         </div>
-                        <div class="col-md-3 offset-md-2">
-                            <label for="DOB" class="col-form-label">1/1/2000</label>
+                        <div class="row g-3 py-2">
+                            <div class="col-md-3">
+                                <label for="labelCity" class="col-form-label"><strong>City</strong></label>
+                            </div>
+                            <div class="col-md-auto offset-md-2">
+                                <input class="form-control" name="city" type="text" aria-label="city">
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-lg-9 py-2">
-                    <h4>Edit Address Information</h4>
-                    <h6>Edit your delivery information</h6>
-                    <hr>
-                    <div class="row g-3 py-2">
-                        <div class="col-md-3">
-                            <label for="labelAddress" class="col-form-label"><strong>Street</strong></label>
+                        <div class="row g-3 py-2">
+                            <div class="col-md-3">
+                                <label for="labelCity" class="col-form-label"><strong>State</strong></label>
+                            </div>
+                            <div class="col-md-auto offset-md-2">
+                                <input class="form-control" name="state" type="text" aria-label="state">
+                            </div>
                         </div>
-                        <div class="col-md-auto offset-md-2">
-                            <input class="form-control" type="text" aria-label="street">
+                        <div class="row g-3 py-2">
+                            <div class="col-md-3">
+                                <label for="labelZipcode" class="col-form-label"><strong>Zipcode</strong></label>
+                            </div>
+                            <div class="col-md-auto offset-md-2">
+                                <input class="form-control" name="zipcode" type="text" aria-label="zipcode">
+                            </div>
                         </div>
-                    </div>
-                    <div class="row g-3 py-2">
-                        <div class="col-md-3">
-                            <label for="labelCity" class="col-form-label"><strong>City</strong></label>
-                        </div>
-                        <div class="col-md-auto offset-md-2">
-                            <input class="form-control" type="text" aria-label="city">
-                        </div>
-                    </div>
-                    <div class="row g-3 py-2">
-                        <div class="col-md-3">
-                            <label for="labelCity" class="col-form-label"><strong>State</strong></label>
-                        </div>
-                        <div class="col-md-auto offset-md-2">
-                            <input class="form-control" type="text" aria-label="state">
-                        </div>
-                    </div>
-                    <div class="row g-3 py-2">
-                        <div class="col-md-3">
-                            <label for="labelZipcode" class="col-form-label"><strong>Zipcode</strong></label>
-                        </div>
-                        <div class="col-md-auto offset-md-2">
-                            <input class="form-control" type="text" aria-label="zipcode">
-                        </div>
-                    </div>
-                    <div class="row py-2">
-                        <form>
+                        <div class="row py-2">
                             <div class="col-6 mt-2">
-                                <input class="blockbtn btn btn-primary" type="submit" name="save" id="save" value="Save" style="margin: 10px;">
+                                <!-- <input class="blockbtn btn btn-primary" type="submitEdit" name="save"  value="Save" style="margin: 10px;"> -->
+                                <button type="submit" name="save" class="blockbtn btn btn-primary">Savet</button>
                             </div>
                             <div class="col-6 mt-2">
                                 <button type="button" class="blockbtn btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modalDelete" style="margin: 10px;">
@@ -150,9 +152,9 @@ include("../includes/header.php")
                                     </div>
                                 </div>
                             </div>
-                        </form>
+                        </div>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>

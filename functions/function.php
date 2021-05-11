@@ -54,13 +54,14 @@ $email ="";
 
 session_start();
 if(isset($_POST['submit_Register'])){
+    
     register();
 }
 
 
 function register(){
     GLOBAL $db,$username,$email;
-
+    
     $username = $_POST['username'];
     $email = $_POST['email1'];
     $password1 = $_POST['password1'];
@@ -79,6 +80,7 @@ function register(){
 			$query = "INSERT INTO user (username, email,  passwordd, user_type) 
 					  VALUES('$username', '$email', '$password','user')";
 			mysqli_query($db, $query);
+
             
             $get_id = "select * from user where id=(select max(id) from user)";
 
@@ -88,6 +90,10 @@ function register(){
 
             $usrname = $row_id['id'];
 
+            $query1 = "insert into userdetails (id,name,phoneNo,gender,dateOfBirth,street,city,state,zipcode) values ('$usrname','?','?','?'
+            ,'?','?','?','?','?')";
+
+            mysqli_query($db,$query1);
 
             $logged_in_user_id = mysqli_insert_id($db);
 
@@ -104,7 +110,7 @@ if (isset($_POST['loginbtn'])) {
 
 // LOGIN USER
 function login(){
-	global $db, $username, $errors;
+	global $db, $username;
 
 	// grap form values
 	$username = $_POST['username'];
@@ -118,7 +124,7 @@ function login(){
     $query = "SELECT * FROM user WHERE username='$username' AND passwordd='$password' LIMIT 1";
     $results = mysqli_query($db, $query);
 
-    if ($results) { // user found
+    if (mysqli_num_rows($results) == 1) { // user found
         // check if user is admin or user
         $logged_in_user = mysqli_fetch_assoc($results);
         echo "$logged_in_user";
@@ -138,6 +144,50 @@ function login(){
         echo "<script>window.open('index.php','_self')</script>";
     }
 }
+
+
+?>
+
+
+<?php 
+
+if (isset($_POST['save'])) {
+	userDetail();
+}
+
+function userDetail(){
+    global $db, $name, $phoneNo, $gender, $dateOfBirth, $street, $city, $state, $zipcode,$id;
+
+    if(isset($_GET['id'])){
+        $id = $_GET['id'];
+    }
+
+    $name = $_POST['name'];
+    $phoneNo = $_POST['phoneNo'];
+
+    $gender = $_POST['male'];
+
+    if(empty($gender)){
+        $gender = $_POST['female'];
+    }
+    $dateOfBirth = $_POST['dateOfBirth'];
+    $street = $_POST['street'];
+    $city = $_POST['city'];
+    $state = $_POST['state'];
+    $zipcode = $_POST['zipcode'];
+
+    $query = "update userdetails set name='$name',phoneNo='$phoneNo',gender='$gender',dateOfBirth='$dateOfBirth',street='$street'
+    ,city='$city',state='$state',zipcode='$zipcode' where id=$id";
+    $run_query = mysqli_query($db,$query);
+
+    if($run_query){
+        echo "<script>alert('Your Information Have Been Saved')</script>";
+        echo "<script>window.open('user.php?id=$id')</script>";
+    }
+}
+
+
+
 
 
 ?>
