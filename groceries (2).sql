@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 08, 2021 at 04:23 PM
+-- Generation Time: May 11, 2021 at 08:55 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.2
 
@@ -81,6 +81,39 @@ CREATE TABLE `slider` (
   `slider_img` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user`
+--
+
+CREATE TABLE `user` (
+  `id` int(10) NOT NULL,
+  `username` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `passwordd` varchar(100) NOT NULL,
+  `user_type` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `userdetails`
+--
+
+CREATE TABLE `userdetails` (
+  `userDetailID` int(10) NOT NULL,
+  `id` int(10) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `phoneNo` varchar(100) NOT NULL,
+  `gender` text NOT NULL,
+  `dateOfBirth` varchar(100) NOT NULL,
+  `street` text NOT NULL,
+  `city` text NOT NULL,
+  `state` text NOT NULL,
+  `zipcode` int(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 --
 -- Indexes for dumped tables
 --
@@ -104,6 +137,18 @@ ALTER TABLE `slider`
   ADD PRIMARY KEY (`slider_id`);
 
 --
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `userdetails`
+--
+ALTER TABLE `userdetails`
+  ADD PRIMARY KEY (`userDetailID`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -124,6 +169,18 @@ ALTER TABLE `product_categories`
 --
 ALTER TABLE `slider`
   MODIFY `slider_id` int(10) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
+
+--
+-- AUTO_INCREMENT for table `userdetails`
+--
+ALTER TABLE `userdetails`
+  MODIFY `userDetailID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
