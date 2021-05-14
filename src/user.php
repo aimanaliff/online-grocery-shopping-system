@@ -53,16 +53,21 @@ include("../includes/header.php");
 
                                     <?php 
                                         
-                                        $query = "select * from user where id=".$_SESSION['user'];
+                                        $query = "select * from userdetails where id=".$_SESSION['user'];
                                         $run_query = mysqli_query($db,$query);
 
                                         $row_query = mysqli_fetch_array($run_query);
 
-                                        $username = $row_query['username'];
-                                        
+                                        $name = $row_query['name'];
+                                        $phoneNo = $row_query['phoneNo'];
+                                        $dateOfBirth = $row_query['dateOfBirth'];
+                                        $street = $row_query['street'];
+                                        $city= $row_query['city'];
+                                        $state = $row_query['state'];
+                                        $zipcode = $row_query['zipcode'];
                                     ?>
 
-                                    <label for="name" class="col-form-label"><?php echo "$username";?></label>
+                                    <label for="name" class="col-form-label"><?php echo "$name";?></label>
                                      
                                 <?php endif ?> 
                             </div>
@@ -72,19 +77,21 @@ include("../includes/header.php");
                                 <label for="labelName" class="col-form-label"><strong>Username</strong></label>
                             </div>
                             <div class="col-md-3 offset-md-2">
-                            <?php  if (isset($_SESSION['user'])) : ?> 
-                                <?php 
-                                    
-                                    $query = "select * from user where id=".$_SESSION['user'];
-                                    $run_query = mysqli_query($db,$query);
+                             <?php  if (isset($_SESSION['user'])) : ?> 
 
-                                    $row_query = mysqli_fetch_array($run_query);
+                                    <?php 
+                                        
+                                        $query = "select * from user where id=".$_SESSION['user'];
+                                        $run_query = mysqli_query($db,$query);
 
-                                    $username = $row_query['username'];
-                                    
-                                ?>
-                                <label for="name" class="col-form-label"><?php echo "$username";?></label>
-                                
+                                        $row_query = mysqli_fetch_array($run_query);
+
+                                        $name = $row_query['username'];
+                                       
+                                    ?>
+
+                                    <label for="name" class="col-form-label"><?php echo "$name";?></label>
+                                     
                                 <?php endif ?> 
                             </div>
                         </div>
@@ -93,7 +100,19 @@ include("../includes/header.php");
                                 <label for="labelEmail" class="col-form-label"><strong>Email</strong></label>
                             </div>
                             <div class="col-md-3 offset-md-2">
-                                <label for="email" class="col-form-label">johndoe123@gmail.com</label>
+                                <?php  if (isset($_SESSION['user'])) : ?> 
+
+                                    <?php 
+                                        
+                                        $query = "select * from user where id=".$_SESSION['user'];
+                                        $run_query = mysqli_query($db,$query);
+
+                                        $row_query = mysqli_fetch_array($run_query);
+
+                                        $email = $row_query['email'];
+                                    ?>
+                                     <label for="email" class="col-form-label"><?php echo "$email"; ?></label>
+                                <?php endif ?> 
                             </div>
                         </div>
                         <div class="row g-3 py-2">
@@ -101,37 +120,101 @@ include("../includes/header.php");
                                 <label for="labelPhone" class="col-form-label"><strong>Phone Number</strong></label>
                             </div>
                             <div class="col-md-3 offset-md-2">
-                                <label for="phone" class="col-form-label">555 5555 555</label>
+                                <?php  if (isset($_SESSION['user'])) : ?> 
+
+                                    <?php 
+                                        
+                                        $query = "select * from userdetails where id=".$_SESSION['user'];
+                                        $run_query = mysqli_query($db,$query);
+
+                                        $row_query = mysqli_fetch_array($run_query);
+
+                                        $name = $row_query['name'];
+                                        $phoneNo = $row_query['phoneNo'];
+                                        $dateOfBirth = $row_query['dateOfBirth'];
+                                        $street = $row_query['street'];
+                                        $city= $row_query['city'];
+                                        $state = $row_query['state'];
+                                        $zipcode = $row_query['zipcode'];
+                                    ?>
+
+                                    <label for="name" class="col-form-label"><?php echo "$phoneNo";?></label>
+                                <?php endif ?> 
                             </div>
                         </div>
-                        <div class="row g-3 py-2">
+                        <!-- <div class="row g-3 py-2">
                             <div class="col-md-5">
                                 <label for="labelGender" class="col-form-label"><strong>Gender</strong></label>
                             </div>
                             <div class="col-md-5">
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="male"
-                                        id="radioMale" value="option1" checked>
-                                    <label class="form-check-label" for="radioMale">Male</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="female"
-                                        id="radioFemale" value="option2">
-                                    <label class="form-check-label" for="radioFemale">Female</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                        id="radioOther" value="option3">
-                                    <label class="form-check-label" for="radioOther">Other</label>
-                                </div>
-                            </div>
-                        </div>
+                                    <?php  if (isset($_SESSION['user'])) : ?> 
+                                    <?php 
+                                        // global $gender;
+                                        // $query = "select * from userdetails where id=".$_SESSION['user'];
+                                        // $run_query = mysqli_query($db,$query);
+
+                                        // $row_query = mysqli_fetch_array($run_query);
+
+                                        // $name = $row_query['name'];
+                                        // $phoneNo = $row_query['phoneNo'];
+                                        // $dateOfBirth = $row_query['dateOfBirth'];
+                                        // $street = $row_query['street'];
+                                        // $city= $row_query['city'];
+                                        // $state = $row_query['state'];
+                                        // $zipcode = $row_query['zipcode'];
+                                    ?>
+                                    <?php endif ?> 
+                                
+                                    <?php 
+                                       
+                                        // if($gender=="option1"){
+                                            
+                                        //     echo "
+                                        //     <div class='form-check form-check-inline'>
+                                        //     <input class='form-check-input' type='radio' name='male'
+                                        //     id='radioMale' value='option1' checked >
+                                        //     <label class='form-check-label' for='radioMale'>Male</label>
+                                        //     </div>
+                                        //     ";
+                                        // } else if($gender=="option2"){
+                                        //     echo "
+                                        //     <div class='form-check form-check-inline'>
+                                        //     <input class='form-check-input' type='radio' name='female'
+                                        //     id='radioFemale' value='option2' checked>
+                                        //     <label class='form-check-labe' for='radioFemale'>Female</label>
+                                        //     </div>
+                                        //     ";
+                                        //     $check = TRUE;
+                                        // }
+
+                                    ?>
+                             </div> -->
+                        <!-- </div> -->
                         <div class="row g-3 py-2">
                             <div class="col-md-3">
                                 <label for="labelDOB" class="col-form-label"><strong>Date Of Birth</strong></label>
                             </div>
                             <div class="col-md-3 offset-md-2">
-                                <label for="DOB" class="col-form-label">1/1/2000</label>
+                                <?php  if (isset($_SESSION['user'])) : ?> 
+
+                                    <?php 
+                                        
+                                        $query = "select * from userdetails where id=".$_SESSION['user'];
+                                        $run_query = mysqli_query($db,$query);
+
+                                        $row_query = mysqli_fetch_array($run_query);
+
+                                        $name = $row_query['name'];
+                                        $phoneNo = $row_query['phoneNo'];
+                                        $dateOfBirth = $row_query['dateOfBirth'];
+                                        $street = $row_query['street'];
+                                        $city= $row_query['city'];
+                                        $state = $row_query['state'];
+                                        $zipcode = $row_query['zipcode'];
+                                    ?>
+
+                                    <label for="name" class="col-form-label"><?php echo "$dateOfBirth";?></label>
+                                <?php endif ?> 
                             </div>
                         </div>
                     </div>
@@ -146,7 +229,27 @@ include("../includes/header.php");
                                 <label for="labelAddress" class="col-form-label"><strong>Street</strong></label>
                             </div>
                             <div class="col-md-3 offset-md-2">
-                                <label for="address" class="col-form-label">420 Jalan Panjang</label>
+                            <?php  if (isset($_SESSION['user'])) : ?> 
+
+                                    <?php 
+                                        
+                                        $query = "select * from userdetails where id=".$_SESSION['user'];
+                                        $run_query = mysqli_query($db,$query);
+
+                                        $row_query = mysqli_fetch_array($run_query);
+
+                                        $name = $row_query['name'];
+                                        $phoneNo = $row_query['phoneNo'];
+                                        $dateOfBirth = $row_query['dateOfBirth'];
+                                        $street = $row_query['street'];
+                                        $city= $row_query['city'];
+                                        $state = $row_query['state'];
+                                        $zipcode = $row_query['zipcode'];
+                                    ?>
+
+                                    <label for="address" class="col-form-label"><?php echo "$street";?></label>
+                                <?php endif ?> 
+                                
                             </div>
                         </div>
                         <div class="row g-3 py-2">
@@ -154,7 +257,26 @@ include("../includes/header.php");
                                 <label for="labelCity" class="col-form-label"><strong>City</strong></label>
                             </div>
                             <div class="col-md-3 offset-md-2">
-                                <label for="city" class="col-form-label">Petaling Jaya</label>
+                                <?php  if (isset($_SESSION['user'])) : ?> 
+
+                                    <?php 
+                                        
+                                        $query = "select * from userdetails where id=".$_SESSION['user'];
+                                        $run_query = mysqli_query($db,$query);
+
+                                        $row_query = mysqli_fetch_array($run_query);
+
+                                        $name = $row_query['name'];
+                                        $phoneNo = $row_query['phoneNo'];
+                                        $dateOfBirth = $row_query['dateOfBirth'];
+                                        $street = $row_query['street'];
+                                        $city= $row_query['city'];
+                                        $state = $row_query['state'];
+                                        $zipcode = $row_query['zipcode'];
+                                    ?>
+
+                                    <label for="address" class="col-form-label"><?php echo "$city";?></label>
+                                <?php endif ?> 
                             </div>
                         </div>
                         <div class="row g-3 py-2">
@@ -162,7 +284,26 @@ include("../includes/header.php");
                                 <label for="labelCity" class="col-form-label"><strong>State</strong></label>
                             </div>
                             <div class="col-md-3 offset-md-2">
-                                <label for="city" class="col-form-label">Selangor</label>
+                                <?php  if (isset($_SESSION['user'])) : ?> 
+
+                                    <?php 
+                                        
+                                        $query = "select * from userdetails where id=".$_SESSION['user'];
+                                        $run_query = mysqli_query($db,$query);
+
+                                        $row_query = mysqli_fetch_array($run_query);
+
+                                        $name = $row_query['name'];
+                                        $phoneNo = $row_query['phoneNo'];
+                                        $dateOfBirth = $row_query['dateOfBirth'];
+                                        $street = $row_query['street'];
+                                        $city= $row_query['city'];
+                                        $state = $row_query['state'];
+                                        $zipcode = $row_query['zipcode'];
+                                    ?>
+
+                                    <label for="address" class="col-form-label"><?php echo "$state";?></label>
+                                <?php endif ?> 
                             </div>
                         </div>
                         <div class="row g-3 py-2">
@@ -170,7 +311,26 @@ include("../includes/header.php");
                                 <label for="labelZipcode" class="col-form-label"><strong>Zipcode</strong></label>
                             </div>
                             <div class="col-md-3 offset-md-2">
-                                <label for="zipcode" class="col-form-label">10101</label>
+                                <?php  if (isset($_SESSION['user'])) : ?> 
+
+                                    <?php 
+                                        
+                                        $query = "select * from userdetails where id=".$_SESSION['user'];
+                                        $run_query = mysqli_query($db,$query);
+
+                                        $row_query = mysqli_fetch_array($run_query);
+
+                                        $name = $row_query['name'];
+                                        $phoneNo = $row_query['phoneNo'];
+                                        $dateOfBirth = $row_query['dateOfBirth'];
+                                        $street = $row_query['street'];
+                                        $city= $row_query['city'];
+                                        $state = $row_query['state'];
+                                        $zipcode = $row_query['zipcode'];
+                                    ?>
+                                    
+                                    <label for="address" class="col-form-label"><?php echo "$zipcode";?></label>
+                                <?php endif ?> 
                             </div>
                         </div>
                     </div>

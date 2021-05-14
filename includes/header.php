@@ -205,19 +205,25 @@ include("../functions/function.php");
 
                         </div>
                         <div class="tab-pane fade" id="signup" role="tabpanel" aria-labelledby="profile-tab">
+                        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
                             <form  method="post" enctype="multipart/form-data">
                                 <div class="mb-3">
-                                    <input type="text" name="username" value="<?php echo $username; ?>" class="form-control" id="exampleInputText1" aria-describedby="textHelp" placeholder="Username" required>
+                                    <input type="text" name="username" value="" onBlur="checkAvailability()" class="form-control" id="user" aria-describedby="textHelp" placeholder="Username" required>
+                                    <div id="msg"></div>
                                 </div>
                                 <div class="mb-3">
                                     <input type="email" name="email1" value="<?php echo $email; ?>" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email" required>
                                 </div>
+                                
                                 <div class="mb-3">
-                                    <input type="password" name="password1" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
+                                    <input type="password" name="password1" class="form-control" id="Password1" placeholder="Password" required>
                                 </div>
                                 <div class="mb-3">
-                                    <input type="password" name="password2" class="form-control" id="exampleInputPassword1" placeholder="Re-Enter Password" required>
+                                    <input type="password" name="password2" class="form-control" id="Password2" placeholder="Re-Enter Password" required>
+                                    <span id="message"></span>
                                 </div>
+                                
+                                
                                 <div class="mb-3">
                                 <input class="form-check-input" type="checkbox" name="user_type" value="" id="flexCheckDefault">
                                 <label class="form-check-label" for="flexCheckDefault">
@@ -253,5 +259,29 @@ include("../functions/function.php");
     return new bootstrap.Tooltip(tooltipTriggerEl)
     })
     </script>
+    <script>
+        $('#Password1, #Password2').on('keyup', function () {
+        if ($('#Password1').val() == $('#Password2').val()) {
+            $('#message').html('Password Match').css('color', 'green');
+        } else 
+            $('#message').html('Password Not Match').css('color', 'red');
+        });
+    </script>
+    <script type="text/javascript">
+    function checkAvailability(){
+        var username = $("#user").val().trim();
+        $.ajax({
+            type:"post",
+            url:"../includes/check_availability.php",
+            data:{
+                username:username
+            },
+            success:function(response){
+                $("#msg").html(response);
+            }
+        });
+    }
+    </script>
+    
     
     

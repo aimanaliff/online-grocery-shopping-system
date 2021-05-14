@@ -34,7 +34,18 @@ include("../includes/header.php")
                                 <label for="inputName" class="col-sm-2 col-form-label"><strong>Name</strong></label>
                             </div>
                             <div class="col-md-auto offset-md-2">
-                                <input class="form-control" type="text" name="name" aria-label="name">
+                                <?php  if (isset($_SESSION['user'])) : ?> 
+
+                                    <?php 
+                                        $query = "select * from userdetails where id=".$_SESSION['user'];
+                                        $run_query = mysqli_query($db,$query);
+                                        $row_query = mysqli_fetch_array($run_query);
+                                        $name = $row_query['name'];
+                                       
+                                    ?>
+                                    <input class="form-control" type="text" name="name" value="<?php echo "$name"; ?>" aria-label="name">
+                                <?php endif ?> 
+                                
                             </div>
                         </div>
                         <div class="row g-3 py-2">
@@ -42,7 +53,21 @@ include("../includes/header.php")
                                 <label for="labelUsername" class="col-form-label"><strong>Username</strong></label>
                             </div>
                             <div class="col-md-3 offset-md-2">
-                                <label for="username" class="col-form-label">johndoe</label>
+                                <?php  if (isset($_SESSION['user'])) : ?> 
+
+                                    <?php 
+                                        
+                                        $query = "select * from user where id=".$_SESSION['user'];
+                                        $run_query = mysqli_query($db,$query);
+
+                                        $row_query = mysqli_fetch_array($run_query);
+
+                                        $name = $row_query['username'];
+                                    ?>
+
+                                    <label for="username" class="col-form-label"><?php echo "$name"; ?></label>
+                                <?php endif ?> 
+                                
                             </div>
                         </div>
                         <div class="row g-3 py-2">
@@ -50,7 +75,21 @@ include("../includes/header.php")
                                 <label for="labelEmail" class="col-form-label"><strong>Email</strong></label>
                             </div>
                             <div class="col-md-3 offset-md-2">
-                                <label for="email" class="col-form-label">johndoe123@gmail.com</label>
+                                <?php  if (isset($_SESSION['user'])) : ?> 
+
+                                    <?php 
+                                        
+                                        $query = "select * from user where id=".$_SESSION['user'];
+                                        $run_query = mysqli_query($db,$query);
+
+                                        $row_query = mysqli_fetch_array($run_query);
+
+                                        $email = $row_query['email'];
+                                    ?>
+
+                                    <label for="email" class="col-form-label"><?php echo "$email";?></label>
+                                <?php endif ?> 
+                                
                             </div>
                         </div>
                         <div class="row g-3 py-2">
@@ -58,26 +97,18 @@ include("../includes/header.php")
                                 <label for="labelPhone" class="col-form-label"><strong>Phone Number</strong></label>
                             </div>
                             <div class="col-md-auto offset-md-2">
-                                <input class="form-control" name="phoneNo" type="text" aria-label="phone">
-                            </div>
-                        </div>
-                        <div class="row g-3 py-2">
-                            <div class="col-md-5">
-                                <label for="labelGender" class="col-form-label"><strong>Gender</strong></label>
-                            </div>
-                            <div class="col-md-5">
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" name="male" type="radio"  id="radioMale" value="option1">
-                                    <label class="form-check-label" for="radioMale">Male</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="female" id="radioFemale" value="option2">
-                                    <label class="form-check-label" for="radioFemale">Female</label>
-                                </div>
-                                <!-- <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="radioOther" value="option3">
-                                    <label class="form-check-label" for="radioOther">Other</label>
-                                </div> -->
+                                <?php  if (isset($_SESSION['user'])) : ?> 
+
+                                    <?php 
+                                        
+                                        $query = "select * from userdetails where id=".$_SESSION['user'];
+                                        $run_query = mysqli_query($db,$query);
+                                        $row_query = mysqli_fetch_array($run_query);
+                                        $phoneNo = $row_query['phoneNo'];
+                                    ?>
+                                    <input class="form-control" name="phoneNo" type="text" value="<?php echo "$phoneNo"; ?>" aria-label="phone">
+                                <?php endif ?> 
+                                
                             </div>
                         </div>
                         <div class="row g-3 py-2">
@@ -85,7 +116,18 @@ include("../includes/header.php")
                                 <label for="labelDOB" class="col-form-label"><strong>Date Of Birth</strong></label>
                             </div>
                             <div class="col-md-auto offset-md-2">
-                            <input class="form-control" name="dateOfBirth" type="text" >
+                                <?php  if (isset($_SESSION['user'])) : ?> 
+
+                                    <?php 
+                                        
+                                        $query = "select * from userdetails where id=".$_SESSION['user'];
+                                        $run_query = mysqli_query($db,$query);
+                                        $row_query = mysqli_fetch_array($run_query);
+                                        $dateOfBirth = $row_query['dateOfBirth'];
+                                        
+                                    ?>
+                                    <input class="form-control" name="dateOfBirth" value="<?php echo "$dateOfBirth"; ?>" type="text" >
+                                <?php endif ?> 
                             </div>
                         </div>
                     </div>
@@ -98,7 +140,16 @@ include("../includes/header.php")
                                 <label for="labelAddress" class="col-form-label"><strong>Street</strong></label>
                             </div>
                             <div class="col-md-auto offset-md-2">
-                                <input class="form-control" name="street" type="text" aria-label="street">
+                                <?php  if (isset($_SESSION['user'])) : ?> 
+                                    <?php 
+                                        $query = "select * from userdetails where id=".$_SESSION['user'];
+                                        $run_query = mysqli_query($db,$query);
+                                        $row_query = mysqli_fetch_array($run_query);
+                                        $street = $row_query['street'];
+                                    ?>
+                                    <input class="form-control" name="street" type="text" value="<?php echo "$street"; ?>" aria-label="street">
+                                <?php endif ?> 
+                                
                             </div>
                         </div>
                         <div class="row g-3 py-2">
@@ -106,7 +157,21 @@ include("../includes/header.php")
                                 <label for="labelCity" class="col-form-label"><strong>City</strong></label>
                             </div>
                             <div class="col-md-auto offset-md-2">
-                                <input class="form-control" name="city" type="text" aria-label="city">
+                                <?php  if (isset($_SESSION['user'])) : ?> 
+
+                                    <?php 
+                                        
+                                        $query = "select * from userdetails where id=".$_SESSION['user'];
+                                        $run_query = mysqli_query($db,$query);
+
+                                        $row_query = mysqli_fetch_array($run_query);
+                                        $city= $row_query['city'];
+                                        
+                                    ?>
+
+                                    <input class="form-control" name="city" type="text" value="<?php echo "$city"; ?>" aria-label="city">
+                                <?php endif ?> 
+                                
                             </div>
                         </div>
                         <div class="row g-3 py-2">
@@ -114,7 +179,21 @@ include("../includes/header.php")
                                 <label for="labelCity" class="col-form-label"><strong>State</strong></label>
                             </div>
                             <div class="col-md-auto offset-md-2">
-                                <input class="form-control" name="state" type="text" aria-label="state">
+                                <?php  if (isset($_SESSION['user'])) : ?> 
+
+                                    <?php 
+                                        
+                                        $query = "select * from userdetails where id=".$_SESSION['user'];
+                                        $run_query = mysqli_query($db,$query);
+
+                                        $row_query = mysqli_fetch_array($run_query);
+
+                                        $state = $row_query['state'];
+                                    ?>
+
+                                    <input class="form-control" name="state" type="text" value="<?php echo "$state"; ?>" aria-label="state">
+                                <?php endif ?> 
+                                
                             </div>
                         </div>
                         <div class="row g-3 py-2">
@@ -122,7 +201,22 @@ include("../includes/header.php")
                                 <label for="labelZipcode" class="col-form-label"><strong>Zipcode</strong></label>
                             </div>
                             <div class="col-md-auto offset-md-2">
-                                <input class="form-control" name="zipcode" type="text" aria-label="zipcode">
+                                <?php  if (isset($_SESSION['user'])) : ?> 
+
+                                    <?php 
+                                        
+                                        $query = "select * from userdetails where id=".$_SESSION['user'];
+                                        $run_query = mysqli_query($db,$query);
+
+                                        $row_query = mysqli_fetch_array($run_query);
+
+                                        
+                                        $zipcode = $row_query['zipcode'];
+                                    ?>
+
+                                    <input class="form-control" name="zipcode" type="text" value="<?php echo "$zipcode"; ?>" aria-label="zipcode">
+                                <?php endif ?> 
+                                
                             </div>
                         </div>
                         <div class="row py-2">
