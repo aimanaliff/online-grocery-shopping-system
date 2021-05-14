@@ -1,3 +1,5 @@
+<?php GLOBAL $messege; ?>
+
 <?php 
 
 $db=mysqli_connect("localhost","root","","groceries");
@@ -51,50 +53,71 @@ function getpro(){
 <?php 
 $username ="";
 $email ="";
-
+$a = "";
 session_start();
 if(isset($_POST['submit_Register'])){
+    
     register();
 }
 
 
 function register(){
     GLOBAL $db,$username,$email;
-
+    
     $username = $_POST['username'];
     $email = $_POST['email1'];
     $password1 = $_POST['password1'];
     $password2 = $_POST['password2'];
 
-        $password = md5($password1);
-
+    $password = md5($password1);
+    if($password1 == $password2){
         if (isset($_POST['user_type'])) {
-			$user_type = $_POST['user_type'];
-			$query = "INSERT INTO user (username, email, passwordd, user_type ) 
-					  VALUES('$username', '$email', '$password','admin' )";
-			mysqli_query($db, $query);
-			$_SESSION['success']  = "New user successfully created!!";
-			header('location: ../admin_area/admin.php');
-		}else{
-			$query = "INSERT INTO user (username, email,  passwordd, user_type) 
-					  VALUES('$username', '$email', '$password','user')";
-			mysqli_query($db, $query);
+            $user_type = $_POST['user_type'];
+            $query = "INSERT INTO user (username, email, passwordd, user_type ) 
+                        VALUES('$username', '$email', '$password','admin' )";
+            mysqli_query($db, $query);
+            $_SESSION['success']  = "New user successfully created!!";
+            header('location: ../admin_area/admin.php');
+        }else{
+            $taken = "select * from user where username='$username'";
+            $takenResult = mysqli_query($db,$taken);
+            if(mysqli_num_rows($takenResult)>0){
+                // $a = "Username Already Exists";
+                // echo "<script>$('#msg').html('Username Already Exists').css('color', 'red')</script>";
+                // echo "<script>alert('Username already taken')</script>";
+                // echo "<script>window.open('index.php','_self')</script>";
+            }else{
+                $query = "INSERT INTO user (username, email,  passwordd, user_type) 
+                VALUES('$username', '$email', '$password','user')";
+                mysqli_query($db, $query);
+    
+                
+                $get_id = "select * from user where id=(select max(id) from user)";
+    
+                $run_id = mysqli_query($db,$get_id);
+                
+                $row_id=mysqli_fetch_array($run_id);
+    
+                $usrname = $row_id['id'];
+    
+                $query1 = "insert into userdetails (id,name,phoneNo,dateOfBirth,street,city,state,zipcode) values ('$usrname','',''
+                ,'','','','','')";
+    
+                mysqli_query($db,$query1);
+    
+                $logged_in_user_id = mysqli_insert_id($db);
+    
+                $_SESSION['user'] = $usrname; // put logged in user in session
+                $_SESSION['success']  = "You are now logged in";
+                header('location: ../src/index.php?id='.$usrname);
+            }
             
-            $get_id = "select * from user where id=(select max(id) from user)";
-
-            $run_id = mysqli_query($db,$get_id);
-            
-            $row_id=mysqli_fetch_array($run_id);
-
-            $usrname = $row_id['id'];
-
-
-            $logged_in_user_id = mysqli_insert_id($db);
-
-            $_SESSION['user'] = $usrname; // put logged in user in session
-			$_SESSION['success']  = "You are now logged in";
-            header('location: ../src/index.php?id='.$usrname);
         }
+    }else{
+        echo "<script>alert('Password not same')</script>";
+        echo "<script>window.open('index.php','_self')</script>";
+    }
+    
     
 }       
 
@@ -104,7 +127,7 @@ if (isset($_POST['loginbtn'])) {
 
 // LOGIN USER
 function login(){
-	global $db, $username, $errors;
+	global $db, $username;
 
 	// grap form values
 	$username = $_POST['username'];
@@ -118,7 +141,7 @@ function login(){
     $query = "SELECT * FROM user WHERE username='$username' AND passwordd='$password' LIMIT 1";
     $results = mysqli_query($db, $query);
 
-    if ($results) { // user found
+    if (mysqli_num_rows($results) == 1) { // user found
         // check if user is admin or user
         $logged_in_user = mysqli_fetch_assoc($results);
         echo "$logged_in_user";
@@ -138,6 +161,46 @@ function login(){
         echo "<script>window.open('index.php','_self')</script>";
     }
 }
+
+
+?>
+
+
+<?php 
+
+if (isset($_POST['save'])) {
+	userDetail();
+}
+
+function userDetail(){
+    global $db, $name, $phoneNo,  $dateOfBirth, $street, $city, $state, $zipcode,$id;
+
+    if(isset($_GET['id'])){
+        $id = $_GET['id'];
+    }
+
+    $name = $_POST['name'];
+    $phoneNo = $_POST['phoneNo'];
+
+    
+    $dateOfBirth = $_POST['dateOfBirth'];
+    $street = $_POST['street'];
+    $city = $_POST['city'];
+    $state = $_POST['state'];
+    $zipcode = $_POST['zipcode'];
+
+    $query = "update userdetails set name='$name',phoneNo='$phoneNo',dateOfBirth='$dateOfBirth',street='$street'
+    ,city='$city',state='$state',zipcode='$zipcode' where id=$id";
+    $run_query = mysqli_query($db,$query);
+
+    if($run_query){
+        echo "<script>alert('Your Information Have Been Saved')</script>";
+        echo "<script>window.open('user.php?id=$id')</script>";
+    }
+}
+
+
+
 
 
 ?>

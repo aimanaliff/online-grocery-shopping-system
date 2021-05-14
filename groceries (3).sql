@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 11, 2021 at 08:55 AM
+-- Generation Time: May 14, 2021 at 05:08 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.2
 
@@ -95,6 +95,16 @@ CREATE TABLE `user` (
   `user_type` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`id`, `username`, `email`, `passwordd`, `user_type`) VALUES
+(82, 'hazieq', 'muhammadhaazieq@gmail.com', '0cc175b9c0f1b6a831c399e269772661', 'user'),
+(89, 'muhd', 'muhammadhaazieq@gmail.com', '0cc175b9c0f1b6a831c399e269772661', 'user'),
+(90, 'hazieq1', 'muhammadhazieq00@gmail.com', '0cc175b9c0f1b6a831c399e269772661', 'user'),
+(91, 'hazieq2', 'muhammadhaazieq@gmail.com', '0cc175b9c0f1b6a831c399e269772661', 'user');
+
 -- --------------------------------------------------------
 
 --
@@ -106,13 +116,23 @@ CREATE TABLE `userdetails` (
   `id` int(10) NOT NULL,
   `name` varchar(100) NOT NULL,
   `phoneNo` varchar(100) NOT NULL,
-  `gender` text NOT NULL,
   `dateOfBirth` varchar(100) NOT NULL,
   `street` text NOT NULL,
   `city` text NOT NULL,
   `state` text NOT NULL,
   `zipcode` int(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `userdetails`
+--
+
+INSERT INTO `userdetails` (`userDetailID`, `id`, `name`, `phoneNo`, `dateOfBirth`, `street`, `city`, `state`, `zipcode`) VALUES
+(9, 82, 'JUMAH BEE BINTI KALANDA MASTAN', '0175116129', '12/3', 'asdadsadad', 'asd', 'asdad', 15020),
+(12, 85, 'sada', '252', '12/3/2000', 'THE SPRING', 'GEORGETOWN', 'PENANG', 11600),
+(13, 89, '', '', '', '', '', '', 0),
+(14, 90, '', '', '', '', '', '', 0),
+(15, 91, 'muhammad hazieq', '0175116129', '2', 'THE SPRING', 'GEORGETOWN', 'PENANG', 11600);
 
 --
 -- Indexes for dumped tables
@@ -174,13 +194,13 @@ ALTER TABLE `slider`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
 
 --
 -- AUTO_INCREMENT for table `userdetails`
 --
 ALTER TABLE `userdetails`
-  MODIFY `userDetailID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `userDetailID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
