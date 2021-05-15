@@ -16,12 +16,14 @@ function getpro(){
     while($row_product=mysqli_fetch_array($run_product)){
         
         $product_id = $row_product['product_id'];
+        $p_cat_id = $row_product['p_cat_id'];
         $product_name = $row_product['product_name'];
         $product_price = $row_product['product_price'];
         $product_img = $row_product['product_img'];
         $product_quantity = $row_product['product_quantity'];
         $product_desc = $row_product['product_desc'];
 
+        if($p_cat_id == 1)
         echo "
         
         <div class='col'>
@@ -39,7 +41,6 @@ function getpro(){
                 </div>
             </div>
         </div>
-        
         
         ";
 
@@ -198,10 +199,6 @@ function userDetail(){
         echo "<script>window.open('user.php?id=$id')</script>";
     }
 }
-
-
-
-
 
 ?>
 

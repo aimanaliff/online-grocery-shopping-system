@@ -133,21 +133,21 @@ include("../functions/function.php");
                     if(isset($_SESSION['success'])){
                         $userid = $_SESSION['user'];
                         echo "
-                            <li class='nav-item'><a href='../src/products.php?id=$userid' class='nav-link text-dark'>Food Essentials</a></li>
-                            <li class='nav-item'><a href='#' class='nav-link text-dark'>Chilled & Frozen</a></li>
-                            <li class='nav-item'><a href='#' class='nav-link text-dark'>Beverages</a></li>
+                            <li class='nav-item'><a href='../src/products.php?id=$userid' class='nav-link text-dark'>Fruits</a></li>
+                            <li class='nav-item'><a href='#' class='nav-link text-dark'>Vegetables</a></li>
+                            <li class='nav-item'><a href='#' class='nav-link text-dark'>Meat</a></li>
                             <li class='nav-item'><a href='#' class='nav-link text-dark'>Cookies & Snacks</a></li>
-                            <li class='nav-item'><a href='#' class='nav-link text-dark'>Bakery</a></li>
+                            <li class='nav-item'><a href='#' class='nav-link text-dark'>Beverages</a></li>
                         "
                         ;
                     }
                     else{
                         echo "
-                        <li class='nav-item'><a href='../src/products.php' class='nav-link text-dark'>Food Essentials</a></li>
-                        <li class='nav-item'><a href='#' class='nav-link text-dark'>Chilled & Frozen</a></li>
-                        <li class='nav-item'><a href='#' class='nav-link text-dark'>Beverages</a></li>
+                        <li class='nav-item'><a href='../src/products.php' class='nav-link text-dark'>Fruits</a></li>
+                        <li class='nav-item'><a href='#' class='nav-link text-dark'>Vegetables</a></li>
+                        <li class='nav-item'><a href='#' class='nav-link text-dark'>Meat</a></li>
                         <li class='nav-item'><a href='#' class='nav-link text-dark'>Cookies & Snacks</a></li>
-                        <li class='nav-item'><a href='#' class='nav-link text-dark'>Bakery</a></li>
+                        <li class='nav-item'><a href='#' class='nav-link text-dark'>Beverages</a></li>
                         "
                     ;
                     }

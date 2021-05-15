@@ -52,12 +52,9 @@ include("../includes/header.php");
                                 <?php  if (isset($_SESSION['user'])) : ?> 
 
                                     <?php 
-                                        
                                         $query = "select * from userdetails where id=".$_SESSION['user'];
                                         $run_query = mysqli_query($db,$query);
-
                                         $row_query = mysqli_fetch_array($run_query);
-
                                         $name = $row_query['name'];
                                         $phoneNo = $row_query['phoneNo'];
                                         $dateOfBirth = $row_query['dateOfBirth'];
