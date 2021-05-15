@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 14, 2021 at 05:08 PM
+-- Generation Time: May 15, 2021 at 05:06 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.2
 
@@ -20,6 +20,35 @@ SET time_zone = "+00:00";
 --
 -- Database: `groceries`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cart`
+--
+
+CREATE TABLE `cart` (
+  `cartID` int(10) NOT NULL,
+  `ProductInListID` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `listname`
+--
+
+CREATE TABLE `listname` (
+  `ListID` int(10) NOT NULL,
+  `ListName` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `listname`
+--
+
+INSERT INTO `listname` (`ListID`, `ListName`) VALUES
+(1, 'choc');
 
 -- --------------------------------------------------------
 
@@ -50,6 +79,27 @@ INSERT INTO `product` (`product_id`, `p_cat_id`, `date`, `product_name`, `produc
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `productinlist`
+--
+
+CREATE TABLE `productinlist` (
+  `ProductInListID` int(10) NOT NULL,
+  `ListID` int(10) NOT NULL,
+  `product_id` int(10) NOT NULL,
+  `quantity` int(100) NOT NULL,
+  `id` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `productinlist`
+--
+
+INSERT INTO `productinlist` (`ProductInListID`, `ListID`, `product_id`, `quantity`, `id`) VALUES
+(1, 1, 1, 4, 81);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `product_categories`
 --
 
@@ -63,11 +113,11 @@ CREATE TABLE `product_categories` (
 --
 
 INSERT INTO `product_categories` (`p_cat_id`, `p_cat_title`) VALUES
-(1, 'food essentials'),
-(2, 'chilled&frozen'),
-(3, 'beverages'),
-(4, 'cookies&snacks'),
-(5, 'bakery');
+(1, 'Fruits'),
+(2, 'Vegetables'),
+(3, 'Meat'),
+(4, 'Cookies&Snacks'),
+(5, 'Beverages');
 
 -- --------------------------------------------------------
 
@@ -103,7 +153,8 @@ INSERT INTO `user` (`id`, `username`, `email`, `passwordd`, `user_type`) VALUES
 (82, 'hazieq', 'muhammadhaazieq@gmail.com', '0cc175b9c0f1b6a831c399e269772661', 'user'),
 (89, 'muhd', 'muhammadhaazieq@gmail.com', '0cc175b9c0f1b6a831c399e269772661', 'user'),
 (90, 'hazieq1', 'muhammadhazieq00@gmail.com', '0cc175b9c0f1b6a831c399e269772661', 'user'),
-(91, 'hazieq2', 'muhammadhaazieq@gmail.com', '0cc175b9c0f1b6a831c399e269772661', 'user');
+(91, 'hazieq2', 'muhammadhaazieq@gmail.com', '0cc175b9c0f1b6a831c399e269772661', 'user'),
+(92, 'admin', 'muhammadhaazieq@gmail.com', '0cc175b9c0f1b6a831c399e269772661', 'admin');
 
 -- --------------------------------------------------------
 
@@ -128,7 +179,7 @@ CREATE TABLE `userdetails` (
 --
 
 INSERT INTO `userdetails` (`userDetailID`, `id`, `name`, `phoneNo`, `dateOfBirth`, `street`, `city`, `state`, `zipcode`) VALUES
-(9, 82, 'JUMAH BEE BINTI KALANDA MASTAN', '0175116129', '12/3', 'asdadsadad', 'asd', 'asdad', 15020),
+(9, 82, 'hazi', '0175116129', '12/3', 'asdadsadad', 'asd', 'asdad', 15020),
 (12, 85, 'sada', '252', '12/3/2000', 'THE SPRING', 'GEORGETOWN', 'PENANG', 11600),
 (13, 89, '', '', '', '', '', '', 0),
 (14, 90, '', '', '', '', '', '', 0),
@@ -139,10 +190,28 @@ INSERT INTO `userdetails` (`userDetailID`, `id`, `name`, `phoneNo`, `dateOfBirth
 --
 
 --
+-- Indexes for table `cart`
+--
+ALTER TABLE `cart`
+  ADD PRIMARY KEY (`cartID`);
+
+--
+-- Indexes for table `listname`
+--
+ALTER TABLE `listname`
+  ADD PRIMARY KEY (`ListID`);
+
+--
 -- Indexes for table `product`
 --
 ALTER TABLE `product`
   ADD PRIMARY KEY (`product_id`);
+
+--
+-- Indexes for table `productinlist`
+--
+ALTER TABLE `productinlist`
+  ADD PRIMARY KEY (`ProductInListID`);
 
 --
 -- Indexes for table `product_categories`
@@ -173,10 +242,28 @@ ALTER TABLE `userdetails`
 --
 
 --
+-- AUTO_INCREMENT for table `cart`
+--
+ALTER TABLE `cart`
+  MODIFY `cartID` int(10) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `listname`
+--
+ALTER TABLE `listname`
+  MODIFY `ListID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
   MODIFY `product_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `productinlist`
+--
+ALTER TABLE `productinlist`
+  MODIFY `ProductInListID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `product_categories`
@@ -194,7 +281,7 @@ ALTER TABLE `slider`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
 
 --
 -- AUTO_INCREMENT for table `userdetails`
