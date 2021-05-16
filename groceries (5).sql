@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 15, 2021 at 05:06 PM
+-- Generation Time: May 16, 2021 at 04:49 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.2
 
@@ -142,19 +142,16 @@ CREATE TABLE `user` (
   `username` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
   `passwordd` varchar(100) NOT NULL,
-  `user_type` varchar(100) NOT NULL
+  `user_type` varchar(100) NOT NULL,
+  `token` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `username`, `email`, `passwordd`, `user_type`) VALUES
-(82, 'hazieq', 'muhammadhaazieq@gmail.com', '0cc175b9c0f1b6a831c399e269772661', 'user'),
-(89, 'muhd', 'muhammadhaazieq@gmail.com', '0cc175b9c0f1b6a831c399e269772661', 'user'),
-(90, 'hazieq1', 'muhammadhazieq00@gmail.com', '0cc175b9c0f1b6a831c399e269772661', 'user'),
-(91, 'hazieq2', 'muhammadhaazieq@gmail.com', '0cc175b9c0f1b6a831c399e269772661', 'user'),
-(92, 'admin', 'muhammadhaazieq@gmail.com', '0cc175b9c0f1b6a831c399e269772661', 'admin');
+INSERT INTO `user` (`id`, `username`, `email`, `passwordd`, `user_type`, `token`) VALUES
+(93, 'hazieq', 'muhammadhazieq00@gmail.com', 'b', 'user', 'jhmpwd8qi1');
 
 -- --------------------------------------------------------
 
@@ -183,7 +180,8 @@ INSERT INTO `userdetails` (`userDetailID`, `id`, `name`, `phoneNo`, `dateOfBirth
 (12, 85, 'sada', '252', '12/3/2000', 'THE SPRING', 'GEORGETOWN', 'PENANG', 11600),
 (13, 89, '', '', '', '', '', '', 0),
 (14, 90, '', '', '', '', '', '', 0),
-(15, 91, 'muhammad hazieq', '0175116129', '2', 'THE SPRING', 'GEORGETOWN', 'PENANG', 11600);
+(15, 91, 'muhammad hazieq', '0175116129', '2', 'THE SPRING', 'GEORGETOWN', 'PENANG', 11600),
+(16, 93, '', '', '', '', '', '', 0);
 
 --
 -- Indexes for dumped tables
@@ -281,13 +279,13 @@ ALTER TABLE `slider`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
 
 --
 -- AUTO_INCREMENT for table `userdetails`
 --
 ALTER TABLE `userdetails`
-  MODIFY `userDetailID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `userDetailID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

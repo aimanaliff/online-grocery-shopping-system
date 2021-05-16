@@ -70,16 +70,19 @@ function register(){
     $password1 = $_POST['password1'];
     $password2 = $_POST['password2'];
 
-    $password = md5($password1);
+    $password = $password1;
     if($password1 == $password2){
         if (isset($_POST['user_type'])) {
             $user_type = $_POST['user_type'];
-            $query = "INSERT INTO user (username, email, passwordd, user_type ) 
-                        VALUES('$username', '$email', '$password','admin' )";
+            $query = "INSERT INTO user (username, email, passwordd, user_type, token ) 
+                        VALUES('$username', '$email', '$password','admin', '123a' )";
             mysqli_query($db, $query);
             $_SESSION['success']  = "New user successfully created!!";
             header('location: ../admin_area/admin.php');
         }else{
+            $code = '123456789qazwsxedcrfvtgbyhnujmikolp';
+            $code = str_shuffle($code);
+            $code = substr($code,0, 10);
             $taken = "select * from user where username='$username'";
             $takenResult = mysqli_query($db,$taken);
             if(mysqli_num_rows($takenResult)>0){
@@ -88,8 +91,8 @@ function register(){
                 // echo "<script>alert('Username already taken')</script>";
                 // echo "<script>window.open('index.php','_self')</script>";
             }else{
-                $query = "INSERT INTO user (username, email,  passwordd, user_type) 
-                VALUES('$username', '$email', '$password','user')";
+                $query = "INSERT INTO user (username, email,  passwordd, user_type, token) 
+                VALUES('$username', '$email', '$password','user','$code')";
                 mysqli_query($db, $query);
     
                 
@@ -137,7 +140,7 @@ function login(){
 	
 
 	// attempt login if no errors on form
-    $password = md5($password1);
+    $password = $password1;
 
     $query = "SELECT * FROM user WHERE username='$username' AND passwordd='$password' LIMIT 1";
     $results = mysqli_query($db, $query);
@@ -201,6 +204,7 @@ function userDetail(){
 }
 
 ?>
+
 
 
 

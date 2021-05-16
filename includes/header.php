@@ -1,7 +1,7 @@
 <?php
 
 include("../functions/function.php");
-
+include("../src/passwordRecover.php");
 
 ?>
 
@@ -88,7 +88,7 @@ include("../functions/function.php");
                         }
                         else{
                             echo "
-                                <a href='../src/list1.php'. class='nav-link text-dark'><svg xmlns='http://www.w3.org/2000/svg' width='23' height='23' fill='currentColor' class='bi bi-heart' viewBox='0 0 16 16'>
+                                <a href='' data-bs-toggle='modal' data-bs-target='#exampleModal' class='nav-link text-dark'><svg xmlns='http://www.w3.org/2000/svg' width='23' height='23' fill='currentColor' class='bi bi-heart' viewBox='0 0 16 16'>
                                 <path d='m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z' />
                                 </svg></a>
                             "
@@ -110,7 +110,7 @@ include("../functions/function.php");
                         }
                         else{
                             echo "
-                                <a href='../src/cart.php' class='nav-link text-dark'><svg xmlns='http://www.w3.org/2000/svg' width='25' height='25' fill='currentColor' class='bi bi-basket2' viewBox='0 0 16 16'>
+                                <a href='' data-bs-toggle='modal' data-bs-target='#exampleModal' class='nav-link text-dark'><svg xmlns='http://www.w3.org/2000/svg' width='25' height='25' fill='currentColor' class='bi bi-basket2' viewBox='0 0 16 16'>
                                 <path d='M4 10a1 1 0 0 1 2 0v2a1 1 0 0 1-2 0v-2zm3 0a1 1 0 0 1 2 0v2a1 1 0 0 1-2 0v-2zm3 0a1 1 0 1 1 2 0v2a1 1 0 0 1-2 0v-2z' />
                                 <path d='M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15.5a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-.623l-1.844 6.456a.75.75 0 0 1-.722.544H3.69a.75.75 0 0 1-.722-.544L1.123 8H.5a.5.5 0 0 1-.5-.5v-1A.5.5 0 0 1 .5 6h1.717L5.07 1.243a.5.5 0 0 1 .686-.172zM2.163 8l1.714 6h8.246l1.714-6H2.163z' />
                                 </svg></a>
@@ -157,7 +157,7 @@ include("../functions/function.php");
         </div>
     </nav>
     
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered signin_dialog">
             <div class="modal-content">
                 <div class="modal-header" style="background-color: #70AD47;">
@@ -198,11 +198,8 @@ include("../functions/function.php");
                                 <button type="submit" name="loginbtn" class="btn btn-primary btn-block">Login</button>
                             </form>
                             <p class="forgot_link">
-                                <a class="text-decoration-none" style="color: black;" href="#">Forgot your password ?</a>
+                                <a data-bs-dismiss="modal" class="text-decoration-none" style="color: black;" href="" data-bs-toggle='modal' data-bs-target='#example'>Forgot your password ?</a>
                             </p>
-                           
-
-
                         </div>
                         <div class="tab-pane fade" id="signup" role="tabpanel" aria-labelledby="profile-tab">
                         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -224,16 +221,14 @@ include("../functions/function.php");
                                 </div>
                                 
                                 
-                                <div class="mb-3">
+                                <!-- <div class="mb-3">
                                 <input class="form-check-input" type="checkbox" name="user_type" value="" id="flexCheckDefault">
                                 <label class="form-check-label" for="flexCheckDefault">
                                     Admin
                                 </label>
-                                </div>
+                                </div> -->
                                 <button type="submit" name="submit_Register" class="btn btn-primary btn-block">Create An Account</button>
                             </form>
-                           
-
                         </div>
                         <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
 
@@ -243,6 +238,31 @@ include("../functions/function.php");
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="example" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Reset Password</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="tab-content modal-body">
+                <form  method="post" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <input type="username" name="username" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Username" required>
+                    </div>
+                    <div class="mb-3">
+                        <input type="email" name="email" class="form-control" id="exampleInputPassword1" placeholder="Email" required>
+                    </div>
+                    <button type="submit" name="submitpasswordrecovery" class="btn btn-primary btn-block">Submit</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+
+            </div>
             </div>
         </div>
     </div>
@@ -262,7 +282,11 @@ include("../functions/function.php");
     <script>
         $('#Password1, #Password2').on('keyup', function () {
         if ($('#Password1').val() == $('#Password2').val()) {
-            $('#message').html('Password Match').css('color', 'green');
+            if($('#Password1').val() == "" || $('#Password2').val() == "" ){
+                $('#message').html('').css('color', 'green');
+            }else{
+                $('#message').html('Password Match').css('color', 'green');
+            }
         } else 
             $('#message').html('Password Not Match').css('color', 'red');
         });
