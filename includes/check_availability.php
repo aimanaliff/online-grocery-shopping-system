@@ -10,7 +10,12 @@ if(isset($_POST['username'])){
     if($rowcount >0){
         $response= "<span style='color: red;' class='status-not-available'> Username Not Available.</span>";
     }else{
-        $response= "<span style='color: green;' class='status-available'> Username Available.</span>";
+        if($username == ""){
+            $response = "";
+        }else {
+            $response= "<span style='color: green;' class='status-available'> Username Available.</span>";
+        }
+        
     }
 
     echo $response;
