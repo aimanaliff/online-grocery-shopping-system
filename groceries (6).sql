@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 16, 2021 at 04:49 PM
+-- Generation Time: May 19, 2021 at 10:04 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.2
 
@@ -48,7 +48,7 @@ CREATE TABLE `listname` (
 --
 
 INSERT INTO `listname` (`ListID`, `ListName`) VALUES
-(1, 'choc');
+(1, 'chochalate');
 
 -- --------------------------------------------------------
 
@@ -73,8 +73,8 @@ CREATE TABLE `product` (
 
 INSERT INTO `product` (`product_id`, `p_cat_id`, `date`, `product_name`, `product_price`, `product_img`, `product_quantity`, `product_desc`) VALUES
 (1, 1, '2021-04-25 08:43:02', 'banana', '50', 'banana.jpg', 12, '<p>asdad</p>'),
-(11, 1, '2021-04-25 10:12:29', 'broccoli', '98', 'BROCCOLI.jpg', 12, '<p>aad</p>'),
-(12, 1, '2021-04-30 18:24:50', 'garlic', '20', 'garlic.jpeg', 12, '<p>gjhhjb</p>');
+(10, 2, '2021-04-30 18:24:50', 'garlic', '20', 'garlic.jpeg', 10, '<p>gjhhjb</p>'),
+(11, 2, '2021-04-25 10:12:29', 'broccoli', '98', 'BROCCOLI.jpg', 12, '<p>aad</p>');
 
 -- --------------------------------------------------------
 
@@ -95,7 +95,29 @@ CREATE TABLE `productinlist` (
 --
 
 INSERT INTO `productinlist` (`ProductInListID`, `ListID`, `product_id`, `quantity`, `id`) VALUES
-(1, 1, 1, 4, 81);
+(115, 1, 10, 0, 93),
+(116, 1, 10, 0, 93),
+(117, 1, 10, 0, 93),
+(118, 1, 11, 0, 93),
+(119, 1, 1, 0, 93),
+(120, 1, 1, 0, 93),
+(121, 1, 1, 0, 93),
+(122, 1, 1, 0, 93),
+(123, 1, 1, 0, 93),
+(124, 1, 1, 0, 93),
+(125, 1, 1, 0, 93),
+(126, 1, 1, 0, 93),
+(127, 1, 1, 0, 93),
+(128, 1, 1, 0, 93),
+(129, 1, 1, 0, 93),
+(130, 1, 1, 0, 93),
+(131, 1, 1, 0, 93),
+(132, 1, 1, 0, 93),
+(133, 1, 1, 0, 93),
+(134, 1, 1, 0, 93),
+(135, 1, 1, 0, 93),
+(136, 1, 1, 0, 93),
+(137, 1, 1, 0, 93);
 
 -- --------------------------------------------------------
 
@@ -151,7 +173,10 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `username`, `email`, `passwordd`, `user_type`, `token`) VALUES
-(93, 'hazieq', 'muhammadhazieq00@gmail.com', 'b', 'user', 'jhmpwd8qi1');
+(93, 'hazieq', 'muhammadhazieq00@gmail.com', 'b', 'user', 'jhmpwd8qi1'),
+(94, 'irash', 'irashibnur@gmail.com', 'a', 'user', 'sjnwyilufm'),
+(95, 'irash1', 's55851@ocean.umt.edu.my', 'a', 'user', 'pxob3rshz1'),
+(96, 'ju', 'jumahbee@gmail.com', 'a', 'user', '73yx1reva4');
 
 -- --------------------------------------------------------
 
@@ -181,7 +206,10 @@ INSERT INTO `userdetails` (`userDetailID`, `id`, `name`, `phoneNo`, `dateOfBirth
 (13, 89, '', '', '', '', '', '', 0),
 (14, 90, '', '', '', '', '', '', 0),
 (15, 91, 'muhammad hazieq', '0175116129', '2', 'THE SPRING', 'GEORGETOWN', 'PENANG', 11600),
-(16, 93, '', '', '', '', '', '', 0);
+(16, 93, 'muhammadhazieq12', '0175116129', '', 'THE SPRING', 'GEORGETOWN', 'PENANG', 11600),
+(17, 94, '', '', '', '', '', '', 0),
+(18, 95, '', '', '', '', '', '', 0),
+(19, 96, '', '', '', '', '', '', 0);
 
 --
 -- Indexes for dumped tables
@@ -249,7 +277,7 @@ ALTER TABLE `cart`
 -- AUTO_INCREMENT for table `listname`
 --
 ALTER TABLE `listname`
-  MODIFY `ListID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ListID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `product`
@@ -261,7 +289,7 @@ ALTER TABLE `product`
 -- AUTO_INCREMENT for table `productinlist`
 --
 ALTER TABLE `productinlist`
-  MODIFY `ProductInListID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ProductInListID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=138;
 
 --
 -- AUTO_INCREMENT for table `product_categories`
@@ -279,13 +307,13 @@ ALTER TABLE `slider`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=97;
 
 --
 -- AUTO_INCREMENT for table `userdetails`
 --
 ALTER TABLE `userdetails`
-  MODIFY `userDetailID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `userDetailID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
