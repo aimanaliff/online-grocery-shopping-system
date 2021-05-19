@@ -60,7 +60,7 @@ include("../src/passwordRecover.php");
                                 $row_name=mysqli_fetch_array($run_query);
                                 $name = $row_name['username'];
                                 echo "
-                                <a href='../src/user.php?id=$userid' . class='nav-link text-dark' data-bs-toggle='tooltip' data-bs-placement='top' title = '$name'><svg xmlns='http://www.w3.org/2000/svg' width='25' height='25' fill='currentColor' class='bi bi-person' viewBox='0 0 16 16'>
+                                <a href='../src/user.php?id=$userid' . class='nav-link text-dark' data-bs-toggle='tooltip' data-bs-placement='top' title = '$name' value='$name'><svg xmlns='http://www.w3.org/2000/svg' width='25' height='25' fill='currentColor' class='bi bi-person' viewBox='0 0 16 16'>
                                     <path d='M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z' />
                                 </svg></a>
                                 
@@ -133,11 +133,11 @@ include("../src/passwordRecover.php");
                     if(isset($_SESSION['success'])){
                         $userid = $_SESSION['user'];
                         echo "
-                            <li class='nav-item'><a href='../src/products.php?id=$userid' class='nav-link text-dark'>Fruits</a></li>
-                            <li class='nav-item'><a href='#' class='nav-link text-dark'>Vegetables</a></li>
-                            <li class='nav-item'><a href='#' class='nav-link text-dark'>Meat</a></li>
-                            <li class='nav-item'><a href='#' class='nav-link text-dark'>Cookies & Snacks</a></li>
-                            <li class='nav-item'><a href='#' class='nav-link text-dark'>Beverages</a></li>
+                            <li class='nav-item'><a href='../src/products.php?id=$userid&p_cat_id=1' class='nav-link text-dark'>Fruits</a></li>
+                            <li class='nav-item'><a href='../src/products.php?id=$userid&p_cat_id=2' class='nav-link text-dark'>Vegetables</a></li>
+                            <li class='nav-item'><a href='../src/products.php?id=$userid&p_cat_id=3' class='nav-link text-dark'>Meat</a></li>
+                            <li class='nav-item'><a href='../src/products.php?id=$userid&p_cat_id=4' class='nav-link text-dark'>Cookies & Snacks</a></li>
+                            <li class='nav-item'><a href='../src/products.php?id=$userid&p_cat_id=5' class='nav-link text-dark'>Beverages</a></li>
                         "
                         ;
                     }

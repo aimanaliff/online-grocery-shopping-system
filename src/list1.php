@@ -7,7 +7,7 @@ include("../includes/header.php")
 <div class="container-xl mt-4 mb-4" style="background-color: white;">
 
 <div class="row mb-5" style="background-color: #ED7D31;">
-    <h3 style="text-align: center;" class="py-3 rounded-3">Wishlist</h3>
+    <h3 style="text-align: center;" class="py-3 rounded-3">Shopping List</h3>
 </div>
 
 <div class="row mb-3">
@@ -42,7 +42,7 @@ include("../includes/header.php")
                       </svg>
                     </button>
                         </div>
-                        <div class="col-2">
+                        <div class="col-2 align-self-center mt-5">
                             <h4 style="text-align: center;">KitKat</h4>
                             <img src="../imgfood/chocolate/kitkat.jpeg" class="img-thumbnail" alt="">
                         </div>
