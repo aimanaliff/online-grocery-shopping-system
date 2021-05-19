@@ -1,26 +1,27 @@
-<?php 
-$db=mysqli_connect("localhost","root","","groceries");
+<?php
+$db = mysqli_connect("localhost", "root", "", "groceries");
 
 global $selectedval;
 
-function getpro(){
-    
-    GLOBAL $db,$p_cat_id0,$id;
+function getpro()
+{
 
-    if(isset($_GET['p_cat_id'])){
+    global $db, $p_cat_id0, $id;
+
+    if (isset($_GET['p_cat_id'])) {
         $p_cat_id0 = $_GET['p_cat_id'];
     }
 
-    if(isset($_GET['id'])){
+    if (isset($_GET['id'])) {
         $id = $_GET['id'];
     }
 
 
     $get_product = "select * from product";
 
-    $run_product = mysqli_query($db,$get_product);
+    $run_product = mysqli_query($db, $get_product);
 
-    while($row_product=mysqli_fetch_array($run_product)){
+    while ($row_product = mysqli_fetch_array($run_product)) {
         global $product_id;
         $product_id = $row_product['product_id'];
         $p_cat_id = $row_product['p_cat_id'];
@@ -29,8 +30,8 @@ function getpro(){
         $product_img = $row_product['product_img'];
         $product_quantity = $row_product['product_quantity'];
         $product_desc = $row_product['product_desc'];
-        
-        if($p_cat_id == $p_cat_id0){
+
+        if ($p_cat_id == $p_cat_id0) {
             $_SESSION['cart'] = $product_id;
             echo "
             
@@ -51,15 +52,12 @@ function getpro(){
             </div>
             
             ";
-        } 
-
+        }
     }
-
-
 }
 
-function get_pro_details(){
-    
+function get_pro_details()
+{
 }
 
 
@@ -73,26 +71,27 @@ function get_pro_details(){
 
 
 
-$username ="";
-$email ="";
+$username = "";
+$email = "";
 $a = "";
 session_start();
-if(isset($_POST['submit_Register'])){
-    
+if (isset($_POST['submit_Register'])) {
+
     register();
 }
 
 
-function register(){
-    GLOBAL $db,$username,$email;
-    
+function register()
+{
+    global $db, $username, $email;
+
     $username = $_POST['username'];
     $email = $_POST['email1'];
     $password1 = $_POST['password1'];
     $password2 = $_POST['password2'];
 
     $password = $password1;
-    if($password1 == $password2){
+    if ($password1 == $password2) {
         if (isset($_POST['user_type'])) {
             $user_type = $_POST['user_type'];
             $query = "INSERT INTO user (username, email, passwordd, user_type, token ) 
@@ -100,67 +99,65 @@ function register(){
             mysqli_query($db, $query);
             $_SESSION['success']  = "New user successfully created!!";
             header('location: ../admin_area/admin.php');
-        }else{
+        } else {
             $code = '123456789qazwsxedcrfvtgbyhnujmikolp';
             $code = str_shuffle($code);
-            $code = substr($code,0, 10);
+            $code = substr($code, 0, 10);
             $taken = "select * from user where username='$username'";
-            $takenResult = mysqli_query($db,$taken);
-            if(mysqli_num_rows($takenResult)>0){
+            $takenResult = mysqli_query($db, $taken);
+            if (mysqli_num_rows($takenResult) > 0) {
                 // $a = "Username Already Exists";
                 // echo "<script>$('#msg').html('Username Already Exists').css('color', 'red')</script>";
                 // echo "<script>alert('Username already taken')</script>";
                 // echo "<script>window.open('index.php','_self')</script>";
-            }else{
+            } else {
                 $query = "INSERT INTO user (username, email,  passwordd, user_type, token) 
                 VALUES('$username', '$email', '$password','user','$code')";
                 mysqli_query($db, $query);
-    
-                
+
+
                 $get_id = "select * from user where id=(select max(id) from user)";
-    
-                $run_id = mysqli_query($db,$get_id);
-                
-                $row_id=mysqli_fetch_array($run_id);
-    
+
+                $run_id = mysqli_query($db, $get_id);
+
+                $row_id = mysqli_fetch_array($run_id);
+
                 $usrname = $row_id['id'];
-    
-                $query1 = "insert into userdetails (id,name,phoneNo,dateOfBirth,street,city,state,zipcode) values ('$usrname','',''
-                ,'','','','','')";
-    
-                mysqli_query($db,$query1);
-    
+
+                $query1 = "insert into userdetails (id,name,phoneNo,dateOfBirth,street,city,state,zipcode,image) values ('$usrname','',''
+                ,'','','','','','')";
+
+                mysqli_query($db, $query1);
+
                 $logged_in_user_id = mysqli_insert_id($db);
-    
+
                 $_SESSION['user'] = $usrname; // put logged in user in session
                 $_SESSION['success']  = "You are now logged in";
-                header('location: ../src/index.php?id='.$usrname);
+                header('location: ../src/index.php?id=' . $usrname);
             }
-            
         }
-    }else{
+    } else {
         echo "<script>alert('Password not same')</script>";
         echo "<script>window.open('index.php','_self')</script>";
     }
-    
-    
-}       
+}
 
 if (isset($_POST['loginbtn'])) {
-	login();
+    login();
 }
 
 // LOGIN USER
-function login(){
-	global $db, $username;
+function login()
+{
+    global $db, $username;
 
-	// grap form values
-	$username = $_POST['username'];
-	$password1 = $_POST['password'];
+    // grap form values
+    $username = $_POST['username'];
+    $password1 = $_POST['password'];
 
-	
 
-	// attempt login if no errors on form
+
+    // attempt login if no errors on form
     $password = $password1;
 
     $query = "SELECT * FROM user WHERE username='$username' AND passwordd='$password' LIMIT 1";
@@ -174,14 +171,14 @@ function login(){
 
             $_SESSION['user'] = $logged_in_user['id'];
             $_SESSION['success']  = "You are now logged in";
-            header('location: ../admin_area/admin.php');		  
-        }else{
+            header('location: ../admin_area/admin.php');
+        } else {
             $_SESSION['user'] = $logged_in_user['id'];
             $_SESSION['success']  = "You are now logged in";
 
-            header('location: ../src/index.php?id='.$logged_in_user['id']);
+            header('location: ../src/index.php?id=' . $logged_in_user['id']);
         }
-    }else {
+    } else {
         echo "<script>alert('Wrond email or password')</script>";
         echo "<script>window.open('index.php','_self')</script>";
     }
@@ -192,39 +189,80 @@ function login(){
 
 
 if (isset($_POST['save'])) {
-	userDetail();
+    userDetail();
 }
 
-function userDetail(){
-    global $db, $name, $phoneNo,  $dateOfBirth, $street, $city, $state, $zipcode,$id;
+function userDetail()
+{
+    global $db, $name, $phoneNo,  $dateOfBirth, $street, $city, $state, $zipcode, $id, $user_img, $temp_name1;
 
-    if(isset($_GET['id'])){
+    if (isset($_GET['id'])) {
         $id = $_GET['id'];
     }
 
     $name = $_POST['name'];
     $phoneNo = $_POST['phoneNo'];
 
-    
+
     $dateOfBirth = $_POST['dateOfBirth'];
     $street = $_POST['street'];
     $city = $_POST['city'];
     $state = $_POST['state'];
     $zipcode = $_POST['zipcode'];
+    $user_img = $_FILES['image']['name'];
 
-    $query = "update userdetails set name='$name',phoneNo='$phoneNo',dateOfBirth='$dateOfBirth',street='$street'
-    ,city='$city',state='$state',zipcode='$zipcode' where id=$id";
-    $run_query = mysqli_query($db,$query);
+    if ($user_img == "") {
+        $query = "select * from userdetails where id='$id'";
+        $run_query = mysqli_query($db, $query);
+        $row_query = mysqli_fetch_array($run_query);
+        $user_img = $row_query['image'];
 
-    if($run_query){
+        $query = "update userdetails set name='$name',phoneNo='$phoneNo',dateOfBirth='$dateOfBirth',street='$street'
+        ,city='$city',state='$state',zipcode='$zipcode', image='$user_img' where id=$id";
+    } else {
+        $temp_name1 = $_FILES['image']['tmp_name'];
+        move_uploaded_file($temp_name1, "../admin_area/product_images/user_image/$user_img");
+
+        $query = "update userdetails set name='$name',phoneNo='$phoneNo',dateOfBirth='$dateOfBirth',street='$street'
+        ,city='$city',state='$state',zipcode='$zipcode', image='$user_img' where id=$id";
+    }
+
+    // if (isset($_POST['submit'])) {
+    //     $file = $_FILES['file'];
+
+    //     $fileName = $_FILES['file']['name'];
+    //     $fileTmpName = $_FILES['file']['tmp_name'];
+    //     $fileSize = $_FILES['file']['size'];
+    //     $fileError = $_FILES['file']['error'];
+    //     $fileType = $_FILES['file']['type'];
+
+    //     $fileExt = explode('.', $fileName);
+    //     $fileActualExt = strtolower(end($fileExt));
+
+    //     $allowed = array('jpg', 'jpeg', 'png');
+
+    //     if (in_array($fileActualExt, $allowed)) {
+    //         if ($fileError === 0) {
+    //             if ($fileSize < 50000) {
+    //                 $fileNameNew = uniqid('', true) . "." . $fileActualExt;
+    //                 $fileDestination = 'uploads/' . $fileNameNew;
+    //                 move_uploaded_file($fileTmpName, $fileDestination);
+    //                 header("Location: index.php?uploadsuccess");
+    //             } else {
+    //                 echo "Your file is too big!";
+    //             }
+    //         } else {
+    //             echo "There was an error uploading your file!";
+    //         }
+    //     } else {
+    //         echo "You cannot upload files of this type!";
+    //     }
+    // }
+
+    $run_query = mysqli_query($db, $query);
+
+    if ($run_query) {
         echo "<script>alert('Your Information Have Been Saved')</script>";
-        echo "<script>window.open('user.php?id=$id')</script>";
+        echo "<script>window.open('../src/user.php?id=$id','_self')</script>";
     }
 }
-
-?>
-
-
-
-
-
