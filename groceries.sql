@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 19, 2021 at 10:04 AM
+-- Generation Time: May 19, 2021 at 11:26 AM
 -- Server version: 10.4.17-MariaDB
--- PHP Version: 8.0.2
+-- PHP Version: 7.3.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -193,23 +193,24 @@ CREATE TABLE `userdetails` (
   `street` text NOT NULL,
   `city` text NOT NULL,
   `state` text NOT NULL,
-  `zipcode` int(100) NOT NULL
+  `zipcode` int(100) NOT NULL,
+  `image` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `userdetails`
 --
 
-INSERT INTO `userdetails` (`userDetailID`, `id`, `name`, `phoneNo`, `dateOfBirth`, `street`, `city`, `state`, `zipcode`) VALUES
-(9, 82, 'hazi', '0175116129', '12/3', 'asdadsadad', 'asd', 'asdad', 15020),
-(12, 85, 'sada', '252', '12/3/2000', 'THE SPRING', 'GEORGETOWN', 'PENANG', 11600),
-(13, 89, '', '', '', '', '', '', 0),
-(14, 90, '', '', '', '', '', '', 0),
-(15, 91, 'muhammad hazieq', '0175116129', '2', 'THE SPRING', 'GEORGETOWN', 'PENANG', 11600),
-(16, 93, 'muhammadhazieq12', '0175116129', '', 'THE SPRING', 'GEORGETOWN', 'PENANG', 11600),
-(17, 94, '', '', '', '', '', '', 0),
-(18, 95, '', '', '', '', '', '', 0),
-(19, 96, '', '', '', '', '', '', 0);
+INSERT INTO `userdetails` (`userDetailID`, `id`, `name`, `phoneNo`, `dateOfBirth`, `street`, `city`, `state`, `zipcode`, `image`) VALUES
+(9, 82, 'hazi', '0175116129', '12/3', 'asdadsadad', 'asd', 'asdad', 15020, ''),
+(12, 85, 'sada', '252', '12/3/2000', 'THE SPRING', 'GEORGETOWN', 'PENANG', 11600, ''),
+(13, 89, '', '', '', '', '', '', 0, ''),
+(14, 90, '', '', '', '', '', '', 0, ''),
+(15, 91, 'muhammad hazieq', '0175116129', '2', 'THE SPRING', 'GEORGETOWN', 'PENANG', 11600, ''),
+(16, 93, 'muhammadhazieq12', '0175116129', '2000-01-14', 'THE SPRINGasda', 'GEORGETOWN', 'PENANG', 11600, 'dpalep.jpeg'),
+(17, 94, '', '', '', '', '', '', 0, ''),
+(18, 95, '', '', '', '', '', '', 0, ''),
+(19, 96, '', '', '', '', '', '', 0, '');
 
 --
 -- Indexes for dumped tables
