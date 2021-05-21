@@ -2,11 +2,11 @@
 
 echo "asda";
 
-if(isset($_POST['o2'])){
-    $ff = $_POST['o2'];
+if(isset($_POST['o'])){
+    $ff = $_POST['o'];
     echo "<script>
     
-    console.log(asdadsa);
+    console.log($ff)
 
     </script>";
     
