@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 19, 2021 at 11:26 AM
+-- Generation Time: May 21, 2021 at 05:39 PM
 -- Server version: 10.4.17-MariaDB
--- PHP Version: 7.3.27
+-- PHP Version: 8.0.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -95,29 +95,15 @@ CREATE TABLE `productinlist` (
 --
 
 INSERT INTO `productinlist` (`ProductInListID`, `ListID`, `product_id`, `quantity`, `id`) VALUES
-(115, 1, 10, 0, 93),
-(116, 1, 10, 0, 93),
-(117, 1, 10, 0, 93),
-(118, 1, 11, 0, 93),
-(119, 1, 1, 0, 93),
-(120, 1, 1, 0, 93),
-(121, 1, 1, 0, 93),
-(122, 1, 1, 0, 93),
-(123, 1, 1, 0, 93),
-(124, 1, 1, 0, 93),
-(125, 1, 1, 0, 93),
-(126, 1, 1, 0, 93),
-(127, 1, 1, 0, 93),
-(128, 1, 1, 0, 93),
-(129, 1, 1, 0, 93),
-(130, 1, 1, 0, 93),
-(131, 1, 1, 0, 93),
-(132, 1, 1, 0, 93),
-(133, 1, 1, 0, 93),
-(134, 1, 1, 0, 93),
-(135, 1, 1, 0, 93),
-(136, 1, 1, 0, 93),
-(137, 1, 1, 0, 93);
+(147, 1, 1, 5, 93),
+(150, 1, 11, 1, 93),
+(151, 1, 10, 3, 0),
+(152, 1, 10, 1, 93),
+(153, 1, 11, 3, 93),
+(154, 1, 10, 3, 93),
+(155, 1, 11, 3, 0),
+(156, 1, 11, 3, 93),
+(157, 1, 10, 3, 93);
 
 -- --------------------------------------------------------
 
@@ -207,7 +193,7 @@ INSERT INTO `userdetails` (`userDetailID`, `id`, `name`, `phoneNo`, `dateOfBirth
 (13, 89, '', '', '', '', '', '', 0, ''),
 (14, 90, '', '', '', '', '', '', 0, ''),
 (15, 91, 'muhammad hazieq', '0175116129', '2', 'THE SPRING', 'GEORGETOWN', 'PENANG', 11600, ''),
-(16, 93, 'muhammadhazieq12', '0175116129', '2000-01-14', 'THE SPRINGasda', 'GEORGETOWN', 'PENANG', 11600, 'dpalep.jpeg'),
+(16, 93, 'muhammadhazieq12', '0175116129', '2000-01-14', 'THE SPRINGasda', 'GEORGETOWN', 'PENANG', 11600, 'banana.jpg'),
 (17, 94, '', '', '', '', '', '', 0, ''),
 (18, 95, '', '', '', '', '', '', 0, ''),
 (19, 96, '', '', '', '', '', '', 0, '');
@@ -290,7 +276,7 @@ ALTER TABLE `product`
 -- AUTO_INCREMENT for table `productinlist`
 --
 ALTER TABLE `productinlist`
-  MODIFY `ProductInListID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=138;
+  MODIFY `ProductInListID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=158;
 
 --
 -- AUTO_INCREMENT for table `product_categories`
