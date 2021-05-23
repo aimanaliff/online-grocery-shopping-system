@@ -37,7 +37,7 @@ function getpro()
             
             <div class='col'>
                 <div class='card shadow-sm sshighlight'>
-                    <a href='products-closeup.php?id=$id&product_id=$product_id'>
+                    <a href='products-closeup.php?id=$id&product_id=$product_id&p_cat_id=$p_cat_id'>
                         <img src='../admin_area/product_images/$product_img' alt='pise' class='card-img-top'>
                     </a>
                     <div class='card-body'>
