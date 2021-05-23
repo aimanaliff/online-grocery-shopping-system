@@ -132,11 +132,11 @@ include("../src/passwordRecover.php");
                     if(isset($_SESSION['success'])){
                         $userid = $_SESSION['user'];
                         echo "
-                            <li class='nav-item'><a href='../src/products.php?id=$userid&p_cat_id=1' class='nav-link text-dark'>Fruits</a></li>
-                            <li class='nav-item'><a href='../src/products.php?id=$userid&p_cat_id=2' class='nav-link text-dark'>Vegetables</a></li>
-                            <li class='nav-item'><a href='../src/products.php?id=$userid&p_cat_id=3' class='nav-link text-dark'>Meat</a></li>
-                            <li class='nav-item'><a href='../src/products.php?id=$userid&p_cat_id=4' class='nav-link text-dark'>Cookies & Snacks</a></li>
-                            <li class='nav-item'><a href='../src/products.php?id=$userid&p_cat_id=5' class='nav-link text-dark'>Beverages</a></li>
+                            <li class='nav-item'><a href='../src/products.php?page=1&id=$userid&p_cat_id=1' class='nav-link text-dark'>Fruits</a></li>
+                            <li class='nav-item'><a href='../src/products.php?page=1&id=$userid&p_cat_id=2' class='nav-link text-dark'>Vegetables</a></li>
+                            <li class='nav-item'><a href='../src/products.php?page=1&id=$userid&p_cat_id=3' class='nav-link text-dark'>Meat</a></li>
+                            <li class='nav-item'><a href='../src/products.php?page=1&id=$userid&p_cat_id=4' class='nav-link text-dark'>Cookies & Snacks</a></li>
+                            <li class='nav-item'><a href='../src/products.php?page=1&id=$userid&p_cat_id=5' class='nav-link text-dark'>Beverages</a></li>
                         "
                         ;
                     }
