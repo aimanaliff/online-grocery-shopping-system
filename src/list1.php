@@ -1,7 +1,7 @@
 <?php 
 
-include("../includes/header.php")
-
+include("../includes/header.php");
+include("../functions/listmethod.php");
 ?>
 
 <div class="container-xl mt-4 mb-4" style="background-color: white;">
