@@ -6,7 +6,17 @@ global $ff;
 function getpro()
 {
 
-    global $db, $p_cat_id0, $id;
+    global $db, $p_cat_id0, $id,$page,$count;
+
+    $per_page=10;
+    if(isset($_GET['page'])){
+
+        $page=$_GET['page'];
+
+    }
+    else{
+            $page=1;
+    }
 
     if (isset($_GET['p_cat_id'])) {
         $p_cat_id0 = $_GET['p_cat_id'];
@@ -16,10 +26,22 @@ function getpro()
         $id = $_GET['id'];
     }
 
+    // $query= "select * from product where $p_cat_id0";
+                            
+    // $result= mysqli_query($db,$query);
 
-    $get_product = "select * from product";
+    // $total_records= mysqli_num_rows($result);
+
+    // $total_pages=ceil($total_records / $per_page);
+
+    $start_from=($page-1) * $per_page;
+
+    $get_product = "select * from product where p_cat_id=$p_cat_id0 LIMIT $start_from,$per_page";
 
     $run_product = mysqli_query($db, $get_product);
+
+    $count = mysqli_num_rows($run_product);
+    
 
     while ($row_product = mysqli_fetch_array($run_product)) {
         global $product_id;
@@ -44,7 +66,7 @@ function getpro()
                         <h5 class='card-title'>$product_name</h5>
                         <p class='card-text'>RM $product_price</p>
                         <div class='d-flex flex-sm-column justify-content-around'>
-                            <a href='products-closeup.php?product_id=$product_id'  class='btn btn-success rounded-pill mb-sm-2  '>Add to List</a>
+                            <a href='products-closeup.php?id=$id&product_id=$product_id&p_cat_id=$p_cat_id'  class='btn btn-success rounded-pill mb-sm-2  '>Add to List</a>
                             <a href='products-closeup.php?product_id=$product_id' class='btn btn-warning rounded-pill'>Add to Cart</a>
                         </div>
                     </div>

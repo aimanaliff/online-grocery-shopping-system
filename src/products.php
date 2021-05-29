@@ -4,137 +4,48 @@ include("../includes/header.php");
 include("../includes/db.php");
 global $total_records;
 
-if (isset($_GET['p_cat_id'])) {
-    global $categoryID;
-    $categoryID = $_GET['p_cat_id'];
-    $sql = "SELECT * FROM product_categories WHERE p_cat_id = $categoryID";
-    $result = mysqli_query($con, $sql);
 
-    if (mysqli_num_rows($result) > 0) {
-        while($row = mysqli_fetch_assoc($result)) { $categoryName = $row['p_cat_title']; }
-    } else { echo "0 results"; }
-
-    mysqli_close($con);
-}
-
-function getProducts()
-{
-    global $db, $p_cat_id0, $id, $page, $results_per_page;
-
-    if (isset($_GET['p_cat_id']) && isset($_GET['id'])) {
-        $p_cat_id0 = $_GET['p_cat_id'];
-        $id = $_GET['id'];
-    }
-
-    // if (!isset ($_GET['page'])) { $page = 1; } else { $page = $_GET['page']; }
-    $page = (!isset ($_GET['page'])) ? 1 : $_GET['page'];
-    $results_per_page = 20;
-    $page_result = ($page-1) * $results_per_page;
-
-    $get_product = "SELECT * FROM product LIMIT $page_result, $results_per_page";
-    $run_product = mysqli_query($db, $get_product);
-
-    while ($row_product = mysqli_fetch_array($run_product)) {
-        global $product_id;
-        $product_id = $row_product['product_id'];
-        $p_cat_id = $row_product['p_cat_id'];
-        $product_name = $row_product['product_name'];
-        $product_price = $row_product['product_price'];
-        $product_img = $row_product['product_img'];
-        $product_quantity = $row_product['product_quantity'];
-        $product_desc = $row_product['product_desc'];
-
-        if ($p_cat_id == $p_cat_id0) {
-            $_SESSION['cart'] = $product_id;
-            echo "
-            
-            <div class='col'>
-                <div class='card shadow-sm sshighlight'>
-                    <a href='products-closeup.php?id=$id&product_id=$product_id&p_cat_id=$p_cat_id'>
-                        <img src='../admin_area/product_images/$product_img' alt='pise' class='card-img-top'>
-                    </a>
-                    <div class='card-body'>
-                        <h5 class='card-title'>$product_name</h5>
-                        <p class='card-text'>RM $product_price</p>
-                        <div class='d-flex flex-sm-column justify-content-around'>
-                            <a href='products-closeup.php?product_id=$product_id'  class='btn btn-success rounded-pill mb-sm-2  '>Add to List</a>
-                            <a href='products-closeup.php?product_id=$product_id' class='btn btn-warning rounded-pill'>Add to Cart</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            ";
-        }
-    }
-}
-
-function pagination()
-{
-    global $db, $page, $id, $categoryID, $results_per_page, $total_records;
-
-    $sql = "SELECT COUNT(*) FROM product WHERE p_cat_id = $categoryID";
-    $result = mysqli_query($db, $sql);
-    $row = mysqli_fetch_row($result);
-    $total_records = $row[0];
-    $total_pages = ceil($total_records / $results_per_page);     
-
-    if($page >= 2) {   
-        echo '
-        <li class="page-item">
-            <a class="page-link" href="products.php?page='.($page-1).'&id='.$id.'&p_cat_id='.$categoryID.'">
-            Prev</a>
-        </li>
-        ';   
-    } else {
-        echo '
-        <li class="page-item disabled">
-            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Prev</a>
-        </li>
-        ';
-    }
-
-    for ($i=1; $i <= $total_pages; $i++) { 
-        if ($i == $page) {
-            echo '
-            <li class="page-item active" aria-current="page">
-                <a class="page-link" href="products.php?page='.$i.'&id='.$id.'&p_cat_id='.$categoryID.'">
-                '.$i.'</a>
-            </li>
-            ';
-        } else {
-            echo '
-            <li class="page-item">
-                <a class="page-link" href="products.php?page='.$i.'&id='.$id.'&p_cat_id='.$categoryID.'">
-                '.$i.'</a>
-            </li>
-            ';
-        }
-        
-    }
-
-    if ($page < $total_pages) {
-        echo '
-        <li class="page-item">
-            <a class="page-link" href="products.php?page='.($page+1).'&id='.$id.'&p_cat_id='.$categoryID.'">
-            Next</a>
-        </li>
-        ';
-    } else {
-        echo '
-        <li class="page-item disabled">
-            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Next</a>
-        </li>
-        ';
-    }
-}
 
 ?>
     <div class="container pt-5">
+    <?php 
+        $per_page=10;
+        if(isset($_GET['page'])){
+    
+            $page=$_GET['page'];
+    
+        }
+        else{
+                $page=1;
+        }
+    
+        if (isset($_GET['p_cat_id'])) {
+            $p_cat_id0 = $_GET['p_cat_id'];
+        }
+    
+        $start_from=($page-1) * $per_page;
+    
+        $get_product = "select * from product where p_cat_id=$p_cat_id0 LIMIT $start_from,$per_page";
+    
+        $run_product = mysqli_query($db, $get_product);
+    
+        $count = mysqli_num_rows($run_product);
+
+        $get_categoryName = "select * from product_categories where p_cat_id=$p_cat_id0";
+
+        $run_categoryName = mysqli_query($db, $get_categoryName);
+
+        $row_categoryName = mysqli_fetch_array($run_categoryName);
+
+        $p_cat_title = $row_categoryName['p_cat_title'];
+    
+        
+            
+    ?>
         <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
             <ol class="breadcrumb fw-bold">
                 <li class="breadcrumb-item"><a href="index.php" class="text-dark text-decoration-none">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page"><?php echo $categoryName ?></li>
+                <li class="breadcrumb-item active" aria-current="page"><?php echo $p_cat_title ?></li>
             </ol>
         </nav>
     </div>
@@ -150,15 +61,13 @@ function pagination()
 
         <div class="card">
             <div class="card-body m-3 mt-2">
-                <h1><?php echo $categoryName ?></h1>
+           
+                <h1><?php echo $p_cat_title ?></h1>
                 <!-- <p class="fs-5">Back to the Jungle!</p> -->
                 <hr>
                 <div class="container d-flex flex-row justify-content-between align-item-center p-0">
-                    <p id="showProdAmount"></p>
-                    <script>
-                        desc = document.getElementById('showProdAmount');
-                        desc.innerHTML = 'Showing <strong>1 - 20</strong> of <strong><?php echo $total_records ?></strong> products'; // zieq tolong fikirkan cane nak tunjuk total records tu tengs
-                    </script>
+                    <p id="showProdAmount">Showing <strong><?php echo $count ?></strong> of <strong><?php echo $p_cat_title ?></strong> products</p>
+                    
 
                     <div class="dropdown pb-3">
                         <button class="btn bg-transparent dropdown-toggle" type="button" id="dropdownSort"
@@ -177,15 +86,91 @@ function pagination()
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-3">
 
                     <?php 
-                    
-                    // getpro(); 
-                    getProducts();
+                    global $per_page;
+                    $per_page = 10;
+                    getpro(); 
+                    // getProducts();
                     
                     ?>
                     
                 </div>
                 <nav aria-label="Product page navigation">
                     <ul class="pagination justify-content-end mb-0 mt-4">
+                    <?php 
+                        global $p_cat_id0;
+                        if (isset($_GET['p_cat_id'])) {
+                            $p_cat_id0 = $_GET['p_cat_id'];
+                        }
+                    
+                        $query= "select * from product where p_cat_id=$p_cat_id0 ";
+                            
+                        $result= mysqli_query($con,$query);
+
+                        $total_records= mysqli_num_rows($result);
+
+                        $total_pages=ceil($total_records / $per_page);
+
+                        // echo '
+                        
+                        // <li class="page-item disabled">
+                        //     <a class="page-link" href="../src/products.php?page=1&id=$userid&p_cat_id=1&page=1" tabindex="-1" aria-disabled="true">1</a>
+                        // </li>
+                        
+                        
+                        // ';
+
+                        if($page >= 2) {   
+                            echo '
+                            <li class="page-item">
+                                <a class="page-link" href="../src/products.php?page='.($page-1).'&id=$userid&p_cat_id='.$p_cat_id0.'">
+                                Prev</a>
+                            </li>
+                            ';   
+                        } else {
+                            echo '
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Prev</a>
+                            </li>
+                            ';
+                        }
+
+                        for($i=1; $i<=$total_pages; $i++){
+
+                            echo '
+                        
+                            <li class="page-item" aria-current="page"><a class="page-link" href="../src/products.php?page='.$i.'&id=$userid&p_cat_id='.$p_cat_id0.'">
+                            '.$i.'</a></li>
+                        
+                            '
+                            ;
+                        }
+
+                        if ($page < $total_pages) {
+                            echo '
+                            <li class="page-item">
+                                <a class="page-link active" href="../src/products.php?page='.($page+1).'&id=$userid&p_cat_id='.$p_cat_id0.'">
+                                Next</a>
+                            </li>
+                            ';
+                        } else {
+                            echo '
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Next</a>
+                            </li>
+                            ';
+                        }
+
+                        // echo '
+                        
+                        
+                        
+                        
+                        // ';
+                    
+                    
+                    ?>
+
+
                         <!-- <li class="page-item disabled">
                             <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
                         </li>
@@ -198,7 +183,6 @@ function pagination()
                         <li class="page-item">
                             <a class="page-link" href="#">Next</a>
                         </li> -->
-                        <?php pagination() ?>
                     </ul>
                 </nav>
             </div>
