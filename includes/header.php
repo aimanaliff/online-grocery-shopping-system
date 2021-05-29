@@ -22,6 +22,7 @@ include("../src/passwordRecover.php");
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://unpkg.com/@pqina/flip/dist/flip.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <link href="../hamburgers.css" rel="stylesheet">
     <link rel="icon" href="/img/nyumicon.ico">
     
@@ -201,7 +202,7 @@ include("../src/passwordRecover.php");
                             </p>
                         </div>
                         <div class="tab-pane fade" id="signup" role="tabpanel" aria-labelledby="profile-tab">
-                        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+                        
                             <form  method="post" enctype="multipart/form-data">
                                 <div class="mb-3">
                                     <input type="text" name="username" value="" onBlur="checkAvailability()" class="form-control" id="user" aria-describedby="textHelp" placeholder="Username" required>

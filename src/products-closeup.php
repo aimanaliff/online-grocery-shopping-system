@@ -85,7 +85,7 @@ if (isset($_GET['product_id']) && isset($_GET['p_cat_id'])) {
                                     $query = "select * from listname";
                                     $run_query = mysqli_query($db,$query);
 
-                                    if(mysqli_num_rows($run_query)==1){
+                                    if(mysqli_num_rows($run_query)>0){
                                         echo "
                                         <option value=''>Select List</option>
                                         ";
