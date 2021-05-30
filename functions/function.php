@@ -6,42 +6,17 @@ global $ff;
 function getpro()
 {
 
-    global $db, $p_cat_id0, $id,$page,$count;
+    global $db, $p_cat_id0, $id, $page, $count, $run_product;
 
-    $per_page=10;
-    if(isset($_GET['page'])){
+    // $per_page = 10;
+    // $page = (isset($_GET['page'])) ? $_GET['page'] : 1;
+    // if (isset($_GET['p_cat_id'])) $p_cat_id0 = $_GET['p_cat_id'];
+    // if (isset($_GET['id'])) $id = $_GET['id'];
 
-        $page=$_GET['page'];
-
-    }
-    else{
-            $page=1;
-    }
-
-    if (isset($_GET['p_cat_id'])) {
-        $p_cat_id0 = $_GET['p_cat_id'];
-    }
-
-    if (isset($_GET['id'])) {
-        $id = $_GET['id'];
-    }
-
-    // $query= "select * from product where $p_cat_id0";
-                            
-    // $result= mysqli_query($db,$query);
-
-    // $total_records= mysqli_num_rows($result);
-
-    // $total_pages=ceil($total_records / $per_page);
-
-    $start_from=($page-1) * $per_page;
-
-    $get_product = "select * from product where p_cat_id=$p_cat_id0 LIMIT $start_from,$per_page";
-
-    $run_product = mysqli_query($db, $get_product);
-
-    $count = mysqli_num_rows($run_product);
-    
+    // $start_from = ($page-1) * $per_page;
+    // $get_product = "select * from product where p_cat_id=$p_cat_id0 LIMIT $start_from,$per_page";
+    // $run_product = mysqli_query($db, $get_product);
+    // $count = mysqli_num_rows($run_product);
 
     while ($row_product = mysqli_fetch_array($run_product)) {
         global $product_id;
@@ -65,7 +40,7 @@ function getpro()
                     <div class='card-body'>
                         <h5 class='card-title'>$product_name</h5>
                         <p class='card-text'>RM $product_price</p>
-                        <div class='d-flex flex-sm-column justify-content-around'>
+                        <div class='d-flex flex-column justify-content-around gap-2 gap-sm-0'>
                             <a href='products-closeup.php?id=$id&product_id=$product_id&p_cat_id=$p_cat_id'  class='btn btn-success rounded-pill mb-sm-2  '>Add to List</a>
                             <a href='products-closeup.php?product_id=$product_id' class='btn btn-warning rounded-pill'>Add to Cart</a>
                         </div>
@@ -78,8 +53,94 @@ function getpro()
     }
 }
 
+function getProDef()
+{
+    global $db, $p_cat_id0, $id, $page, $count;
 
+    $per_page = 10;
+    $page = (isset($_GET['page'])) ? $_GET['page'] : 1;
+    if (isset($_GET['p_cat_id'])) $p_cat_id0 = $_GET['p_cat_id'];
+    if (isset($_GET['id'])) $id = $_GET['id'];
 
+    $start_from = ($page-1) * $per_page;
+    $get_product = "SELECT * FROM product WHERE p_cat_id=$p_cat_id0 LIMIT $start_from,$per_page";
+    $run_product = mysqli_query($db, $get_product);
+    $count = mysqli_num_rows($run_product);
+
+    getpro();
+}
+
+function getProA2Z()
+{
+    global $db, $p_cat_id0, $id, $page, $count;
+
+    $per_page = 10;
+    $page = (isset($_GET['page'])) ? $_GET['page'] : 1;
+    if (isset($_GET['p_cat_id'])) $p_cat_id0 = $_GET['p_cat_id'];
+    if (isset($_GET['id'])) $id = $_GET['id'];
+
+    $start_from = ($page-1) * $per_page;
+    $get_product = "SELECT * FROM product WHERE p_cat_id=$p_cat_id0 ORDER BY product_name ASC 
+                    LIMIT $start_from,$per_page";
+    $run_product = mysqli_query($db, $get_product);
+    $count = mysqli_num_rows($run_product);
+
+    getpro();
+}
+
+function getProZ2A()
+{
+    global $db, $p_cat_id0, $id, $page, $count;
+
+    $per_page = 10;
+    $page = (isset($_GET['page'])) ? $_GET['page'] : 1;
+    if (isset($_GET['p_cat_id'])) $p_cat_id0 = $_GET['p_cat_id'];
+    if (isset($_GET['id'])) $id = $_GET['id'];
+
+    $start_from = ($page-1) * $per_page;
+    $get_product = "SELECT * FROM product WHERE p_cat_id=$p_cat_id0 ORDER BY product_name DESC
+                    LIMIT $start_from,$per_page";
+    $run_product = mysqli_query($db, $get_product);
+    $count = mysqli_num_rows($run_product);
+
+    getpro();
+}
+
+function getProL2H()
+{
+    global $db, $p_cat_id0, $id, $page, $count;
+
+    $per_page = 10;
+    $page = (isset($_GET['page'])) ? $_GET['page'] : 1;
+    if (isset($_GET['p_cat_id'])) $p_cat_id0 = $_GET['p_cat_id'];
+    if (isset($_GET['id'])) $id = $_GET['id'];
+
+    $start_from = ($page-1) * $per_page;
+    $get_product = "SELECT * FROM product WHERE p_cat_id=$p_cat_id0 ORDER BY product_price ASC
+                    LIMIT $start_from,$per_page";
+    $run_product = mysqli_query($db, $get_product);
+    $count = mysqli_num_rows($run_product);
+
+    getpro();
+}
+
+function getProH2L()
+{
+    global $db, $p_cat_id0, $id, $page, $count;
+
+    $per_page = 10;
+    $page = (isset($_GET['page'])) ? $_GET['page'] : 1;
+    if (isset($_GET['p_cat_id'])) $p_cat_id0 = $_GET['p_cat_id'];
+    if (isset($_GET['id'])) $id = $_GET['id'];
+
+    $start_from = ($page-1) * $per_page;
+    $get_product = "SELECT * FROM product WHERE p_cat_id=$p_cat_id0 ORDER BY product_price DESC
+                    LIMIT $start_from,$per_page";
+    $run_product = mysqli_query($db, $get_product);
+    $count = mysqli_num_rows($run_product);
+
+    getpro();
+}
 
 
 function get_pro_details()
