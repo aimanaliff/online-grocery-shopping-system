@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 22, 2021 at 03:34 PM
--- Server version: 10.4.18-MariaDB
--- PHP Version: 8.0.3
+-- Generation Time: May 30, 2021 at 03:50 PM
+-- Server version: 10.4.17-MariaDB
+-- PHP Version: 8.0.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -40,15 +40,17 @@ CREATE TABLE `cart` (
 
 CREATE TABLE `listname` (
   `ListID` int(10) NOT NULL,
-  `ListName` varchar(100) NOT NULL
+  `ListName` varchar(100) NOT NULL,
+  `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `listname`
 --
 
-INSERT INTO `listname` (`ListID`, `ListName`) VALUES
-(1, 'chochalate');
+INSERT INTO `listname` (`ListID`, `ListName`, `id`) VALUES
+(1, 'vegetables', 93),
+(6, 'Fruits', 93);
 
 -- --------------------------------------------------------
 
@@ -180,18 +182,13 @@ CREATE TABLE `productinlist` (
 
 INSERT INTO `productinlist` (`ProductInListID`, `ListID`, `product_id`, `quantity`, `id`) VALUES
 (147, 1, 1, 5, 93),
-(150, 1, 11, 1, 93),
-(151, 1, 10, 3, 0),
-(152, 1, 10, 1, 93),
-(153, 1, 11, 3, 93),
-(154, 1, 10, 3, 93),
-(155, 1, 11, 3, 0),
-(156, 1, 11, 3, 93),
-(157, 1, 10, 3, 93),
-(158, 1, 10, 1, 0),
-(159, 1, 10, 1, 0),
-(160, 1, 10, 1, 93),
-(161, 1, 13, 1, 97);
+(161, 1, 13, 1, 97),
+(162, 1, 69, 5, 93),
+(163, 1, 1, 3, 93),
+(164, 6, 52, 8, 93),
+(165, 6, 75, 2, 93),
+(166, 6, 76, 3, 93),
+(167, 1, 1, 2, 93);
 
 -- --------------------------------------------------------
 
@@ -353,7 +350,7 @@ ALTER TABLE `cart`
 -- AUTO_INCREMENT for table `listname`
 --
 ALTER TABLE `listname`
-  MODIFY `ListID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `ListID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `product`
@@ -365,7 +362,7 @@ ALTER TABLE `product`
 -- AUTO_INCREMENT for table `productinlist`
 --
 ALTER TABLE `productinlist`
-  MODIFY `ProductInListID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=162;
+  MODIFY `ProductInListID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=168;
 
 --
 -- AUTO_INCREMENT for table `product_categories`
