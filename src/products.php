@@ -2,12 +2,50 @@
 
 include("../includes/header.php");
 include("../includes/db.php");
+global $total_records;
+
+
+
 ?>
     <div class="container pt-5">
+    <?php 
+        $per_page=10;
+        if(isset($_GET['page'])){
+    
+            $page=$_GET['page'];
+    
+        }
+        else{
+                $page=1;
+        }
+    
+        if (isset($_GET['p_cat_id'])) {
+            $p_cat_id0 = $_GET['p_cat_id'];
+        }
+    
+        $start_from=($page-1) * $per_page;
+    
+        $get_product = "select * from product where p_cat_id=$p_cat_id0 LIMIT $start_from,$per_page";
+    
+        $run_product = mysqli_query($db, $get_product);
+    
+        $count = mysqli_num_rows($run_product);
+
+        $get_categoryName = "select * from product_categories where p_cat_id=$p_cat_id0";
+
+        $run_categoryName = mysqli_query($db, $get_categoryName);
+
+        $row_categoryName = mysqli_fetch_array($run_categoryName);
+
+        $p_cat_title = $row_categoryName['p_cat_title'];
+    
+        
+            
+    ?>
         <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
             <ol class="breadcrumb fw-bold">
-                <li class="breadcrumb-item"><a href="../index.html" class="text-dark text-decoration-none">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Category</li>
+                <li class="breadcrumb-item"><a href="index.php" class="text-dark text-decoration-none">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page"><?php echo $p_cat_title ?></li>
             </ol>
         </nav>
     </div>
@@ -23,21 +61,24 @@ include("../includes/db.php");
 
         <div class="card">
             <div class="card-body m-3 mt-2">
-                <h1>Le Fruits</h1>
-                <p class="fs-5">Back to the Jungle!</p>
+           
+                <h1><?php echo $p_cat_title ?></h1>
+                <!-- <p class="fs-5">Back to the Jungle!</p> -->
                 <hr>
                 <div class="container d-flex flex-row justify-content-between align-item-center p-0">
-                    <p>Showing <strong>1 - 20</strong> of <strong>20</strong> products</p>
+                    <p id="showProdAmount">Showing <strong><?php echo $count ?></strong> of <strong><?php echo $p_cat_title ?></strong> products</p>
+                    
+
                     <div class="dropdown pb-3">
                         <button class="btn bg-transparent dropdown-toggle" type="button" id="dropdownSort"
                             data-bs-toggle="dropdown" aria-expanded="false">
                             Sort by:
                         </button>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownSort">
-                            <li><button class="dropdown-item" type="button">Alphabetically, A-Z</button></li>
-                            <li><button class="dropdown-item" type="button">Alphabetically, Z-A</button></li>
-                            <li><button class="dropdown-item" type="button">Price, low to high</button></li>
-                            <li><button class="dropdown-item" type="button">Price, high to low</button></li>
+                            <li><button class="dropdown-item" type="button" onclick="">Alphabetically, A-Z</button></li>
+                            <li><button class="dropdown-item" type="button" onclick="">Alphabetically, Z-A</button></li>
+                            <li><button class="dropdown-item" type="button" onclick="">Price, low to high</button></li>
+                            <li><button class="dropdown-item" type="button" onclick="">Price, high to low</button></li>
                         </ul>
                     </div>
                 </div>
@@ -45,34 +86,110 @@ include("../includes/db.php");
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-3">
 
                     <?php 
-                    
-                        getpro();
+                    global $per_page;
+                    $per_page = 10;
+                    getpro(); 
+                    // getProducts();
                     
                     ?>
                     
                 </div>
                 <nav aria-label="Product page navigation">
                     <ul class="pagination justify-content-end mb-0 mt-4">
-                        <li class="page-item disabled">
+                    <?php 
+                        global $p_cat_id0;
+                        if (isset($_GET['p_cat_id'])) {
+                            $p_cat_id0 = $_GET['p_cat_id'];
+                        }
+                    
+                        $query= "select * from product where p_cat_id=$p_cat_id0 ";
+                            
+                        $result= mysqli_query($con,$query);
+
+                        $total_records= mysqli_num_rows($result);
+
+                        $total_pages=ceil($total_records / $per_page);
+
+                        // echo '
+                        
+                        // <li class="page-item disabled">
+                        //     <a class="page-link" href="../src/products.php?page=1&id=$userid&p_cat_id=1&page=1" tabindex="-1" aria-disabled="true">1</a>
+                        // </li>
+                        
+                        
+                        // ';
+
+                        if($page >= 2) {   
+                            echo '
+                            <li class="page-item">
+                                <a class="page-link" href="../src/products.php?page='.($page-1).'&id=$userid&p_cat_id='.$p_cat_id0.'">
+                                Prev</a>
+                            </li>
+                            ';   
+                        } else {
+                            echo '
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Prev</a>
+                            </li>
+                            ';
+                        }
+
+                        for($i=1; $i<=$total_pages; $i++){
+
+                            echo '
+                        
+                            <li class="page-item" aria-current="page"><a class="page-link" href="../src/products.php?page='.$i.'&id=$userid&p_cat_id='.$p_cat_id0.'">
+                            '.$i.'</a></li>
+                        
+                            '
+                            ;
+                        }
+
+                        if ($page < $total_pages) {
+                            echo '
+                            <li class="page-item">
+                                <a class="page-link active" href="../src/products.php?page='.($page+1).'&id=$userid&p_cat_id='.$p_cat_id0.'">
+                                Next</a>
+                            </li>
+                            ';
+                        } else {
+                            echo '
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Next</a>
+                            </li>
+                            ';
+                        }
+
+                        // echo '
+                        
+                        
+                        
+                        
+                        // ';
+                    
+                    
+                    ?>
+
+
+                        <!-- <li class="page-item disabled">
                             <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
                         </li>
-                        <li class="page-item active" aria-current="page"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item active" aria-current="page"><a class="page-link" href="products.php?page=&<?php echo $page ?>id=<?php echo $userid ?>&p_cat_id=<?php echo $categoryID ?>">
+                            1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">
+                            2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">
+                            3</a></li>
                         <li class="page-item">
                             <a class="page-link" href="#">Next</a>
-                        </li>
+                        </li> -->
                     </ul>
                 </nav>
             </div>
         </div>
     </main>
 
-    <?php 
-
-include("../includes/footer.php")
-
-?>
+    <?php include("../includes/footer.php") ?>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
