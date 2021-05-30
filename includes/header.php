@@ -128,7 +128,7 @@ include("../src/passwordRecover.php");
     <nav class="navbar sticky-top navbar-expand-sm shadow py-2 justify-content-center" style="background-color: #FD6C5D;">
         <div class="collapse navbar-collapse" id="categoriesToggle">
             <div class="container">
-                <ul class="navbar-nav mb-2 mb-md-0 w-100 justify-content-between next" style="font-weight: bold;">
+                <ul class="navbar-nav mb-2 mb-md-0 w-100 justify-content-around next" style="font-weight: bold;">
                 <?php 
                     if(isset($_SESSION['success'])){
                         $userid = $_SESSION['user'];

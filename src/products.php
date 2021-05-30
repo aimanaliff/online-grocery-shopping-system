@@ -2,46 +2,31 @@
 
 include("../includes/header.php");
 include("../includes/db.php");
-global $total_records;
+global $total_records, $sort;
 
+$per_page = 10;
+// if(isset($_GET['page'])){ $page=$_GET['page']; }
+// else{ $page=1; }
+$page = (isset($_GET['page'])) ? $_GET['page'] : 1;
+if (isset($_GET['p_cat_id'])) $p_cat_id0 = $_GET['p_cat_id'];
 
+$start_from = ($page-1) * $per_page;
+$get_product = "select * from product where p_cat_id=$p_cat_id0 LIMIT $start_from,$per_page";
+$run_product = mysqli_query($db, $get_product);
+$count = mysqli_num_rows($run_product);
+
+$get_categoryName = "select * from product_categories where p_cat_id=$p_cat_id0";
+$run_categoryName = mysqli_query($db, $get_categoryName);
+$row_categoryName = mysqli_fetch_array($run_categoryName);
+$p_cat_title = $row_categoryName['p_cat_title'];  
+
+$get_productAmount = "SELECT COUNT(*) FROM product WHERE p_cat_id=$p_cat_id0";
+$run_productAmount = mysqli_query($db, $get_productAmount);
+$productAmount = mysqli_fetch_row($run_productAmount);
 
 ?>
+
     <div class="container pt-5">
-    <?php 
-        $per_page=10;
-        if(isset($_GET['page'])){
-    
-            $page=$_GET['page'];
-    
-        }
-        else{
-                $page=1;
-        }
-    
-        if (isset($_GET['p_cat_id'])) {
-            $p_cat_id0 = $_GET['p_cat_id'];
-        }
-    
-        $start_from=($page-1) * $per_page;
-    
-        $get_product = "select * from product where p_cat_id=$p_cat_id0 LIMIT $start_from,$per_page";
-    
-        $run_product = mysqli_query($db, $get_product);
-    
-        $count = mysqli_num_rows($run_product);
-
-        $get_categoryName = "select * from product_categories where p_cat_id=$p_cat_id0";
-
-        $run_categoryName = mysqli_query($db, $get_categoryName);
-
-        $row_categoryName = mysqli_fetch_array($run_categoryName);
-
-        $p_cat_title = $row_categoryName['p_cat_title'];
-    
-        
-            
-    ?>
         <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
             <ol class="breadcrumb fw-bold">
                 <li class="breadcrumb-item"><a href="index.php" class="text-dark text-decoration-none">Home</a></li>
@@ -66,30 +51,54 @@ global $total_records;
                 <!-- <p class="fs-5">Back to the Jungle!</p> -->
                 <hr>
                 <div class="container d-flex flex-row justify-content-between align-item-center p-0">
-                    <p id="showProdAmount">Showing <strong><?php echo $count ?></strong> of <strong><?php echo $p_cat_title ?></strong> products</p>
-                    
+                    <p id="showProdAmount">Showing <strong><?php echo $count ?></strong> of <strong><?php echo $productAmount[0] ?></strong> products</p>
 
                     <div class="dropdown pb-3">
                         <button class="btn bg-transparent dropdown-toggle" type="button" id="dropdownSort"
                             data-bs-toggle="dropdown" aria-expanded="false">
                             Sort by:
                         </button>
+
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownSort">
-                            <li><button class="dropdown-item" type="button" onclick="">Alphabetically, A-Z</button></li>
+                            <!-- <li><button class="dropdown-item" type="button" onclick="">Alphabetically, A-Z</button></li>
                             <li><button class="dropdown-item" type="button" onclick="">Alphabetically, Z-A</button></li>
                             <li><button class="dropdown-item" type="button" onclick="">Price, low to high</button></li>
-                            <li><button class="dropdown-item" type="button" onclick="">Price, high to low</button></li>
+                            <li><button class="dropdown-item" type="button" onclick="">Price, high to low</button></li> -->
+                            <li>
+                                <a class="dropdown-item" href="../src/products.php?page=<?php echo $page ?>&id=<?php echo $userid ?>&p_cat_id=<?php echo $p_cat_id0 ?>&sort=A2Z" 
+                                role="button">Alphabetically, A-Z</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="../src/products.php?page=<?php echo $page ?>&id=<?php echo $userid ?>&p_cat_id=<?php echo $p_cat_id0 ?>&sort=Z2A" 
+                                role="button">Alphabetically, Z-A</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="../src/products.php?page=<?php echo $page ?>&id=<?php echo $userid ?>&p_cat_id=<?php echo $p_cat_id0 ?>&sort=L2H" 
+                                role="button">Price, low to high</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="../src/products.php?page=<?php echo $page ?>&id=<?php echo $userid ?>&p_cat_id=<?php echo $p_cat_id0 ?>&sort=H2L" 
+                                role="button">Price, high to low</a>
+                            </li>
                         </ul>
                     </div>
                 </div>
 
-                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-3">
+                <div class="row row-cols-2 row-cols-md-3 row-cols-lg-5 g-3">
 
                     <?php 
+
                     global $per_page;
                     $per_page = 10;
-                    getpro(); 
-                    // getProducts();
+
+                    if (isset($_GET['sort'])) {
+                        $sort = $_GET['sort'];
+                        if ($sort == 'A2Z') getProA2Z();
+                        elseif ($sort == 'Z2A') getProZ2A();
+                        elseif ($sort == 'L2H') getProL2H();
+                        elseif ($sort == 'H2L') getProH2L();
+                        else getProDef();
+                    } else getProDef();
                     
                     ?>
                     
@@ -98,17 +107,12 @@ global $total_records;
                     <ul class="pagination justify-content-end mb-0 mt-4">
                     <?php 
                         global $p_cat_id0;
-                        if (isset($_GET['p_cat_id'])) {
-                            $p_cat_id0 = $_GET['p_cat_id'];
-                        }
+                        if (isset($_GET['p_cat_id'])) $p_cat_id0 = $_GET['p_cat_id'];
                     
-                        $query= "select * from product where p_cat_id=$p_cat_id0 ";
-                            
-                        $result= mysqli_query($con,$query);
-
-                        $total_records= mysqli_num_rows($result);
-
-                        $total_pages=ceil($total_records / $per_page);
+                        $query = "select * from product where p_cat_id=$p_cat_id0 ";
+                        $result = mysqli_query($con,$query);
+                        $total_records = mysqli_num_rows($result);
+                        $total_pages = ceil($total_records / $per_page);
 
                         // echo '
                         
@@ -122,7 +126,7 @@ global $total_records;
                         if($page >= 2) {   
                             echo '
                             <li class="page-item">
-                                <a class="page-link" href="../src/products.php?page='.($page-1).'&id=$userid&p_cat_id='.$p_cat_id0.'">
+                                <a class="page-link" href="../src/products.php?page='.($page-1).'&id=$userid&p_cat_id='.$p_cat_id0.'&sort='.$sort.'">
                                 Prev</a>
                             </li>
                             ';   
@@ -138,7 +142,7 @@ global $total_records;
 
                             echo '
                         
-                            <li class="page-item" aria-current="page"><a class="page-link" href="../src/products.php?page='.$i.'&id=$userid&p_cat_id='.$p_cat_id0.'">
+                            <li class="page-item" aria-current="page"><a class="page-link" href="../src/products.php?page='.$i.'&id=$userid&p_cat_id='.$p_cat_id0.'&sort='.$sort.'">
                             '.$i.'</a></li>
                         
                             '
@@ -148,7 +152,7 @@ global $total_records;
                         if ($page < $total_pages) {
                             echo '
                             <li class="page-item">
-                                <a class="page-link active" href="../src/products.php?page='.($page+1).'&id=$userid&p_cat_id='.$p_cat_id0.'">
+                                <a class="page-link active" href="../src/products.php?page='.($page+1).'&id=$userid&p_cat_id='.$p_cat_id0.'&sort='.$sort.'">
                                 Next</a>
                             </li>
                             ';
@@ -158,18 +162,9 @@ global $total_records;
                                 <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Next</a>
                             </li>
                             ';
-                        }
-
-                        // echo '
-                        
-                        
-                        
-                        
-                        // ';
-                    
+                        }                  
                     
                     ?>
-
 
                         <!-- <li class="page-item disabled">
                             <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
