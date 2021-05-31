@@ -28,6 +28,10 @@ function getpro()
         $product_quantity = $row_product['product_quantity'];
         $product_desc = $row_product['product_desc'];
 
+        if (strlen($product_name) > 15) {
+            $product_name = substr($product_name, 0, 8). " ... " . substr($product_name, -4);
+        }
+
         if ($p_cat_id == $p_cat_id0) {
             $_SESSION['cart'] = $product_id;
             echo "
