@@ -18,17 +18,24 @@ include("../src/passwordRecover.php");
     <title>NyumNyum Grocer Store</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
     <link href='https://fonts.googleapis.com/css?family=Noto+Sans' rel='stylesheet'>
-    <link rel="stylesheet" href="../nyumstyle.css?version=1">
+    <link rel="stylesheet" href="../nyumstyle.css?v=<?=time();?>">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://unpkg.com/@pqina/flip/dist/flip.min.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <link href="../hamburgers.css" rel="stylesheet">
-    <link rel="icon" href="/img/nyumicon.ico">
+    <link rel="icon" href="../img/nyumicon.ico">
+    <style>
+    html {
+        overflow-y: scroll;
+    }
+    
+    </style>
     
 </head>
 
 <body>
+<div id="page-container">
     <header class="py-3" style="background-color: #92D050;">
         <div class="container gap-3">
             <div class="d-flex align-items-center flex-wrap flex-sm-nowrap justify-content-between">
@@ -63,9 +70,12 @@ include("../src/passwordRecover.php");
                                 echo "
                                 <a href='../src/user.php?id=$userid' . class='nav-link text-dark' data-bs-toggle='tooltip' data-bs-placement='top' title = '$name' value='$name'><svg xmlns='http://www.w3.org/2000/svg' width='25' height='25' fill='currentColor' class='bi bi-person' viewBox='0 0 16 16'>
                                     <path d='M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z' />
-                                </svg></a>
+                                </svg>
                                 
+                                </a>
                                 ";
+                                
+
                             } else{
                                 echo "
                                 <a href='' class='nav-link text-dark' data-bs-toggle='modal' data-bs-target='#exampleModal'><svg xmlns='http://www.w3.org/2000/svg' width='25' height='25' fill='currentColor' class='bi bi-person' viewBox='0 0 16 16'>
@@ -81,7 +91,7 @@ include("../src/passwordRecover.php");
                         if(isset($_SESSION['success'])){
                             $userid = $_SESSION['user'];
                             echo "
-                                <a href='../src/cart.php?id=$userid' class='nav-link text-dark'><svg xmlns='http://www.w3.org/2000/svg' width='23' height='23' fill='currentColor' class='bi bi-bag' viewBox='0 0 16 16'>
+                                <a href='../src/cart.php?id=$userid'  class='cart nav-link text-dark'><svg xmlns='http://www.w3.org/2000/svg' width='23' height='23' fill='currentColor' class='bi bi-bag' viewBox='0 0 16 16'>
                                 <path d='M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z'/>
                               </svg></a>
                             "
@@ -103,7 +113,7 @@ include("../src/passwordRecover.php");
                         if(isset($_SESSION['success'])){
                             $userid = $_SESSION['user'];
                             echo "
-                                <a href='../src/list1.php?id=$userid'. class='nav-link text-dark'><svg xmlns='http://www.w3.org/2000/svg' width='28' height='28' fill='currentColor' class='bi bi-list-ul' viewBox='0 0 16 16'>
+                                <a href='../src/list1.php?id=$userid'. class='nav-link text-dark'><svg xmlns='http://www.w3.org/2000/svg' width='28' height='29' fill='currentColor' class='bi bi-list-ul' viewBox='0 0 16 16'>
                                 <path fill-rule='evenodd' d='M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm-3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2z'/>
                               </svg></a>
                             "
@@ -111,7 +121,7 @@ include("../src/passwordRecover.php");
                         }
                         else{
                             echo "
-                                <a href='' data-bs-toggle='modal' data-bs-target='#exampleModal' class='nav-link text-dark'><svg xmlns='http://www.w3.org/2000/svg' width='28' height='28' fill='currentColor' class='bi bi-list-ul' viewBox='0 0 10 10'>
+                                <a href='' data-bs-toggle='modal' data-bs-target='#exampleModal' class='nav-link text-dark'><svg xmlns='http://www.w3.org/2000/svg' width='28' height='33' fill='currentColor' class='bi bi-list-ul' viewBox='0 0 16 16'>
                                 <path fill-rule='evenodd' d='M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm-3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2z'/>
                               </svg></a>
                             "
@@ -281,14 +291,24 @@ include("../src/passwordRecover.php");
     </script>
     <script>
         $('#Password1, #Password2').on('keyup', function () {
-        if ($('#Password1').val() == $('#Password2').val()) {
-            if($('#Password1').val() == "" || $('#Password2').val() == "" ){
-                $('#message').html('').css('color', 'green');
-            }else{
-                $('#message').html('Password Match').css('color', 'green');
+        if ($('#Password1').val() == $('#Password2').val() ) {
+            $('#message').html('Password Match').css('color', 'green');
+        } else{
+            if($('#Password2').val() =="" || $('#Password1').val() ==""){
+            } else{
+                $('#message').html('Password Not Match').css('color', 'red');
             }
-        } else 
-            $('#message').html('Password Not Match').css('color', 'red');
+        }
+        if($('#Password1').val() =="" && $('#Password2').val()==""){
+            $('#message').html('');
+        }
+        if($('#Password1').val() !="" && $('#Password2').val()==""){
+            $('#message').html('');
+        }
+        if($('#Password1').val() =="" && $('#Password2').val()!=""){
+            $('#message').html('');
+        }
+            
         });
     </script>
     <script type="text/javascript">

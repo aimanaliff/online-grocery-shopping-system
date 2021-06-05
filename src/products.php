@@ -60,10 +60,9 @@ $productAmount = mysqli_fetch_row($run_productAmount);
                         </button>
 
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownSort">
-                            <!-- <li><button class="dropdown-item" type="button" onclick="">Alphabetically, A-Z</button></li>
-                            <li><button class="dropdown-item" type="button" onclick="">Alphabetically, Z-A</button></li>
-                            <li><button class="dropdown-item" type="button" onclick="">Price, low to high</button></li>
-                            <li><button class="dropdown-item" type="button" onclick="">Price, high to low</button></li> -->
+                            <?php
+                        if($count > 1){
+                            ?>
                             <li>
                                 <a class="dropdown-item" href="../src/products.php?page=<?php echo $page ?>&id=<?php echo $userid ?>&p_cat_id=<?php echo $p_cat_id0 ?>&sort=A2Z" 
                                 role="button">Alphabetically, A-Z</a>
@@ -80,6 +79,32 @@ $productAmount = mysqli_fetch_row($run_productAmount);
                                 <a class="dropdown-item" href="../src/products.php?page=<?php echo $page ?>&id=<?php echo $userid ?>&p_cat_id=<?php echo $p_cat_id0 ?>&sort=H2L" 
                                 role="button">Price, high to low</a>
                             </li>
+                            <?php 
+                             }
+                             
+                             else{
+                                ?>
+                                <li>
+                                <a class="dropdown-item" style="pointer-events:none;" href="../src/products.php?page=<?php echo $page ?>&id=<?php echo $userid ?>&p_cat_id=<?php echo $p_cat_id0 ?>&sort=A2Z" 
+                                role="button">Alphabetically, A-Z</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" style="pointer-events:none;" href="../src/products.php?page=<?php echo $page ?>&id=<?php echo $userid ?>&p_cat_id=<?php echo $p_cat_id0 ?>&sort=Z2A" 
+                                    role="button">Alphabetically, Z-A</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" style="pointer-events:none;" href="../src/products.php?page=<?php echo $page ?>&id=<?php echo $userid ?>&p_cat_id=<?php echo $p_cat_id0 ?>&sort=L2H" 
+                                    role="button">Price, low to high</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" style="pointer-events:none;" href="../src/products.php?page=<?php echo $page ?>&id=<?php echo $userid ?>&p_cat_id=<?php echo $p_cat_id0 ?>&sort=H2L" 
+                                    role="button">Price, high to low</a>
+                                </li>
+                                
+                            <?php 
+                             }
+                             ?>
+                           
                         </ul>
                     </div>
                 </div>
@@ -108,7 +133,7 @@ $productAmount = mysqli_fetch_row($run_productAmount);
                     <?php 
                         global $p_cat_id0;
                         if (isset($_GET['p_cat_id'])) $p_cat_id0 = $_GET['p_cat_id'];
-                    
+                        $userid=$_SESSION['user'];
                         $query = "select * from product where p_cat_id=$p_cat_id0 ";
                         $result = mysqli_query($con,$query);
                         $total_records = mysqli_num_rows($result);
@@ -126,7 +151,7 @@ $productAmount = mysqli_fetch_row($run_productAmount);
                         if($page >= 2) {   
                             echo '
                             <li class="page-item">
-                                <a class="page-link" href="../src/products.php?page='.($page-1).'&id=$userid&p_cat_id='.$p_cat_id0.'&sort='.$sort.'">
+                                <a class="page-link" href="../src/products.php?page='.($page-1).'&id='.$userid.'&p_cat_id='.$p_cat_id0.'&sort='.$sort.'">
                                 Prev</a>
                             </li>
                             ';   
@@ -142,7 +167,7 @@ $productAmount = mysqli_fetch_row($run_productAmount);
 
                             echo '
                         
-                            <li class="page-item" aria-current="page"><a class="page-link" href="../src/products.php?page='.$i.'&id=$userid&p_cat_id='.$p_cat_id0.'&sort='.$sort.'">
+                            <li class="page-item" aria-current="page"><a class="page-link" href="../src/products.php?page='.$i.'&id='.$userid.'&p_cat_id='.$p_cat_id0.'&sort='.$sort.'">
                             '.$i.'</a></li>
                         
                             '
@@ -152,7 +177,7 @@ $productAmount = mysqli_fetch_row($run_productAmount);
                         if ($page < $total_pages) {
                             echo '
                             <li class="page-item">
-                                <a class="page-link active" href="../src/products.php?page='.($page+1).'&id=$userid&p_cat_id='.$p_cat_id0.'&sort='.$sort.'">
+                                <a class="page-link active" href="../src/products.php?page='.($page+1).'&id='.$userid.'&p_cat_id='.$p_cat_id0.'&sort='.$sort.'">
                                 Next</a>
                             </li>
                             ';

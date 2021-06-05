@@ -15,6 +15,7 @@ function list1(){
 
     $arr = array();
     $i = 0;
+    $k =0;
     while ($row_product = mysqli_fetch_array($run_product)) {
         // $productInListID = $row_product['ProductInListID'];
         $ListID = $row_product['ListID'];
@@ -30,7 +31,7 @@ function list1(){
 
         ?>
         
-            <div class="row mb-3">
+            <div class="row mb-3" id="deletelist<?=$ListID?>">
                 <div class="col-1">
 
                     <div class="edit d-flex justify-content-center" style="margin-top: 7px;">
@@ -41,20 +42,20 @@ function list1(){
                             </svg>
                         </button>
                     </div>
-     <?php
-        echo '
+     
+        
                 </div>
                 <div class="col">
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="flush-headingTwo">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree'.$i.'" aria-expanded="false" aria-controls="flush-collapseTwo">
-                                '.$ListName.' <span class="badge bg-secondary mx-2">'.$count.'</span>
+                            <button class="accordion-button collapsed" type="button" onclick="multiply1<?=$k?>()" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree<?=$k?>" aria-expanded="false" aria-controls="flush-collapseTwo">
+                                <?php echo $ListName?> <span class="badge bg-secondary mx-2"><?php echo $count ?></span>
                             </button>
                         </h2>
-                        <div id="flush-collapseThree'.$i.'" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
-                            <div class="accordion-body"> ';
+                        <div id="flush-collapseThree<?=$k?>" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body"> 
 
-                            
+                            <?php           
                            
                             while ($row_productList = mysqli_fetch_array($run_productList)) {
 
@@ -80,11 +81,11 @@ function list1(){
                                 $product_price = $row_query['product_price'];
 
                                 array_push($arr,$product_price);
+                                ?>
 
-                                echo '
-                                <div class="row py-xxl-5 py-sm-4 align-items-center">
+                                <div class="row py-xxl-5 py-sm-4 align-items-center" id="removeItemInlist<?=$productInListID?>">
                                     <div class="col-1 align-self-center py-2 mx-sm-auto">
-                                        <button type="button" class="btn btn-outline-danger btn-sm">
+                                        <button type="button" class="btn btn-outline-danger btn-sm"  onclick="deleteDalam<?=$productInListID?>()">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
                                                 <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
                                                 <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
@@ -92,8 +93,8 @@ function list1(){
                                         </button>
                                     </div>
                                     <div class="col-2">
-                                        <h4 style="text-align: center;">'.$product_name.'</h4>
-                                        <img src="../admin_area/product_images/'.$product_img.'" class="img-thumbnail" alt="">
+                                        <h4 style="text-align: center;"><?php echo $product_name?></h4>
+                                        <img src="../admin_area/product_images/<?php echo $product_img?>" class="img-thumbnail" alt="">
                                     </div>
                                     <div class="col-2 align-self-center mt-5">
                                         <div>
@@ -101,31 +102,29 @@ function list1(){
                                             
                                         </div>
                                     </div>
-                                    ';
-    ?>
                                     <div class="col-2">
-                                        <input type="number" min="0" class="form-control" id="inputQuantity<?=$i?>" onclick="multiply1<?=$i?>()" onkeyup="multiply1<?=$product_id?>()" value="<?=$quantity?>">
+                                        <input type="number" min="1" class="form-control" id="inputQuantity<?=$productInListID?>" onclick="multiply1<?=$productInListID?>()" onkeyup="multiply1<?=$productInListID?>()" value="<?=$quantity?>">
                                     </div>
                                     <div class="col-2 align-self-center">
                                         <div>
                                             <h6 class="text-center">Sub Total</h6>
                                             <script>
                                             var total1 = 0.0;
-                                            var quantity = document.querySelectorAll("#inputQuantity<?=$i?>");
+                                            var quantity = document.querySelectorAll("#inputQuantity<?=$productInListID?>");
                                             total1 = quantity[0].value * <?=$product_price?>;
                                             <?php 
                                             $phpvar = "<script>document.writeln(total1);</script>";
                                             
                                             ?>
                                             </script>
-                                            <p id="cartTotal<?=$i?>" class="text-center text-success fw-bold">RM <?=$phpvar?></p>
+                                            <p id="cartTotal<?=$productInListID?>" class="text-center text-success fw-bold">RM <?=$phpvar?></p>
                                         </div>
                                     </div>
                                     <div class="col-1 align-self-center">
                                         <input type="checkbox" name="" id="" class="">
                                     </div>
                                     <div class="col-2">
-                                        <button type="button" class="btn btn-outline-dark">Add to cart</button>
+                                        <button type="button" onclick="addcart<?=$productInListID?>()" class="btn btn-outline-dark">Add to cart</button>
                                     </div>
                                 </div>
 
@@ -134,21 +133,99 @@ function list1(){
 
                                 <script>
                                 var total = 0.0;
-                                function multiply1<?=$i?>(){
-                                    var quantity = document.querySelectorAll("#inputQuantity<?=$i?>");
+                                function multiply1<?=$productInListID?>(){
+                                    var quantity = document.querySelectorAll("#inputQuantity<?=$productInListID?>");
                                     total = quantity[0].value * <?=$product_price?>;
-                                    document.getElementById("cartTotal<?=$i?>").innerHTML = "RM " + total;
+                                    document.getElementById("cartTotal<?=$productInListID?>").innerHTML = "RM " + total;
                                     console.log(total);
+                                    var productInListID = <?php echo $productInListID ;?>;
+                                    $.ajax({
+                                            type:"post",
+                                            cache:false,
+                                            url:"../functions/newlistname.php",
+                                            data:{
+                                                update:productInListID,
+                                                quantity1:quantity[0].value
+                                            },
+                                            success:function(response){
+                                                if(response){
+                                                    setTimeout(worker, 5000);
+                                                } else{
+                                                    alert('not succesfully');
+                                                    window.open("_self");
+                                                }
+                                            },
+                                            error: function(jqXHR, textStatus, errorThrown){
+                                                console.log(textStatus, errorThrown);
+                                            }
+                                        });
                                 }
                                 
+                                </script>
+                                <script>
+                                    function deleteDalam<?=$productInListID?>(){
+                                        var productInListID = <?php echo $productInListID ;?>;
+                                        $.ajax({
+                                            type:"post",
+                                            cache:false,
+                                            url:"../functions/newlistname.php",
+                                            data:{
+                                                productInListID:productInListID
+                                            },
+                                            success:function(response){
+                                                if(response){
+                                                    // jQuery("#removeItemInlist<?=$productInListID?>").hide(400);
+                                                    location.reload();
+                                                } else{
+                                                    alert('not succesfully');
+                                                    window.open("_self");
+                                                }
+                                            },
+                                            error: function(jqXHR, textStatus, errorThrown){
+                                                console.log(textStatus, errorThrown);
+                                            }
+                                        });
+                                    }
+
+                                    
+                                </script>
+                                <script>    
+                                    function addcart<?=$productInListID?>(){
+                                        var productInListID1 = <?php echo $productInListID ;?>;
+                                        var quantity = document.querySelectorAll("#inputQuantity<?=$productInListID?>");
+                                        var id = <?php echo $id ;?>;
+                                        $.ajax({
+                                            type:"post",
+                                            url:"../functions/newlistname.php",
+                                            data:{
+                                                productInListID1:productInListID1,
+                                                id:id,
+                                                quantity:quantity[0].value
+                                            },
+                                            success:function(response){
+                                                if(response){
+                                                    location.reload();
+                                                } else{
+                                                    alert('not succesfully');
+                                                    window.open("_self");
+                                                }
+                                            },
+                                            error: function(jqXHR, textStatus, errorThrown){
+                                                console.log(textStatus, errorThrown);
+                                            }
+                                        });
+                                    }
+                            
+                            
                                 </script>
 
                         <?php        
                                  $i = $i + 1;
 
                             }
-                            
-                                echo '
+                            $k = $k + 1;
+                            ?>
+                               
                             </div>
                         </div>
                     </div>
@@ -156,7 +233,7 @@ function list1(){
 
                 <div class="col-1">
                     <div class="edit d-flex justify-content-center" style="margin-top: 7px;">
-                        <button type="button" class="btn btn-outline-danger buttonsquare" style="border-radius: 25px;" id="removeitemforwishlist">
+                        <button type="button" onclick="delete<?=$ListID?>()"  class="btn btn-outline-danger buttonsquare" style="border-radius: 25px;" id="removeitemforwishlist">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
                         <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
                         <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
@@ -166,8 +243,7 @@ function list1(){
                 </div>
 
             </div> 
-            ';
-?>
+
             <div class="modal fade" id="staticBackdrop<?=$ListID?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             
                 <div class="modal-dialog modal-dialog-centered">
@@ -180,7 +256,8 @@ function list1(){
                             <input id="newlist<?=$ListID?>" class="form-control" name="newListName" type="text" placeholder="Edit list name" required >
                         </div>
                         <div class="modal-footer">
-                            <button type="button" onclick="update<?=$ListID?>()" onkeyup="update<?=$ListID?>()" name="updateList" class="btn btn-primary">Update</button>
+                            <button type="button" onclick="update<?=$ListID?>()" onkeyup="update<?=$ListID?>()" 
+                            name="updateList" class="btn btn-primary">Update</button>
                         </div>
                     </div>
                 </div>
@@ -218,6 +295,40 @@ function list1(){
                 });
                 
              }
+             </script>
+             
+             <script>
+             
+             function delete<?=$ListID?>(){
+                var id1 = <?php echo $ListID ;?>;
+                 
+
+                 $.ajax({
+                    type:"post",
+                    cache:false,
+                    url:"../functions/newlistname.php",
+                    data:{
+                        id1:id1
+                        
+                    },
+                    success:function(response){
+                        if(response){
+                            jQuery("#deletelist<?=$ListID?>").hide(400);
+                            location.reload();
+                        } else{
+                            alert('not succesfully');
+                            window.open("_self");
+                        }
+                    },
+                    error: function(jqXHR, textStatus, errorThrown){
+                        console.log(textStatus, errorThrown);
+                    }
+                });
+
+             }
+             
+             
+             
              </script>
 
 <?php

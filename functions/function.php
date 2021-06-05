@@ -1,12 +1,10 @@
 <?php
 $db = mysqli_connect("localhost", "root", "", "groceries");
 
-global $ff;
-
-function getpro()
+function getpro($run_product)
 {
 
-    global $db, $p_cat_id0, $id, $page, $count, $run_product;
+    global $db, $p_cat_id0, $id, $page, $count;
 
     // $per_page = 10;
     // $page = (isset($_GET['page'])) ? $_GET['page'] : 1;
@@ -29,7 +27,7 @@ function getpro()
         $product_desc = $row_product['product_desc'];
 
         if (strlen($product_name) > 15) {
-            $product_name = substr($product_name, 0, 8). " ... " . substr($product_name, -4);
+            $product_name = substr($product_name, 0, 8). " .. " . substr($product_name, -4);
         }
 
         if ($p_cat_id == $p_cat_id0) {
@@ -39,14 +37,14 @@ function getpro()
             <div class='col'>
                 <div class='card shadow-sm sshighlight'>
                     <a href='products-closeup.php?id=$id&product_id=$product_id&p_cat_id=$p_cat_id'>
-                        <img src='../admin_area/product_images/$product_img' alt='pise' class='card-img-top'>
+                        <img src='../admin_area/product_images/$product_img' alt='pise' class='card-img-top' style='height: 200px;'>
                     </a>
                     <div class='card-body'>
                         <h5 class='card-title'>$product_name</h5>
                         <p class='card-text'>RM $product_price</p>
                         <div class='d-flex flex-column justify-content-around gap-2 gap-sm-0'>
                             <a href='products-closeup.php?id=$id&product_id=$product_id&p_cat_id=$p_cat_id'  class='btn btn-success rounded-pill mb-sm-2  '>Add to List</a>
-                            <a href='products-closeup.php?product_id=$product_id' class='btn btn-warning rounded-pill'>Add to Cart</a>
+                            <a href='products-closeup.php?id=$id&product_id=$product_id' class='btn btn-warning rounded-pill'>Add to Cart</a>
                         </div>
                     </div>
                 </div>
@@ -71,7 +69,7 @@ function getProDef()
     $run_product = mysqli_query($db, $get_product);
     $count = mysqli_num_rows($run_product);
 
-    getpro();
+    getpro($run_product);
 }
 
 function getProA2Z()
@@ -89,7 +87,7 @@ function getProA2Z()
     $run_product = mysqli_query($db, $get_product);
     $count = mysqli_num_rows($run_product);
 
-    getpro();
+    getpro($run_product);
 }
 
 function getProZ2A()
@@ -107,11 +105,12 @@ function getProZ2A()
     $run_product = mysqli_query($db, $get_product);
     $count = mysqli_num_rows($run_product);
 
-    getpro();
+    getpro($run_product);
 }
 
 function getProL2H()
 {
+    // echo "asdasa";
     global $db, $p_cat_id0, $id, $page, $count;
 
     $per_page = 10;
@@ -125,7 +124,9 @@ function getProL2H()
     $run_product = mysqli_query($db, $get_product);
     $count = mysqli_num_rows($run_product);
 
-    getpro();
+   
+
+    getpro($run_product);
 }
 
 function getProH2L()
@@ -143,7 +144,7 @@ function getProH2L()
     $run_product = mysqli_query($db, $get_product);
     $count = mysqli_num_rows($run_product);
 
-    getpro();
+    getpro($run_product);
 }
 
 
@@ -422,52 +423,62 @@ function register()
     $password1 = $_POST['password1'];
     $password2 = $_POST['password2'];
 
+   
     $password = $password1;
     if ($password1 == $password2) {
-        if (isset($_POST['user_type'])) {
-            $user_type = $_POST['user_type'];
-            $query = "INSERT INTO user (username, email, passwordd, user_type, token ) 
-                        VALUES('$username', '$email', '$password','admin', '123a' )";
-            mysqli_query($db, $query);
-            $_SESSION['success']  = "New user successfully created!!";
-            header('location: ../admin_area/admin.php');
-        } else {
-            $code = '123456789qazwsxedcrfvtgbyhnujmikolp';
-            $code = str_shuffle($code);
-            $code = substr($code, 0, 10);
-            $taken = "select * from user where username='$username'";
-            $takenResult = mysqli_query($db, $taken);
-            if (mysqli_num_rows($takenResult) > 0) {
-                // $a = "Username Already Exists";
-                // echo "<script>$('#msg').html('Username Already Exists').css('color', 'red')</script>";
-                // echo "<script>alert('Username already taken')</script>";
-                // echo "<script>window.open('index.php','_self')</script>";
-            } else {
-                $query = "INSERT INTO user (username, email,  passwordd, user_type, token) 
-                VALUES('$username', '$email', '$password','user','$code')";
+        $uppercase = preg_match('@[A-Z]@', $password1);
+        $lowercase = preg_match('@[a-z]@', $password1);
+        $number    = preg_match('@[0-9]@', $password1);
+        $specialChars = preg_match('@[^\w]@', $password1);
+        if(!$uppercase || !$lowercase || !$number || !$specialChars || strlen($password1) < 8) {
+            echo "<script>alert('Password should be at least 8 characters in length and should include at least one upper case letter, one number, and one special character')</script>";
+            echo "<script>window.open('index.php','_self')</script>";
+        }else{
+            if (isset($_POST['user_type'])) {
+                $user_type = $_POST['user_type'];
+                $query = "INSERT INTO user (username, email, passwordd, user_type, token ) 
+                            VALUES('$username', '$email', '$password','admin', '123a' )";
                 mysqli_query($db, $query);
-
-
-                $get_id = "select * from user where id=(select max(id) from user)";
-
-                $run_id = mysqli_query($db, $get_id);
-
-                $row_id = mysqli_fetch_array($run_id);
-
-                $usrname = $row_id['id'];
-
-                $query1 = "insert into userdetails (id,name,phoneNo,dateOfBirth,street,city,state,zipcode,image) values ('$usrname','',''
-                ,'','','','','','')";
-
-                mysqli_query($db, $query1);
-
-                $logged_in_user_id = mysqli_insert_id($db);
-
-                $_SESSION['user'] = $usrname; // put logged in user in session
-                $_SESSION['success']  = "You are now logged in";
-                header('location: ../src/index.php?id=' . $usrname);
+                $_SESSION['success']  = "New user successfully created!!";
+                header('location: ../admin_area/admin.php');
+            } else {
+                $code = '123456789qazwsxedcrfvtgbyhnujmikolp';
+                $code = str_shuffle($code);
+                $code = substr($code, 0, 10);
+                $taken = "select * from user where username='$username'";
+                $takenResult = mysqli_query($db, $taken);
+                if (mysqli_num_rows($takenResult) > 0) {
+                    // $a = "Username Already Exists";
+                    // echo "<script>$('#msg').html('Username Already Exists').css('color', 'red')</script>";
+                    // echo "<script>alert('Username already taken')</script>";
+                    // echo "<script>window.open('index.php','_self')</script>";
+                } else {
+                    $query = "INSERT INTO user (username, email,  passwordd, user_type, token) 
+                    VALUES('$username', '$email', '$password','user','$code')";
+                    mysqli_query($db, $query);
+    
+    
+                    $get_id = "select * from user where id=(select max(id) from user)";
+    
+                    $run_id = mysqli_query($db, $get_id);
+    
+                    $row_id = mysqli_fetch_array($run_id);
+    
+                    $usrname = $row_id['id'];
+                    $query1 = "insert into userdetails (id,name,phoneNo,dateOfBirth,street,city,state,zipcode,image) values ('$usrname','',''
+                    ,'','','','','','default.png')";
+    
+                    mysqli_query($db, $query1);
+    
+                    $logged_in_user_id = mysqli_insert_id($db);
+    
+                    $_SESSION['user'] = $usrname; // put logged in user in session
+                    $_SESSION['success']  = "You are now logged in";
+                    header('location: ../src/index.php?id=' . $usrname);
+                }
             }
         }
+        
     } else {
         echo "<script>alert('Password not same')</script>";
         echo "<script>window.open('index.php','_self')</script>";
