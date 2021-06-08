@@ -5,8 +5,6 @@ include("../src/passwordRecover.php");
 
 ?>
 
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -29,7 +27,43 @@ include("../src/passwordRecover.php");
     html {
         overflow-y: scroll;
     }
-    
+    .result{
+        background-color: #f6f6f6;
+        position:absolute;        
+        z-index: 2;
+        top: 100%;
+        overflow-y: auto;
+        box-sizing: border-box;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        width:95%;
+        border-radius: 20px 0 0 20px;
+        max-height: 20rem;
+        left:1px;
+    }
+
+    .result a{
+        text-decoration:none;
+    }
+
+    .result a p {
+        color:black;
+        padding-left:5px;
+        padding-top:3px;
+    }
+
+    .result a p:hover{
+        background:#ffc000;
+    }
+
+    .result p {
+        color:black;
+        padding-left:5px;
+        padding-top:5px;
+        font-size:15px;
+        font-family: "Noto Sans", sans-serif;
+        font-weight: bold;
+    }
+
     </style>
     
 </head>
@@ -44,18 +78,33 @@ include("../src/passwordRecover.php");
                         <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
                     </svg>
                 </button>
+                <?php
+                if(isset($_SESSION['success'])){
+                    $userid = $_SESSION['user'];
+                
+                ?>
+                <a href="index.php?id=<?=$userid; ?>" class="navbar-brand order-2">
+                    <img src="../img/nyumnyumlogo.png" alt="logo" width="150" class="mx-2">
+                </a>
+            <?php 
+            } else {
 
+            
+            ?>
                 <a href="index.php" class="navbar-brand order-2">
                     <img src="../img/nyumnyumlogo.png" alt="logo" width="150" class="mx-2">
                 </a>
-
-                <div class="input-group order-4 order-sm-3">
-                    <input type="search" class="form-control" placeholder="Search" aria-label="search" aria-describedby="button-addon2" style="border-radius: 20px 0 0 20px;">
-                    <button class="btn btn-success" type="button" id="button-addon2" style="border-radius: 0 20px 20px 0;"><span class="material-icons pt-1">
+            <?php 
+            }
+            ?>
+                <form class="input-group order-4 order-sm-3 search-box" >
+                    <input type="search" id="search" name="s"  class="form-control" placeholder="Search" style="outline: none !important;box-shadow:none;"  required>
+                    <button class="btn btn-success" name="searchsubmit" onclick="loadSearch()" type="button" id="button-addon2" style="border-radius: 0 20px 20px 0;"><span class="material-icons pt-1">
                             search
                         </span></button>
-                </div>
-
+                    <div class="result" id="hid"></div>
+                </form>
+                
 
                 <ul class="navbar-nav order-3 order-sm-4 ms-3 mb-2 mb-md-0 d-flex flex-row">
                     <li class="nav-item mx-1">
@@ -135,7 +184,7 @@ include("../src/passwordRecover.php");
         </div>
     </header>
 
-    <nav class="navbar sticky-top navbar-expand-sm shadow py-2 justify-content-center" style="background-color: #FD6C5D;">
+    <nav class="navbar  navbar-expand-sm shadow py-2 justify-content-center" style="background-color: #FD6C5D;">
         <div class="collapse navbar-collapse" id="categoriesToggle">
             <div class="container">
                 <ul class="navbar-nav mb-2 mb-md-0 w-100 justify-content-around next" style="font-weight: bold;">
@@ -215,7 +264,7 @@ include("../src/passwordRecover.php");
                         
                             <form  method="post" enctype="multipart/form-data">
                                 <div class="mb-3">
-                                    <input type="text" name="username" value="" onBlur="checkAvailability()" class="form-control" id="user" aria-describedby="textHelp" placeholder="Username" required>
+                                    <input type="text" name="username" value="" onkeyup="checkAvailability()" class="form-control" id="user" aria-describedby="textHelp" placeholder="Username" required>
                                     <div id="msg"></div>
                                 </div>
                                 <div class="mb-3">
@@ -283,11 +332,33 @@ include("../src/passwordRecover.php");
             <path d="m7.247 4.86-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z" />
         </svg>
     </button>
+    <?php 
+    if(isset($_SESSION['success'])){
+        $id= $_SESSION['user'];
+       
+    }
+        
+        
+    ?>
     <script>
     var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
     var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
     return new bootstrap.Tooltip(tooltipTriggerEl)
     })
+    
+    <?php 
+    // $_SESSION['varname']="<script>document.writeln(search);</script>";
+    ?>
+    function loadSearch(){
+        var id = <?php echo $_SESSION['user']; ?>;
+        var search = $("#search").val();
+        if(search !=""){
+            window.open("../src/searchProduct.php?id="+id+"&search="+search+"&page=1","_self");
+        } else{
+
+        }
+        
+    }
     </script>
     <script>
         $('#Password1, #Password2').on('keyup', function () {
@@ -310,9 +381,9 @@ include("../src/passwordRecover.php");
         }
             
         });
-    </script>
-    <script type="text/javascript">
-    function checkAvailability(){
+
+        function checkAvailability(){
+        console.log("sad");
         var username = $("#user").val().trim();
         $.ajax({
             type:"post",
@@ -324,7 +395,51 @@ include("../src/passwordRecover.php");
                 $("#msg").html(response);
             }
         });
+
+        
     }
+    </script>
+    <script type="text/javascript">
+    
+    
+    
+    $(document).ready(function(){
+        // fetch data from table without reload/refresh page
+        
+        function loadData(query){
+        var id = <?php echo $id; ?>;
+          $.ajax({
+            url : "../includes/search.php",
+            type: "post",
+            data:{query:query,id:id},
+            success:function(response){
+                $(".result").show()
+                $(".result").html(response);
+              
+            }
+          });  
+        }
+
+        // live search data from table without reload/refresh page
+        $("#search").keyup(function(){
+          var search = $("#search").val();
+          if (search !="") {
+            $(".result").show()
+            loadData(search);
+          }else{
+            $("#hid").hide();
+          }
+        });
+    });
+
+    $(document).mouseup(function(e){
+        var container1 = $("#search");
+        var container = $("#hid");
+        // If the target of the click isn't the container
+        if(!container1.is(e.target) && container1.has(e.target).length === 0){
+            container.hide();
+        }
+    });
     </script>
     
     

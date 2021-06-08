@@ -95,7 +95,7 @@ if(isset($_POST['quantity'])){
     $id = $_POST['id'];
     $quantity = $_POST['quantity'];
 
-    $query = "SELECT * FROM productinlist where ProductInListID='$productInListID1'";
+    $query = "SELECT * FROM productinlist where ProductInListID='$productInListID1' and id='$id'";
     $run_query = mysqli_query($db, $query);
     $row_query = mysqli_fetch_array($run_query);
     $product_id = $row_query['product_id'];
@@ -104,7 +104,7 @@ if(isset($_POST['quantity'])){
     $sql = "INSERT INTO cart (product_id,id,quantity) VALUES('$product_id','$id','$quantity')";
     $run_sql = mysqli_query($db, $sql);
 
-    $querydelete = "DELETE FROM productinlist where ProductInListID='$productInListID1'";
+    $querydelete = "DELETE FROM productinlist where ProductInListID='$productInListID1' and id='$id'";
     $run_querydelete = mysqli_query($db, $querydelete);
 
     

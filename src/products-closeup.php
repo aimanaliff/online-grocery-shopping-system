@@ -82,14 +82,14 @@ if (isset($_GET['product_id']) && isset($_GET['p_cat_id'])) {
                             <div class="mb-3">
                                 <select name="Listname" class="form-select" style="border-radius: 5px 5px 5px 5px;" aria-label="Default select example">
                                 <?php 
-                                    $query = "select * from listname";
+                                    $id = $_SESSION['user'];
+                                    $query = "select * from listname where id=$id";
                                     $run_query = mysqli_query($db,$query);
 
                                     if(mysqli_num_rows($run_query)>0){
                                         echo "
                                         <option value=''>Select List</option>
                                         ";
-                                        
                                         while($row_query = mysqli_fetch_array($run_query)){
                                             
                                             $ListID = $row_query['ListID'];

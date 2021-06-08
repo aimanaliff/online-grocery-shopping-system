@@ -222,11 +222,10 @@ include("../includes/header.php")
                         </div>
                     </div>
                     <div class="row py-2">
-                        <div class="col-6 mt-2">
-                            <!-- <input class="blockbtn btn btn-primary" type="submitEdit" name="save"  value="Save" style="margin: 10px;"> -->
+                        <div class="col-6  mt-2">
                             <button type="submit" name="save" class="blockbtn btn btn-primary">Save</button>
                         </div>
-                        <div class="col-6 mt-2">
+                        <div class="col-6 ">
                             <button type="button" class="blockbtn btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modalDelete" style="margin: 10px;">
                                 Delete Account
                             </button>
