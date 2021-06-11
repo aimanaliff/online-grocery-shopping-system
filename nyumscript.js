@@ -29,7 +29,7 @@ function handleTickInit(tick) {
 
     //var nextYear = (new Date()).getFullYear() + 1;
 
-    Tick.count.down('2021-05-13').onupdate = function(value) {
+    Tick.count.down('2021-06-20').onupdate = function(value) {
         tick.value = value;
     };
 

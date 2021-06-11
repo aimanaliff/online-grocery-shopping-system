@@ -33,7 +33,6 @@ include("../src/passwordRecover.php");
         z-index: 2;
         top: 100%;
         overflow-y: auto;
-        box-sizing: border-box;
         box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
         width:95%;
         border-radius: 20px 0 0 20px;
@@ -45,20 +44,23 @@ include("../src/passwordRecover.php");
         text-decoration:none;
     }
 
-    .result a p {
+    /* .result a p {
         color:black;
         padding-left:5px;
         padding-top:3px;
-    }
+    } */
 
     .result a p:hover{
-        background:#ffc000;
+        background:lightgray;
+        padding-top:15px;
+        padding-bottom:15px;
     }
 
     .result p {
-        color:black;
-        padding-left:5px;
-        padding-top:5px;
+        color:#595959;
+        padding-left:25px;
+        padding-top:15px;
+        padding-bottom:15px;
         font-size:15px;
         font-family: "Noto Sans", sans-serif;
         font-weight: bold;
@@ -184,7 +186,7 @@ include("../src/passwordRecover.php");
         </div>
     </header>
 
-    <nav class="navbar  navbar-expand-sm shadow py-2 justify-content-center" style="background-color: #FD6C5D;">
+    <nav  class="navbar navbar-expand-sm stickyjimmy shadow py-2 justify-content-center" style="background-color: #FD6C5D;">
         <div class="collapse navbar-collapse" id="categoriesToggle">
             <div class="container">
                 <ul class="navbar-nav mb-2 mb-md-0 w-100 justify-content-around next" style="font-weight: bold;">
@@ -202,11 +204,11 @@ include("../src/passwordRecover.php");
                     }
                     else{
                         echo "
-                        <li class='nav-item'><a href='../src/products.php' class='nav-link text-dark'>Fruits</a></li>
-                        <li class='nav-item'><a href='#' class='nav-link text-dark'>Vegetables</a></li>
-                        <li class='nav-item'><a href='#' class='nav-link text-dark'>Meat</a></li>
-                        <li class='nav-item'><a href='#' class='nav-link text-dark'>Cookies & Snacks</a></li>
-                        <li class='nav-item'><a href='#' class='nav-link text-dark'>Beverages</a></li>
+                        <li class='nav-item'><a href='../src/products.php?p_cat_id=1' class='nav-link text-dark'>Fruits</a></li>
+                        <li class='nav-item'><a href='../src/products.php?p_cat_id=2' class='nav-link text-dark'>Vegetables</a></li>
+                        <li class='nav-item'><a href='../src/products.php?p_cat_id=3' class='nav-link text-dark'>Meat</a></li>
+                        <li class='nav-item'><a href='../src/products.php?p_cat_id=4' class='nav-link text-dark'>Cookies & Snacks</a></li>
+                        <li class='nav-item'><a href='../src/products.php?p_cat_id=5' class='nav-link text-dark'>Beverages</a></li>
                         "
                     ;
                     }
@@ -348,9 +350,15 @@ include("../src/passwordRecover.php");
     
     <?php 
     // $_SESSION['varname']="<script>document.writeln(search);</script>";
+    if(isset($_SESSION['user'])){
+        $id = $_SESSION['user'];
+    } else {
+        $id = 0;
+    }
     ?>
     function loadSearch(){
-        var id = <?php echo $_SESSION['user']; ?>;
+        
+        var id = <?php echo $id; ?>;
         var search = $("#search").val();
         if(search !=""){
             window.open("../src/searchProduct.php?id="+id+"&search="+search+"&page=1","_self");

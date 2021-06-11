@@ -17,19 +17,9 @@
   $get_productAmount = "SELECT COUNT(*) FROM product  WHERE product_name LIKE '%$searchquery%'";
   $run_productAmount = mysqli_query($db, $get_productAmount);
   $productAmount = mysqli_fetch_row($run_productAmount);
+?>
 
-if(isset($_GET['search'])){
-    $searchquery = $_GET['search'];
-    $userid = $_GET['id'];
-    // $searchquery = preg_replace("#[^0-9a-z]#i","",$searchquery);
-    // $query ="SELECT * FROM product WHERE product_name LIKE '%$searchquery%'";
-    // $result =mysqli_query($db, $query);
-    // $count = mysqli_num_rows($result);
-    if($count == 0) {
-        echo "<p>No record found</p>";
-    } else {
-        ?>
-    <div class="container pt-5">
+<div class="container pt-5">
         <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
             <ol class="breadcrumb fw-bold">
                 <li class="breadcrumb-item"><a href="index.php" class="text-dark text-decoration-none">Home</a></li>
@@ -59,9 +49,9 @@ if(isset($_GET['search'])){
 
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownSort">
                             <?php
-                        if($count > 1){
+                        if($count > 1 && isset($_SESSION['user'])){
                             ?>
-                            <li>
+                             <li>
                                 <a class="dropdown-item" href="../src/searchProduct.php?page=<?php echo $page ?>&id=<?php echo $userid ?>&search=<?php echo $searchquery ?>&sort=A2Z" 
                                 role="button">Alphabetically, A-Z</a>
                             </li>
@@ -80,32 +70,95 @@ if(isset($_GET['search'])){
                             <?php 
                              }
                              
-                             else{
+                             else
+                                 if(isset($_SESSION['user']) && $count < 1){
+
                                 ?>
-                                <li>
-                                <a class="dropdown-item" style="pointer-events:none;" href="../src/searchProduct.php?page=<?php echo $page ?>&id=<?php echo $userid ?>&search=<?php echo $searchquery ?>&sort=A2Z" 
+                                 <li>
+                                <a class="dropdown-item" href="../src/searchProduct.php?page=<?php echo $page ?>&id=<?php echo $userid ?>&search=<?php echo $searchquery ?>&sort=A2Z" 
                                 role="button">Alphabetically, A-Z</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" style="pointer-events:none;" href="../src/searchProduct.php?page=<?php echo $page ?>&id=<?php echo $userid ?>&search=<?php echo $searchquery ?>&sort=Z2A" 
-                                    role="button">Alphabetically, Z-A</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" style="pointer-events:none;" href="../src/searchProduct.php?page=<?php echo $page ?>&id=<?php echo $userid ?>&search=<?php echo $searchquery ?>&sort=L2H" 
-                                    role="button">Price, low to high</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" style="pointer-events:none;" href="../src/searchProduct.php?page=<?php echo $page ?>&id=<?php echo $userid ?>&search=<?php echo $searchquery ?>&sort=H2L" 
-                                    role="button">Price, high to low</a>
-                                </li>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="../src/searchProduct.php?page=<?php echo $page ?>&id=<?php echo $userid ?>&search=<?php echo $searchquery ?>&sort=Z2A" 
+                                role="button">Alphabetically, Z-A</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="../src/searchProduct.php?page=<?php echo $page ?>&id=<?php echo $userid ?>&search=<?php echo $searchquery ?>&sort=L2H" 
+                                role="button">Price, low to high</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="../src/searchProduct.php?page=<?php echo $page ?>&id=<?php echo $userid ?>&search=<?php echo $searchquery ?>&sort=H2L" 
+                                role="button">Price, high to low</a>
+                            </li>
+                                <?php }
+                                else
+                                    if(!isset($_SESSION['user']) && $count > 1){
+                                ?>
+                                 <li>
+                                <a class="dropdown-item" href="../src/searchProduct.php?page=<?php echo $page ?>&id=0>&search=<?php echo $searchquery ?>&sort=A2Z" 
+                                role="button">Alphabetically, A-Z</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="../src/searchProduct.php?page=<?php echo $page ?>&id=0&search=<?php echo $searchquery ?>&sort=Z2A" 
+                                role="button">Alphabetically, Z-A</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="../src/searchProduct.php?page=<?php echo $page ?>&id=0&search=<?php echo $searchquery ?>&sort=L2H" 
+                                role="button">Price, low to high</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="../src/searchProduct.php?page=<?php echo $page ?>&id=0&search=<?php echo $searchquery ?>&sort=H2L" 
+                                role="button">Price, high to low</a>
+                            </li>
                                 
                             <?php 
-                             }
+                                    }else{
+
+                                     ?>
+
+                            <li>
+                                <a class="dropdown-item" href="../src/searchProduct.php?page=<?php echo $page ?>&id=0&search=<?php echo $searchquery ?>&sort=A2Z" 
+                                role="button">Alphabetically, A-Z</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="../src/searchProduct.php?page=<?php echo $page ?>&id=0&search=<?php echo $searchquery ?>&sort=Z2A" 
+                                role="button">Alphabetically, Z-A</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="../src/searchProduct.php?page=<?php echo $page ?>&id=0&search=<?php echo $searchquery ?>&sort=L2H" 
+                                role="button">Price, low to high</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="../src/searchProduct.php?page=<?php echo $page ?>&id=0&search=<?php echo $searchquery ?>&sort=H2L" 
+                                role="button">Price, high to low</a>
+                            </li>
+                                     <?php 
+                                    }
                              ?>
                            
                         </ul>
                     </div>
                 </div>
+
+<?php   
+if(isset($_GET['search'])){
+    $searchquery = $_GET['search'];
+    $userid = $_GET['id'];
+    // $searchquery = preg_replace("#[^0-9a-z]#i","",$searchquery);
+    // $query ="SELECT * FROM product WHERE product_name LIKE '%$searchquery%'";
+    // $result =mysqli_query($db, $query);
+    // $count = mysqli_num_rows($result);
+    if($count == 0) {
+        echo "<p>No record found</p>";
+        ?>
+        </div>
+        </div>
+    </main>
+
+    <?php
+    } else {
+        ?>
+    
 
                 
           <div class="row row-cols-2 row-cols-md-3 row-cols-lg-5 g-3">
@@ -132,12 +185,14 @@ if(isset($_GET['search'])){
                     <?php 
                         global $searchquery,$sort;
                         if (isset($_GET['search'])) $searchquery = $_GET['search'];
-                        $userid=$_SESSION['user'];
+                        
                         $query = "SELECT * FROM product WHERE product_name LIKE '%$searchquery%'";
                         $result = mysqli_query($db,$query);
                         $total_records = mysqli_num_rows($result);
                         $total_pages = ceil($total_records / $per_page);
 
+                        if(isset($_SESSION['user'])){
+                            $userid=$_SESSION['user'];
                         if($page >= 2) {   
                             echo '
                             <li class="page-item">
@@ -177,7 +232,49 @@ if(isset($_GET['search'])){
                                 <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Next</a>
                             </li>
                             ';
-                        }                  
+                        }
+                    } else {
+                        if($page >= 2) {   
+                            echo '
+                            <li class="page-item">
+                                <a class="page-link" href="../src/searchProduct.php?page='.($page-1).'&id='.$userid.'&search='.$searchquery.'&sort='.$sort.'">
+                                Prev</a>
+                            </li>
+                            ';   
+                        } else {
+                            echo '
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Prev</a>
+                            </li>
+                            ';
+                        }
+
+                        for($i=1; $i<=$total_pages; $i++){
+
+                            echo '
+                        
+                            <li class="page-item" aria-current="page"><a class="page-link" href="../src/searchProduct.php?page='.$i.'&id='.$userid.'&search='.$searchquery.'&sort='.$sort.'">
+                            '.$i.'</a></li>
+                        
+                            '
+                            ;
+                        }
+
+                        if ($page < $total_pages) {
+                            echo '
+                            <li class="page-item">
+                                <a class="page-link active" href="../src/searchProduct.php?page='.($page+1).'&id='.$userid.'&search='.$searchquery.'&sort='.$sort.'">
+                                Next</a>
+                            </li>
+                            ';
+                        } else {
+                            echo '
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Next</a>
+                            </li>
+                            ';
+                    }
+
                     
                     ?>
                     </ul>
@@ -189,11 +286,9 @@ if(isset($_GET['search'])){
         
     }
 
+    }
 
 
-
-}else{
-  
 }
 
 function getpro1($run_product)

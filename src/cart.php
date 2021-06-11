@@ -80,6 +80,7 @@ include("../includes/header.php")
                 var total = 0.0;
                 var total1=0.0;
                 function cartTotalCal<?=$cartID?>(){
+                    var cartid = <?php echo $cartID ;?>;
                     var quantity = document.querySelectorAll("#inputQuantity<?=$cartID?>");
                     total = quantity[0].value * <?=$product_price?>;
                     document.getElementById("total<?=$cartID?>").innerHTML = "RM " + total;
@@ -94,6 +95,26 @@ include("../includes/header.php")
                             document.getElementById("cartTotal").innerHTML = "RM " + minus.toFixed(2);
                         };
                     }
+                    $.ajax({
+                        type:"post",
+                        cache:false,
+                        url:"../functions/newlistname.php",
+                        data:{
+                            updateCart:quantity[0].value,
+                            cartid:cartid
+                        },
+                        success:function(response){
+                            if(response){
+                                setTimeout(cartTotalCal<?=$cartID?>, 5000);
+                            } else{
+                                alert('not succesfully');
+                                window.open("_self");
+                            }
+                        },
+                        error: function(jqXHR, textStatus, errorThrown){
+                            console.log(textStatus, errorThrown);
+                        }
+                    });
                 }
                 
                 function cartTotalCal1<?=$cartID?>(){
@@ -135,6 +156,11 @@ include("../includes/header.php")
                             }
                         });
                 }
+
+                
+                document.getElementById('checkItem<?=$cartID?>').onchange = function() {
+                    document.getElementById('inputQuantity<?=$cartID?>').disabled = this.checked;
+                };
                 </script>
             <?php }?>
                 <!-- <hr> -->
@@ -155,10 +181,22 @@ include("../includes/header.php")
                 <div class="row align-items-center py-3">
                     <div class="col-12">
                         <select class="form-select" aria-label="Default select example">
+                            <?php 
+                                if(isset($_SESSION['user'])){
+                                    $id = $_SESSION['user'];
+                                    $query = "SELECT * FROM userdetails where id='$id'";
+                                    $run_query = mysqli_query($db,$query);
+                                    $row_query = mysqli_fetch_array($run_query);
+                                    $street = $row_query['street'];
+                                    $city = $row_query['city'];
+                                    $state = $row_query['state'];
+                                }
+                            
+                            
+                            ?>
                             <option selected>Select Address for Delivery</option>
-                            <option value="1">Address 1</option>
-                            <option value="2">Address 2</option>
-                            <option value="3">Address 3</option>
+                            <option value="1"><?php echo $street;?></option>
+                            
                         </select>
                     </div>
                 </div>

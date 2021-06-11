@@ -18,14 +18,14 @@ include("../includes/db.php");
         
     </div>
     <?php 
-
-    $query = "SELECT * FROM listname";
+    $id= $_SESSION['user'];
+    $query = "SELECT * FROM listname where id=$id";
     $run_query = mysqli_query($db, $query);
     $count = mysqli_num_rows($run_query);
     if($count == 0){
 
     ?>
-    <h3 style="text-align: center;color:red;" class="py-3 rounded-3" >&nbsp&nbsp&nbsp&nbsp&nbspNo List Created</h3>
+    <h3 style="text-align: center; color:lightgray;" class="py-3 rounded-3" >&nbsp&nbsp&nbsp&nbsp&nbspNo List Created</h3>
 
     <?php
     }

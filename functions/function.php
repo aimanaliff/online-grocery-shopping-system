@@ -25,13 +25,16 @@ function getpro($run_product)
         $product_img = $row_product['product_img'];
         $product_quantity = $row_product['product_quantity'];
         $product_desc = $row_product['product_desc'];
+        $sale = $row_product['sale'];
+        $percentage = $row_product['percentage'];
 
         if (strlen($product_name) > 15) {
             $product_name = substr($product_name, 0, 8). " .. " . substr($product_name, -4);
         }
 
-        if ($p_cat_id == $p_cat_id0) {
+        if ($p_cat_id == $p_cat_id0 && isset($_SESSION['user'])) {
             $_SESSION['cart'] = $product_id;
+            $id = $_SESSION['user'];
             echo "
             
             <div class='col'>
@@ -40,19 +43,88 @@ function getpro($run_product)
                         <img src='../admin_area/product_images/$product_img' alt='pise' class='card-img-top' style='height: 200px;'>
                     </a>
                     <div class='card-body'>
+                    ";
+                    if($sale == "1"){
+                        ?>
+                        <div class='position-absolute top-0 end-0 pt-3'>
+                            <h5><span class='badge bg-danger'><?php echo $percentage;?>% off</span></h5>
+                        </div>
+                        <?php
+                    }
+                    ?>
+                <?php echo "
                         <h5 class='card-title'>$product_name</h5>
                         <p class='card-text'>RM $product_price</p>
+            "; ?>
+
                         <div class='d-flex flex-column justify-content-around gap-2 gap-sm-0'>
-                            <a href='products-closeup.php?id=$id&product_id=$product_id&p_cat_id=$p_cat_id'  class='btn btn-success rounded-pill mb-sm-2  '>Add to List</a>
-                            <a href='products-closeup.php?id=$id&product_id=$product_id' class='btn btn-warning rounded-pill'>Add to Cart</a>
+                            <a href='products-closeup.php?id=<?php echo $id?>&product_id=<?php echo $product_id?>&p_cat_id=<?php echo $p_cat_id ?>'  class='btn btn-success rounded-pill mb-sm-2  '>Add to List</a>
+                            <a onclick="add<?=$product_id?>()" class='btn btn-warning rounded-pill'>Add to Cart</a>
                         </div>
                     </div>
                 </div>
             </div>
+    <?php
             
-            ";
+        } else {
+            $_SESSION['cart'] = $product_id;
+            echo "
+            
+            <div class='col'>
+                <div class='card shadow-sm sshighlight'>
+                    <a href='products-closeup.php?product_id=$product_id&p_cat_id=$p_cat_id'>
+                        <img src='../admin_area/product_images/$product_img' alt='pise' class='card-img-top' style='height: 200px;'>
+                    </a>
+                    <div class='card-body'>
+                        <h5 class='card-title'>$product_name</h5>
+                        <p class='card-text'>RM $product_price</p>
+                "; ?>
+
+                        <div class='d-flex flex-column justify-content-around gap-2 gap-sm-0'>
+                            <a href='products-closeup.php?product_id=<?php echo $product_id?>&p_cat_id=<?php echo $p_cat_id ?>'  class='btn btn-success rounded-pill mb-sm-2  '>Add to List</a>
+                            <a href='' data-bs-toggle='modal' data-bs-target='#exampleModal'  class='btn btn-warning rounded-pill'>Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php
+            
         }
+        ?>
+        <script>
+    
+        function add<?=$product_id?>(){
+            console.log("asd");
+            var product_id = <?php echo $product_id ;?>;
+            var id = <?php echo $id ;?>;
+            $.ajax({
+                    type:"post",
+                    cache:false,
+                    url:"../functions/newlistname.php",
+                    data:{
+                        product_id:product_id,
+                        id:id
+                    },
+                    success:function(response){
+                        if(response){
+                            alert('Succesfully Added to cart','_self');
+                        } else{
+                            alert('not succesfully');
+                            window.open("_self");
+                        }
+                    },
+                    error: function(jqXHR, textStatus, errorThrown){
+                        console.log(textStatus, errorThrown);
+                    }
+                });
+        }
+    
+    
+    </script>
+    <?php
     }
+
+    
 }
 
 function getProDef()
@@ -188,6 +260,8 @@ function get_pro_details()
                                     <form  method='post' enctype='multipart/form-data'>
                                     <div class='d-flex flex-row align-items-center gap-3 pb-3'>
                                         <label for='quantity' class='fs-5'>Quantity:</label>
+        ";
+        ?>
                                         <div class='dropdown'>
                                             <input type='number' class='form-control' id='op' name='quantity' value='1' 
                                             onclick='check()' onkeyup='check()' min='1'>
@@ -195,8 +269,20 @@ function get_pro_details()
                                         </div>
                                     </div>
                                     <div class='d-flex flex-row gap-3'>
-                                        <a href='#' data-bs-toggle='modal' data-bs-target='#modalProduct' class='btn btn-success rounded-pill'>Add to List</a>
-                                        <a href='#' class='btn btn-warning rounded-pill'>Add to Cart</a>
+                                    <?php 
+                                        if(isset($_SESSION['user'])){
+                                            ?>
+                                            <a href='#' data-bs-toggle='modal' data-bs-target='#modalProduct' class='btn btn-success rounded-pill'>Add to List</a>
+                                            <a href='#' class='btn btn-warning rounded-pill'>Add to Cart</a>
+                                        <?php
+                                        } else{
+                                            ?>
+                                            <a href="" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-success rounded-pill">Add to List</a>
+                                            <a href='#' data-bs-toggle='modal' data-bs-target='#exampleModal' class='btn btn-warning rounded-pill'>Add to Cart</a>
+                                        <?php
+                                        }
+                                    ?>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -205,14 +291,14 @@ function get_pro_details()
                         <div class='card shadow-sm p-2'>
                             <div class='card-body'>
                                 <h1 class='card-title pb-3'>Description</h1>
-                                <p class='fs-5'>$product_desc</p>
+                                <p class='fs-5'><?php echo $product_desc?></p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        ";
+    <?php
     }
 }
 
