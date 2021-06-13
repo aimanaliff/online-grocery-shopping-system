@@ -7,7 +7,7 @@ include("../includes/header.php");
 ?>
 
 
-    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+    <div id="carouselExampleCaptions" class="carousel slide carousel-fade carousel-dark slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
             <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
             <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -74,6 +74,7 @@ include("../includes/header.php");
             </div>
         </div>
     </div>
+
     <div class="cardIndex">
         <div class="container">
             <div class="d-flex flex-row align-items-center py-3  gap-3">
@@ -105,211 +106,226 @@ include("../includes/header.php");
                     <div class="carousel-item active">
                         <div class="cardIndex" style="background-color: #f2f2f2;">
                             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-3 pb-3">
-                                <div class="col">
-                                    <div class="card sshighlight">
-                                        <img src="../img/kiwi.jpg" class="card-img-top" alt="..." />
-                                        <div class="card-body">
-                                            <div class="position-absolute top-0 end-0 pt-3">
-                                                <h5><span class="badge bg-danger">25% off</span></h5>
-                                            </div>
-                                            <h5 class="card-title">New Zealand Kiwi</h5>
-                                            <p c lass="card-text">
-                                                RM215/100g
-                                            </p>
-                                            <div class="d-flex flex-sm-column justify-content-around">
-                                                <a href="#" class="btn btn-success rounded-pill mb-sm-2">Add to List</a>
-                                                <a href="#" class="btn btn-warning rounded-pill">Add to Cart</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="card sshighlight">
-                                        <img src="../img/broccoli.jpg" class="card-img-top" alt="..." />
-                                        <div class="card-body">
-                                            <div class="position-absolute top-0 end-0 pt-3">
-                                                <h5><span class="badge bg-danger">50% off</span></h5>
-                                            </div>
-                                            <h5 class="card-title">Broke Your Lee's</h5>
-                                            <p c lass="card-text">
-                                                RM2/pcs
-                                            </p>
-                                            <div class="d-flex flex-sm-column justify-content-around">
-                                                <a href="#" class="btn btn-success rounded-pill mb-sm-2">Add to List</a>
-                                                <a href="#" class="btn btn-warning rounded-pill">Add to Cart</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="card sshighlight">
-                                        <img src="../img/tomato.jpg" class="card-img-top" alt="..." />
-                                        <div class="card-body">
-                                            <div class="position-absolute top-0 end-0 pt-3">
-                                                <h5><span class="badge bg-danger">15% off</span></h5>
-                                            </div>
-                                            <h5 class="card-title">Tokma Toes</h5>
-                                            <p c lass="card-text">
-                                                RM20/pcs
-                                            </p>
-                                            <div class="d-flex flex-sm-column justify-content-around">
-                                                <a href="#" class="btn btn-success rounded-pill mb-sm-2">Add to List</a>
-                                                <a href="#" class="btn btn-warning rounded-pill">Add to Cart</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="card sshighlight">
-                                        <img src="../img/pineapple.jpg" class="card-img-top" alt="..." />
-                                        <div class="card-body">
-                                            <div class="position-absolute top-0 end-0 pt-3">
-                                                <h5><span class="badge bg-danger">50% off</span></h5>
-                                            </div>
-                                            <h5 class="card-title">Spongebob Haus</h5>
-                                            <p c lass="card-text">
-                                                RM17/pcs
-                                            </p>
-                                            <div class="d-flex flex-sm-column justify-content-around">
-                                                <a href="#" class="btn btn-success rounded-pill mb-sm-2">Add to List</a>
-                                                <a href="#" class="btn btn-warning rounded-pill">Add to Cart</a>
+                                <?php 
+                                $limit = 5;
+                                $get_product1 = "SELECT * FROM product WHERE sale=1";
+                                $run_product1 = mysqli_query($db, $get_product1);
+                                $count = mysqli_num_rows($run_product1);
+                                $total = intdiv($count,$limit);
+                                $index = 1;
+                                $get_product = "SELECT * FROM product WHERE sale=1 limit 0,5";
+                                $run_product = mysqli_query($db, $get_product);
+                                while ($row_product = mysqli_fetch_array($run_product)) {
+                                    $product_id = $row_product['product_id'];
+                                    $p_cat_id = $row_product['p_cat_id'];
+                                    $product_name = $row_product['product_name'];
+                                    $product_price = $row_product['product_price'];
+                                    $product_img = $row_product['product_img'];
+                                    $product_quantity = $row_product['product_quantity'];
+                                    $product_desc = $row_product['product_desc'];
+                                    $sale = $row_product['sale'];
+                                    $percentage = $row_product['percentage'];
+                            
+                                    if (strlen($product_name) > 15) {
+                                        $product_name = substr($product_name, 0, 8). " .. " . substr($product_name, -4);
+                                    }
+                            
+                                    if (isset($_SESSION['user'])) {
+                                        $_SESSION['cart'] = $product_id;
+                                        $id = $_SESSION['user'];
+                                        echo "
+                                        
+                                        <div class='col'>
+                                            <div class='card shadow-sm sshighlight'>
+                                                <a href='products-closeup.php?id=$id&product_id=$product_id&p_cat_id=$p_cat_id'>
+                                                    <img src='../admin_area/product_images/$product_img' alt='pise' class='card-img-top' style='height: 200px;'>
+                                                </a>
+                                                <div class='card-body'>
+                                                ";
+                                                if($sale == "1"){
+                                                    ?>
+                                                    <div class='position-absolute top-0 end-0 pt-3'>
+                                                        <h5><span class='badge bg-danger'><?php echo $percentage;?>% off</span></h5>
+                                                    </div>
+                                                    <?php
+                                                }
+                                                ?>
+                                            <?php echo "
+                                                    <h5 class='card-title'>$product_name</h5>
+                                                    <p class='card-text'>RM $product_price</p>
+                                        "; ?>
+                            
+                                                    <div class='d-flex flex-column justify-content-around gap-2 gap-sm-0'>
+                                                        <a href='products-closeup.php?id=<?php echo $id?>&product_id=<?php echo $product_id?>&p_cat_id=<?php echo $p_cat_id ?>'  class='btn btn-success rounded-pill mb-sm-2  '>Add to List</a>
+                                                        <a onclick="add<?=$product_id?>()" class='btn btn-warning rounded-pill'>Add to Cart</a>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="card sshighlight">
-                                        <img src="../img/banana.jpg" class="card-img-top" alt="..." />
-                                        <div class="card-body">
-                                            <div class="position-absolute top-0 end-0 pt-3">
-                                                <h5><span class="badge bg-danger">30% off</span></h5>
-                                            </div>
-                                            <h5 class="card-title">Minion Banana</h5>
-                                            <p c lass="card-text">
-                                                RM0.50/person
-                                            </p>
-                                            <div class="d-flex flex-sm-column justify-content-around">
-                                                <a href="#" class="btn btn-success rounded-pill mb-sm-2">Add to List</a>
-                                                <a href="#" class="btn btn-warning rounded-pill">Add to Cart</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="cardIndex" style="background-color: #f2f2f2;">
-                            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-3 pb-3">
-                                <div class="col">
-                                    <div class="card sshighlight">
-                                        <img src="../imgfood/chocolate/daim.jpeg" class="card-img-top" alt="..." />
-                                        <div class="card-body">
-                                            <div class="position-absolute top-0 end-0 pt-3">
-                                                <h5><span class="badge bg-danger">15% off</span></h5>
-                                            </div>
-                                            <h5 class="card-title">DAIMuda</h5>
-                                            <p c lass="card-text">
-                                                RM25.50/250g
-                                            </p>
-                                            <div class="d-flex flex-sm-column justify-content-around">
-                                                <a href="#" class="btn btn-success rounded-pill mb-sm-2">Add to List</a>
-                                                <a href="#" class="btn btn-warning rounded-pill">Add to Cart</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="card sshighlight">
-                                        <img src="../imgfood/vegetables/carrot.jpg" class="card-img-top" alt="..." />
-                                        <div class="card-body">
-                                            <div class="position-absolute top-0 end-0 pt-3">
-                                                <h5><span class="badge bg-danger">10% off</span></h5>
-                                            </div>
-                                            <h5 class="card-title">Rabbit Stuffs</h5>
-                                            <p c lass="card-text">
-                                                RM2/pcs
-                                            </p>
-                                            <div class="d-flex flex-sm-column justify-content-around">
-                                                <a href="#" class="btn btn-success rounded-pill mb-sm-2">Add to List</a>
-                                                <a href="#" class="btn btn-warning rounded-pill">Add to Cart</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="card sshighlight">
-                                        <img src="../imgfood/fruits/grapes.jpg" class="card-img-top" alt="..." />
-                                        <div class="card-body">
-                                            <div class="position-absolute top-0 end-0 pt-3">
-                                                <h5><span class="badge bg-danger">15% off</span></h5>
-                                            </div>
-                                            <h5 class="card-title">Ang Ang Grr</h5>
-                                            <p c lass="card-text">
-                                                RM20/kg
-                                            </p>
-                                            <div class="d-flex flex-sm-column justify-content-around">
-                                                <a href="#" class="btn btn-success rounded-pill mb-sm-2">Add to List</a>
-                                                <a href="#" class="btn btn-warning rounded-pill">Add to Cart</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="card sshighlight">
-                                        <img src="../imgfood/chocolate/kitkat.jpeg" class="card-img-top" alt="..." />
-                                        <div class="card-body">
-                                            <div class="position-absolute top-0 end-0 pt-3">
-                                                <h5><span class="badge bg-danger">50% off</span></h5>
-                                            </div>
-                                            <h5 class="card-title">Berehat Sebentar</h5>
-                                            <p c lass="card-text">
-                                                RM5/pcs
-                                            </p>
-                                            <div class="d-flex flex-sm-column justify-content-around">
-                                                <a href="#" class="btn btn-success rounded-pill mb-sm-2">Add to List</a>
-                                                <a href="#" class="btn btn-warning rounded-pill">Add to Cart</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="card sshighlight">
-                                        <img src="../imgfood/fruits/orange.jpg" class="card-img-top" alt="..." />
-                                        <div class="card-body">
-                                            <div class="position-absolute top-0 end-0 pt-3">
-                                                <h5><span class="badge bg-danger">30% off</span></h5>
-                                            </div>
-                                            <h5 class="card-title">Range of O</h5>
-                                            <p c lass="card-text">
-                                                RM8.90/kg
-                                            </p>
-                                            <div class="d-flex flex-sm-column justify-content-around">
-                                                <a href="#" class="btn btn-success rounded-pill mb-sm-2">Add to List</a>
-                                                <a href="#" class="btn btn-warning rounded-pill">Add to Cart</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <button class="carousel-control-prev position-absolute top-50 start-0 translate-middle" type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon btn-warning" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-     </button>
-                <button class="carousel-control-next position-absolute top-50 start-100 translate-middle" type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="next">
-      <span class="carousel-control-next-icon btn-warning " aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-     </button   >
-            </div>
-    
-            </div>
-    </div>
+                                <?php
+                                        
+                                    } else {
+                                        $_SESSION['cart'] = $product_id;
+                                        echo "
+                                        
+                                        <div class='col'>
+                                            <div class='card shadow-sm sshighlight'>
+                                                <a href='products-closeup.php?product_id=$product_id&p_cat_id=$p_cat_id'>
+                                                    <img src='../admin_area/product_images/$product_img' alt='pise' class='card-img-top' style='height: 200px;'>
+                                                </a>
+                                                <div class='card-body'>
+                                                ";
 
+                                                if($sale == "1"){
+                                                    ?>
+                                                    <div class='position-absolute top-0 end-0 pt-3'>
+                                                        <h5><span class='badge bg-danger'><?php echo $percentage;?>% off</span></h5>
+                                                    </div>
+                                                    <?php
+                                                }
+                                                ?>
+                                                <?php echo "
+                                                    <h5 class='card-title'>$product_name</h5>
+                                                    <p class='card-text'>RM $product_price</p>
+                                                    "; ?>
+                            
+                                                    <div class='d-flex flex-column justify-content-around gap-2 gap-sm-0'>
+                                                        <a href='products-closeup.php?product_id=<?php echo $product_id?>&p_cat_id=<?php echo $p_cat_id ?>'  class='btn btn-success rounded-pill mb-sm-2  '>Add to List</a>
+                                                        <a href='' data-bs-toggle='modal' data-bs-target='#exampleModal'  class='btn btn-warning rounded-pill'>Add to Cart</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <?php
+                                        
+                                    }
+                                }
+                                    ?>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <?php 
+                        while($index <= $total){
+                            ?>
+                        <div class="carousel-item">
+                            <div class="cardIndex" style="background-color: #f2f2f2;">
+                                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-3 pb-3">
+                            <?php
+                            $sum = $limit + 5;
+                            $get_product = "SELECT * FROM product WHERE sale=1 limit $limit,5";
+                            $run_product = mysqli_query($db, $get_product);
+                            $limit = $sum;
+                            while ($row_product = mysqli_fetch_array($run_product)) {
+                                $product_id = $row_product['product_id'];
+                                $p_cat_id = $row_product['p_cat_id'];
+                                $product_name = $row_product['product_name'];
+                                $product_price = $row_product['product_price'];
+                                $product_img = $row_product['product_img'];
+                                $product_quantity = $row_product['product_quantity'];
+                                $product_desc = $row_product['product_desc'];
+                                $sale = $row_product['sale'];
+                                $percentage = $row_product['percentage'];
+                                if (strlen($product_name) > 15) {
+                                    $product_name = substr($product_name, 0, 8). " .. " . substr($product_name, -4);
+                                }
+                                if (isset($_SESSION['user'])) {
+                                        $_SESSION['cart'] = $product_id;
+                                        $id = $_SESSION['user'];
+                                        echo "
+                                        
+                                        <div class='col'>
+                                            <div class='card shadow-sm sshighlight'>
+                                                <a href='products-closeup.php?id=$id&product_id=$product_id&p_cat_id=$p_cat_id'>
+                                                    <img src='../admin_area/product_images/$product_img' alt='pise' class='card-img-top' style='height: 200px;'>
+                                                </a>
+                                                <div class='card-body'>
+                                                ";
+                                                if($sale == "1"){
+                                                    ?>
+                                                    <div class='position-absolute top-0 end-0 pt-3'>
+                                                        <h5><span class='badge bg-danger'><?php echo $percentage;?>% off</span></h5>
+                                                    </div>
+                                                    <?php
+                                                }
+                                                ?>
+                                            <?php echo "
+                                                    <h5 class='card-title'>$product_name</h5>
+                                                    <p class='card-text'>RM $product_price</p>
+                                        "; ?>
+                            
+                                                    <div class='d-flex flex-column justify-content-around gap-2 gap-sm-0'>
+                                                        <a href='products-closeup.php?id=<?php echo $id?>&product_id=<?php echo $product_id?>&p_cat_id=<?php echo $p_cat_id ?>'  class='btn btn-success rounded-pill mb-sm-2  '>Add to List</a>
+                                                        <a onclick="add<?=$product_id?>()" class='btn btn-warning rounded-pill'>Add to Cart</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                <?php
+                                        
+                                    } else {
+                                        $_SESSION['cart'] = $product_id;
+                                        echo "
+                                        
+                                        <div class='col'>
+                                            <div class='card shadow-sm sshighlight'>
+                                                <a href='products-closeup.php?product_id=$product_id&p_cat_id=$p_cat_id'>
+                                                    <img src='../admin_area/product_images/$product_img' alt='pise' class='card-img-top' style='height: 200px;'>
+                                                </a>
+                                                <div class='card-body'>
+                                                ";
+
+                                                if($sale == "1"){
+                                                    ?>
+                                                    <div class='position-absolute top-0 end-0 pt-3'>
+                                                        <h5><span class='badge bg-danger'><?php echo $percentage;?>% off</span></h5>
+                                                    </div>
+                                                    <?php
+                                                }
+                                                ?>
+                                                <?php echo "
+                                                    <h5 class='card-title'>$product_name</h5>
+                                                    <p class='card-text'>RM $product_price</p>
+                                                    "; ?>
+                            
+                                                    <div class='d-flex flex-column justify-content-around gap-2 gap-sm-0'>
+                                                        <a href='products-closeup.php?product_id=<?php echo $product_id?>&p_cat_id=<?php echo $p_cat_id ?>'  class='btn btn-success rounded-pill mb-sm-2  '>Add to List</a>
+                                                        <a href='' data-bs-toggle='modal' data-bs-target='#exampleModal'  class='btn btn-warning rounded-pill'>Add to Cart</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <?php
+                                        
+                                    }
+                                    ?>
+                            <?php
+                            }
+                            
+                            $index += 1;
+                            ?>
+                                </div>
+                            </div>
+                        </div>
+                        <?php
+                        }
+                    
+                    
+                    ?>
+                        
+                </div>
+            <button class="carousel-control-prev position-absolute top-50 start-0 translate-middle" type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon btn-warning" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next position-absolute top-50 start-100 translate-middle" type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="next">
+                <span class="carousel-control-next-icon btn-warning " aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
         </div>
     </div>
+
 
     <div class="cardIndex">
         <div class="container">
@@ -319,187 +335,309 @@ include("../includes/header.php");
                 </h2>
             </div>
 
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-3 pb-3">
-                <div class="col">
-                    <div class="card sshighlight">
-                        <img src="../imgfood/chocolate/daim.jpeg" class="card-img-top" alt="..." />
-                        <div class="card-body">
-                            <h5 class="card-title">DAIMuda</h5>
-                            <p class="card-text">
-                                RM25.50/250g
-                            </p>
-                            <div class="d-flex flex-sm-column justify-content-around">
-                                <a href="#" class="btn btn-success rounded-pill mb-sm-2">Add to List</a>
-                                <a href="#" class="btn btn-warning rounded-pill">Add to Cart</a>
+            <div id="carouselExampleControlsNoTouching1" class="carousel slide" data-bs-touch="false" data-bs-interval="false">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="cardIndex" style="background-color: #f2f2f2;">
+                            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-3 pb-3">
+                                <?php 
+                                $limit = 5;
+                                $get_product1 = "SELECT * FROM product ORDER BY product_id desc";
+                                $run_product1 = mysqli_query($db, $get_product1);
+                                $count = mysqli_num_rows($run_product1);
+                                $total = intdiv($count,$limit);
+                                $index = 1;
+                                $get_product = "SELECT * FROM product ORDER BY product_id desc limit 0,5";
+                                $run_product = mysqli_query($db, $get_product);
+                                while ($row_product = mysqli_fetch_array($run_product)) {
+                                    $product_id = $row_product['product_id'];
+                                    $p_cat_id = $row_product['p_cat_id'];
+                                    $product_name = $row_product['product_name'];
+                                    $product_price = $row_product['product_price'];
+                                    $product_img = $row_product['product_img'];
+                                    $product_quantity = $row_product['product_quantity'];
+                                    $product_desc = $row_product['product_desc'];
+                                    $sale = $row_product['sale'];
+                                    $percentage = $row_product['percentage'];
+                            
+                                    if (strlen($product_name) > 15) {
+                                        $product_name = substr($product_name, 0, 8). " .. " . substr($product_name, -4);
+                                    }
+                            
+                                    if (isset($_SESSION['user'])) {
+                                        $_SESSION['cart'] = $product_id;
+                                        $id = $_SESSION['user'];
+                                        echo "
+                                        
+                                        <div class='col'>
+                                            <div class='card shadow-sm sshighlight'>
+                                                <a href='products-closeup.php?id=$id&product_id=$product_id&p_cat_id=$p_cat_id'>
+                                                    <img src='../admin_area/product_images/$product_img' alt='pise' class='card-img-top' style='height: 200px;'>
+                                                </a>
+                                                <div class='card-body'>
+                                                ";
+                                                if($sale == "1"){
+                                                    ?>
+                                                    <div class='position-absolute top-0 end-0 pt-3'>
+                                                        <h5><span class='badge bg-danger'><?php echo $percentage;?>% off</span></h5>
+                                                    </div>
+                                                    <?php
+                                                }
+                                                ?>
+                                            <?php echo "
+                                                    <h5 class='card-title'>$product_name</h5>
+                                                    <p class='card-text'>RM $product_price</p>
+                                        "; ?>
+                            
+                                                    <div class='d-flex flex-column justify-content-around gap-2 gap-sm-0'>
+                                                        <a href='products-closeup.php?id=<?php echo $id?>&product_id=<?php echo $product_id?>&p_cat_id=<?php echo $p_cat_id ?>'  class='btn btn-success rounded-pill mb-sm-2  '>Add to List</a>
+                                                        <a onclick="add<?=$product_id?>()" class='btn btn-warning rounded-pill'>Add to Cart</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                <?php
+                                        
+                                    } else {
+                                        $_SESSION['cart'] = $product_id;
+                                        echo "
+                                        
+                                        <div class='col'>
+                                            <div class='card shadow-sm sshighlight'>
+                                                <a href='products-closeup.php?product_id=$product_id&p_cat_id=$p_cat_id'>
+                                                    <img src='../admin_area/product_images/$product_img' alt='pise' class='card-img-top' style='height: 200px;'>
+                                                </a>
+                                                <div class='card-body'>
+                                                ";
+
+                                                if($sale == "1"){
+                                                    ?>
+                                                    <div class='position-absolute top-0 end-0 pt-3'>
+                                                        <h5><span class='badge bg-danger'><?php echo $percentage;?>% off</span></h5>
+                                                    </div>
+                                                    <?php
+                                                }
+                                                ?>
+                                                <?php echo "
+                                                    <h5 class='card-title'>$product_name</h5>
+                                                    <p class='card-text'>RM $product_price</p>
+                                                    "; ?>
+                            
+                                                    <div class='d-flex flex-column justify-content-around gap-2 gap-sm-0'>
+                                                        <a href='products-closeup.php?product_id=<?php echo $product_id?>&p_cat_id=<?php echo $p_cat_id ?>'  class='btn btn-success rounded-pill mb-sm-2  '>Add to List</a>
+                                                        <a href='' data-bs-toggle='modal' data-bs-target='#exampleModal'  class='btn btn-warning rounded-pill'>Add to Cart</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <?php
+                                        
+                                    }
+                                    ?>
+                                    <script>
+    
+                                    function add<?=$product_id?>(){
+                                        console.log("asd");
+                                        var product_id = <?php echo $product_id ;?>;
+                                        var id = <?php echo $id ;?>;
+                                        $.ajax({
+                                                type:"post",
+                                                cache:false,
+                                                url:"../functions/newlistname.php",
+                                                data:{
+                                                    product_id:product_id,
+                                                    id:id
+                                                },
+                                                success:function(response){
+                                                    if(response){
+                                                        alert('Succesfully Added to cart','_self');
+                                                    } else{
+                                                        alert('not succesfully');
+                                                        window.open("_self");
+                                                    }
+                                                },
+                                                error: function(jqXHR, textStatus, errorThrown){
+                                                    console.log(textStatus, errorThrown);
+                                                }
+                                            });
+                                    }
+
+
+                                </script>
+                                    <?php
+                                }
+                                    ?>
+                                
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col">
-                    <div class="card sshighlight">
-                        <img src="../imgfood/vegetables/carrot.jpg" class="card-img-top" alt="..." />
-                        <div class="card-body">
-                            <h5 class="card-title">Rabbit Stuffs</h5>
-                            <p class="card-text">
-                                RM2/pcs
-                            </p>
-                            <div class="d-flex flex-sm-column justify-content-around">
-                                <a href="#" class="btn btn-success rounded-pill mb-sm-2">Add to List</a>
-                                <a href="#" class="btn btn-warning rounded-pill">Add to Cart</a>
+                    
+                    <?php 
+                        while($index <= $total){
+                            ?>
+                        <div class="carousel-item">
+                            <div class="cardIndex" style="background-color: #f2f2f2;">
+                                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-3 pb-3">
+                            <?php
+                            $sum = $limit + 5;
+                            $get_product = "SELECT * FROM product ORDER BY product_id desc limit $limit,5";
+                            $run_product = mysqli_query($db, $get_product);
+                            $limit = $sum;
+                            while ($row_product = mysqli_fetch_array($run_product)) {
+                                $product_id = $row_product['product_id'];
+                                $p_cat_id = $row_product['p_cat_id'];
+                                $product_name = $row_product['product_name'];
+                                $product_price = $row_product['product_price'];
+                                $product_img = $row_product['product_img'];
+                                $product_quantity = $row_product['product_quantity'];
+                                $product_desc = $row_product['product_desc'];
+                                $sale = $row_product['sale'];
+                                $percentage = $row_product['percentage'];
+                                if (strlen($product_name) > 15) {
+                                    $product_name = substr($product_name, 0, 8). " .. " . substr($product_name, -4);
+                                }
+                                if (isset($_SESSION['user'])) {
+                                        $_SESSION['cart'] = $product_id;
+                                        $id = $_SESSION['user'];
+                                        echo "
+                                        
+                                        <div class='col'>
+                                            <div class='card shadow-sm sshighlight'>
+                                                <a href='products-closeup.php?id=$id&product_id=$product_id&p_cat_id=$p_cat_id'>
+                                                    <img src='../admin_area/product_images/$product_img' alt='pise' class='card-img-top' style='height: 200px;'>
+                                                </a>
+                                                <div class='card-body'>
+                                                ";
+                                                if($sale == "1"){
+                                                    ?>
+                                                    <div class='position-absolute top-0 end-0 pt-3'>
+                                                        <h5><span class='badge bg-danger'><?php echo $percentage;?>% off</span></h5>
+                                                    </div>
+                                                    <?php
+                                                }
+                                                ?>
+                                            <?php echo "
+                                                    <h5 class='card-title'>$product_name</h5>
+                                                    <p class='card-text'>RM $product_price</p>
+                                        "; ?>
+                            
+                                                    <div class='d-flex flex-column justify-content-around gap-2 gap-sm-0'>
+                                                        <a href='products-closeup.php?id=<?php echo $id?>&product_id=<?php echo $product_id?>&p_cat_id=<?php echo $p_cat_id ?>'  class='btn btn-success rounded-pill mb-sm-2  '>Add to List</a>
+                                                        <a onclick="add<?=$product_id?>()" class='btn btn-warning rounded-pill'>Add to Cart</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                <?php
+                                        
+                                    } else {
+                                        $_SESSION['cart'] = $product_id;
+                                        echo "
+                                        
+                                        <div class='col'>
+                                            <div class='card shadow-sm sshighlight'>
+                                                <a href='products-closeup.php?product_id=$product_id&p_cat_id=$p_cat_id'>
+                                                    <img src='../admin_area/product_images/$product_img' alt='pise' class='card-img-top' style='height: 200px;'>
+                                                </a>
+                                                <div class='card-body'>
+                                                ";
+
+                                                if($sale == "1"){
+                                                    ?>
+                                                    <div class='position-absolute top-0 end-0 pt-3'>
+                                                        <h5><span class='badge bg-danger'><?php echo $percentage;?>% off</span></h5>
+                                                    </div>
+                                                    <?php
+                                                }
+                                                ?>
+                                                <?php echo "
+                                                    <h5 class='card-title'>$product_name</h5>
+                                                    <p class='card-text'>RM $product_price</p>
+                                                    "; ?>
+                            
+                                                    <div class='d-flex flex-column justify-content-around gap-2 gap-sm-0'>
+                                                        <a href='products-closeup.php?product_id=<?php echo $product_id?>&p_cat_id=<?php echo $p_cat_id ?>'  class='btn btn-success rounded-pill mb-sm-2  '>Add to List</a>
+                                                        <a href='' data-bs-toggle='modal' data-bs-target='#exampleModal'  class='btn btn-warning rounded-pill'>Add to Cart</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <?php
+                                        
+                                    }
+                                    ?>
+                                    <script>
+    
+                                    function add<?=$product_id?>(){
+                                        console.log("asd");
+                                        var product_id = <?php echo $product_id ;?>;
+                                        var id = <?php echo $id ;?>;
+                                        $.ajax({
+                                                type:"post",
+                                                cache:false,
+                                                url:"../functions/newlistname.php",
+                                                data:{
+                                                    product_id:product_id,
+                                                    id:id
+                                                },
+                                                success:function(response){
+                                                    if(response){
+                                                        alert('Succesfully Added to cart','_self');
+                                                    } else{
+                                                        alert('not succesfully');
+                                                        window.open("_self");
+                                                    }
+                                                },
+                                                error: function(jqXHR, textStatus, errorThrown){
+                                                    console.log(textStatus, errorThrown);
+                                                }
+                                            });
+                                    }
+
+
+                                </script>
+                            <?php
+                            }
+                            
+                            $index += 1;
+                            ?>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                        <?php
+                        }
+                    
+                    
+                    ?>
+                        
                 </div>
-                <div class="col">
-                    <div class="card sshighlight">
-                        <img src="../imgfood/vegetables/spinach.jpeg" class="card-img-top" alt="..." />
-                        <div class="card-body">
-                            <h5 class="card-title">PopEye Spinach</h5>
-                            <p class="card-text">
-                                RM5/pcs
-                            </p>
-                            <div class="d-flex flex-sm-column justify-content-around">
-                                <a href="#" class="btn btn-success rounded-pill mb-sm-2">Add to List</a>
-                                <a href="#" class="btn btn-warning rounded-pill">Add to Cart</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card sshighlight">
-                        <img src="../imgfood/chocolate/kinderbueono.jpeg" class="card-img-top" alt="..." />
-                        <div class="card-body">
-                            <h5 class="card-title">Kinda Bueno</h5>
-                            <p class="card-text">
-                                RM4.90/pcs
-                            </p>
-                            <div class="d-flex flex-sm-column justify-content-around">
-                                <a href="#" class="btn btn-success rounded-pill mb-sm-2">Add to List</a>
-                                <a href="#" class="btn btn-warning rounded-pill">Add to Cart</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card sshighlight">
-                        <img src="../imgfood/vegetables/garlic.jpeg" class="card-img-top" alt="..." />
-                        <div class="card-body">
-                            <h5 class="card-title">Makcik's Secret</h5>
-                            <p class="card-text">
-                                RM3.50/kg
-                            </p>
-                            <div class="d-flex flex-sm-column justify-content-around">
-                                <a href="#" class="btn btn-success rounded-pill mb-sm-2">Add to List</a>
-                                <a href="#" class="btn btn-warning rounded-pill">Add to Cart</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <button class="carousel-control-prev position-absolute top-50 start-0 translate-middle" type="button" data-bs-target="#carouselExampleControlsNoTouching1" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon btn-warning" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next position-absolute top-50 start-100 translate-middle" type="button" data-bs-target="#carouselExampleControlsNoTouching1" data-bs-slide="next">
+                <span class="carousel-control-next-icon btn-warning " aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
 
         </div>
     </div>
 
-    <div class="cardIndex">
-        <div class="container">
-            <div class="d-flex flex-row align-items-center pt-3 gap-3">
-                <h2 class="pb-3">TOP PRODUCTS</h2>
-            </div>
+ 
 
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-3 pb-3">
-                <div class="col">
-                    <div class="card sshighlight">
-                        <img src="../imgfood/chocolate/daim.jpeg" class="card-img-top" alt="..." />
-                        <div class="card-body">
-                            <div class="position-absolute top-0 start-0 m-1 badge border border-light rounded-circle bg-secondary p-1"><span class="badge bg-secondary fs-6">1</span></div>
-                            <h5 class="card-title">DAIMuda</h5>
-                            <p class="card-text">
-                                RM25.50/250g
-                            </p>
-                            <div class="d-flex flex-sm-column justify-content-around">
-                                <a href="#" class="btn btn-success rounded-pill mb-sm-2">Add to List</a>
-                                <a href="#" class="btn btn-warning rounded-pill">Add to Cart</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card sshighlight">
-                        <img src="../img/banana.jpg" class="card-img-top" alt="..." />
-                        <div class="card-body">
-                            <div class="position-absolute top-0 start-0 m-1 badge border border-light rounded-circle bg-secondary p-1"><span class="badge bg-secondary fs-6">2</span></div>
-                            <h5 class="card-title">Minion Banana</h5>
-                            <p class="card-text">
-                                RM0.50/person
-                            </p>
-                            <div class="d-flex flex-sm-column justify-content-around">
-                                <a href="#" class="btn btn-success rounded-pill mb-sm-2">Add to List</a>
-                                <a href="#" class="btn btn-warning rounded-pill">Add to Cart</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card sshighlight">
-                        <img src="../img/tomato.jpg" class="card-img-top" alt="..." />
-                        <div class="card-body">
-                            <div class="position-absolute top-0 start-0 m-1 badge border border-light rounded-circle bg-secondary p-1"><span class="badge bg-secondary fs-6">3</span></div>
-                            <h5 class="card-title">Tokma Toes</h5>
-                            <p class="card-text">
-                                RM20/pcs
-                            </p>
-                            <div class="d-flex flex-sm-column justify-content-around">
-                                <a href="#" class="btn btn-success rounded-pill mb-sm-2">Add to List</a>
-                                <a href="#" class="btn btn-warning rounded-pill">Add to Cart</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card sshighlight">
-                        <img src="../imgfood/chocolate/kinderbueono.jpeg" class="card-img-top" alt="..." />
-                        <div class="card-body">
-                            <div class="position-absolute top-0 start-0 m-1 badge border border-light rounded-circle bg-secondary p-1"><span class="badge bg-secondary fs-6">4</span></div>
-                            <h5 class="card-title">Kinda Bueno</h5>
-                            <p class="card-text">
-                                RM4.90/pcs
-                            </p>
-                            <div class="d-flex flex-sm-column justify-content-around">
-                                <a href="#" class="btn btn-success rounded-pill mb-sm-2">Add to List</a>
-                                <a href="#" class="btn btn-warning rounded-pill">Add to Cart</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card sshighlight">
-                        <img src="../imgfood/vegetables/spinach.jpeg" class="card-img-top" alt="..." />
-                        <div class="card-body">
-                            <div class="position-absolute top-0 start-0 m-1 badge border border-light rounded-circle bg-secondary p-1"><span class="badge bg-secondary fs-6">5</span></div>
-                            <h5 class="card-title">PopEye Spinach</h5>
-                            <p class="card-text">
-                                RM5/pcs
-                            </p>
-                            <div class="d-flex flex-sm-column justify-content-around">
-                                <a href="#" class="btn btn-success rounded-pill mb-sm-2">Add to List</a>
-                                <a href="#" class="btn btn-warning rounded-pill">Add to Cart</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-        </div>
-    </div>
+ 
 
     <?php 
 
     include("../includes/footer.php")
 
     ?>
-   
+   </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
-    <script src="../nyumscript.js"></script>
+    <script src="../nyumscript.js?v=<?=time();?>"></script>
     <script src="https://unpkg.com/@pqina/flip/dist/flip.min.js"></script>
     <script>
         var myModal = new bootstrap.Modal(document.getElementById('exampleModal'), {

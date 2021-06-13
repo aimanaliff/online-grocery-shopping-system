@@ -46,7 +46,7 @@
 
                 <ul class="list-unstyled components">
                     <li>
-                        <a href="admin.html" class="text">
+                        <a href="admin.php" class="text">
                             <i class="fas fa-cart-plus"></i>&nbsp&nbspInsert Product</a>
                     </li>
 

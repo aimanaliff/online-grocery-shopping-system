@@ -2,7 +2,7 @@
 
 include("../includes/header.php");
 
-if (isset($_SESSION['success'])) { $userid = $_SESSION['user']; }
+// if (isset($_SESSION['success'])) { $userid = $_SESSION['user']; }
 
 if (isset($_GET['product_id']) && isset($_GET['p_cat_id'])) {
     $productID = $_GET['product_id'];
@@ -82,14 +82,15 @@ if (isset($_GET['product_id']) && isset($_GET['p_cat_id'])) {
                             <div class="mb-3">
                                 <select name="Listname" class="form-select" style="border-radius: 5px 5px 5px 5px;" aria-label="Default select example">
                                 <?php 
-                                    $query = "select * from listname";
+                                    if(isset($_SESSION['user'])){
+                                    $id = $_SESSION['user'];
+                                    $query = "select * from listname where id=$id";
                                     $run_query = mysqli_query($db,$query);
 
                                     if(mysqli_num_rows($run_query)>0){
                                         echo "
                                         <option value=''>Select List</option>
                                         ";
-                                        
                                         while($row_query = mysqli_fetch_array($run_query)){
                                             
                                             $ListID = $row_query['ListID'];
@@ -104,6 +105,7 @@ if (isset($_GET['product_id']) && isset($_GET['p_cat_id'])) {
                                         <option value=''>No List</option>
                                         ";
                                     }
+                                }
                                 ?>
                                 </select>
                             </div>
@@ -115,59 +117,13 @@ if (isset($_GET['product_id']) && isset($_GET['p_cat_id'])) {
         </div>
     </main>
 
-    <footer class="footer container-fluid mt-auto pt-3" style="background-color: #006600; color: whitesmoke;">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 col-md-5">
-                    <h3>NyumNyum Grocery Store</h4>
-                </div>
-                <div class="col-6 col-md">
-                    <h5>About</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="#" class="text-reset text-decoration-none footer-link">Services</a></li>
-                        <li><a href="#" class="text-reset text-decoration-none">Portfolio</a></li>
-                    </ul>
-                </div>
-                <div class="col-6 col-md">
-                    <h5>Company</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="#" class="text-reset text-decoration-none footer-link">Career with Us</a></li>
-                    </ul>
-                </div>
-                <div class="col-6 col-md">
-                    <h5>Policies</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="#" class="text-reset text-decoration-none footer-link">Refund Policy</a></li>
-                        <li><a href="#" class="text-reset text-decoration-none footer-link">Privacy Policy</a></li>
-                        <li><a href="#" class="text-reset text-decoration-none footer-link">Shipping Policy</a></li>
-                        <li><a href="#" class="text-reset text-decoration-none footer-link">Terms of Policies</a></li>
-                    </ul>
-                </div>
-                <hr>
-                <div class="container text-center font-italic text-muted">
-                    <p>&copy; 2021 NyumNyum Yummy Menjilat Jari</p>
-                </div>
-            </div>
-    </footer>
-
+    
+     <?php include("../includes/footer.php"); ?> 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
         crossorigin="anonymous"></script>
     <script src="../nyumscript.js"></script>
    
-    
-    <?php 
-    
-        
-    // if(isset($_POST['submitListName'])){
-    //     insertIntoList();    
-    // } else {
-    //     echo "<script>alert('asdasdad')</script>";
-    //     echo "<script>window.open('_self')</script>";
-    // }
-    
-    ?>
-
 
 </body>
 

@@ -60,10 +60,9 @@ $productAmount = mysqli_fetch_row($run_productAmount);
                         </button>
 
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownSort">
-                            <!-- <li><button class="dropdown-item" type="button" onclick="">Alphabetically, A-Z</button></li>
-                            <li><button class="dropdown-item" type="button" onclick="">Alphabetically, Z-A</button></li>
-                            <li><button class="dropdown-item" type="button" onclick="">Price, low to high</button></li>
-                            <li><button class="dropdown-item" type="button" onclick="">Price, high to low</button></li> -->
+                            <?php
+                        if($count > 1 && isset($_SESSION['user'])){
+                            ?>
                             <li>
                                 <a class="dropdown-item" href="../src/products.php?page=<?php echo $page ?>&id=<?php echo $userid ?>&p_cat_id=<?php echo $p_cat_id0 ?>&sort=A2Z" 
                                 role="button">Alphabetically, A-Z</a>
@@ -80,6 +79,75 @@ $productAmount = mysqli_fetch_row($run_productAmount);
                                 <a class="dropdown-item" href="../src/products.php?page=<?php echo $page ?>&id=<?php echo $userid ?>&p_cat_id=<?php echo $p_cat_id0 ?>&sort=H2L" 
                                 role="button">Price, high to low</a>
                             </li>
+                            <?php 
+                             }
+                             
+                             else
+                                 if(isset($_SESSION['user']) && $count < 1){
+
+                                ?>
+                                <li>
+                                <a class="dropdown-item" style="pointer-events:none;" href="../src/products.php?page=<?php echo $page ?>&p_cat_id=<?php echo $p_cat_id0 ?>&sort=A2Z" 
+                                role="button">Alphabetically, A-Z</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" style="pointer-events:none;" href="../src/products.php?page=<?php echo $page ?>&p_cat_id=<?php echo $p_cat_id0 ?>&sort=Z2A" 
+                                    role="button">Alphabetically, Z-A</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" style="pointer-events:none;" href="../src/products.php?page=<?php echo $page ?>&p_cat_id=<?php echo $p_cat_id0 ?>&sort=L2H" 
+                                    role="button">Price, low to high</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" style="pointer-events:none;" href="../src/products.php?page=<?php echo $page ?>&p_cat_id=<?php echo $p_cat_id0 ?>&sort=H2L" 
+                                    role="button">Price, high to low</a>
+                                </li>
+                                <?php }
+                                else
+                                    if(!isset($_SESSION['user']) && $count > 1){
+                                ?>
+                                <li>
+                                <a class="dropdown-item"  href="../src/products.php?page=<?php echo $page ?>&p_cat_id=<?php echo $p_cat_id0 ?>&sort=A2Z" 
+                                role="button">Alphabetically, A-Z</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item"  href="../src/products.php?page=<?php echo $page ?>&p_cat_id=<?php echo $p_cat_id0 ?>&sort=Z2A" 
+                                    role="button">Alphabetically, Z-A</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item"  href="../src/products.php?page=<?php echo $page ?>&p_cat_id=<?php echo $p_cat_id0 ?>&sort=L2H" 
+                                    role="button">Price, low to high</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="../src/products.php?page=<?php echo $page ?>&p_cat_id=<?php echo $p_cat_id0 ?>&sort=H2L" 
+                                    role="button">Price, high to low</a>
+                                </li>
+                                
+                            <?php 
+                                    }else{
+
+                                     ?>
+
+                                <li>
+                                <a class="dropdown-item" style="pointer-events:none;" href="../src/products.php?page=<?php echo $page ?>&p_cat_id=<?php echo $p_cat_id0 ?>&sort=A2Z" 
+                                role="button">Alphabetically, A-Z</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" style="pointer-events:none;" href="../src/products.php?page=<?php echo $page ?>&p_cat_id=<?php echo $p_cat_id0 ?>&sort=Z2A" 
+                                    role="button">Alphabetically, Z-A</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" style="pointer-events:none;" href="../src/products.php?page=<?php echo $page ?>&p_cat_id=<?php echo $p_cat_id0 ?>&sort=L2H" 
+                                    role="button">Price, low to high</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" style="pointer-events:none;" href="../src/products.php?page=<?php echo $page ?>&p_cat_id=<?php echo $p_cat_id0 ?>&sort=H2L" 
+                                    role="button">Price, high to low</a>
+                                </li>
+                                     <?php 
+                                    }
+                             ?>
+                           
                         </ul>
                     </div>
                 </div>
@@ -108,76 +176,98 @@ $productAmount = mysqli_fetch_row($run_productAmount);
                     <?php 
                         global $p_cat_id0;
                         if (isset($_GET['p_cat_id'])) $p_cat_id0 = $_GET['p_cat_id'];
-                    
+                        
                         $query = "select * from product where p_cat_id=$p_cat_id0 ";
                         $result = mysqli_query($con,$query);
                         $total_records = mysqli_num_rows($result);
                         $total_pages = ceil($total_records / $per_page);
 
-                        // echo '
-                        
-                        // <li class="page-item disabled">
-                        //     <a class="page-link" href="../src/products.php?page=1&id=$userid&p_cat_id=1&page=1" tabindex="-1" aria-disabled="true">1</a>
-                        // </li>
-                        
-                        
-                        // ';
+                        if(isset($_SESSION['user'])){
+                            $userid=$_SESSION['user'];
 
-                        if($page >= 2) {   
-                            echo '
-                            <li class="page-item">
-                                <a class="page-link" href="../src/products.php?page='.($page-1).'&id=$userid&p_cat_id='.$p_cat_id0.'&sort='.$sort.'">
-                                Prev</a>
-                            </li>
-                            ';   
-                        } else {
-                            echo '
-                            <li class="page-item disabled">
-                                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Prev</a>
-                            </li>
-                            ';
+                            if($page >= 2) {   
+                                echo '
+                                <li class="page-item">
+                                    <a class="page-link" href="../src/products.php?page='.($page-1).'&id='.$userid.'&p_cat_id='.$p_cat_id0.'&sort='.$sort.'">
+                                    Prev</a>
+                                </li>
+                                ';   
+                            } else {
+                                echo '
+                                <li class="page-item disabled">
+                                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Prev</a>
+                                </li>
+                                ';
+                            }
+    
+                            for($i=1; $i<=$total_pages; $i++){
+    
+                                echo '
+                            
+                                <li class="page-item" aria-current="page"><a class="page-link" href="../src/products.php?page='.$i.'&id='.$userid.'&p_cat_id='.$p_cat_id0.'&sort='.$sort.'">
+                                '.$i.'</a></li>
+                            
+                                '
+                                ;
+                            }
+    
+                            if ($page < $total_pages) {
+                                echo '
+                                <li class="page-item">
+                                    <a class="page-link active" href="../src/products.php?page='.($page+1).'&id='.$userid.'&p_cat_id='.$p_cat_id0.'&sort='.$sort.'">
+                                    Next</a>
+                                </li>
+                                ';
+                            } else {
+                                echo '
+                                <li class="page-item disabled">
+                                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Next</a>
+                                </li>
+                                ';
+                            }              
+                        } else{
+                            if($page >= 2) {   
+                                echo '
+                                <li class="page-item">
+                                    <a class="page-link" href="../src/products.php?page='.($page-1).'&&p_cat_id='.$p_cat_id0.'&sort='.$sort.'">
+                                    Prev</a>
+                                </li>
+                                ';   
+                            } else {
+                                echo '
+                                <li class="page-item disabled">
+                                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Prev</a>
+                                </li>
+                                ';
+                            }
+    
+                            for($i=1; $i<=$total_pages; $i++){
+    
+                                echo '
+                            
+                                <li class="page-item" aria-current="page"><a class="page-link" href="../src/products.php?page='.$i.'&p_cat_id='.$p_cat_id0.'&sort='.$sort.'">
+                                '.$i.'</a></li>
+                            
+                                '
+                                ;
+                            }
+    
+                            if ($page < $total_pages) {
+                                echo '
+                                <li class="page-item">
+                                    <a class="page-link active" href="../src/products.php?page='.($page+1).'&p_cat_id='.$p_cat_id0.'&sort='.$sort.'">
+                                    Next</a>
+                                </li>
+                                ';
+                            } else {
+                                echo '
+                                <li class="page-item disabled">
+                                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Next</a>
+                                </li>
+                                ';
+                            }             
                         }
-
-                        for($i=1; $i<=$total_pages; $i++){
-
-                            echo '
-                        
-                            <li class="page-item" aria-current="page"><a class="page-link" href="../src/products.php?page='.$i.'&id=$userid&p_cat_id='.$p_cat_id0.'&sort='.$sort.'">
-                            '.$i.'</a></li>
-                        
-                            '
-                            ;
-                        }
-
-                        if ($page < $total_pages) {
-                            echo '
-                            <li class="page-item">
-                                <a class="page-link active" href="../src/products.php?page='.($page+1).'&id=$userid&p_cat_id='.$p_cat_id0.'&sort='.$sort.'">
-                                Next</a>
-                            </li>
-                            ';
-                        } else {
-                            echo '
-                            <li class="page-item disabled">
-                                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Next</a>
-                            </li>
-                            ';
-                        }                  
-                    
                     ?>
-
-                        <!-- <li class="page-item disabled">
-                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-                        </li>
-                        <li class="page-item active" aria-current="page"><a class="page-link" href="products.php?page=&<?php echo $page ?>id=<?php echo $userid ?>&p_cat_id=<?php echo $categoryID ?>">
-                            1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">
-                            2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">
-                            3</a></li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">Next</a>
-                        </li> -->
                     </ul>
                 </nav>
             </div>

@@ -5,8 +5,6 @@ include("../src/passwordRecover.php");
 
 ?>
 
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,17 +16,62 @@ include("../src/passwordRecover.php");
     <title>NyumNyum Grocer Store</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
     <link href='https://fonts.googleapis.com/css?family=Noto+Sans' rel='stylesheet'>
-    <link rel="stylesheet" href="../nyumstyle.css?version=1">
+    <link rel="stylesheet" href="../nyumstyle.css?v=<?=time();?>">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://unpkg.com/@pqina/flip/dist/flip.min.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <link href="../hamburgers.css" rel="stylesheet">
-    <link rel="icon" href="/img/nyumicon.ico">
+    <link rel="icon" href="../img/nyumicon.ico">
+    <style>
+    html {
+        overflow-y: scroll;
+    }
+    .result{
+        background-color: #f6f6f6;
+        position:absolute;        
+        z-index: 2;
+        top: 100%;
+        overflow-y: auto;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        width:95%;
+        border-radius: 20px 0 0 20px;
+        max-height: 20rem;
+        left:1px;
+    }
+
+    .result a{
+        text-decoration:none;
+    }
+
+    /* .result a p {
+        color:black;
+        padding-left:5px;
+        padding-top:3px;
+    } */
+
+    .result a p:hover{
+        background:lightgray;
+        padding-top:15px;
+        padding-bottom:15px;
+    }
+
+    .result p {
+        color:#595959;
+        padding-left:25px;
+        padding-top:15px;
+        padding-bottom:15px;
+        font-size:15px;
+        font-family: "Noto Sans", sans-serif;
+        font-weight: bold;
+    }
+
+    </style>
     
 </head>
 
 <body>
+<div id="page-container">
     <header class="py-3" style="background-color: #92D050;">
         <div class="container gap-3">
             <div class="d-flex align-items-center flex-wrap flex-sm-nowrap justify-content-between">
@@ -37,18 +80,33 @@ include("../src/passwordRecover.php");
                         <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
                     </svg>
                 </button>
+                <?php
+                if(isset($_SESSION['success'])){
+                    $userid = $_SESSION['user'];
+                
+                ?>
+                <a href="index.php?id=<?=$userid; ?>" class="navbar-brand order-2">
+                    <img src="../img/nyumnyumlogo.png" alt="logo" width="150" class="mx-2">
+                </a>
+            <?php 
+            } else {
 
+            
+            ?>
                 <a href="index.php" class="navbar-brand order-2">
                     <img src="../img/nyumnyumlogo.png" alt="logo" width="150" class="mx-2">
                 </a>
-
-                <div class="input-group order-4 order-sm-3">
-                    <input type="search" class="form-control" placeholder="Search" aria-label="search" aria-describedby="button-addon2" style="border-radius: 20px 0 0 20px;">
-                    <button class="btn btn-success" type="button" id="button-addon2" style="border-radius: 0 20px 20px 0;"><span class="material-icons pt-1">
+            <?php 
+            }
+            ?>
+                <form class="input-group order-4 order-sm-3 search-box" >
+                    <input type="search" id="search" name="s"  class="form-control" placeholder="Search" style="outline: none !important;box-shadow:none;"  required>
+                    <button class="btn btn-success" name="searchsubmit" onclick="loadSearch()" type="button" id="button-addon2" style="border-radius: 0 20px 20px 0;"><span class="material-icons pt-1">
                             search
                         </span></button>
-                </div>
-
+                    <div class="result" id="hid"></div>
+                </form>
+                
 
                 <ul class="navbar-nav order-3 order-sm-4 ms-3 mb-2 mb-md-0 d-flex flex-row">
                     <li class="nav-item mx-1">
@@ -63,9 +121,12 @@ include("../src/passwordRecover.php");
                                 echo "
                                 <a href='../src/user.php?id=$userid' . class='nav-link text-dark' data-bs-toggle='tooltip' data-bs-placement='top' title = '$name' value='$name'><svg xmlns='http://www.w3.org/2000/svg' width='25' height='25' fill='currentColor' class='bi bi-person' viewBox='0 0 16 16'>
                                     <path d='M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z' />
-                                </svg></a>
+                                </svg>
                                 
+                                </a>
                                 ";
+                                
+
                             } else{
                                 echo "
                                 <a href='' class='nav-link text-dark' data-bs-toggle='modal' data-bs-target='#exampleModal'><svg xmlns='http://www.w3.org/2000/svg' width='25' height='25' fill='currentColor' class='bi bi-person' viewBox='0 0 16 16'>
@@ -81,7 +142,7 @@ include("../src/passwordRecover.php");
                         if(isset($_SESSION['success'])){
                             $userid = $_SESSION['user'];
                             echo "
-                                <a href='../src/cart.php?id=$userid' class='nav-link text-dark'><svg xmlns='http://www.w3.org/2000/svg' width='23' height='23' fill='currentColor' class='bi bi-bag' viewBox='0 0 16 16'>
+                                <a href='../src/cart.php?id=$userid'  class='cart nav-link text-dark'><svg xmlns='http://www.w3.org/2000/svg' width='23' height='23' fill='currentColor' class='bi bi-bag' viewBox='0 0 16 16'>
                                 <path d='M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z'/>
                               </svg></a>
                             "
@@ -103,7 +164,7 @@ include("../src/passwordRecover.php");
                         if(isset($_SESSION['success'])){
                             $userid = $_SESSION['user'];
                             echo "
-                                <a href='../src/list1.php?id=$userid'. class='nav-link text-dark'><svg xmlns='http://www.w3.org/2000/svg' width='28' height='28' fill='currentColor' class='bi bi-list-ul' viewBox='0 0 16 16'>
+                                <a href='../src/list1.php?id=$userid'. class='nav-link text-dark'><svg xmlns='http://www.w3.org/2000/svg' width='28' height='29' fill='currentColor' class='bi bi-list-ul' viewBox='0 0 16 16'>
                                 <path fill-rule='evenodd' d='M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm-3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2z'/>
                               </svg></a>
                             "
@@ -111,7 +172,7 @@ include("../src/passwordRecover.php");
                         }
                         else{
                             echo "
-                                <a href='' data-bs-toggle='modal' data-bs-target='#exampleModal' class='nav-link text-dark'><svg xmlns='http://www.w3.org/2000/svg' width='28' height='28' fill='currentColor' class='bi bi-list-ul' viewBox='0 0 10 10'>
+                                <a href='' data-bs-toggle='modal' data-bs-target='#exampleModal' class='nav-link text-dark'><svg xmlns='http://www.w3.org/2000/svg' width='28' height='33' fill='currentColor' class='bi bi-list-ul' viewBox='0 0 16 16'>
                                 <path fill-rule='evenodd' d='M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm-3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2z'/>
                               </svg></a>
                             "
@@ -125,7 +186,7 @@ include("../src/passwordRecover.php");
         </div>
     </header>
 
-    <nav class="navbar sticky-top navbar-expand-sm shadow py-2 justify-content-center" style="background-color: #FD6C5D;">
+    <nav  class="navbar navbar-expand-sm stickyjimmy shadow py-2 justify-content-center" style="background-color: #FD6C5D;">
         <div class="collapse navbar-collapse" id="categoriesToggle">
             <div class="container">
                 <ul class="navbar-nav mb-2 mb-md-0 w-100 justify-content-around next" style="font-weight: bold;">
@@ -143,11 +204,11 @@ include("../src/passwordRecover.php");
                     }
                     else{
                         echo "
-                        <li class='nav-item'><a href='../src/products.php' class='nav-link text-dark'>Fruits</a></li>
-                        <li class='nav-item'><a href='#' class='nav-link text-dark'>Vegetables</a></li>
-                        <li class='nav-item'><a href='#' class='nav-link text-dark'>Meat</a></li>
-                        <li class='nav-item'><a href='#' class='nav-link text-dark'>Cookies & Snacks</a></li>
-                        <li class='nav-item'><a href='#' class='nav-link text-dark'>Beverages</a></li>
+                        <li class='nav-item'><a href='../src/products.php?p_cat_id=1' class='nav-link text-dark'>Fruits</a></li>
+                        <li class='nav-item'><a href='../src/products.php?p_cat_id=2' class='nav-link text-dark'>Vegetables</a></li>
+                        <li class='nav-item'><a href='../src/products.php?p_cat_id=3' class='nav-link text-dark'>Meat</a></li>
+                        <li class='nav-item'><a href='../src/products.php?p_cat_id=4' class='nav-link text-dark'>Cookies & Snacks</a></li>
+                        <li class='nav-item'><a href='../src/products.php?p_cat_id=5' class='nav-link text-dark'>Beverages</a></li>
                         "
                     ;
                     }
@@ -205,7 +266,7 @@ include("../src/passwordRecover.php");
                         
                             <form  method="post" enctype="multipart/form-data">
                                 <div class="mb-3">
-                                    <input type="text" name="username" value="" onBlur="checkAvailability()" class="form-control" id="user" aria-describedby="textHelp" placeholder="Username" required>
+                                    <input type="text" name="username" value="" onkeyup="checkAvailability()" class="form-control" id="user" aria-describedby="textHelp" placeholder="Username" required>
                                     <div id="msg"></div>
                                 </div>
                                 <div class="mb-3">
@@ -273,26 +334,64 @@ include("../src/passwordRecover.php");
             <path d="m7.247 4.86-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z" />
         </svg>
     </button>
+    <?php 
+    if(isset($_SESSION['success'])){
+        $id= $_SESSION['user'];
+       
+    }
+        
+        
+    ?>
     <script>
     var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
     var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
     return new bootstrap.Tooltip(tooltipTriggerEl)
     })
+    
+    <?php 
+    // $_SESSION['varname']="<script>document.writeln(search);</script>";
+    if(isset($_SESSION['user'])){
+        $id = $_SESSION['user'];
+    } else {
+        $id = 0;
+    }
+    ?>
+    function loadSearch(){
+        
+        var id = <?php echo $id; ?>;
+        var search = $("#search").val();
+        if(search !=""){
+            window.open("../src/searchProduct.php?id="+id+"&search="+search+"&page=1","_self");
+        } else{
+
+        }
+        
+    }
     </script>
     <script>
         $('#Password1, #Password2').on('keyup', function () {
-        if ($('#Password1').val() == $('#Password2').val()) {
-            if($('#Password1').val() == "" || $('#Password2').val() == "" ){
-                $('#message').html('').css('color', 'green');
-            }else{
-                $('#message').html('Password Match').css('color', 'green');
+        if ($('#Password1').val() == $('#Password2').val() ) {
+            $('#message').html('Password Match').css('color', 'green');
+        } else{
+            if($('#Password2').val() =="" || $('#Password1').val() ==""){
+            } else{
+                $('#message').html('Password Not Match').css('color', 'red');
             }
-        } else 
-            $('#message').html('Password Not Match').css('color', 'red');
+        }
+        if($('#Password1').val() =="" && $('#Password2').val()==""){
+            $('#message').html('');
+        }
+        if($('#Password1').val() !="" && $('#Password2').val()==""){
+            $('#message').html('');
+        }
+        if($('#Password1').val() =="" && $('#Password2').val()!=""){
+            $('#message').html('');
+        }
+            
         });
-    </script>
-    <script type="text/javascript">
-    function checkAvailability(){
+
+        function checkAvailability(){
+        console.log("sad");
         var username = $("#user").val().trim();
         $.ajax({
             type:"post",
@@ -304,7 +403,51 @@ include("../src/passwordRecover.php");
                 $("#msg").html(response);
             }
         });
+
+        
     }
+    </script>
+    <script type="text/javascript">
+    
+    
+    
+    $(document).ready(function(){
+        // fetch data from table without reload/refresh page
+        
+        function loadData(query){
+        var id = <?php echo $id; ?>;
+          $.ajax({
+            url : "../includes/search.php",
+            type: "post",
+            data:{query:query,id:id},
+            success:function(response){
+                $(".result").show()
+                $(".result").html(response);
+              
+            }
+          });  
+        }
+
+        // live search data from table without reload/refresh page
+        $("#search").keyup(function(){
+          var search = $("#search").val();
+          if (search !="") {
+            $(".result").show()
+            loadData(search);
+          }else{
+            $("#hid").hide();
+          }
+        });
+    });
+
+    $(document).mouseup(function(e){
+        var container1 = $("#search");
+        var container = $("#hid");
+        // If the target of the click isn't the container
+        if(!container1.is(e.target) && container1.has(e.target).length === 0){
+            container.hide();
+        }
+    });
     </script>
     
     

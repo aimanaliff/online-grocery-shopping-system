@@ -20,7 +20,7 @@ include("../includes/db.php")
     <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous"> -->
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
     <!-- Our Custom CSS -->
-    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="admin.css?v=<?php echo time();?>">
 
     <!-- Font Awesome JS -->
     <!-- <script src="https://kit.fontawesome.com/1f0cb49d65.js" crossorigin="anonymous"></script> -->
@@ -110,6 +110,19 @@ include("../includes/db.php")
                         </select>
                     </div>
                     <div class="mb-3">
+                        <label class="col-auto">Sales</label>
+                        <select onclick="myFunction()" id="sale" name="sale" class="form-select" style="border-radius: 5px 5px 5px 5px;" aria-label="Default select example">
+                            <option value="">Select</option>
+                            <option  value="1">Sale</option>
+                            <option value="2">No Sale</option>
+                        </select>
+                    </div>
+                    <div class="mb-3" id="myDIV" style="display:none;">
+                        <label class="col-auto">Discount Range</label>
+                        <input name="percentage" type="range" min="1" max="100" value="50" class="slider" id="myRange">
+                        <p>Value: <span id="demo"></span></p>
+                    </div>
+                    <div class="mb-3">
                         <label class="col-auto">Product Price</label>
                         <input name=" product_price" type="text" class="form-control" style="border-radius: 5px 5px 5px 5px;" required>
                     </div>
@@ -154,6 +167,28 @@ include("../includes/db.php")
                 $(this).toggleClass('active');
             });
         });
+
+        var slider = document.getElementById("myRange");
+        var output = document.getElementById("demo");
+        output.innerHTML = slider.value; // Display the default slider value
+
+        // Update the current slider value (each time you drag the slider handle)
+        slider.oninput = function() {
+        output.innerHTML = this.value;
+        }
+
+        function myFunction() {
+            var x = document.getElementById("myDIV");
+            var y = document.getElementById("sale").value;
+            if(y == 1){
+                if (x.style.display === "none") {
+                    x.style.display = "block";
+                } else {
+                    x.style.display = "none";
+                }
+            }
+            
+        }  
     </script>
 
     <?php 
@@ -165,14 +200,21 @@ include("../includes/db.php")
             $product_desc = $_POST['product_desc'];
             $product_stock = $_POST['product_stock'];
 
+            $sale = $_POST['sale'];
+            if($sale == 1){
+                $percentage = $_POST['percentage'];
+            } else{
+                $percentage = '';
+            }
+
             $product_img = $_FILES['product_img']['name'];
 
             $temp_name1=$_FILES['product_img']['tmp_name'];
 
             move_uploaded_file($temp_name1,"product_images/$product_img");
 
-            $insert_product = "insert into product (p_cat_id,date,product_name,product_price,product_img,product_quantity,product_desc)
-                               values ('$product_categories',NOW(),'$product_name','$product_price','$product_img','$product_stock','$product_desc')";
+            $insert_product = "insert into product (p_cat_id,date,product_name,sale,percentage,product_price,product_img,product_quantity,product_desc)
+                               values ('$product_categories',NOW(),'$product_name','$sale','$percentage','$product_price','$product_img','$product_stock','$product_desc')";
 
             $run_product = mysqli_query($con,$insert_product);
 
