@@ -45,7 +45,6 @@ include("../includes/db.php");
             </button>
         </div>
         <!-- Modal -->
-        <form method="post" enctype="multipart/form-data">
 
         <div class="modal fade" id="AddName" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
@@ -54,41 +53,22 @@ include("../includes/db.php");
                         <h5 class="modal-title" id="staticBackdropLabel">List Name</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="modal-body" style="text-align: center;">
-                        <input type="text" class="form-control" name="listnam" placeholder="Add a name" style="text-align: center;" required>
+                    <div class="modal-body" >
+                        <input id="nama" type="text" class="form-control" name="listnam" placeholder="Add a name"  required>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" name="saves" class="btn btn-primary">Save</button>
+                        <button type="submit" onclick="insert()" name="saves" class="btn btn-primary form-control">Save</button>
+                        <button type="button" class="btn btn-secondary form-control" data-bs-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>
         </div>
-        </form>
 
 
     
 
     <?php 
-        if(isset($_POST['saves'])){
-            $listnam = $_POST['listnam'];
-            $id  =  $_SESSION['user'];
-
-            $insert_product = "insert into listname (ListName,id)
-                               values ('$listnam','$id')";
-
-            $run_product = mysqli_query($con,$insert_product);
-
-            if($run_product){
-                // echo "<script>alert('New List Name Created')</script>";
-                echo "<script>window.open('list1.php?id=$id','_self')</script>";
-            }
-            else{
-                // echo "<script>alert('Product not inserted succesfully')</script>";
-            }
-
-        } 
-    
+        $id  =  $_SESSION['user'];
     
     ?>
 
@@ -106,8 +86,43 @@ include("../includes/db.php");
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
       crossorigin="anonymous"></script>
-      <script src="../nyumscript.js"></script>
-  
+    <script src="../nyumscript.js"></script>
+    <script>
+    function insert(){
+        console.log("asd");
+        var listname = document.querySelectorAll("#nama");
+        var id = <?php echo $id ;?>;
+        $.ajax({
+            type:"post",
+            cache:false,
+            url:"../functions/newlistname.php",
+            data:{
+                listnam:listname[0].value,
+                id:id
+            },
+            success:function(response){
+                if(response){
+                    Swal.fire(
+                        'Added!',
+                        'New list name inserted',
+                        'success',
+                        ).then((result) =>{
+                            if(result.isConfirmed){
+                                location.reload();
+                            }
+                    })
+                } else{
+                    alert('not succesfully');
+                    window.open("_self");
+                }
+            },
+            error: function(jqXHR, textStatus, errorThrown){
+                console.log(textStatus, errorThrown);
+            }
+        });
+    }
+
+    </script>
     
 
   </body>

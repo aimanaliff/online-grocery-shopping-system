@@ -37,108 +37,108 @@
         </button>
         <div class="card">
             <div class="card-body m-3 mt-2">
-                <h1>Search result <?php echo $searchquery ?></h1>
+                <h1>Search result for "<?php echo $searchquery ?>"</h1>
                 <div class="container d-flex flex-row justify-content-between align-item-center p-0">
-                <p id="showProdAmount">Showing <strong><?php echo $count ?></strong> of <strong><?php echo $productAmount[0] ?></strong> products</p>
+                    <p id="showProdAmount">Showing <strong><?php echo $count ?></strong> of <strong><?php echo $productAmount[0] ?></strong> products</p>
 
-                <div class="dropdown pb-3">
-                        <button class="btn bg-transparent dropdown-toggle" type="button" id="dropdownSort"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            Sort by:
-                        </button>
+                    <div class="dropdown pb-3">
+                            <button class="btn bg-transparent dropdown-toggle" type="button" id="dropdownSort"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Sort by:
+                            </button>
 
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownSort">
-                            <?php
-                        if($count > 1 && isset($_SESSION['user'])){
-                            ?>
-                             <li>
-                                <a class="dropdown-item" href="../src/searchProduct.php?page=<?php echo $page ?>&id=<?php echo $userid ?>&search=<?php echo $searchquery ?>&sort=A2Z" 
-                                role="button">Alphabetically, A-Z</a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="../src/searchProduct.php?page=<?php echo $page ?>&id=<?php echo $userid ?>&search=<?php echo $searchquery ?>&sort=Z2A" 
-                                role="button">Alphabetically, Z-A</a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="../src/searchProduct.php?page=<?php echo $page ?>&id=<?php echo $userid ?>&search=<?php echo $searchquery ?>&sort=L2H" 
-                                role="button">Price, low to high</a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="../src/searchProduct.php?page=<?php echo $page ?>&id=<?php echo $userid ?>&search=<?php echo $searchquery ?>&sort=H2L" 
-                                role="button">Price, high to low</a>
-                            </li>
-                            <?php 
-                             }
-                             
-                             else
-                                 if(isset($_SESSION['user']) && $count < 1){
-
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownSort">
+                                <?php
+                            if($count > 1 && isset($_SESSION['user'])){
                                 ?>
-                                 <li>
-                                <a class="dropdown-item" href="../src/searchProduct.php?page=<?php echo $page ?>&id=<?php echo $userid ?>&search=<?php echo $searchquery ?>&sort=A2Z" 
-                                role="button">Alphabetically, A-Z</a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="../src/searchProduct.php?page=<?php echo $page ?>&id=<?php echo $userid ?>&search=<?php echo $searchquery ?>&sort=Z2A" 
-                                role="button">Alphabetically, Z-A</a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="../src/searchProduct.php?page=<?php echo $page ?>&id=<?php echo $userid ?>&search=<?php echo $searchquery ?>&sort=L2H" 
-                                role="button">Price, low to high</a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="../src/searchProduct.php?page=<?php echo $page ?>&id=<?php echo $userid ?>&search=<?php echo $searchquery ?>&sort=H2L" 
-                                role="button">Price, high to low</a>
-                            </li>
-                                <?php }
-                                else
-                                    if(!isset($_SESSION['user']) && $count > 1){
-                                ?>
-                                 <li>
-                                <a class="dropdown-item" href="../src/searchProduct.php?page=<?php echo $page ?>&id=0>&search=<?php echo $searchquery ?>&sort=A2Z" 
-                                role="button">Alphabetically, A-Z</a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="../src/searchProduct.php?page=<?php echo $page ?>&id=0&search=<?php echo $searchquery ?>&sort=Z2A" 
-                                role="button">Alphabetically, Z-A</a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="../src/searchProduct.php?page=<?php echo $page ?>&id=0&search=<?php echo $searchquery ?>&sort=L2H" 
-                                role="button">Price, low to high</a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="../src/searchProduct.php?page=<?php echo $page ?>&id=0&search=<?php echo $searchquery ?>&sort=H2L" 
-                                role="button">Price, high to low</a>
-                            </li>
+                                <li>
+                                    <a class="dropdown-item" href="../src/searchProduct.php?page=<?php echo $page ?>&id=<?php echo $userid ?>&search=<?php echo $searchquery ?>&sort=A2Z" 
+                                    role="button">Alphabetically, A-Z</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="../src/searchProduct.php?page=<?php echo $page ?>&id=<?php echo $userid ?>&search=<?php echo $searchquery ?>&sort=Z2A" 
+                                    role="button">Alphabetically, Z-A</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="../src/searchProduct.php?page=<?php echo $page ?>&id=<?php echo $userid ?>&search=<?php echo $searchquery ?>&sort=L2H" 
+                                    role="button">Price, low to high</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="../src/searchProduct.php?page=<?php echo $page ?>&id=<?php echo $userid ?>&search=<?php echo $searchquery ?>&sort=H2L" 
+                                    role="button">Price, high to low</a>
+                                </li>
+                                <?php 
+                                }
                                 
-                            <?php 
-                                    }else{
+                                else
+                                    if(isset($_SESSION['user']) && $count < 1){
 
-                                     ?>
+                                    ?>
+                                    <li>
+                                        <a class="dropdown-item" href="../src/searchProduct.php?page=<?php echo $page ?>&id=<?php echo $userid ?>&search=<?php echo $searchquery ?>&sort=A2Z" 
+                                        role="button">Alphabetically, A-Z</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="../src/searchProduct.php?page=<?php echo $page ?>&id=<?php echo $userid ?>&search=<?php echo $searchquery ?>&sort=Z2A" 
+                                        role="button">Alphabetically, Z-A</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="../src/searchProduct.php?page=<?php echo $page ?>&id=<?php echo $userid ?>&search=<?php echo $searchquery ?>&sort=L2H" 
+                                        role="button">Price, low to high</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="../src/searchProduct.php?page=<?php echo $page ?>&id=<?php echo $userid ?>&search=<?php echo $searchquery ?>&sort=H2L" 
+                                        role="button">Price, high to low</a>
+                                    </li>
 
-                            <li>
-                                <a class="dropdown-item" href="../src/searchProduct.php?page=<?php echo $page ?>&id=0&search=<?php echo $searchquery ?>&sort=A2Z" 
-                                role="button">Alphabetically, A-Z</a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="../src/searchProduct.php?page=<?php echo $page ?>&id=0&search=<?php echo $searchquery ?>&sort=Z2A" 
-                                role="button">Alphabetically, Z-A</a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="../src/searchProduct.php?page=<?php echo $page ?>&id=0&search=<?php echo $searchquery ?>&sort=L2H" 
-                                role="button">Price, low to high</a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="../src/searchProduct.php?page=<?php echo $page ?>&id=0&search=<?php echo $searchquery ?>&sort=H2L" 
-                                role="button">Price, high to low</a>
-                            </li>
-                                     <?php 
-                                    }
-                             ?>
-                           
-                        </ul>
+                                    <?php }
+                                    else
+                                        if(!isset($_SESSION['user']) && $count > 1){
+                                    ?>
+                                        <li>
+                                            <a class="dropdown-item" href="../src/searchProduct.php?page=<?php echo $page ?>&id=0>&search=<?php echo $searchquery ?>&sort=A2Z" 
+                                            role="button">Alphabetically, A-Z</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="../src/searchProduct.php?page=<?php echo $page ?>&id=0&search=<?php echo $searchquery ?>&sort=Z2A" 
+                                            role="button">Alphabetically, Z-A</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="../src/searchProduct.php?page=<?php echo $page ?>&id=0&search=<?php echo $searchquery ?>&sort=L2H" 
+                                            role="button">Price, low to high</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="../src/searchProduct.php?page=<?php echo $page ?>&id=0&search=<?php echo $searchquery ?>&sort=H2L" 
+                                            role="button">Price, high to low</a>
+                                        </li>
+                                    
+                                <?php 
+                                        }else{
+
+                                        ?>
+
+                                            <li>
+                                                <a class="dropdown-item" href="../src/searchProduct.php?page=<?php echo $page ?>&id=0&search=<?php echo $searchquery ?>&sort=A2Z" 
+                                                role="button">Alphabetically, A-Z</a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item" href="../src/searchProduct.php?page=<?php echo $page ?>&id=0&search=<?php echo $searchquery ?>&sort=Z2A" 
+                                                role="button">Alphabetically, Z-A</a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item" href="../src/searchProduct.php?page=<?php echo $page ?>&id=0&search=<?php echo $searchquery ?>&sort=L2H" 
+                                                role="button">Price, low to high</a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item" href="../src/searchProduct.php?page=<?php echo $page ?>&id=0&search=<?php echo $searchquery ?>&sort=H2L" 
+                                                role="button">Price, high to low</a>
+                                            </li>
+                                        <?php 
+                                        }
+                                ?>
+                            </ul>
+                        </div>
                     </div>
-                </div>
 
 <?php   
 if(isset($_GET['search'])){
@@ -209,12 +209,11 @@ if(isset($_GET['search'])){
                         }
 
                         for($i=1; $i<=$total_pages; $i++){
-
                             echo '
                         
                             <li class="page-item" aria-current="page"><a class="page-link" href="../src/searchProduct.php?page='.$i.'&id='.$userid.'&search='.$searchquery.'&sort='.$sort.'">
-                            '.$i.'</a></li>
-                        
+                            '.$i.'</a>
+                            </li>
                             '
                             ;
                         }
@@ -226,7 +225,8 @@ if(isset($_GET['search'])){
                                 Next</a>
                             </li>
                             ';
-                        } else {
+                        } 
+                        else {
                             echo '
                             <li class="page-item disabled">
                                 <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Next</a>
@@ -273,18 +273,17 @@ if(isset($_GET['search'])){
                                 <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Next</a>
                             </li>
                             ';
+                        }
                     }
-
-                    
                     ?>
                     </ul>
                 </nav>
           </div>
         </div>
-    </main>
+        </main>
         <?php
         
-    }
+    
 
     }
 
@@ -302,31 +301,111 @@ function getpro1($run_product)
         $product_img = $row['product_img'];
         $product_quantity = $row['product_quantity'];
         $product_desc = $row['product_desc'];
+        $sale = $row['sale'];
+        $percentage = $row['percentage'];
 
         if (strlen($product_name) > 15) {
             $product_name = substr($product_name, 0, 8). " .. " . substr($product_name, -4);
         }
 
-        echo "
+        if (isset($_SESSION['user'])) {
+            $_SESSION['cart'] = $product_id;
+            $id = $_SESSION['user'];
+            echo "
+            
             <div class='col'>
                 <div class='card shadow-sm sshighlight'>
                     <a href='products-closeup.php?id=$id&product_id=$product_id&p_cat_id=$p_cat_id'>
                         <img src='../admin_area/product_images/$product_img' alt='pise' class='card-img-top' style='height: 200px;'>
                     </a>
                     <div class='card-body'>
+                    ";
+                    if($sale == "1"){
+                        ?>
+                        <div class='position-absolute top-0 end-0 pt-3'>
+                            <h5><span class='badge bg-danger'><?php echo $percentage;?>% off</span></h5>
+                        </div>
+                        <?php
+                    }
+                    ?>
+                <?php echo "
                         <h5 class='card-title'>$product_name</h5>
                         <p class='card-text'>RM $product_price</p>
+            "; ?>
+
                         <div class='d-flex flex-column justify-content-around gap-2 gap-sm-0'>
-                            <a href='products-closeup.php?id=$id&product_id=$product_id&p_cat_id=$p_cat_id'  class='btn btn-success rounded-pill mb-sm-2  '>Add to List</a>
-                            <a href='products-closeup.php?id=$id&product_id=$product_id' class='btn btn-warning rounded-pill'>Add to Cart</a>
+                            <a href='products-closeup.php?id=<?php echo $id?>&product_id=<?php echo $product_id?>&p_cat_id=<?php echo $p_cat_id ?>'  class='btn btn-success rounded-pill mb-sm-2  '>Add to List</a>
+                            <a onclick="add<?=$product_id?>()" class='btn btn-warning rounded-pill'>Add to Cart</a>
                         </div>
                     </div>
                 </div>
             </div>
+    <?php
             
+        } else {
+            $_SESSION['cart'] = $product_id;
+            echo "
+            
+            <div class='col'>
+                <div class='card shadow-sm sshighlight'>
+                    <a href='products-closeup.php?product_id=$product_id&p_cat_id=$p_cat_id'>
+                        <img src='../admin_area/product_images/$product_img' alt='pise' class='card-img-top' style='height: 200px;'>
+                    </a>
+                    <div class='card-body'>
+                        <h5 class='card-title'>$product_name</h5>
+                        <p class='card-text'>RM $product_price</p>
+                "; ?>
 
-        ";
-        
+                        <div class='d-flex flex-column justify-content-around gap-2 gap-sm-0'>
+                            <a href='products-closeup.php?product_id=<?php echo $product_id?>&p_cat_id=<?php echo $p_cat_id ?>'  class='btn btn-success rounded-pill mb-sm-2  '>Add to List</a>
+                            <a href='' data-bs-toggle='modal' data-bs-target='#exampleModal'  class='btn btn-warning rounded-pill'>Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php
+            
+        }
+        ?>
+        <script>
+    
+        function add<?=$product_id?>(){
+            console.log("asd");
+            var product_id = <?php echo $product_id ;?>;
+            var id = <?php echo $id ;?>;
+            $.ajax({
+                    type:"post",
+                    cache:false,
+                    url:"../functions/newlistname.php",
+                    data:{
+                        product_id:product_id,
+                        id:id
+                    },
+                    success:function(response){
+                        if(response){
+                            Swal.fire(
+                                'Added!',
+                                'Sucessfully added to your cart',
+                                'success',
+                                ).then((result) =>{
+                                    if(result.isConfirmed){
+                                        // location.reload();
+                                    }
+                                })
+                        } else{
+                            alert('not succesfully');
+                            window.open("_self");
+                        }
+                    },
+                    error: function(jqXHR, textStatus, errorThrown){
+                        console.log(textStatus, errorThrown);
+                    }
+                });
+        }
+    
+    
+    </script>
+    <?php
     }
 
 
@@ -434,4 +513,4 @@ function getProH2L1()
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
         crossorigin="anonymous"></script>
-    <script src="../nyumscript.js"></script>
+<script src="../nyumscript.js"></script>

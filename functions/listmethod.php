@@ -35,8 +35,8 @@ function list1(){
                 <div class="col-1">
 
                     <div class="edit d-flex justify-content-center" style="margin-top: 7px;">
-                        <button type="button" class="btn btn-outline-primary buttonsquare" id="buttonmodal" data-bs-toggle="modal" data-bs-target="#staticBackdrop<?=$ListID?>" style="border-radius: 25px;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                        <button type="button" class="btn btn-outline-primary buttonsquare"  id="buttonmodal" data-bs-toggle="modal" data-bs-target="#staticBackdrop<?=$ListID?>" style="border-radius: 25px;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
                             <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
                             <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
                             </svg>
@@ -47,16 +47,24 @@ function list1(){
                 </div>
                 <div class="col">
                     <div class="accordion-item">
-                        <h2 class="accordion-header" id="flush-headingTwo">
-                            <button class="accordion-button collapsed" type="button" onclick="multiply1<?=$k?>()" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree<?=$k?>" aria-expanded="false" aria-controls="flush-collapseTwo">
+                        <h2 class="accordion-header" id="flush-headingTwo" >
+                            <button class="accordion-button collapsed" style="font-size:20px;"  type="button" onclick="multiply1<?=$k?>()" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree<?=$k?>" aria-expanded="false" aria-controls="flush-collapseTwo">
                                 <?php echo $ListName?> <span class="badge bg-secondary mx-2"><?php echo $count ?></span>
                             </button>
                         </h2>
                         <div id="flush-collapseThree<?=$k?>" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
                             <div class="accordion-body"> 
-
+                            <?php
+                            $kira = mysqli_num_rows($run_productList);
+                                    if($kira == 0){
+                                    ?>
+                                    <h3 style="text-align: center; color:lightgray;" class="py-3 rounded-3" >&nbsp&nbsp&nbsp&nbsp&nbspNo Product 
+                                    Inserted</h3>
+                                <?php
+                                } ?>
                             <?php           
-                           
+                            
+                            
                             while ($row_productList = mysqli_fetch_array($run_productList)) {
 
                                 global $index;
@@ -84,8 +92,9 @@ function list1(){
                                 ?>
 
                                 <div class="row py-xxl-5 py-sm-4 align-items-center" id="removeItemInlist<?=$productInListID?>">
+                                
                                     <div class="col-1 align-self-center py-2 mx-sm-auto">
-                                        <button type="button" class="btn btn-outline-danger btn-sm"  onclick="deleteDalam<?=$productInListID?>()">
+                                        <button  type="button" class="btn btn-outline-danger btn-sm"  onclick="deleteDalam<?=$productInListID?>()">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
                                                 <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
                                                 <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
@@ -165,26 +174,49 @@ function list1(){
                                 <script>
                                     function deleteDalam<?=$productInListID?>(){
                                         var productInListID = <?php echo $productInListID ;?>;
-                                        $.ajax({
-                                            type:"post",
-                                            cache:false,
-                                            url:"../functions/newlistname.php",
-                                            data:{
-                                                productInListID:productInListID
-                                            },
-                                            success:function(response){
-                                                if(response){
-                                                    // jQuery("#removeItemInlist<?=$productInListID?>").hide(400);
-                                                    location.reload();
-                                                } else{
-                                                    alert('not succesfully');
-                                                    window.open("_self");
+                                        Swal.fire({
+                                            title: 'Are you sure you want to delete?',
+                                            icon: 'warning',
+                                            showCancelButton: true,
+                                            confirmButtonColor: '#3085d6',
+                                            cancelButtonColor: '#d33',
+                                            confirmButtonText: 'Yes, delete it!',
+                                            reverseButtons: true
+                                            }).then((result) => {
+                                            if (result.isConfirmed) {
+                                                var id1 = <?php echo $ListID ;?>;
+                                                $.ajax({
+                                                type:"post",
+                                                cache:false,
+                                                url:"../functions/newlistname.php",
+                                                data:{
+                                                    productInListID:productInListID
+                                                },
+                                                success:function(response){
+                                                    if(response){
+                                                        jQuery("#removeItemInlist<?=$productInListID?>").hide(400);
+                                                        Swal.fire(
+                                                        'Deleted!',
+                                                        'Your list has been deleted.',
+                                                        'success',
+                                                        ).then((result) =>{
+                                                            if(result.isConfirmed){
+                                                                location.reload();
+                                                            }
+                                                        })
+                                                    } else{
+                                                        alert('not succesfully');
+                                                        window.open("_self");
+                                                    }
+                                                },
+                                                error: function(jqXHR, textStatus, errorThrown){
+                                                    console.log(textStatus, errorThrown);
                                                 }
-                                            },
-                                            error: function(jqXHR, textStatus, errorThrown){
-                                                console.log(textStatus, errorThrown);
+                                            });
+                                                
                                             }
-                                        });
+                                        })
+                                        
                                     }
 
                                     
@@ -233,8 +265,14 @@ function list1(){
 
                 <div class="col-1">
                     <div class="edit d-flex justify-content-center" style="margin-top: 7px;">
-                        <button type="button" onclick="delete<?=$ListID?>()"  class="btn btn-outline-danger buttonsquare" style="border-radius: 25px;" id="removeitemforwishlist">
+                        <!-- <button type="button"  data-bs-toggle="modal" data-bs-target="#delete"  class="btn btn-outline-danger buttonsquare" style="border-radius: 25px;" id="removeitemforwishlist">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                        <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                        </svg>
+                        </button> -->
+                        <button type="button"  onclick="deleteLuaq<?=$ListID?>()"  class="btn btn-outline-danger buttonsquare" style="border-radius: 25px;" id="removeitemforwishlist">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
                         <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
                         <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
                         </svg>
@@ -249,15 +287,34 @@ function list1(){
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header text-center">
-                            <h5 class="modal-title" id="staticBackdropLabel">List Name</h5>
+                            <h5 class="modal-title" id="staticBackdropLabel">Edit List Name</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <input id="newlist<?=$ListID?>" class="form-control" name="newListName" type="text" placeholder="Edit list name" required >
+                            <input id="newlist<?=$ListID?>" class="form-control" value="<?= $ListName?>" name="newListName" type="text" placeholder="Edit list name" required>
                         </div>
                         <div class="modal-footer">
                             <button type="button" onclick="update<?=$ListID?>()" onkeyup="update<?=$ListID?>()" 
-                            name="updateList" class="btn btn-primary">Update</button>
+                            name="updateList" class="btn btn-primary form-control">Update</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="delete<?=$ListID?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header text-center">
+                            <h3 class="modal-title" id="staticBackdropLabel">Delete list "<?php echo $ListName ; ?>"</h3>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <h5>Are you sure you want to perform this action?</h5>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" onclick="delete<?=$ListID?>()" onkeyup="update<?=$ListID?>()" 
+                            name="updateList" class="btn btn-danger form-control">Delete</button>
                         </div>
                     </div>
                 </div>
@@ -270,65 +327,91 @@ function list1(){
                  name = quantity[0].value;
                  var id = <?php echo $ListID ;?>;
                  
-                 console.log(id);
-
-                 $.ajax({
-                    type:"post",
-                    cache:false,
-                    url:"../functions/newlistname.php",
-                    data:{
-                        name:name,
-                        id:id
-                        
-                    },
-                    success:function(response){
-                        if(response){
-                            location.reload();
-                        } else{
-                            alert('not succesfully');
-                            window.open("_self");
+                 if(name != ""){
+                    console.log(id);
+                    $.ajax({
+                        type:"post",
+                        cache:false,
+                        url:"../functions/newlistname.php",
+                        data:{
+                            name:name,
+                            id:id
+                            
+                        },
+                        success:function(response){
+                            if(response){
+                                Swal.fire(
+                                    'Update!',
+                                    'Your list name has been updated.',
+                                    'success',
+                                    ).then((result) =>{
+                                        if(result.isConfirmed){
+                                            location.reload();
+                                        }
+                                    })
+                            } else{
+                                alert('not succesfully');
+                                window.open("_self");
+                            }
+                        },
+                        error: function(jqXHR, textStatus, errorThrown){
+                            console.log(textStatus, errorThrown);
                         }
-                    },
-                    error: function(jqXHR, textStatus, errorThrown){
-                        console.log(textStatus, errorThrown);
-                    }
-                });
-                
+                    });
+                 }
              }
+
+            function deleteLuaq<?=$ListID?>(){
+                console.log("asd");
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You won't be able to revert this!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!',
+                    }).then((result) => {
+                    if (result.isConfirmed) {
+                        var id1 = <?php echo $ListID ;?>;
+                        $.ajax({
+                            type:"post",
+                            cache:false,
+                            url:"../functions/newlistname.php",
+                            data:{
+                                id1:id1
+                            },
+                            success:function(response){
+                                if(response){
+                                    jQuery("#deletelist<?=$ListID?>").hide(400);
+                                    Swal.fire(
+                                    'Deleted!',
+                                    'Your list has been deleted.',
+                                    'success',
+                                    ).then((result) =>{
+                                        if(result.isConfirmed){
+                                            location.reload();
+                                        }
+                                    })
+                                } else{
+                                    alert('not succesfully');
+                                    window.open("_self");
+                                }
+                            },
+                            error: function(jqXHR, textStatus, errorThrown){
+                                console.log(textStatus, errorThrown);
+                            }
+                        });
+                        
+                    }
+                })
+            }
              </script>
              
              <script>
-             
-             function delete<?=$ListID?>(){
-                var id1 = <?php echo $ListID ;?>;
-                 
 
-                 $.ajax({
-                    type:"post",
-                    cache:false,
-                    url:"../functions/newlistname.php",
-                    data:{
-                        id1:id1
-                        
-                    },
-                    success:function(response){
-                        if(response){
-                            jQuery("#deletelist<?=$ListID?>").hide(400);
-                            location.reload();
-                        } else{
-                            alert('not succesfully');
-                            window.open("_self");
-                        }
-                    },
-                    error: function(jqXHR, textStatus, errorThrown){
-                        console.log(textStatus, errorThrown);
-                    }
-                });
 
-             }
-             
-             
-             
+
              </script>
 
 <?php

@@ -15,7 +15,6 @@ include("../includes/header.php");
                         $run_query = mysqli_query($db, $query);
                         $row_query = mysqli_fetch_array($run_query);
                         $user_img = $row_query['image'];
-
                         echo "<img class='rounded-circle' src='../admin_area/product_images/user_image/$user_img' width='150' height='150'>";
                         ?>
                     <?php endif ?>

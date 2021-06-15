@@ -20,6 +20,7 @@ include("../includes/db.php")
     <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous"> -->
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
     <!-- Our Custom CSS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
     <link rel="stylesheet" href="admin.css?v=<?php echo time();?>">
 
     <!-- Font Awesome JS -->
@@ -139,7 +140,7 @@ include("../includes/db.php")
                         <label class="col-auto">Product Description</label>
                         <textarea name="product_desc" cols="19" rows="6" class="form-control" style="border-radius: 5px 5px 5px 5px;"></textarea>
                     </div>
-                    <input name="submit" value="Insert Product" type="submit" class="btn btn-primary form-control">
+                    <input name="submit"  value="Insert Product" type="submit" class="btn btn-primary form-control third">
                 </form>
             </div>
 
@@ -219,11 +220,42 @@ include("../includes/db.php")
             $run_product = mysqli_query($con,$insert_product);
 
             if($run_product){
-                echo "<script>alert('Product has been inserted succesfully')</script>";
-                echo "<script>window.open('admin.php','_self')</script>";
+                ?>
+                <script>
+            
+                // Swal.fire("Product Inserted!","", "success");
+                let timerInterval
+                    Swal.fire({
+                    title: 'Product Inserted!',
+                    icon: 'success',
+                    // html: 'I will close in <b></b> milliseconds.',
+                    timer: 2000,
+                    timerProgressBar: true,
+                    // didOpen: () => {
+                    //     // Swal.showLoading()
+                    //     timerInterval = setInterval(() => {
+                    //     const content = Swal.getHtmlContainer()
+                    //     }, 100)
+                    // },
+                    // willClose: () => {
+                    //     clearInterval(timerInterval)
+                        
+                    // }
+                    }).then((result) => {
+                    /* Read more about handling dismissals below */
+                    if (result.dismiss === Swal.DismissReason.timer) {
+                        window.open('admin.php','_self');
+                        console.log('I was closed by the timer')
+                    }
+                })
+
+                </script>
+                <?php 
+                // echo "<script>alert('Product has been inserted  <span style='color:red;'>succesfully</span>')</script>";
+                // echo "<script>window.open('admin.php','_self')</script>";
             }
             else{
-                echo "<script>alert('Product not inserted succesfully')</script>";
+                echo "<script>alert('Product not inserted')</script>";
             }
 
         }
@@ -231,7 +263,7 @@ include("../includes/db.php")
     
     
     
-    
+        
     
     ?>
 

@@ -2,6 +2,94 @@
 
 include("../functions/function.php");
 include("../src/passwordRecover.php");
+include("../src/login.php");
+
+//This $_GET["code"] variable value received after user has login into their Google Account redirct to PHP script then this variable value has been received
+if(isset($_GET["code"]))
+{
+ $code = $_GET["code"];
+ //It will Attempt to exchange a code for an valid authentication token.
+ $token = $client->fetchAccessTokenWithAuthCode($_GET["code"]);
+
+ //This condition will check there is any error occur during geting authentication token. If there is no any error occur then it will execute if block of code/
+ if(!isset($token['error']))
+ {
+  //Set the access token used for requests
+  $client->setAccessToken($token['access_token']);
+
+  //Store "access_token" value in $_SESSION variable for future use.
+  $_SESSION['access_token'] = $token['access_token'];
+
+  //Create Object of Google Service OAuth 2 class
+  $google_service = new Google_Service_Oauth2($client);
+
+  //Get user profile data from google
+  $data = $google_service->userinfo->get();
+
+  //Below you can find Get profile data and store into $_SESSION variable
+  if(!empty($data['given_name']))
+  {
+   $_SESSION['user_first_name'] = $data['given_name'];
+  }
+
+  if(!empty($data['family_name']))
+  {
+   $_SESSION['user_last_name'] = $data['family_name'];
+  }
+
+  if(!empty($data['email']))
+  {
+   $_SESSION['user_email_address'] = $data['email'];
+  }
+
+  if(!empty($data['gender']))
+  {
+   $_SESSION['user_gender'] = $data['gender'];
+  }
+
+  if(!empty($data['picture']))
+  {
+   $_SESSION['user_image'] = $data['picture'];
+  }
+    $email =$data['email'];
+    $username = $data['given_name'];
+ }
+ $con = mysqli_connect("localhost","root","","groceries");
+ $query = "SELECT * FROM user where email='$email'";
+ $run=mysqli_query($con, $query);
+ $count = mysqli_num_rows($run);
+
+ if($count == 1){
+    $row_id = mysqli_fetch_array($run);
+    $userid = $row_id['id'];
+    $_SESSION['user']=$userid;
+    $_SESSION['success'] = "New user successfully created!!";
+ } else {
+    $code1 = '123456789qazwsxedcrfvtgbyhnujmikolp';
+    $code1 = str_shuffle($code);
+    $code1 = substr($code, 0, 10);
+    $query1 = "INSERT INTO user (username, email,  passwordd, user_type, token) 
+                    VALUES('$username', '$email', '','user','$code1')";
+    mysqli_query($con, $query1);
+
+    $get_id = "select * from user where id=(select max(id) from user)";
+    
+    $run_id = mysqli_query($con, $get_id);
+
+    $row_id = mysqli_fetch_array($run_id);
+
+    $usrname = $row_id['id'];
+    $query2 = "insert into userdetails (id,name,phoneNo,dateOfBirth,street,city,state,zipcode,image) values ('$usrname','',''
+    ,'','','','','','default.png')";
+
+    mysqli_query($con, $query2);
+
+    $_SESSION['user'] = $usrname; // put logged in user in session
+    $_SESSION['success']  = "You are now logged in";
+ }
+
+ 
+}
 
 ?>
 
@@ -21,6 +109,9 @@ include("../src/passwordRecover.php");
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://unpkg.com/@pqina/flip/dist/flip.min.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
+    <script src="{{ asset('assets/global/plugins/jquery.min.js') }}" type="text/javascript"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <link href="../hamburgers.css" rel="stylesheet">
     <link rel="icon" href="../img/nyumicon.ico">
     <style>
@@ -236,18 +327,24 @@ include("../src/passwordRecover.php");
 
                     </ul>
 
-                    <div class="social-login">
-                        <ul class="social_log">
-                            <li>
-                                <a href="https://www.facebook.com/" class="fa fa-facebook"></a>
-                                <a href="https://www.facebook.com/" class="fa fa-google"></a>
-                            </li>
-
-                        </ul>
-
-                    </div>
+                 
                     <div class="tab-content" id="myTabContent">
                         <div class="tab-pane fade show active" id="signin" role="tabpanel" aria-labelledby="home-tab">
+                        <div class="social-login">
+                            <ul class="social_log">
+                                <li>
+                                    <!-- <a href="https://www.facebook.com/" class="fa fa-facebook"></a> -->
+                                    <?php
+                                    $s = $client->createAuthUrl();
+                                    echo "<a href='$s' class=''>
+                                    <img src='../admin_area/product_images/signin.png' alt='' style='width:60%;'>
+                                    </a>";
+                                    ?>
+                                </li>
+
+                            </ul>
+
+                        </div>
                             <form  method="post" enctype="multipart/form-data">
 
                                 <div class="mb-3">
@@ -263,14 +360,30 @@ include("../src/passwordRecover.php");
                             </p>
                         </div>
                         <div class="tab-pane fade" id="signup" role="tabpanel" aria-labelledby="profile-tab">
-                        
+                        <div class="social-login">
+                            <ul class="social_log">
+                                <li>
+                                    <!-- <a href="https://www.facebook.com/" class="fa fa-facebook"></a> -->
+                                    <?php
+                                    $s = $client->createAuthUrl();
+                                    echo "<a href='$s' class=''>
+                                    <img src='../admin_area/product_images/signupnew.png' alt='' style='width:60%;'>
+                                    </a>";
+                                    ?>
+                                </li>
+
+                            </ul>
+
+                        </div>
                             <form  method="post" enctype="multipart/form-data">
+                                <div class="mb-3">
+                                    <input type="email" name="email1" value="" onkeyup="checkAvailabilityEmail()" class="form-control" id="userEmail" aria-describedby="emailHelp" placeholder="Email" required>
+                                    <div id="msg1"></div>
+                                </div>
+
                                 <div class="mb-3">
                                     <input type="text" name="username" value="" onkeyup="checkAvailability()" class="form-control" id="user" aria-describedby="textHelp" placeholder="Username" required>
                                     <div id="msg"></div>
-                                </div>
-                                <div class="mb-3">
-                                    <input type="email" name="email1" value="<?php echo $email; ?>" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email" required>
                                 </div>
                                 
                                 <div class="mb-3">
@@ -393,19 +506,36 @@ include("../src/passwordRecover.php");
         function checkAvailability(){
         console.log("sad");
         var username = $("#user").val().trim();
-        $.ajax({
-            type:"post",
-            url:"../includes/check_availability.php",
-            data:{
-                username:username
-            },
-            success:function(response){
-                $("#msg").html(response);
-            }
-        });
+            $.ajax({
+                type:"post",
+                url:"../includes/check_availability.php",
+                data:{
+                    username:username
+                },
+                success:function(response){
+                    $("#msg").html(response);
+                }
+            });
 
         
-    }
+        }
+
+        function checkAvailabilityEmail(){
+        console.log("sad");
+        var email = $("#userEmail").val().trim();
+            $.ajax({
+                type:"post",
+                url:"../includes/check_availabilityEmail.php",
+                data:{
+                    email:email
+                },
+                success:function(response){
+                    $("#msg1").html(response);
+                }
+            });
+
+        
+        }
     </script>
     <script type="text/javascript">
     

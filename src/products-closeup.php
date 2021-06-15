@@ -123,7 +123,11 @@ if (isset($_GET['product_id']) && isset($_GET['p_cat_id'])) {
         integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
         crossorigin="anonymous"></script>
     <script src="../nyumscript.js"></script>
-   
+    
+    <script>
+        
+        
+    </script>
 
 </body>
 
