@@ -4,6 +4,7 @@ include("../includes/header.php");
 include("../functions/listmethod.php");
 include("../includes/db.php");
 
+
 ?>
 <button type="button" class="btn rounded-circle" id="scrollUp" onclick="goUp()">
     <!-- Go Up Button -->
@@ -27,9 +28,11 @@ include("../includes/db.php");
     ?>
     <h3 style="text-align: center; color:lightgray;" class="py-3 rounded-3" >&nbsp&nbsp&nbsp&nbsp&nbspNo List Created</h3>
 
+
     <?php
     }
     ?>
+
 
 
 
@@ -49,6 +52,7 @@ include("../includes/db.php");
         <div class="modal fade" id="AddName" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
+
                     <div class="modal-header text-center">
                         <h5 class="modal-title" id="staticBackdropLabel">List Name</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -72,11 +76,12 @@ include("../includes/db.php");
     
     ?>
 
-</div>
+
+    </div>
 
 </div>
 
-          <?php 
+        <?php 
 
           include("../includes/footer.php")
 
