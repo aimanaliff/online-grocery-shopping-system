@@ -107,7 +107,15 @@ function getpro($run_product)
                     },
                     success:function(response){
                         if(response){
-                            alert('Succesfully Added to cart','_self');
+                            Swal.fire(
+                                'Added!',
+                                'Sucessfully added to your cart',
+                                'success',
+                                ).then((result) =>{
+                                    if(result.isConfirmed){
+                                        // location.reload();
+                                    }
+                                })
                         } else{
                             alert('not succesfully');
                             window.open("_self");
@@ -225,6 +233,7 @@ function get_pro_details()
     global $product_id,$db;
     if(isset($_GET['product_id'])){
         $product_id = $_GET['product_id'];
+        $id = $_GET['id'];
     }
     $query = "select * from product where product_id='$product_id'";
     $run_query = mysqli_query($db,$query);
@@ -236,6 +245,8 @@ function get_pro_details()
         $product_img = $row_product['product_img'];
         $product_quantity = $row_product['product_quantity'];
         $product_desc = $row_product['product_desc'];
+        $sale = $row_product['sale'];
+        $percentage = $row_product['percentage'];
         
         echo "
         <script src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'></script>
@@ -243,7 +254,9 @@ function get_pro_details()
             <div class='col'>
                 <div class='card shadow-sm p-5'>
                     <img src='../admin_area/product_images/$product_img' alt='pise'>
+                    
                 </div>
+               
             </div>
             <div class='col'>
                 <div class='row'>
@@ -251,20 +264,28 @@ function get_pro_details()
                         <div class='card shadow-sm p-2 mb-4'>
                             <div class='card-body'>
                                 <h1 class='card-title'>$product_name</h1>
+                                ";
+                                ?>
+                                
+                                
+                                
+                            <?php
+                            echo "
                                 <hr>
                                 <div class='d-flex flex-column'>
                                     <div class='d-flex flex-row align-items-center gap-5 pb-3'>
+                                    ";?>
                                         <label for='price' class='fs-5 pb-3'>Price:</label>
-                                        <p class='fs-3'>RM$product_price</p>
+                                        <p class='fs-3' >RM<?=$product_price; ?> </p>
+                                       
                                     </div>
-                                    <form  method='post' enctype='multipart/form-data'>
+                                    <?php echo "<form  method='post' enctype='multipart/form-data'>
                                     <div class='d-flex flex-row align-items-center gap-3 pb-3'>
                                         <label for='quantity' class='fs-5'>Quantity:</label>
         ";
         ?>
                                         <div class='dropdown'>
-                                            <input type='number' class='form-control' id='op' name='quantity' value='1' 
-                                            onclick='check()' onkeyup='check()' min='1'>
+                                            <input type='number' class='form-control' id='op' name='quantity' value='1' min='1'>
                                         
                                         </div>
                                     </div>
@@ -272,8 +293,8 @@ function get_pro_details()
                                     <?php 
                                         if(isset($_SESSION['user'])){
                                             ?>
-                                            <a href='#' data-bs-toggle='modal' data-bs-target='#modalProduct' class='btn btn-success rounded-pill'>Add to List</a>
-                                            <a href='#' class='btn btn-warning rounded-pill'>Add to Cart</a>
+                                            <a href='' data-bs-toggle='modal' data-bs-target='#modalProduct' class='btn btn-success rounded-pill'>Add to List</a>
+                                            <a onclick="insertToCart1()" class='btn btn-warning rounded-pill'>Add to Cart</a>
                                         <?php
                                         } else{
                                             ?>
@@ -291,6 +312,13 @@ function get_pro_details()
                         <div class='card shadow-sm p-2'>
                             <div class='card-body'>
                                 <h1 class='card-title pb-3'>Description</h1>
+                                <?php
+                                if($sale == 1){
+                                    ?>
+                                    <h5><span class='badge bg-danger'><?=$percentage;?>% off</span></h5>
+                                <?php    
+                                }
+                                ?>
                                 <p class='fs-5'><?php echo $product_desc?></p>
                             </div>
                         </div>
@@ -298,6 +326,48 @@ function get_pro_details()
                 </div>
             </div>
         </div>
+        
+
+        <script>
+        function insertToCart1(){
+            console.log("asd");
+            var product_id1 = <?php echo $product_id ;?>;
+            var id2 = <?php echo $id ;?>;
+            var quantity2 = document.querySelectorAll("#op");
+            $.ajax({
+                type:"post",
+                cache:false,
+                url:"../functions/newlistname.php",
+                data:{
+                    product_id1:product_id1,
+                    id2:id2,
+                    quantity2:quantity2[0].value
+                },
+                success:function(response){
+                    if(response){
+                        Swal.fire(
+                            'Added!',
+                            'Successfully added to your cart.',
+                            'success',
+                            ).then((result) =>{
+                                if(result.isConfirmed){
+                                    // location.reload();
+                    }
+                })
+                    } else{
+                        wal("Error!", "asd", "error");
+                        // window.open("_self");
+                    }
+                },
+                error: function(jqXHR, textStatus, errorThrown){
+                    console.log(textStatus, errorThrown);
+                }
+            });
+            
+        }
+        
+        
+        </script>
     <?php
     }
 }

@@ -183,16 +183,45 @@ if(isset($_POST['product_id'])){
 
     if($run_sql){
         $response = true;
-        echo "<script>alert('Delete succesfully')</script>";
-        echo "<script>window.open('_self')</script>";
     }
     else{
         $response = false;
-        echo "<script>alert('not succesfully')</script>";
     }
 } else {
-    echo "<script>console.log(sadadsaaa)</script>";
-    echo "<script>alert('not succesfully')</script>";
 }
 
+// add to cart from product closeup
+if(isset($_POST['product_id1'])){
+    
+    $product_id2 = $_POST['product_id1'];
+    $id2 = $_POST['id2'];
+    $quantity2 = $_POST['quantity2'];
+    
+    $sql = "INSERT INTO cart (product_id,id,quantity) VALUES('$product_id2','$id2','$quantity2')";
+    $run_sql = mysqli_query($db, $sql);
+
+    if($run_sql){
+        $response = true;
+    }
+    else{
+        $response = false;
+    }
+} else {
+}
+
+if(isset($_POST['listnam'])){
+    $listnam = $_POST['listnam'];
+    $id  =  $_POST['id'];
+
+    $insert_product = "insert into listname (ListName,id)
+                       values ('$listnam','$id')";
+
+    $run_product = mysqli_query($db,$insert_product);
+    if($run_product){
+        $response = true;
+    }
+    else{
+        $response = false;
+    }
+}
 ?>
