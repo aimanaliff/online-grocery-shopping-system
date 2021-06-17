@@ -515,8 +515,22 @@ function login()
             header('location: ../src/index.php?id=' . $logged_in_user['id']);
         }
     } else {
-        echo "<script>alert('Wrond email or password')</script>";
-        echo "<script>window.open('index.php','_self')</script>";
+        echo '
+        <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <script type="text/javascript">
+
+        $(document).ready(function(){
+
+            Swal.fire({
+                icon: "error",
+                type: "error",
+                title: "ERROR",
+                text: "Wrong username or password",
+            });
+        });
+        </script>
+        ';
     }
 }
 

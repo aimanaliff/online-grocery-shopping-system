@@ -482,6 +482,18 @@ if(isset($_GET["code"]))
         }
         
     }
+
+    function myFn(){
+        Swal.fire({ 
+              title: "failed",
+              text: "Thank you for contacting us. We will get back to you soon!",
+              type: "error" 
+        },
+             function(){
+                window.open('index.php','_self');
+        });
+    }
+
     </script>
     <script>
         $('#Password1, #Password2').on('keyup', function () {
