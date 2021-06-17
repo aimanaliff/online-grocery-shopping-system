@@ -1,5 +1,7 @@
 <?php
 
+
+
 include("../includes/header.php")
 
 ?>
@@ -23,7 +25,16 @@ include("../includes/header.php")
                 $id = $_SESSION['user'];
                 $query = "select * from cart where id='$id'";
                 $run_query = mysqli_query($db,$query);
-
+                $kira = mysqli_num_rows($run_query);
+                ?>
+                <?php
+                if($kira == 0){
+                ?>
+                    <h3 style="text-align: center; color:lightgray;" class="py-3 rounded-3" >Cart is Empty</h3>
+                <?php
+                }
+                ?>
+                <?php
                 while ($row_product = mysqli_fetch_array($run_query)) {
                     $product_id = $row_product['product_id'];
                     $quantity = $row_product['quantity'];
@@ -41,6 +52,7 @@ include("../includes/header.php")
                 
                 ?>
                 <div class="row py-xxl-3 py-sm-4 align-items-center" style="border-bottom: 1px #c7c7c7 solid;">
+                
                     <div class="col-sm-auto align-self-center py-2 mx-sm-auto">
                         <button type="button" onclick="remove<?=$cartID?>()" class="btn btn-outline-danger btn-sm" id="removeItemInCart">Remove</button>
                     </div>
@@ -145,7 +157,16 @@ include("../includes/header.php")
                             },
                             success:function(response){
                                 if(response){
-                                    setTimeout(worker, 5000);
+                                    Swal.fire(
+                                    'Deleted!',
+                                    '',
+                                    'success',
+                                    ).then((result) =>{
+                                        if(result.isConfirmed){
+                                            location.reload();
+                                        }
+                                    })
+                                    // setTimeout(worker, 5000);
                                 } else{
                                     alert('not succesfully');
                                     window.open("_self");

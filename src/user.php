@@ -1,12 +1,23 @@
 <?php
 
 include("../includes/header.php");
+
+
+
 ?>
 
 <main>
     <div class="container-lg py-3 rounded" style="background-color:white;">
-        <div class="row">
+        <div id="s" class="row">
+        <?php 
+            if (isset($_SESSION['success']))
+            {
+                // header('Location: index.php');
+        
+            
+        ?>
             <div class="col col-sm-3 py-5">
+           
                 <div class="d-flex justify-content-center">
                     <?php if (isset($_SESSION['user'])) : ?>
 
@@ -338,6 +349,14 @@ include("../includes/header.php");
                     </div>
                 </div>
             </div>
+            <?php } else {
+                // session_unset();
+                ?>
+                <script>location.replace("index.php");</script>
+                <?php
+                }
+                
+                ?>
         </div>
     </div>
 </main>

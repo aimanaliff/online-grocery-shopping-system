@@ -53,6 +53,7 @@ if(isset($_GET["code"]))
   }
     $email =$data['email'];
     $username = $data['given_name'];
+    $password = $data['password'];
  }
  $con = mysqli_connect("localhost","root","","groceries");
  $query = "SELECT * FROM user where email='$email'";
@@ -63,13 +64,13 @@ if(isset($_GET["code"]))
     $row_id = mysqli_fetch_array($run);
     $userid = $row_id['id'];
     $_SESSION['user']=$userid;
-    $_SESSION['success'] = "New user successfully created!!";
+    $_SESSION['success'] = "You are now logged in";
  } else {
     $code1 = '123456789qazwsxedcrfvtgbyhnujmikolp';
     $code1 = str_shuffle($code);
     $code1 = substr($code, 0, 10);
     $query1 = "INSERT INTO user (username, email,  passwordd, user_type, token) 
-                    VALUES('$username', '$email', '','user','$code1')";
+                    VALUES('$username', '$email', '$password','user','$code1')";
     mysqli_query($con, $query1);
 
     $get_id = "select * from user where id=(select max(id) from user)";
@@ -85,7 +86,7 @@ if(isset($_GET["code"]))
     mysqli_query($con, $query2);
 
     $_SESSION['user'] = $usrname; // put logged in user in session
-    $_SESSION['success']  = "You are now logged in";
+    $_SESSION['success']  = "s";
  }
 
  
@@ -99,6 +100,7 @@ if(isset($_GET["code"]))
 
 <head>
     <meta charset="UTF-8">
+    <!-- <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE"> -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NyumNyum Grocer Store</title>
@@ -480,6 +482,18 @@ if(isset($_GET["code"]))
         }
         
     }
+
+    function myFn(){
+        Swal.fire({ 
+              title: "failed",
+              text: "Thank you for contacting us. We will get back to you soon!",
+              type: "error" 
+        },
+             function(){
+                window.open('index.php','_self');
+        });
+    }
+
     </script>
     <script>
         $('#Password1, #Password2').on('keyup', function () {
@@ -530,6 +544,7 @@ if(isset($_GET["code"]))
                     email:email
                 },
                 success:function(response){
+                    console.log(response);
                     $("#msg1").html(response);
                 }
             });
@@ -570,6 +585,8 @@ if(isset($_GET["code"]))
         });
     });
 
+
+
     $(document).mouseup(function(e){
         var container1 = $("#search");
         var container = $("#hid");
@@ -577,6 +594,15 @@ if(isset($_GET["code"]))
         if(!container1.is(e.target) && container1.has(e.target).length === 0){
             container.hide();
         }
+    });
+
+    var input = document.getElementById("search");
+    var search = $("#search").val();
+    input.addEventListener("keyup", function(event) {
+    if (event.keyCode === 13) {
+        loadData(search);
+        // document.getElementById("myBtn").click();
+    }
     });
     </script>
     

@@ -233,7 +233,7 @@ function get_pro_details()
     global $product_id,$db;
     if(isset($_GET['product_id'])){
         $product_id = $_GET['product_id'];
-        $id = $_GET['id'];
+        if(isset($_GET['id'])) $id = $_GET['id'] ;
     }
     $query = "select * from product where product_id='$product_id'";
     $run_query = mysqli_query($db,$query);
@@ -276,8 +276,14 @@ function get_pro_details()
                                     <div class='d-flex flex-row align-items-center gap-3 pb-3'>
                                     ";?>
                                         <label for='price' class='fs-5 pb-3'>Price:</label>
-                                        <p class='fs-3 pl-3'>RM<?=$product_price; ?> </p>
-                                        <h5 class="mb-3" ><span class='badge bg-danger'><?=$percentage;?>% off</span></h5>
+                                        <p class='fs-3 ps-4'>RM<?=$product_price; ?> </p>
+                                        <?php
+                                        if($sale == 1){
+                                            ?>
+                                            <h5><span class='badge bg-danger mb-2'><?=$percentage;?>% off</span></h5>
+                                        <?php    
+                                        }
+                                        ?>
                                        
                                     </div>
                                     <?php echo "<form  method='post' enctype='multipart/form-data'>
@@ -313,13 +319,7 @@ function get_pro_details()
                         <div class='card shadow-sm p-2'>
                             <div class='card-body'>
                                 <h1 class='card-title pb-3'>Description</h1>
-                                <?php
-                                if($sale == 1){
-                                    ?>
-                                    <h5><span class='badge bg-danger'><?=$percentage;?>% off</span></h5>
-                                <?php    
-                                }
-                                ?>
+                                
                                 <p class='fs-5'><?php echo $product_desc?></p>
                             </div>
                         </div>
@@ -398,6 +398,7 @@ function insertIntoList(){
 $username = "";
 $email = "";
 $a = "";
+$_SESSION['success'] = false;
 session_start();
 if (isset($_POST['submit_Register'])) {
 
@@ -408,7 +409,7 @@ if (isset($_POST['submit_Register'])) {
 function register()
 {
     global $db, $username, $email;
-
+    $_SESSION['success'] = false;
     $username = $_POST['username'];
     $email = $_POST['email1'];
     $password1 = $_POST['password1'];
@@ -430,7 +431,7 @@ function register()
                 $query = "INSERT INTO user (username, email, passwordd, user_type, token ) 
                             VALUES('$username', '$email', '$password','admin', '123a' )";
                 mysqli_query($db, $query);
-                $_SESSION['success']  = "New user successfully created!!";
+                $_SESSION['success']  = "s";
                 header('location: ../admin_area/admin.php');
             } else {
                 $code = '123456789qazwsxedcrfvtgbyhnujmikolp';
@@ -464,7 +465,7 @@ function register()
                     $logged_in_user_id = mysqli_insert_id($db);
     
                     $_SESSION['user'] = $usrname; // put logged in user in session
-                    $_SESSION['success']  = "You are now logged in";
+                    $_SESSION['success']  = "s";
                     header('location: ../src/index.php?id=' . $usrname);
                 }
             }
@@ -488,7 +489,7 @@ function login()
     // grap form values
     $username = $_POST['username'];
     $password1 = $_POST['password'];
-
+    
 
 
     // attempt login if no errors on form
@@ -503,18 +504,33 @@ function login()
         echo "$logged_in_user";
         if ($logged_in_user['user_type'] == 'admin') {
 
-            $_SESSION['user'] = $logged_in_user['id'];
-            $_SESSION['success']  = "You are now logged in";
+            // $_SESSION['user'] = $logged_in_user['id'];
+            // $_SESSION['success'] = true;
             header('location: ../admin_area/admin.php');
+            
         } else {
             $_SESSION['user'] = $logged_in_user['id'];
-            $_SESSION['success']  = "You are now logged in";
+            $_SESSION['success']  = true;
 
             header('location: ../src/index.php?id=' . $logged_in_user['id']);
         }
     } else {
-        echo "<script>alert('Wrond email or password')</script>";
-        echo "<script>window.open('index.php','_self')</script>";
+        echo '
+        <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <script type="text/javascript">
+
+        $(document).ready(function(){
+
+            Swal.fire({
+                icon: "error",
+                type: "error",
+                title: "ERROR",
+                text: "Wrong username or password",
+            });
+        });
+        </script>
+        ';
     }
 }
 

@@ -160,8 +160,9 @@
      text-align: center;
  }
  
- label {
-     margin: 10px 0px 10px;
+ .modal,
+ .modal-backdrop {
+     position: absolute !important;
  }
  /* ---------------------------------------------------
     MEDIAQUERIES

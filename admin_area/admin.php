@@ -47,13 +47,10 @@ include("../includes/db.php")
                 </li>
 
                 <li>
-                    <a href="edit.php">
-                        <i class="fas fa-edit"></i>&nbsp&nbspEdit</a>
+                    <a href="edit.php?p_cat_id=1">
+                        <i class="fas fa-edit"></i>&nbsp&nbspProduct Management</a>
                 </li>
-
-                <li>
-                    <a href="#"><i class="fas fa-eye"></i>&nbsp&nbspView</a>
-                </li>
+                
                 <li>
                     <a href="#">
                         <i class="fas fa-power-off"></i>&nbsp&nbspLogout
@@ -72,7 +69,7 @@ include("../includes/db.php")
                     <button type="button" id="sidebarCollapse" class="navbar-btn">
                         <i class="fas fa-times-circle"></i>
                     </button>
-                    <h4 class="align-items-center">Insert Products</h4>
+                    <h4 class="align-items-center">Insert Product</h4>
                 </div>
             </nav>
 

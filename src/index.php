@@ -51,7 +51,6 @@ include("../includes/header.php");
                     </svg>
                     <h1>BIG SALE!</h1>
                     <h5>Get up to 25% off</h5>
-                    <a href="#" class="text-reset text-decoration-none">View details here >></a>
                 </div>
                 <div class="col-md" style="background-color: #ED7D31; padding: 1rem;">
                     <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-truck" viewBox="0 0 16 16" style="margin: 20px;">
@@ -60,7 +59,6 @@ include("../includes/header.php");
                     </svg>
                     <h1>FREE SHIPPING </h1>
                     <h5>On orders over RM150.00</h5>
-                    <a href="#" class="text-reset text-decoration-none">View details here >></a>
                 </div>
                 <div class="col-md" style="background-color: #70AD47; padding: 1rem;">
                     <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-credit-card-fill" viewBox="0 0 16 16" style="margin: 20px;">
@@ -69,7 +67,6 @@ include("../includes/header.php");
                     </svg>
                     <h1>10% OFF</h1>
                     <h5>When you use credit card</h5>
-                    <a href="#" class="text-reset text-decoration-none">View details here >></a>
                 </div>
             </div>
         </div>
