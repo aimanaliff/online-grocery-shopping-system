@@ -31,9 +31,23 @@ if (isset($_GET['product_id']) && isset($_GET['p_cat_id'])) {
         <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
             <ol class="breadcrumb fw-bold">
                 <li class="breadcrumb-item"><a href="index.php" class="text-dark text-decoration-none">Home</a></li>
+                <?php 
+                if(isset($_GET['user'])){
+                    ?>
                 <li class="breadcrumb-item"><a href="products.php?page=1&id=<?php echo $userid ?>&p_cat_id=<?php echo $categoryID ?>" 
                     class="text-dark text-decoration-none"><?php echo $categoryName ?></a>
                 </li>
+                    <?php
+                } else{
+                    ?>
+                <li class="breadcrumb-item"><a href="products.php?page=1&p_cat_id=<?php echo $categoryID ?>" 
+                    class="text-dark text-decoration-none"><?php echo $categoryName ?></a>
+                </li>
+                    <?php
+                }
+                
+                ?>
+               
                 <li class="breadcrumb-item active" aria-current="page"><?php echo $productName ?></li>
             </ol>
         </nav>

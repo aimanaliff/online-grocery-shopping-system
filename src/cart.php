@@ -67,7 +67,7 @@ include("../includes/header.php")
                     </div>
                     <div class="col-2">
                         <input type="number" class="form-control" id="inputQuantity<?=$cartID?>" value="<?=$quantity ?>" onclick="cartTotalCal<?=$cartID?>();" 
-                         onkeyup="cartTotalCal<?=$cartID?>()" min="0">
+                         min="0">
                     </div>
                     <div class="col-2 align-self-center">
                         <div>
@@ -95,7 +95,7 @@ include("../includes/header.php")
                     var cartid = <?php echo $cartID ;?>;
                     var quantity = document.querySelectorAll("#inputQuantity<?=$cartID?>");
                     total = quantity[0].value * <?=$product_price?>;
-                    document.getElementById("total<?=$cartID?>").innerHTML = "RM " + total;
+                    document.getElementById("total<?=$cartID?>").innerHTML = "RM " + total.toFixed(2);
                     var itemBox = document.querySelectorAll("#checkItem<?=$cartID?>");
                     for (let index = 0; index < itemBox.length; index++) {
                         if (itemBox[index].checked == true) {
@@ -148,34 +148,46 @@ include("../includes/header.php")
 
                 function remove<?=$cartID?>(){
                     var cartID = <?php echo $cartID ;?>;
-                    $.ajax({
-                            type:"post",
-                            cache:false,
-                            url:"../functions/newlistname.php",
-                            data:{
-                                cartID:cartID
-                            },
-                            success:function(response){
-                                if(response){
-                                    Swal.fire(
-                                    'Deleted!',
-                                    '',
-                                    'success',
-                                    ).then((result) =>{
-                                        if(result.isConfirmed){
-                                            location.reload();
-                                        }
-                                    })
-                                    // setTimeout(worker, 5000);
-                                } else{
-                                    alert('not succesfully');
-                                    window.open("_self");
+                    Swal.fire({
+                    title: 'Are you sure you want to delete?',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!',
+                    reverseButtons: true
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                        $.ajax({
+                                type:"post",
+                                cache:false,
+                                url:"../functions/newlistname.php",
+                                data:{
+                                    cartID:cartID
+                                },
+                                success:function(response){
+                                    if(response){
+                                        Swal.fire(
+                                        'Deleted!',
+                                        '',
+                                        'success',
+                                        ).then((result) =>{
+                                            if(result.isConfirmed){
+                                                location.reload();
+                                            }
+                                        })
+                                        // setTimeout(worker, 5000);
+                                    } else{
+                                        alert('not succesfully');
+                                        location.reload();
+                                    }
+                                },
+                                error: function(jqXHR, textStatus, errorThrown){
+                                    console.log(textStatus, errorThrown);
                                 }
-                            },
-                            error: function(jqXHR, textStatus, errorThrown){
-                                console.log(textStatus, errorThrown);
-                            }
-                        });
+                            });
+                        }
+                    })
                 }
 
                 
@@ -195,7 +207,7 @@ include("../includes/header.php")
                         <h3 class="text-center">Total</h3>
                     </div>
                     <div class="col-sm-12 mx-auto">
-                        <h1 class="text-center" id="cartTotal">RM 10,000.00</h1>
+                        <h1 class="text-center" id="cartTotal">RM 0.00</h1>
                     </div>
                 </div>
                 <hr style="color: white;" class="hrList">
@@ -216,7 +228,22 @@ include("../includes/header.php")
                             
                             ?>
                             <option selected>Select Address for Delivery</option>
-                            <option value="1"><?php echo $street;?></option>
+                            <?php 
+                            
+                            if($street == ""){
+                                $street= "Please Update Your Profile";
+                                ?>
+                                <option disabled value="1"><?php echo $street;?></option>
+                                <?php
+                            } else {
+                                ?>
+                                <option  value="1"><?php echo $street;?></option>
+
+                                <?php
+                            }
+                            
+                            ?>
+                            
                             
                         </select>
                     </div>
@@ -243,10 +270,6 @@ include("../includes/footer.php")
 <script src="../nyumscript.js"></script>
 <?php
 
-echo "<script src='../src/JS/cart.js?v=1'>
-
-            </script>
-        ";
 ?>
 </body>
 

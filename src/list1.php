@@ -115,11 +115,13 @@ include("../includes/db.php");
                         ).then((result) =>{
                             if(result.isConfirmed){
                                 location.reload();
+                            } else {
+                                location.reload();
                             }
                     })
                 } else{
                     alert('not succesfully');
-                    window.open("_self");
+                    location.reload();
                 }
             },
             error: function(jqXHR, textStatus, errorThrown){
