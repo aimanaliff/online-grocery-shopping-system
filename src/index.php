@@ -470,7 +470,7 @@ include("../includes/header.php");
                     </div>
                     
                     <?php 
-                        while($index <= $total){
+                        while($index <= 2){
                             ?>
                         <div class="carousel-item">
                             <div class="cardIndex" style="background-color: #f2f2f2;">
@@ -579,10 +579,18 @@ include("../includes/header.php");
                                                 },
                                                 success:function(response){
                                                     if(response){
-                                                        alert('Succesfully Added to cart','_self');
+                                                        Swal.fire(
+                                                        'Added!',
+                                                        'Sucessfully added to your cart',
+                                                        'success',
+                                                        ).then((result) =>{
+                                                            if(result.isConfirmed){
+                                                                location.reload();
+                                                            }
+                                                        })
                                                     } else{
                                                         alert('not succesfully');
-                                                        window.open("_self");
+                                                        window.open("index.php","_self");
                                                     }
                                                 },
                                                 error: function(jqXHR, textStatus, errorThrown){

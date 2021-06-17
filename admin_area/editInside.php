@@ -51,12 +51,7 @@ include("../includes/db.php")
                         <i class="fas fa-edit"></i>&nbsp&nbspProduct Management</a>
                 </li>
                 
-                <li>
-                    <a href="#">
-                        <i class="fas fa-power-off"></i>&nbsp&nbspLogout
-
-                    </a>
-                </li>
+                
             </ul>
 
         </nav>
@@ -318,7 +313,8 @@ if(isset($_POST['submit3'])){
             /* Read more about handling dismissals below */
             if (result.dismiss === Swal.DismissReason.timer) {
                 window.open('edit.php?p_cat_id=1','_self');
-                console.log('I was closed by the timer')
+            } else{
+                window.open('edit.php?p_cat_id=1','_self');
             }
         })
 

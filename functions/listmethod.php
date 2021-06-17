@@ -129,9 +129,9 @@ function list1(){
                                             <p id="cartTotal<?=$productInListID?>" class="text-center text-success fw-bold">RM <?=$phpvar?></p>
                                         </div>
                                     </div>
-                                    <div class="col-1 align-self-center">
+                                    <!-- <div class="col-1 align-self-center">
                                         <input type="checkbox" name="" id="" class="">
-                                    </div>
+                                    </div> -->
                                     <div class="col-2">
                                         <button type="button" onclick="addcart<?=$productInListID?>()" class="btn btn-outline-dark">Add to cart</button>
                                     </div>

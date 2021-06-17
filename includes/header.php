@@ -350,7 +350,7 @@ if(isset($_GET["code"]))
                             <form  method="post" enctype="multipart/form-data">
 
                                 <div class="mb-3">
-                                    <input type="text" name="username" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Username/Email" required>
+                                    <input type="text" name="username" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Username" required>
                                 </div>
                                 <div class="mb-3">
                                     <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
@@ -498,11 +498,11 @@ if(isset($_GET["code"]))
     <script>
         $('#Password1, #Password2').on('keyup', function () {
         if ($('#Password1').val() == $('#Password2').val() ) {
-            $('#message').html('Password Match').css('color', 'green');
+            $('#message').html('Password matched').css('color', 'green');
         } else{
             if($('#Password2').val() =="" || $('#Password1').val() ==""){
             } else{
-                $('#message').html('Password Not Match').css('color', 'red');
+                $('#message').html('Password not matched').css('color', 'red');
             }
         }
         if($('#Password1').val() =="" && $('#Password2').val()==""){

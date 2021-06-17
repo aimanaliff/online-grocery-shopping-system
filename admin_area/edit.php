@@ -63,12 +63,7 @@ include("../includes/db.php")
                         <a href="edit.php">
                             <i class="fas fa-edit"></i>&nbsp&nbspProduct Management</a>
                     </li>
-                    <li>
-                        <a href="#">
-                            <i class="fas fa-power-off"></i>&nbsp&nbspLogout
-
-                        </a>
-                    </li>
+                   
                 </ul>
 
             </nav>
@@ -100,6 +95,8 @@ include("../includes/db.php")
                                     $p_cat_title = $row_product['p_cat_title'];
 
                                 ?>
+
+                            
                                     <option value="<?= $p_cat_id; ?>"><?= $p_cat_title;?></option>
                                 <?php
                                 }
@@ -210,7 +207,7 @@ include("../includes/db.php")
                                                     if(response){
                                                         Swal.fire(
                                                         'Deleted!',
-                                                        'Your list has been deleted.',
+                                                        'Product has been deleted.',
                                                         'success',
                                                         ).then((result) =>{
                                                             if(result.isConfirmed){

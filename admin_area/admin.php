@@ -51,12 +51,6 @@ include("../includes/db.php")
                         <i class="fas fa-edit"></i>&nbsp&nbspProduct Management</a>
                 </li>
                 
-                <li>
-                    <a href="#">
-                        <i class="fas fa-power-off"></i>&nbsp&nbspLogout
-
-                    </a>
-                </li>
             </ul>
 
         </nav>
@@ -110,9 +104,8 @@ include("../includes/db.php")
                     <div class="mb-3">
                         <label class="col-auto">Sales</label>
                         <select onclick="myFunction()" id="sale" name="sale" class="form-select" style="border-radius: 5px 5px 5px 5px;" aria-label="Default select example">
-                            <option value="">Select</option>
                             <option  value="1">Sale</option>
-                            <option value="2">No Sale</option>
+                            <option selected value="2">No Sale</option>
                         </select>
                     </div>
                     <div class="mb-3" id="myDIV" style="display:none;">

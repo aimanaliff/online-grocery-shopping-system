@@ -76,6 +76,18 @@ function getpro($run_product)
                         <img src='../admin_area/product_images/$product_img' alt='pise' class='card-img-top' style='height: 200px;'>
                     </a>
                     <div class='card-body'>
+                    ";
+                    if($sale == "1"){
+                        ?>
+                        <div class='position-absolute top-0 end-0 pt-3'>
+                            <h5><span class='badge bg-danger'><?php echo $percentage;?>% off</span></h5>
+                        </div>
+                        <?php
+                    }
+
+                    ?>
+
+                    <?php echo "
                         <h5 class='card-title'>$product_name</h5>
                         <p class='card-text'>RM $product_price</p>
                 "; ?>
@@ -400,11 +412,14 @@ $email = "";
 $a = "";
 $_SESSION['success'] = false;
 session_start();
+// session_destroy();
+
+
+
 if (isset($_POST['submit_Register'])) {
 
     register();
 }
-
 
 function register()
 {
@@ -416,7 +431,7 @@ function register()
     $password2 = $_POST['password2'];
 
    
-    $password = $password1;
+    $password = md5($password1);
     if ($password1 == $password2) {
         $uppercase = preg_match('@[A-Z]@', $password1);
         $lowercase = preg_match('@[a-z]@', $password1);
@@ -425,6 +440,8 @@ function register()
         if(!$uppercase || !$lowercase || !$number || !$specialChars || strlen($password1) < 8) {
             echo "<script>alert('Password should be at least 8 characters in length and should include at least one upper case letter, one number, and one special character')</script>";
             echo "<script>window.open('index.php','_self')</script>";
+            session_destroy();
+            die();
         }else{
             if (isset($_POST['user_type'])) {
                 $user_type = $_POST['user_type'];
@@ -439,11 +456,14 @@ function register()
                 $code = substr($code, 0, 10);
                 $taken = "select * from user where username='$username'";
                 $takenResult = mysqli_query($db, $taken);
-                if (mysqli_num_rows($takenResult) > 0) {
-                    // $a = "Username Already Exists";
-                    // echo "<script>$('#msg').html('Username Already Exists').css('color', 'red')</script>";
-                    // echo "<script>alert('Username already taken')</script>";
-                    // echo "<script>window.open('index.php','_self')</script>";
+                $taken1 = "select * from user where email='$email'";
+                $takenResult1 = mysqli_query($db, $taken1);
+                if (mysqli_num_rows($takenResult) > 0 || mysqli_num_rows($takenResult1)) {
+                    echo "<script>alert('Username or email already taken')</script>";
+                    echo "<script>window.open('index.php','_self')</script>";
+                    session_destroy();
+                    die();
+                    
                 } else {
                     $query = "INSERT INTO user (username, email,  passwordd, user_type, token) 
                     VALUES('$username', '$email', '$password','user','$code')";
@@ -457,8 +477,9 @@ function register()
                     $row_id = mysqli_fetch_array($run_id);
     
                     $usrname = $row_id['id'];
-                    $query1 = "insert into userdetails (id,name,phoneNo,dateOfBirth,street,city,state,zipcode,image) values ('$usrname','',''
-                    ,'','','','','','default.png')";
+                    $plsupdate = "Update your profile";
+                    $query1 = "insert into userdetails (id,name,phoneNo,dateOfBirth,street,city,state,zipcode,image) values ('$usrname','$plsupdate','-'
+                    ,'$plsupdate','$plsupdate','$plsupdate','$plsupdate','$plsupdate','default.png')";
     
                     mysqli_query($db, $query1);
     
@@ -467,6 +488,7 @@ function register()
                     $_SESSION['user'] = $usrname; // put logged in user in session
                     $_SESSION['success']  = "s";
                     header('location: ../src/index.php?id=' . $usrname);
+                    die();
                 }
             }
         }
@@ -474,7 +496,10 @@ function register()
     } else {
         echo "<script>alert('Password not same')</script>";
         echo "<script>window.open('index.php','_self')</script>";
+        session_destroy();
+        die();
     }
+    die();
 }
 
 if (isset($_POST['loginbtn'])) {
@@ -493,7 +518,7 @@ function login()
 
 
     // attempt login if no errors on form
-    $password = $password1;
+    $password = md5($password1);
 
     $query = "SELECT * FROM user WHERE username='$username' AND passwordd='$password' LIMIT 1";
     $results = mysqli_query($db, $query);
@@ -612,7 +637,22 @@ function userDetail()
     $run_query = mysqli_query($db, $query);
 
     if ($run_query) {
-        echo "<script>alert('Your Information Have Been Saved')</script>";
-        echo "<script>window.open('../src/user.php?id=$id','_self')</script>";
+        echo '
+        <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <script type="text/javascript">
+
+        $(document).ready(function(){
+
+            Swal.fire({
+                icon:"success",
+                type: "success",
+                title: "SUCCESS",
+                text: "Your profile has been updated",
+            });
+        });
+        </script>
+        ';
+        // echo "<script>window.open('../src/user.php?id=$id','_self')</script>";
     }
 }
