@@ -332,6 +332,7 @@ function list1(){
                     $.ajax({
                         type:"post",
                         cache:false,
+                        
                         url:"../functions/newlistname.php",
                         data:{
                             name:name,
@@ -344,6 +345,7 @@ function list1(){
                                     'Update!',
                                     'Your list name has been updated.',
                                     'success',
+                                    
                                     ).then((result) =>{
                                         if(result.isConfirmed){
                                             location.reload();

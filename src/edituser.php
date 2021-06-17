@@ -1,15 +1,27 @@
 <?php
 
+
+
 include("../includes/header.php")
+
 
 ?>
 
 <main>
     <div class="container-lg py-3" style="background-color:white;">
         <div class="row">
+
+        <?php 
+            if (isset($_SESSION['success']))
+            {
+                // header('Location: index.php');
+        
+            
+        ?>
             <div class="col col-sm-3 p-5">
                 <div class="d-flex justify-content-center">
                     <?php
+
                     $query = "select * from userdetails where id=" . $_SESSION['user'];
                     $run_query = mysqli_query($db, $query);
                     $row_query = mysqli_fetch_array($run_query);
@@ -221,39 +233,53 @@ include("../includes/header.php")
 
                         </div>
                     </div>
+                    
                     <div class="row py-2">
                         <div class="col-6  mt-2">
                             <button type="submit" name="save" class="blockbtn btn btn-primary">Save</button>
                         </div>
                         <div class="col-6 ">
-                            <button type="button" class="blockbtn btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modalDelete" style="margin: 10px;">
+                            <button type="button" onclick="deleteAccount()"   class="blockbtn btn btn-outline-danger"  style="margin: 10px;">
                                 Delete Account
                             </button>
                         </div>
-                        <div class="modal fade" id="modalDelete" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalDeleteLabel" aria-hidden="true">
+
+                        <div class="modal fade" id="exampleModal12" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered">
-                                <div class="modal-content" action="php/action_page.php">
-                                    <div class="modal-header">
-                                        <h4 class="modal-title" id="modaldeleteLabel">Delete Account</h4>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <h6>Are you sure you want to delete your account?</h6>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                        <button type="button" class="btn btn-danger">Delete</button>
-                                    </div>
+                                <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Are you sure you want to delete your account?</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <input id="pas" type="password"   class="form-control" placeholder="Enter Your Password">
+                                    <p class="er"></p>
+                                </div>
+                                
+                                <div class="modal-footer">
+                                    <button type="button"  class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="button"  class=" btn btn-danger">Delete</button>
+                                </div>
                                 </div>
                             </div>
                         </div>
+                    
                     </div>
                 </div>
                 </form>
             </div>
+            <?php } else {
+                // session_unset();
+                ?>
+                <script>location.replace("index.php");</script>
+                <?php
+                }
+                
+                ?>
         </div>
     </div>
 </main>
+
 
 
 <?php
@@ -262,8 +288,84 @@ include("../includes/footer.php")
 
 ?>
 </div>
+
+
+
+<?php 
+if(isset($_GET['id'])){
+    $id = $_GET['id'];
+}
+
+
+?>
+
+<script>
+
+function deleteAccount(){
+    Swal.fire({
+    title: 'Enter your password',
+    input: 'password',
+    allowOutsideClick: false,
+    inputLabel: 'Password',
+    inputPlaceholder: 'Enter your password',
+    inputAttributes: {
+        maxlength: 10,
+    }
+    }).then((result) => {
+        if (result.value) {
+            var id2 = <?php echo $id ;?>;
+            // var quantity = document.querySelectorAll("#pas");
+            var pass = result.value
+            // var pass = quantity[0].value;
+            $.ajax({
+                type:"post",
+                url:"../includes/check_availability.php",
+                data:{
+                    id2:id2,
+                    pass:pass
+                },
+                dataType: 'json',
+                success:function(data){
+                    console.log(data.status);
+                    if(data.status == 'info'){
+                        // alert("password wrong");
+                        Swal.fire(
+                        'Password Wrong',
+                        'Please re-enter your password',
+                        'error', 
+                        ).then((result) =>{
+                            
+                        })
+                    } else {
+                        Swal.fire(
+                        'Deleted!',
+                        'Your Account has been deleted.',
+                        'success',
+                        ).then((result) =>{
+                            if(result.isConfirmed){
+                                window.open("logout.php","_self");
+                            } else {
+                                window.open("logout.php","_self");
+                            }
+                        })
+                    }
+                }
+            });
+        }
+    });
+    
+    
+}
+
+
+</script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
 <script src="/nyumscript.js"></script>
-</body>
+
+
+
+
 
 </body>
+
+</html>

@@ -35,7 +35,7 @@
                     d="m7.247 4.86-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z" />
             </svg>
         </button>
-        <div class="card">
+        <div id="s"  class="card">
             <div class="card-body m-3 mt-2">
                 <h1>Search result for "<?php echo $searchquery ?>"</h1>
                 <div class="container d-flex flex-row justify-content-between align-item-center p-0">
@@ -149,7 +149,7 @@ if(isset($_GET['search'])){
     // $result =mysqli_query($db, $query);
     // $count = mysqli_num_rows($result);
     if($count == 0) {
-        echo "<p>No record found</p>";
+        echo '<h3 style="text-align:center;color:grey;" class="py-3 rounded-3">&nbsp&nbsp&nbsp&nbsp&nbspNo Product Found</h3>';
         ?>
         </div>
         </div>

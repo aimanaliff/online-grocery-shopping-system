@@ -11,7 +11,7 @@ if(isset($_POST['query'])) {
     $count = mysqli_num_rows($result);
     $id = $_POST['id'];
     if($count == 0) {
-        echo "<p>No record found</p>";
+        echo "<p>No product found</p>";
     } else {
         while ($row = mysqli_fetch_array($result)) {
             $product_id = $row['product_id'];
