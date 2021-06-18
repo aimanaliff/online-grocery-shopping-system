@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 15, 2021 at 04:48 PM
+-- Generation Time: Jun 18, 2021 at 04:59 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.2
 
@@ -39,16 +39,10 @@ CREATE TABLE `cart` (
 --
 
 INSERT INTO `cart` (`cartID`, `product_id`, `id`, `quantity`) VALUES
-(24, 90, 93, 1),
-(25, 10, 93, 1),
-(26, 96, 93, 1),
-(105, 72, 116, 2),
-(106, 82, 116, 1),
-(107, 56, 116, 1),
-(108, 77, 116, 3),
-(109, 77, 116, 1),
-(110, 50, 116, 1),
-(111, 49, 116, 1);
+(178, 78, 172, 1),
+(179, 79, 172, 4),
+(180, 85, 172, 1),
+(181, 83, 172, 1);
 
 -- --------------------------------------------------------
 
@@ -67,8 +61,8 @@ CREATE TABLE `listname` (
 --
 
 INSERT INTO `listname` (`ListID`, `ListName`, `id`) VALUES
-(10, 'sadsa', 98),
-(21, 'sss', 93);
+(108, 'wedding', 172),
+(109, 'sister wedding', 172);
 
 -- --------------------------------------------------------
 
@@ -94,11 +88,7 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`product_id`, `p_cat_id`, `date`, `product_name`, `sale`, `percentage`, `product_price`, `product_img`, `product_quantity`, `product_desc`) VALUES
-(1, 1, '2021-04-25 08:43:02', 'banana', '1', '23', 5.35, 'banana.jpg', 12, '<p>asdad</p>'),
-(10, 2, '2021-04-30 18:24:50', 'garlic', '1', '25', 20.00, 'garlic.jpeg', 10, '<p>gjhhjb</p>'),
-(11, 2, '2021-04-25 10:12:29', 'broccoli', '', '', 98.00, 'BROCCOLI.jpg', 12, '<p>aad</p>'),
-(13, 5, '2021-05-21 15:57:12', 'Boh Green Tea', '1', '25', 11.00, 'boh-green-tea.jpg', 50, '<p>Created using a traditional process that has been mastered for thousands of years, Boh Green Tea has a delicate aroma, with an uplifting and refreshing taste that soothes and revitalizes your body. The natural antioxidant properties of green tea also complements this exceptional and enjoyable beverage.</p>'),
-(14, 5, '2021-05-22 06:34:51', 'Dutch Lady Full Cream Milk', '1', '30', 8.00, 'dutch-lady-full-cream-milk.png', 35, '<p style=\"text-align: justify;\">Over 140 years of dairy farming heritage, Dutch Lady brings you quality milk from pure farm. It is delicious and full of essential nutrients that are indispensable for your day. Dutch Lady Fresh Milk nourishes you with the goodness and nutrition directly from nature!</p>'),
+(14, 5, '2021-06-18 13:41:36', 'Dutch Lady Full Cream Milk', '2', '', 8.00, 'dutch-lady-full-cream-milk.png', 35, '<p style=\"text-align: justify;\">Over 140 years of dairy farming heritage, Dutch Lady brings you quality milk from pure farm. It is delicious and full of essential nutrients that are indispensable for your day. Dutch Lady Fresh Milk nourishes you with the goodness and nutrition directly from nature!</p>'),
 (15, 5, '2021-05-22 06:37:53', 'F&N Fruitade', '1', '50', 4.00, 'f&n-fruitade.jpg', 35, '<p style=\"text-align: justify;\">Bold, vibrant, and flavour-packed, F&amp;N carbonated fruit flavoured drink never fails to add a pop of colour and energy to any occasion.&nbsp;</p>'),
 (16, 5, '2021-05-22 06:38:52', 'F&N Groovy Grape', '1', '3', 4.00, 'f&n-groovy-grape.jpg', 35, '<p style=\"text-align: justify;\">Bold, vibrant, and flavour-packed, F&amp;N carbonated fruit flavoured drink never fails to add a pop of colour and energy to any occasion.&nbsp;</p>'),
 (17, 5, '2021-05-22 06:39:55', 'F&N Ice Cream Soda', '1', '4', 4.00, 'f&n-ice-cream-soda.png', 35, '<p style=\"text-align: justify;\">Bold, vibrant, and flavour-packed, F&amp;N carbonated fruit flavoured drink never fails to add a pop of colour and energy to any occasion.&nbsp;</p>'),
@@ -110,7 +100,6 @@ INSERT INTO `product` (`product_id`, `p_cat_id`, `date`, `product_name`, `sale`,
 (23, 5, '2021-05-22 06:46:38', 'Horlicks', '1', '2', 25.00, 'horlicks.jpg', 50, '<p style=\"text-align: justify;\">Horlicks Original Malted Drink is made from the natural goodness of malted barley, wheat and milk with no artificial flavours, sweeteners or preservatives. It contains the vitamins, minerals, macronutrients and fibre to keep you and your family nourished every day.</p>'),
 (24, 5, '2021-05-22 06:47:28', 'Ice Mountain Mineral Water', '1', '2', 1.00, 'ice-mountain.jpg', 150, '<p style=\"text-align: justify;\">F&amp;N Ice Mountain Natural Mineral Water is a natural sourced mineral water that refreshes and hydrates you with the quality and purity of 100 metre-deep natural water. Contains various beneficial minerals such as calcium, potassium, and magnesium, F&amp;N Ice Mountain provides you the nature&rsquo;s way of restoring balance and refreshment for your essential daily hydration.</p>'),
 (25, 5, '2021-05-22 06:48:34', 'Nescafe Latter', '1', '2', 2.00, 'nescafe-latte.jpg', 150, '<p>Nescafe Latte Milk Coffee Drink really gives you all the great taste and aroma you expect! Contains a balance between creamy milk and erotic coffee, the formula is perfect to complete your day! It is low in fat and convenient to carry so that you can have it anywhere and anytime.</p>\r\n<p>- Milk-coffee taste</p>\r\n<p>- New Look with same great taste</p>\r\n<p style=\"text-align: justify;\">- Low fat</p>'),
-(26, 5, '2021-05-22 06:49:19', 'Nestle Bliss', '1', '2', 6.00, 'nestle-bliss.jpg', 150, '<p style=\"text-align: justify;\">Lactel Bliss Low Fat Strawberry Yoghurt Drink is made with real fruit juice with no artificial colouring. Contains live cultures to give you the pleasure of taste and nutrition while helping to smooth out your system.</p>'),
 (27, 5, '2021-05-22 06:50:23', 'Nestle Milo Chocolate Powder', '', '', 33.00, 'nestle-milo-chocolate-powder.jpg', 100, '<p style=\"text-align: justify;\">Experience this wonderful Nestle Milo Drink with everyone you love. It is rich with vitamins and minerals and also a good source of protein. This chocolate malt drink is Australian made.</p>'),
 (28, 5, '2021-05-22 06:51:58', 'OldTown White Coffee Classic', '', '', 22.00, 'oldtown-white-coffee-classic.jpg', 100, '<p style=\"text-align: justify;\">The perfect combination of finely roasted Mt Kenya Arabica beans, non-dairy creamer and premium raw cane sugar. The medium roast adds to the richness of the coffee. This coffee offers distinct flavours that are smooth-bodied and are characterized by its well balanced fragrant aroma.</p>'),
 (29, 5, '2021-05-22 06:52:50', 'Ribena', '', '', 12.00, 'ribena.jpg', 150, '<p style=\"text-align: justify;\">Made from New Zealand blackcurrant, Ribena Blackcurrant guarantees a rich taste of fresh blackcurrant, which is also a great source of Vitamin C for your whole family. It is less in sugar, free from artificial colour, flavour or sweetener. It is very suitable to be served in party as children love the fantastic taste from the beginning to the last drop of it!</p>'),
@@ -132,7 +121,7 @@ INSERT INTO `product` (`product_id`, `p_cat_id`, `date`, `product_name`, `sale`,
 (45, 4, '2021-05-22 07:18:30', 'Tao Kae Noi Crispy Seaweed', '', '', 6.00, 'tao-kae-noi-crispy-seaweed.jpg', 50, '<p style=\"text-align: justify;\">Tao Kae Noi Crispy Fried Seaweed is fully packed with goodness, simply irresistible and delicious that you can consume as a snack or as a supplement to your meals. You can have it frequently as it promotes good health without sacrificing the enjoyment of good taste. Enjoy Tao Kae Noi Wasabi Crispy Fried Seaweed anywhere, anytime, be it at play, at work or while you are travelling.</p>'),
 (46, 4, '2021-05-22 07:19:26', 'Twisties Cheezels', '', '', 2.00, 'twisties-cheezels.jpg', 150, '<p style=\"text-align: justify;\">Cheezels Original Cheese Flavoured Snack is a perfect snack for every entertaining occasion, with its crunchy and cheesy taste that will bring a whole lot of cheesy fun in every handful!</p>'),
 (47, 4, '2021-05-22 07:20:08', 'Wonka Rainbow Nerds', '', '', 9.00, 'wonka-rainbow-nerds.jpg', 50, '<p style=\"text-align: justify;\">Throwback Nerds Rainbow Candy is a tiny, tangy, crunchy candy that variety of fruits flavour. These candies contain artificial flavours, and very fun to eat!</p>'),
-(49, 1, '2021-05-22 07:33:54', 'Avocado', '', '', 9.00, 'avocado.jpg', 20, '<p style=\"text-align: justify;\">Product of Australia. Hass Avocado (AUS) C30 has a creamy, buttery, and smooth taste. It is cholesterol and sodium-free, avocados can also fit into a variety of healthy eating plans.</p>'),
+(49, 1, '2021-06-18 08:30:07', 'Avocado12', '', '', 9.00, 'avocado.jpg', 20, '<p style=\"text-align: justify;\">Product of Australia. Hass Avocado (AUS) C30 has a creamy, buttery, and smooth taste. It is cholesterol and sodium-free, avocados can also fit into a variety of healthy eating plans.</p>'),
 (50, 1, '2021-05-22 07:35:22', 'Dates 300g', '', '', 23.00, 'dates.jpg', 35, '<p style=\"text-align: justify;\">Dates have a slender, longer, firmer body that is very similar to Ajwa dates. The distinctly less sugary taste is perfect for those who enjoy subtler flavours. Exclusive from Saudi Arabia and 100% natural.</p>'),
 (51, 1, '2021-05-22 07:36:16', 'Gong Pear 1kg', '', '', 9.00, 'gong-pear.jpg', 20, '<p style=\"text-align: justify;\">Product of China. Gong Pear (CHN) K11 has a mildly fragrant aroma and a flesh that is crunchy and juicy.&nbsp;</p>'),
 (52, 1, '2021-05-22 07:37:02', 'Grapefruit', '', '', 3.00, 'grapefruit.jpg', 35, '<p style=\"text-align: justify;\">Product of Turkey. Grapefruit has a distinctive flesh colour, juicy, sweet and slightly sour flavour. It is an excellent source of vitamin C and a good source of dietary fibre. Available in M to L size.</p>'),
@@ -152,7 +141,7 @@ INSERT INTO `product` (`product_id`, `p_cat_id`, `date`, `product_name`, `sale`,
 (66, 1, '2021-05-22 07:53:53', 'Seedless White India Grapes 1kg', '', '', 45.00, 'seedless-white-india-grapes.jpg', 20, '<p>Product of India. Crispy, juicy balls of sweetness that explode with freshness in your mouth when you bite into them.</p>'),
 (67, 1, '2021-05-22 07:54:45', 'Strawberry 250g', '', '', 24.00, 'strawberry.jpg', 50, '<p>Product of Korea. Sweet, succulent and plump, not only are strawberries delicious, but they are also an excellent source of Vitamin C. Enjoy Strawberry raw, grilled or baked in cakes, dipped in chocolate or in a cocktail.</p>'),
 (68, 1, '2021-05-22 07:55:52', 'Watermelon 1kg', '', '', 6.00, 'watermelon.jpg', 50, '<p>Product of Malaysia. Watermelon has a crisp and juicy flesh with a very sweet flavour.&nbsp;</p>'),
-(69, 3, '2021-05-22 07:58:05', 'Bacon Rashers 400g', '', '', 38.00, 'bacon-rashers.jpg', 35, '<p>FOR BETTER ENJOYMENT :</p>\r\n<p>1. Soak the unopened vacuum-packed dried meat in hot water for 3-5 minutes.</p>\r\n<p>2. Reheat dried meat in the microwave within 20-30 seconds</p>\r\n<p>3. Put it in the hot pot and fry without oil at medium heat</p>'),
+(69, 3, '2021-06-16 14:41:42', 'Bacon Rashers 400g', '', '', 38.00, 'bacon-rashers.jpg', 35, '<p>FOR BETTER ENJOYMENT : 1. Soak the unopened vacuum-packed dried meat in hot water for 3-5 minutes. 2. Reheat dried meat in the microwave within 20-30 seconds 3. Put it in the hot pot and fry without oil at medium heat</p>'),
 (70, 3, '2021-05-22 07:59:12', 'Buffalo Meat 900g', '', '', 19.00, 'buffalo-meat.png', 20, '<p style=\"text-align: justify;\">Product of India. Frozen deboned buffalo meat.</p>'),
 (71, 3, '2021-05-22 08:00:35', 'Chicken Meatballs 850g', '', '', 11.00, 'chicken-meatballs.jpg', 35, '<p>Chicken Meatballs gives you the same great taste as real chickens, but in the form of meatballs. It is easy to prepare and contains low cholesterol to ensure healthier living.&nbsp;</p>'),
 (72, 3, '2021-05-22 08:02:30', 'Minced Beef 1kg', '', '', 40.00, 'minced-beef.jpg', 20, '<p style=\"text-align: justify;\">The budget-friendly and versatile cut of beef, suitable as burgers, burritos, meatballs and meatloaf.</p>'),
@@ -180,8 +169,7 @@ INSERT INTO `product` (`product_id`, `p_cat_id`, `date`, `product_name`, `sale`,
 (94, 2, '2021-05-22 08:23:47', 'Spring Onion 100g', '', '', 3.00, 'spring-onion.jpg', 40, '<p style=\"text-align: justify;\">Product of Malaysia. They have a sweet and mellow taste and can be eaten raw or cooked.&nbsp;</p>'),
 (95, 2, '2021-05-22 08:24:50', 'Sweet Potato 1kg', '', '', 21.00, 'sweet-potato.jpg', 30, '<p style=\"text-align: justify;\">Grown and harvested in Australia, Orange Sweet Potato has a creamy texture and sweet-spicy flavour. It is delicious roasted, mashed, steamed, barbequed, and baked!</p>'),
 (96, 2, '2021-05-22 08:25:38', 'Turnip (Sengkuang) 400g', '', '', 2.00, 'turnip-sengkuang.jpg', 20, '<p style=\"text-align: justify;\">Product of Malaysia. Turnip or known as Sengkuang, tastes great when eaten raw. It is juicy, sweet and crunchy and great in stir-fry dishes too.</p>'),
-(97, 2, '2021-05-22 08:26:18', 'White Radish 1kg', '', '', 3.00, 'white-radish.jpg', 35, '<p style=\"text-align: justify;\">Product of Malaysia. White Radish or Daikon is used to add flavour to relishes and salads thanks to its sharp bite. Its also used in Chinese soups and stir-fries.</p>'),
-(117, 2, '2021-06-14 15:52:02', 'banana', '2', '', 50.00, '284-2847379_delivery-man-free-icon-courier-icon.png', 123, '<p>asda</p>');
+(97, 2, '2021-05-22 08:26:18', 'White Radish 1kg', '', '', 3.00, 'white-radish.jpg', 35, '<p style=\"text-align: justify;\">Product of Malaysia. White Radish or Daikon is used to add flavour to relishes and salads thanks to its sharp bite. Its also used in Chinese soups and stir-fries.</p>');
 
 -- --------------------------------------------------------
 
@@ -202,10 +190,9 @@ CREATE TABLE `productinlist` (
 --
 
 INSERT INTO `productinlist` (`ProductInListID`, `ListID`, `product_id`, `quantity`, `id`) VALUES
-(178, 21, 35, 12, 93),
-(179, 21, 35, 2, 93),
-(180, 21, 36, 1, 93),
-(181, 21, 16, 1, 93);
+(217, 108, 70, 2, 172),
+(218, 109, 71, 1, 172),
+(219, 108, 49, 2, 172);
 
 -- --------------------------------------------------------
 
@@ -226,20 +213,8 @@ INSERT INTO `product_categories` (`p_cat_id`, `p_cat_title`) VALUES
 (1, 'Fruits'),
 (2, 'Vegetables'),
 (3, 'Meat'),
-(4, 'Cookies&Snacks'),
+(4, 'Cookies & Snacks'),
 (5, 'Beverages');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `slider`
---
-
-CREATE TABLE `slider` (
-  `slider_id` int(10) NOT NULL,
-  `slider_name` varchar(255) NOT NULL,
-  `slider_img` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -261,13 +236,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `username`, `email`, `passwordd`, `user_type`, `token`) VALUES
-(94, 'irash', 'irashibnur@gmail.com', 'a', 'user', 'sjnwyilufm'),
-(95, 'irash1', 's55851@ocean.umt.edu.my', 'a', 'user', 'pxob3rshz1'),
-(96, 'ju', 'jumahbee@gmail.com', 'a', 'user', '73yx1reva4'),
-(97, 'admin', 'admin@gmail.com', 'test123', 'admin', '1234wfe'),
-(110, '', '', '', 'user', '4/0AY0e-g7'),
-(116, 'muhammad', 'muhammadhazieq00@gmail.com', '', 'user', '4/0AY0e-g6'),
-(118, 'WIF190033', 'wif190033@siswa.um.edu.my', '', 'user', '4/0AY0e-g5');
+(161, 'admin', 'admin@gmail.com', 'cc03e747a6afbbcbf8be7668acfebee5', 'admin', 'qw23qw1231'),
+(172, 'hazieq', 'muhammadhazieq00@gmail.com', '85c58f1677c957fcd40bc923235cf06e', 'user', 'gntzpakdlo');
 
 -- --------------------------------------------------------
 
@@ -284,7 +254,7 @@ CREATE TABLE `userdetails` (
   `street` text NOT NULL,
   `city` text NOT NULL,
   `state` text NOT NULL,
-  `zipcode` int(100) NOT NULL,
+  `zipcode` varchar(100) NOT NULL,
   `image` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -293,33 +263,7 @@ CREATE TABLE `userdetails` (
 --
 
 INSERT INTO `userdetails` (`userDetailID`, `id`, `name`, `phoneNo`, `dateOfBirth`, `street`, `city`, `state`, `zipcode`, `image`) VALUES
-(9, 82, 'hazi', '0175116129', '12/3', 'asdadsadad', 'asd', 'asdad', 15020, ''),
-(12, 85, 'sada', '252', '12/3/2000', 'THE SPRING', 'GEORGETOWN', 'PENANG', 11600, ''),
-(13, 89, '', '', '', '', '', '', 0, ''),
-(14, 90, '', '', '', '', '', '', 0, ''),
-(15, 91, 'muhammad hazieq', '0175116129', '2', 'THE SPRING', 'GEORGETOWN', 'PENANG', 11600, ''),
-(16, 93, 'muhammadhazieq12', '0175116129', '2000-01-14', 'THE SPRINGasda', 'GEORGETOWN', 'PENANG', 11600, 'Najmi Supian.jpg'),
-(17, 94, '', '', '', '', '', '', 0, ''),
-(18, 95, '', '', '', '', '', '', 0, ''),
-(19, 96, '', '', '', '', '', '', 0, ''),
-(20, 98, '', '', '', '', '', '', 0, 'default.png'),
-(21, 99, '', '', '', '', '', '', 0, ''),
-(22, 100, '', '', '', '', '', '', 0, ''),
-(23, 101, '', '', '', '', '', '', 0, ''),
-(24, 102, '', '', '', '', '', '', 0, ''),
-(25, 103, '', '', '', '', '', '', 0, ''),
-(26, 104, '', '', '', '', '', '', 0, ''),
-(27, 105, '', '', '', '', '', '', 0, ''),
-(31, 109, '', '', '', '', '', '', 0, ''),
-(32, 110, '', '', '', '', '', '', 0, ''),
-(33, 111, '', '', '', '', '', '', 0, ''),
-(34, 112, '', '', '', '', '', '', 0, ''),
-(35, 113, '', '', '', '', '', '', 0, 'https://lh3.googleusercontent.com/a-/AOh14Gh4IOlIrU4qmaBm0JgE6E1QOKSlzczFXH8ooopoQg=s96-c'),
-(36, 114, '', '', '', '', '', '', 0, 'https://lh3.googleusercontent.com/a-/AOh14Gh4IOlIrU4qmaBm0JgE6E1QOKSlzczFXH8ooopoQg=s96-c'),
-(37, 115, '', '', '', '', '', '', 0, 'default.jpg'),
-(38, 116, '', '', '', 'sadasd', '', '', 0, 'default.png'),
-(39, 117, '', '', '', '', '', '', 0, 'default.png'),
-(40, 118, '', '', '', '', '', '', 0, 'default.png');
+(90, 172, 'Update your profile', '-', 'Update your profile', 'Update your profile', 'Update your profile', 'Update your profile', 'Update your profile', 'default.png');
 
 --
 -- Indexes for dumped tables
@@ -356,12 +300,6 @@ ALTER TABLE `product_categories`
   ADD PRIMARY KEY (`p_cat_id`);
 
 --
--- Indexes for table `slider`
---
-ALTER TABLE `slider`
-  ADD PRIMARY KEY (`slider_id`);
-
---
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
@@ -381,25 +319,25 @@ ALTER TABLE `userdetails`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `cartID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=112;
+  MODIFY `cartID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=182;
 
 --
 -- AUTO_INCREMENT for table `listname`
 --
 ALTER TABLE `listname`
-  MODIFY `ListID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
+  MODIFY `ListID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=110;
 
 --
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `product_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=118;
+  MODIFY `product_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=130;
 
 --
 -- AUTO_INCREMENT for table `productinlist`
 --
 ALTER TABLE `productinlist`
-  MODIFY `ProductInListID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=198;
+  MODIFY `ProductInListID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=220;
 
 --
 -- AUTO_INCREMENT for table `product_categories`
@@ -408,22 +346,16 @@ ALTER TABLE `product_categories`
   MODIFY `p_cat_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `slider`
---
-ALTER TABLE `slider`
-  MODIFY `slider_id` int(10) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=119;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=174;
 
 --
 -- AUTO_INCREMENT for table `userdetails`
 --
 ALTER TABLE `userdetails`
-  MODIFY `userDetailID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `userDetailID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

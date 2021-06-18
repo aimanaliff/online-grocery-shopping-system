@@ -364,7 +364,7 @@ function list1(){
                                     })
                             } else{
                                 alert('not succesfully');
-                                window.open("_self");
+                                location.reload();
                             }
                         },
                         error: function(jqXHR, textStatus, errorThrown){
@@ -408,7 +408,7 @@ function list1(){
                                     })
                                 } else{
                                     alert('not succesfully');
-                                    window.open("_self");
+                                    location.reload();
                                 }
                             },
                             error: function(jqXHR, textStatus, errorThrown){
