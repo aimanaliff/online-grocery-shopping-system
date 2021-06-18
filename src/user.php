@@ -47,11 +47,30 @@ include("../includes/header.php");
                     }
                     ?>
                 </div>
-                <div class="d-flex justify-content-center mb-2">
-                    <a class="" style="text-decoration:none;" data-bs-toggle="modal" data-bs-target="#updatePass">
-                            Change Password
-                    </a>
-                </div>
+                <?php 
+                    if(isset($_GET['id'])){
+                        $id = $_GET['id'];
+                        $query = "select * from user where id='$id'";
+                        $run_query = mysqli_query($db, $query);
+                        $row_query = mysqli_fetch_array($run_query);
+                        $user_pass = $row_query['passwordd'];
+
+                        if($user_pass != ""){
+                            ?>
+                        <div class="d-flex justify-content-center mb-2">
+                            <a class="" style="text-decoration:none;" data-bs-toggle="modal" data-bs-target="#updatePass">
+                                    Change Password
+                            </a>
+                        </div>
+                            <?php
+                        } else{
+
+                        }
+
+                    }
+                
+                ?>
+                
                 <div class="modal fade" id="updatePass" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">

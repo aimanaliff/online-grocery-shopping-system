@@ -433,6 +433,9 @@ if(isset($_GET["code"]))
                     <div class="mb-3">
                         <input type="email" name="email" class="form-control" id="exampleInputPassword1" placeholder="Email" required>
                     </div>
+                    <div class="mb-3">
+                        <p>Please check your email once submitted</p>
+                    </div>
                     <button type="submit" name="submitpasswordrecovery" class="btn btn-primary btn-block">Submit</button>
                 </form>
             </div>

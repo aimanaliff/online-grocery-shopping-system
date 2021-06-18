@@ -58,7 +58,7 @@ function getpro($run_product)
             "; ?>
 
                         <div class='d-flex flex-column justify-content-around gap-2 gap-sm-0'>
-                            <a href='products-closeup.php?id=<?php echo $id?>&product_id=<?php echo $product_id?>&p_cat_id=<?php echo $p_cat_id ?>'  class='btn btn-success rounded-pill mb-sm-2  '>Add to List</a>
+                            <a href='products-closeup.php?id=<?php echo $id?>&product_id=<?php echo $product_id?>&p_cat_id=<?php echo $p_cat_id ?>'  class='btn btn-success rounded-pill mb-sm-2  '>View More</a>
                             <a onclick="add<?=$product_id?>()" class='btn btn-warning rounded-pill'>Add to Cart</a>
                         </div>
                     </div>
@@ -93,7 +93,7 @@ function getpro($run_product)
                 "; ?>
 
                         <div class='d-flex flex-column justify-content-around gap-2 gap-sm-0'>
-                            <a href='products-closeup.php?product_id=<?php echo $product_id?>&p_cat_id=<?php echo $p_cat_id ?>'  class='btn btn-success rounded-pill mb-sm-2  '>Add to List</a>
+                            <a href='products-closeup.php?product_id=<?php echo $product_id?>&p_cat_id=<?php echo $p_cat_id ?>'  class='btn btn-success rounded-pill mb-sm-2  '>View More</a>
                             <a href='' data-bs-toggle='modal' data-bs-target='#exampleModal'  class='btn btn-warning rounded-pill'>Add to Cart</a>
                         </div>
                     </div>
@@ -412,7 +412,6 @@ $email = "";
 $a = "";
 $_SESSION['success'] = false;
 session_start();
-// session_destroy();
 
 
 
@@ -486,7 +485,7 @@ function register()
                     $logged_in_user_id = mysqli_insert_id($db);
     
                     $_SESSION['user'] = $usrname; // put logged in user in session
-                    $_SESSION['success']  = "s";
+                    $_SESSION['success']  = "succesfully";
                     header('location: ../src/index.php?id=' . $usrname);
                     die();
                 }

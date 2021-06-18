@@ -50,7 +50,7 @@ include("../includes/db.php")
 
             <nav id="sidebar">
                 <div class="sidebar-header">
-                    <img src="../img/nyumnyumlogo.png" alt="logo" width="150" class="mx-2">
+                <a href="../src/index.php"><img src="../img/nyumnyumlogo.png" alt="logo" width="150" class="mx-2"></a>
                 </div>
 
                 <ul class="list-unstyled components">
@@ -156,6 +156,8 @@ include("../includes/db.php")
                                     $percentage = $row_product['percentage'];
                                     if($sale == 1){
                                         $sale="SALE";
+                                    } else{
+                                        $sale="No sale";
                                     }
                                 ?>
                                 <tr id="2<?=$product_id;?>"class="table align-middle">
@@ -187,7 +189,7 @@ include("../includes/db.php")
                                     console.log("asda");
                                     Swal.fire({
                                         title: 'Are you sure?',
-                                        text: "asdas",
+                                        text: "",
                                         icon: 'warning',
                                         showCancelButton: true,
                                         confirmButtonColor: '#3085d6',

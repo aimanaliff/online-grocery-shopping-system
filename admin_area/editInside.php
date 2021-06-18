@@ -37,7 +37,7 @@ include("../includes/db.php")
 
         <nav id="sidebar">
             <div class="sidebar-header">
-                <img src="../img/nyumnyumlogo.png" alt="logo" width="150" class="mx-2">
+            <a href="../src/index.php"><img src="../img/nyumnyumlogo.png" alt="logo" width="150" class="mx-2"></a>
             </div>
 
             <ul class="list-unstyled components">
@@ -141,14 +141,13 @@ include("../includes/db.php")
                             if($sale == 2){
                                 ?>
                                 <option value="">Select</option>
-                                <option selected  value="2">No Sale</option>
+                                <option selected  value="1">Sale</option>
                                 <option   value="2">No Sale</option>
                                 <?php
                             } else if($sale == 1){
                                 ?>
                                 <option value="">Select</option>
                                 <option selected  value="1">Sale</option>
-                                
                                 <option  value="2">No Sale</option>
                                 <?php
                             } else{

@@ -98,36 +98,39 @@ include("../includes/db.php");
         console.log("asd");
         var listname = document.querySelectorAll("#nama");
         var id = <?php echo $id ;?>;
-        $.ajax({
-            type:"post",
-            cache:false,
-            url:"../functions/newlistname.php",
-            data:{
-                listnam:listname[0].value,
-                id:id
-            },
-            success:function(response){
-                if(response){
-                    Swal.fire(
-                        'Added!',
-                        'New list name inserted',
-                        'success',
-                        ).then((result) =>{
-                            if(result.isConfirmed){
-                                location.reload();
-                            } else {
-                                location.reload();
-                            }
-                    })
-                } else{
-                    alert('not succesfully');
-                    location.reload();
+        if(listname[0].value != ""){
+            $.ajax({
+                type:"post",
+                cache:false,
+                url:"../functions/newlistname.php",
+                data:{
+                    listnam:listname[0].value,
+                    id:id
+                },
+                success:function(response){
+                    if(response){
+                        Swal.fire(
+                            'Added!',
+                            'New list name inserted',
+                            'success',
+                            ).then((result) =>{
+                                if(result.isConfirmed){
+                                    location.reload();
+                                } else {
+                                    location.reload();
+                                }
+                        })
+                    } else{
+                        alert('not succesfully');
+                        location.reload();
+                    }
+                },
+                error: function(jqXHR, textStatus, errorThrown){
+                    console.log(textStatus, errorThrown);
                 }
-            },
-            error: function(jqXHR, textStatus, errorThrown){
-                console.log(textStatus, errorThrown);
-            }
-        });
+            });
+        }
+        
     }
 
     </script>

@@ -153,7 +153,7 @@ include("../includes/header.php");
                                         "; ?>
                             
                                                     <div class='d-flex flex-column justify-content-around gap-2 gap-sm-0'>
-                                                        <a href='products-closeup.php?id=<?php echo $id?>&product_id=<?php echo $product_id?>&p_cat_id=<?php echo $p_cat_id ?>'  class='btn btn-success rounded-pill mb-sm-2  '>Add to List</a>
+                                                        <a href='products-closeup.php?id=<?php echo $id?>&product_id=<?php echo $product_id?>&p_cat_id=<?php echo $p_cat_id ?>'  class='btn btn-success rounded-pill mb-sm-2  '>View More</a>
                                                         <a onclick="add<?=$product_id?>()" class='btn btn-warning rounded-pill'>Add to Cart</a>
                                                     </div>
                                                 </div>
@@ -187,7 +187,7 @@ include("../includes/header.php");
                                                     "; ?>
                             
                                                     <div class='d-flex flex-column justify-content-around gap-2 gap-sm-0'>
-                                                        <a href='products-closeup.php?product_id=<?php echo $product_id?>&p_cat_id=<?php echo $p_cat_id ?>'  class='btn btn-success rounded-pill mb-sm-2  '>Add to List</a>
+                                                        <a href='products-closeup.php?product_id=<?php echo $product_id?>&p_cat_id=<?php echo $p_cat_id ?>'  class='btn btn-success rounded-pill mb-sm-2  '>View More</a>
                                                         <a href='' data-bs-toggle='modal' data-bs-target='#exampleModal'  class='btn btn-warning rounded-pill'>Add to Cart</a>
                                                     </div>
                                                 </div>
@@ -196,8 +196,49 @@ include("../includes/header.php");
                                     <?php
                                         
                                     }
+
+                                    ?>
+                                    <script>
+                                        function add<?=$product_id?>(){
+                                            console.log("asda");
+                                            var product_id = <?php echo $product_id ;?>;
+                                            var id = <?php echo $id ;?>;
+                                            $.ajax({
+                                                    type:"post",
+                                                    cache:false,
+                                                    url:"../functions/newlistname.php",
+                                                    data:{
+                                                        product_id:product_id,
+                                                        id:id
+                                                    },
+                                                    success:function(response){
+                                                        if(response){
+                                                            Swal.fire(
+                                                            'Added',
+                                                            'Successfully added to cart',
+                                                            'success',
+                                                            ).then((result) =>{
+                                                                if(result.isConfirmed){
+                                                                    location.reload();
+                                                                }
+                                                        })
+                                                        } else{
+                                                            alert('not succesfully');
+                                                            window.open("_self");
+                                                        }
+                                                    },
+                                                    error: function(jqXHR, textStatus, errorThrown){
+                                                        console.log(textStatus, errorThrown);
+                                                    }
+                                                });
+                                        }
+
+                                    </script>
+
+                                    <?php
                                 }
                                     ?>
+
                                 
                             </div>
                         </div>
@@ -253,7 +294,7 @@ include("../includes/header.php");
                                         "; ?>
                             
                                                     <div class='d-flex flex-column justify-content-around gap-2 gap-sm-0'>
-                                                        <a href='products-closeup.php?id=<?php echo $id?>&product_id=<?php echo $product_id?>&p_cat_id=<?php echo $p_cat_id ?>'  class='btn btn-success rounded-pill mb-sm-2  '>Add to List</a>
+                                                        <a href='products-closeup.php?id=<?php echo $id?>&product_id=<?php echo $product_id?>&p_cat_id=<?php echo $p_cat_id ?>'  class='btn btn-success rounded-pill mb-sm-2  '>View More</a>
                                                         <a onclick="add<?=$product_id?>()" class='btn btn-warning rounded-pill'>Add to Cart</a>
                                                     </div>
                                                 </div>
@@ -287,7 +328,7 @@ include("../includes/header.php");
                                                     "; ?>
                             
                                                     <div class='d-flex flex-column justify-content-around gap-2 gap-sm-0'>
-                                                        <a href='products-closeup.php?product_id=<?php echo $product_id?>&p_cat_id=<?php echo $p_cat_id ?>'  class='btn btn-success rounded-pill mb-sm-2  '>Add to List</a>
+                                                        <a href='products-closeup.php?product_id=<?php echo $product_id?>&p_cat_id=<?php echo $p_cat_id ?>'  class='btn btn-success rounded-pill mb-sm-2  '>View More</a>
                                                         <a href='' data-bs-toggle='modal' data-bs-target='#exampleModal'  class='btn btn-warning rounded-pill'>Add to Cart</a>
                                                     </div>
                                                 </div>
@@ -297,14 +338,51 @@ include("../includes/header.php");
                                         
                                     }
                                     ?>
+                                    
+                                    <script>
+                                        function add<?=$product_id?>(){
+                                            console.log("asda");
+                                            var product_id = <?php echo $product_id ;?>;
+                                            var id = <?php echo $id ;?>;
+                                            $.ajax({
+                                                type:"post",
+                                                cache:false,
+                                                url:"../functions/newlistname.php",
+                                                data:{
+                                                    product_id:product_id,
+                                                    id:id
+                                                },
+                                                success:function(response){
+                                                    if(response){
+                                                        Swal.fire(
+                                                        'Added',
+                                                        'Successfully added to cart',
+                                                        'success',
+                                                        ).then((result) =>{
+                                                            if(result.isConfirmed){
+                                                                location.reload();
+                                                            }
+                                                    })
+                                                    } else{
+                                                        alert('not succesfully');
+                                                        window.open("_self");
+                                                    }
+                                                },
+                                                error: function(jqXHR, textStatus, errorThrown){
+                                                    console.log(textStatus, errorThrown);
+                                                }
+                                            });
+                                        }
+
+                                    </script>
                             <?php
                             }
                             
                             $index += 1;
                             ?>
-                                </div>
-                            </div>
-                        </div>
+                    </div>
+                </div>
+            </div>
                         <?php
                         }
                     
@@ -387,7 +465,7 @@ include("../includes/header.php");
                                         "; ?>
                             
                                                     <div class='d-flex flex-column justify-content-around gap-2 gap-sm-0'>
-                                                        <a href='products-closeup.php?id=<?php echo $id?>&product_id=<?php echo $product_id?>&p_cat_id=<?php echo $p_cat_id ?>'  class='btn btn-success rounded-pill mb-sm-2  '>Add to List</a>
+                                                        <a href='products-closeup.php?id=<?php echo $id?>&product_id=<?php echo $product_id?>&p_cat_id=<?php echo $p_cat_id ?>'  class='btn btn-success rounded-pill mb-sm-2  '>View More</a>
                                                         <a onclick="add<?=$product_id?>()" class='btn btn-warning rounded-pill'>Add to Cart</a>
                                                     </div>
                                                 </div>
@@ -421,7 +499,7 @@ include("../includes/header.php");
                                                     "; ?>
                             
                                                     <div class='d-flex flex-column justify-content-around gap-2 gap-sm-0'>
-                                                        <a href='products-closeup.php?product_id=<?php echo $product_id?>&p_cat_id=<?php echo $p_cat_id ?>'  class='btn btn-success rounded-pill mb-sm-2  '>Add to List</a>
+                                                        <a href='products-closeup.php?product_id=<?php echo $product_id?>&p_cat_id=<?php echo $p_cat_id ?>'  class='btn btn-success rounded-pill mb-sm-2  '>View More</a>
                                                         <a href='' data-bs-toggle='modal' data-bs-target='#exampleModal'  class='btn btn-warning rounded-pill'>Add to Cart</a>
                                                     </div>
                                                 </div>
@@ -447,7 +525,15 @@ include("../includes/header.php");
                                                 },
                                                 success:function(response){
                                                     if(response){
-                                                        alert('Succesfully Added to cart','_self');
+                                                        Swal.fire(
+                                                        'Added',
+                                                        'Successfully added to cart',
+                                                        'success',
+                                                        ).then((result) =>{
+                                                            if(result.isConfirmed){
+                                                                location.reload();
+                                                            }
+                                                    })
                                                     } else{
                                                         alert('not succesfully');
                                                         window.open("_self");
@@ -519,7 +605,7 @@ include("../includes/header.php");
                                         "; ?>
                             
                                                     <div class='d-flex flex-column justify-content-around gap-2 gap-sm-0'>
-                                                        <a href='products-closeup.php?id=<?php echo $id?>&product_id=<?php echo $product_id?>&p_cat_id=<?php echo $p_cat_id ?>'  class='btn btn-success rounded-pill mb-sm-2  '>Add to List</a>
+                                                        <a href='products-closeup.php?id=<?php echo $id?>&product_id=<?php echo $product_id?>&p_cat_id=<?php echo $p_cat_id ?>'  class='btn btn-success rounded-pill mb-sm-2  '>View More</a>
                                                         <a onclick="add<?=$product_id?>()" class='btn btn-warning rounded-pill'>Add to Cart</a>
                                                     </div>
                                                 </div>
@@ -553,7 +639,7 @@ include("../includes/header.php");
                                                     "; ?>
                             
                                                     <div class='d-flex flex-column justify-content-around gap-2 gap-sm-0'>
-                                                        <a href='products-closeup.php?product_id=<?php echo $product_id?>&p_cat_id=<?php echo $p_cat_id ?>'  class='btn btn-success rounded-pill mb-sm-2  '>Add to List</a>
+                                                        <a href='products-closeup.php?product_id=<?php echo $product_id?>&p_cat_id=<?php echo $p_cat_id ?>'  class='btn btn-success rounded-pill mb-sm-2  '>View More</a>
                                                         <a href='' data-bs-toggle='modal' data-bs-target='#exampleModal'  class='btn btn-warning rounded-pill'>Add to Cart</a>
                                                     </div>
                                                 </div>

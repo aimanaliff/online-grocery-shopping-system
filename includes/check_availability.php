@@ -32,12 +32,13 @@ if(isset($_POST['id2'])){
     $return_data = array();
     $id2 = $_POST['id2'];
     $pass = $_POST['pass'];
-    $query = "SELECT * FROM user where passwordd='$pass'";
+    $passEnc = md5($pass);
+    $query = "SELECT * FROM user where passwordd='$passEnc'";
     $run_query = mysqli_query($db, $query); 
     $count1 = mysqli_num_rows($run_query);
 
     if($count1 > 0 ){
-        $querydelete2 = "DELETE FROM user where passwordd='".$pass."' and id='".$id2."'";
+        $querydelete2 = "DELETE FROM user where passwordd='".$passEnc."' and id='".$id2."'";
         $results = mysqli_query($db, $querydelete2);
         $return_data['status'] = 'success';
     } else {
