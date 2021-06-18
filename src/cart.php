@@ -95,18 +95,18 @@ include("../includes/header.php")
                     var cartid = <?php echo $cartID ;?>;
                     var quantity = document.querySelectorAll("#inputQuantity<?=$cartID?>");
                     total = quantity[0].value * <?=$product_price?>;
-                    document.getElementById("total<?=$cartID?>").innerHTML = "RM " + total.toFixed(2);
+                    // document.getElementById("total<?=$cartID?>").innerHTML = "RM " + total.toFixed(2);
                     var itemBox = document.querySelectorAll("#checkItem<?=$cartID?>");
-                    for (let index = 0; index < itemBox.length; index++) {
-                        if (itemBox[index].checked == true) {
-                            var sum = document.querySelectorAll("#cartTotal");
-                            var quantity = document.querySelectorAll("#inputQuantity<?=$cartID?>");
-                            var price = document.querySelectorAll("#singlePrice<?=$cartID?>");
-                            var minus = sum[0].innerText.replace("RM ", "") - quantity[0].value * parseFloat(price[0].innerText.replace("RM ", ""));
-                            console.log(sum[0].innerText.replace("RM ", ""));
-                            document.getElementById("cartTotal").innerHTML = "RM " + minus.toFixed(2);
-                        };
-                    }
+                    // for (let index = 0; index < itemBox.length; index++) {
+                    //     if (itemBox[index].checked == true) {
+                    //         var sum = document.querySelectorAll("#cartTotal");
+                    //         var quantity = document.querySelectorAll("#inputQuantity<?=$cartID?>");
+                    //         var price = document.querySelectorAll("#singlePrice<?=$cartID?>");
+                    //         var minus = sum[0].innerText.replace("RM ", "") - quantity[0].value * parseFloat(price[0].innerText.replace("RM ", ""));
+                    //         console.log(sum[0].innerText.replace("RM ", ""));
+                    //         document.getElementById("cartTotal").innerHTML = "RM " + minus.toFixed(2);
+                    //     };
+                    // }
                     $.ajax({
                         type:"post",
                         cache:false,
