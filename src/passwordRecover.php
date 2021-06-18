@@ -19,17 +19,21 @@ if  (isset($_POST['submitpasswordrecovery'])) {
             
             $alamat = "http://localhost/online-grocery-shopping-system/src/update.php?code=$token&username=$username";
             $to = $db_email;
-            $judul = "passwrod reset";
-            $isi = "this is automatic email, dont repply. For reset your password please click this link ".$alamat;
+            $judul = "password reset";
+            $isi = "this is automatic email, dont reply. For reset your password please click this link ".$alamat;
             $headers = "From: muhammadhazieq00@gmail.com" . "\r\n";
             mail($to,$judul,$isi,$headers);
 
         }else {
-            echo"your email didn't register";
+            // echo "<script>alert('Your email didn't register')</script>";
+            // echo "<script>window.open('index.php, '_self')</script>";
+            
+            // echo"your email didn't register";
         }
 
     }else {
-        echo"your username didn't register";
+        // echo "<script>alert('Your username didn't register')</script>";
+        // echo "<script>window.open('index.php, '_self')</script>";
     }
 }
 

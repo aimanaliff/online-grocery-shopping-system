@@ -88,7 +88,7 @@ if(isset($_POST['update'])){
 
 
 
-//add to cart
+//add to cart from shopping list
 if(isset($_POST['quantity'])){
     
     $productInListID1 = $_POST['productInListID1'];

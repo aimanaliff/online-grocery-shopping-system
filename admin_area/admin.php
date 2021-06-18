@@ -37,7 +37,7 @@ include("../includes/db.php")
 
         <nav id="sidebar">
             <div class="sidebar-header">
-                <img src="../img/nyumnyumlogo.png" alt="logo" width="150" class="mx-2">
+                <a href="../src/index.php"><img src="../img/nyumnyumlogo.png" alt="logo" width="150" class="mx-2"></a>
             </div>
 
             <ul class="list-unstyled components">

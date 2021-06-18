@@ -334,7 +334,7 @@ function getpro1($run_product)
             "; ?>
 
                         <div class='d-flex flex-column justify-content-around gap-2 gap-sm-0'>
-                            <a href='products-closeup.php?id=<?php echo $id?>&product_id=<?php echo $product_id?>&p_cat_id=<?php echo $p_cat_id ?>'  class='btn btn-success rounded-pill mb-sm-2  '>Add to List</a>
+                            <a href='products-closeup.php?id=<?php echo $id?>&product_id=<?php echo $product_id?>&p_cat_id=<?php echo $p_cat_id ?>'  class='btn btn-success rounded-pill mb-sm-2  '>View More</a>
                             <a onclick="add<?=$product_id?>()" class='btn btn-warning rounded-pill'>Add to Cart</a>
                         </div>
                     </div>
@@ -357,7 +357,7 @@ function getpro1($run_product)
                 "; ?>
 
                         <div class='d-flex flex-column justify-content-around gap-2 gap-sm-0'>
-                            <a href='products-closeup.php?product_id=<?php echo $product_id?>&p_cat_id=<?php echo $p_cat_id ?>'  class='btn btn-success rounded-pill mb-sm-2  '>Add to List</a>
+                            <a href='products-closeup.php?product_id=<?php echo $product_id?>&p_cat_id=<?php echo $p_cat_id ?>'  class='btn btn-success rounded-pill mb-sm-2  '>View More</a>
                             <a href='' data-bs-toggle='modal' data-bs-target='#exampleModal'  class='btn btn-warning rounded-pill'>Add to Cart</a>
                         </div>
                     </div>
